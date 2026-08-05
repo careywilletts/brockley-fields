@@ -3,14 +3,13 @@ import { cn } from '@/lib/utils'
 import { Container } from '@/components/primitives'
 
 /**
- * The three brand assets ship as PNGs with their own near-white grounds
- * (#fbfbfb for the logo, #f8f7f4 for the elevation) which do not match the
- * page cream (#f8efde). `mix-blend-multiply` drops those grounds into the page
- * instead of leaving a pale rectangle floating on the background — so the
- * artwork reads as ink printed on the paper, which suits the screen-print
- * style of the drawings.
+ * The brand artwork arrived as screenshots with their own paper grounds. Those
+ * grounds have been keyed out to real transparency, so each asset is now just
+ * ink with an alpha channel and picks up whatever is behind it — no ground of
+ * its own that could mismatch the page. This replaces an earlier
+ * `mix-blend-multiply` approach, which still tinted the artwork ~4 levels
+ * darker than the page because the paper carried faint grain.
  */
-const BLEND = 'mix-blend-multiply'
 
 export function Logo({
   className,
@@ -26,7 +25,7 @@ export function Logo({
       width={870}
       height={401}
       priority={priority}
-      className={cn('h-auto w-auto', BLEND, className)}
+      className={cn('h-auto w-auto', className)}
     />
   )
 }
@@ -87,7 +86,6 @@ export function TerraceBand({
         className={cn(
           'h-full w-auto max-w-none object-cover object-right',
           'sm:h-auto sm:w-full sm:max-w-full sm:object-contain',
-          BLEND,
         )}
       />
     </div>
