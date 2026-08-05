@@ -21,16 +21,16 @@ export function FloorPlan({
   const unit = getUnit(room.unit)
   return (
     <figure className={cn('flex flex-col', className)}>
-      <div className="border-foreground/20 border">
+      {/* Every plan is placed in an identically proportioned box so a row of
+          drawings lines up, whatever the shape of the room. */}
+      <div className="border-foreground/20 relative aspect-3/4 border">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={room.floorPlan || '/placeholder.svg'}
           alt={`Scale floor plan of ${room.name} at ${unit.name}: ${room.area}, ${room.dimensions}`}
-          width={444}
-          height={611}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
-          className="h-auto w-full"
+          className="absolute inset-0 h-full w-full object-contain"
         />
       </div>
       <figcaption className="type-label border-foreground/20 mt-0 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-x border-b px-3 py-2">

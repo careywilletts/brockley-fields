@@ -9,7 +9,6 @@ import './globals.css'
 const _archivo = Archivo({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  axes: ['wdth'],
 })
 
 const _workSans = Work_Sans({
