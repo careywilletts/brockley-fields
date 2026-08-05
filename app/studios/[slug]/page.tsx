@@ -52,7 +52,7 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
           <ol className="flex flex-wrap items-center gap-x-2">
             <li>
               <InlineLink href="/studios" className="no-underline hover:underline">
-                Studios
+                All rooms
               </InlineLink>
             </li>
             <li aria-hidden>·</li>
@@ -82,19 +82,11 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
       <section className="border-foreground/20 border-t py-12 sm:py-16">
         <Container>
           <div className="flex flex-col gap-10 lg:flex-row lg:gap-14">
-            <div className="lg:w-[38%] lg:shrink-0">
+            {/* The drawing is capped on small screens so its internal
+                dimension labels stay at a sane size. */}
+            <div className="max-w-[26rem] lg:w-[38%] lg:max-w-none lg:shrink-0">
               <p className="type-label-ink mb-4">Scale plan</p>
               <FloorPlan room={room} priority />
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {room.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="type-label-ink border-foreground/25 border px-2 py-1 leading-none"
-                  >
-                    {feature}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             <div className="lg:flex-1">

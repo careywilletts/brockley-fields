@@ -54,7 +54,7 @@ export default function StudiosPage() {
       {/* Availability index — the answer most visitors came for, before the detail. */}
       <Container className="pb-14 sm:pb-20">
         <Rule weight="heavy" />
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
           {rooms.map((room) => (
             <li key={room.slug} className="border-foreground/20 border-b">
               <InlineLink
