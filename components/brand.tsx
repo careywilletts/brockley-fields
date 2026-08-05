@@ -69,16 +69,28 @@ export function TerraceBand({
 }) {
   const art = terraces[variant]
 
+  /**
+   * At full width these panoramas collapse to a ~120px strip on a phone, where
+   * the linework stops being readable. Below `sm` the drawing is scaled up and
+   * anchored to the right (where the buildings sit) inside a fixed-height
+   * window, so the terrace stays legible; from `sm` up it sits at natural width.
+   */
   const image = (
-    <Image
-      src={art.src}
-      alt={art.alt}
-      width={art.width}
-      height={art.height}
-      sizes="100vw"
-      priority={priority}
-      className={cn('h-auto w-full', BLEND)}
-    />
+    <div className="h-32 overflow-hidden sm:h-auto sm:overflow-visible">
+      <Image
+        src={art.src}
+        alt={art.alt}
+        width={art.width}
+        height={art.height}
+        sizes="100vw"
+        priority={priority}
+        className={cn(
+          'h-full w-auto max-w-none object-cover object-right',
+          'sm:h-auto sm:w-full sm:max-w-full sm:object-contain',
+          BLEND,
+        )}
+      />
+    </div>
   )
 
   if (bleed) {

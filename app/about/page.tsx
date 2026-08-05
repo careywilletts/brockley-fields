@@ -8,6 +8,7 @@ import {
   Rule,
   Section,
 } from '@/components/primitives'
+import { TerraceBand } from '@/components/brand'
 import { units } from '@/lib/rooms'
 import { site, waitingListHref } from '@/lib/site'
 
