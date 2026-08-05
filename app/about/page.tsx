@@ -14,7 +14,7 @@ import { site, waitingListHref } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios in Brockley, SE4, built on the belief that people matter.',
+    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios and two private offices in Brockley, SE4, built on the belief that people matter.',
 }
 
 export default function AboutPage() {
@@ -75,8 +75,8 @@ export default function AboutPage() {
                 </p>
                 <p>
                   After Covid, an opportunity came up. An office space in Brockley, SE4 &mdash; two
-                  units. A friend took one, I took the other. Between us we converted them into three
-                  studios each, built properly &mdash; soundproofed and acoustically treated by
+                  units. A friend took one, I took the other, and we converted them properly
+                  &mdash; soundproofed and acoustically treated by
                   Fritz, whose work can be heard across studios all over the country. Large windows
                   in every room, because I&apos;ve spent enough time in windowless rooms to know how
                   much that matters. Plastered walls, warm finishes, high spec without being
@@ -86,8 +86,9 @@ export default function AboutPage() {
                 <p>
                   That was four years ago. Word spread the way good things do &mdash; quietly,
                   through people. This February we added two more studios downstairs. There are now
-                  five Brockley Fields studios, and between our tenants and the wider community
-                  around them, over nine music professionals working here every day.
+                  five Brockley Fields studios plus two private offices &mdash; seven spaces in all
+                  &mdash; and between our tenants and the wider community around them, over nine
+                  music professionals working here every day.
                 </p>
                 <p>
                   The ethos hasn&apos;t changed since day one:{' '}

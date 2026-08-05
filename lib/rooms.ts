@@ -239,3 +239,10 @@ export function roomLabel(room: Room): string {
 
 export const studioCount = rooms.filter((r) => r.kind === 'studio').length
 export const officeCount = rooms.filter((r) => r.kind === 'office').length
+
+/**
+ * Collective total. Copy across the site says either "five studios and two
+ * offices" or "seven spaces" — never a bare room count — so the two phrasings
+ * always agree. Derived so adding a room updates every page at once.
+ */
+export const spaceCount = rooms.length

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { site, waitingListHref } from '@/lib/site'
-import { rooms, units, roomsForUnit, studioCount, officeCount } from '@/lib/rooms'
+import { rooms, units, roomsForUnit, studioCount, officeCount, spaceCount } from '@/lib/rooms'
 import { events, news, formatDate, formatDateShort } from '@/lib/news'
 import {
   ActionLink,
@@ -37,7 +37,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ActionLink href={waitingListHref}>Join the waiting list</ActionLink>
               <ActionLink href="/studios" variant="outline">
-                See the seven rooms
+                See all {spaceCount} spaces
               </ActionLink>
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function HomePage() {
               </h2>
             </div>
             <InlineLink href="/studios" className="type-label-ink shrink-0 no-underline">
-              All seven rooms →
+              All {spaceCount} spaces →
             </InlineLink>
           </div>
 

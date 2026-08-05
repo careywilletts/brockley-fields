@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { units, roomsForUnit, studioCount, officeCount, rooms } from '@/lib/rooms'
+import { units, roomsForUnit, studioCount, officeCount, spaceCount, rooms } from '@/lib/rooms'
 import { waitingListHref } from '@/lib/site'
 import {
   ActionLink,
@@ -25,7 +25,7 @@ export default function StudiosPage() {
     <>
       <PageHeader
         label={`${studioCount} studios · ${officeCount} offices`}
-        title="Seven rooms, drawn to scale."
+        title={`${spaceCount} spaces, drawn to scale.`}
         intro={
           <>
             <p>
@@ -41,8 +41,8 @@ export default function StudiosPage() {
                 </>
               ) : (
                 <>
-                  {available.length === 1 ? 'One room is' : `${available.length} rooms are`} free or
-                  about to be.{' '}
+                  {available.length === 1 ? 'One space is' : `${available.length} spaces are`} free
+                  or about to be.{' '}
                   <InlineLink href={waitingListHref}>Put your name down</InlineLink>.
                 </>
               )}
@@ -105,7 +105,7 @@ export default function StudiosPage() {
                       <dd className="text-[15px] leading-relaxed">{unit.sharedSpaces}</dd>
                     </div>
                     <div className="border-foreground/20 flex flex-col gap-1 border-b py-3 sm:flex-row sm:gap-8">
-                      <dt className="type-label sm:w-40 sm:shrink-0 sm:pt-1">Rooms</dt>
+                      <dt className="type-label sm:w-40 sm:shrink-0 sm:pt-1">Spaces</dt>
                       <dd className="text-[15px] leading-relaxed">
                         {unitRooms.filter((r) => r.kind === 'studio').length} studios
                         {unitRooms.some((r) => r.kind === 'office') &&

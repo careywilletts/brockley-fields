@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { rooms, getRoom, getUnit, roomsForUnit } from '@/lib/rooms'
+import { rooms, getRoom, getUnit, roomsForUnit, spaceCount } from '@/lib/rooms'
 import { peopleForRoom } from '@/lib/people'
 import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
@@ -220,7 +220,7 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
               </ul>
               <p className="mt-5">
                 <InlineLink href="/studios" className="type-label-ink no-underline">
-                  All seven rooms →
+                  All {spaceCount} spaces →
                 </InlineLink>
               </p>
             </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { residents, family } from '@/lib/people'
-import { units, getRoom } from '@/lib/rooms'
+import { units, getRoom, spaceCount } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { ActionLink, Container, InlineLink, PageHeader } from '@/components/primitives'
 import { PersonCard } from '@/components/person-card'
@@ -22,7 +22,7 @@ export default function CommunityPage() {
           <>
             <p>
               {site.mission} These are the people who hold the keys — writers, producers, engineers,
-              a manager and a publisher, spread across two units and seven rooms.
+              a manager and a publisher, spread across two units and {spaceCount} spaces.
             </p>
             <p>
               There is a second circle too: the singers, supervisors and players who are here most

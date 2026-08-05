@@ -8,7 +8,7 @@ import {
   Rule,
 } from '@/components/primitives'
 import { studiosGallery, yardGallery, type GalleryImage } from '@/lib/gallery'
-import { units } from '@/lib/rooms'
+import { units, spaceCount } from '@/lib/rooms'
 import { waitingListHref } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -59,8 +59,8 @@ export default function GalleryPage() {
         title="The building, without anybody tidying up first."
         intro={
           <p>
-            Two units, seven rooms, two kitchens and a courtyard. No captions — if you want to know
-            what a room measures, the{' '}
+            Two units, {spaceCount} spaces, two kitchens and a courtyard. No captions — if you want
+            to know what a room measures, the{' '}
             <InlineLink href="/studios">plans are on the Studios page</InlineLink>.
           </p>
         }
