@@ -25,13 +25,14 @@ export default function HomePage() {
         <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:gap-16">
           <div className="lg:flex-1">
             <p className="type-label">{site.location}</p>
-            <h1 className="type-display mt-5 text-[32px] leading-[1.04] text-balance sm:max-w-[27rem] sm:text-[56px] lg:max-w-[30rem] lg:text-[66px]">
-              Studios for people who make things.
+            <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
+              Brockley Fields was built on a simple belief:{' '}
+              <span className="text-primary">people matter</span>.
             </h1>
             <p className="mt-8 max-w-[34rem] text-[18px] leading-relaxed">
-              Seven rooms across two units in Brockley, southeast London. Music studios, private
-              offices, bare plaster and good light. Built on the belief that{' '}
-              <span className="text-primary">people matter</span> more than square footage.
+              One of the hardest parts of making a living from being creative is finding a space to
+              work &ndash; really work &ndash; and a place that is inspiring and affordable. So we
+              did something about it.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ActionLink href={waitingListHref}>Join the waiting list</ActionLink>
@@ -152,18 +153,20 @@ export default function HomePage() {
       <Section label="Why we exist">
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
           <div className="lg:flex-1">
-            <h2 className="type-display max-w-[26rem] text-[28px] text-balance sm:text-[38px]">
-              {site.mission}
+            <h2 className="type-display max-w-[22rem] text-[28px] text-balance sm:text-[36px]">
+              That&apos;s not accidental. It&apos;s the whole point.
             </h2>
             <div className="mt-7 flex max-w-[38rem] flex-col gap-4 text-[17px] leading-relaxed">
               <p>
-                Most places that rent creative space are in the business of renting space. We are in
-                the business of who ends up next to whom. We choose residents slowly and we choose
-                them for the room and for the corridor.
+                Brockley Fields is based in the heart of Southeast London, with five carefully
+                designed studios which are full of natural light, soundproofed, treated and with
+                communal spaces. This is a place where you actually want to creatively spend your
+                day.
               </p>
               <p>
-                It is why the kitchen is as considered as the studios, why we hold open days instead
-                of viewings, and why more collaborations start here at the sink than over email.
+                What&apos;s happened since has been the best part &ndash; songwriters, producers,
+                mixers, arrangers and managers who work side by side. We collaborate, spark ideas
+                and create.
               </p>
               <p>
                 <InlineLink href="/about">Read how the building came about</InlineLink>, or{' '}
@@ -239,9 +242,10 @@ export default function HomePage() {
                 When one does, the list hears first.
               </h2>
               <p className="mt-6 max-w-[34rem] text-[17px] leading-relaxed">
-                Every room is currently taken. Tell us what you make and which room you have your
-                eye on, and we will come to you before anything is advertised. We share the address
-                privately with applicants.
+                All studios are currently occupied &mdash;{' '}
+                <InlineLink href={waitingListHref}>join our waiting list here</InlineLink>. Tell us
+                what you make and which room you have your eye on, and we will come to you before
+                anything is advertised.
               </p>
               <div className="mt-9">
                 <ActionLink href={waitingListHref}>Join the waiting list</ActionLink>
