@@ -40,14 +40,22 @@ export default function AboutPage() {
         }
       />
 
+      <TerraceBand
+        variant="perspective"
+        bleed
+        caption="As drawn · the terrace along the street"
+        priority
+        className="pb-12 sm:pb-16"
+      />
+
       <Container>
         <Photo
           src="/images/exterior.png"
           alt="The entrance to the Brockley Fields building on a quiet residential street"
-          priority
           sizes="(min-width: 1024px) 1180px, 100vw"
           className="aspect-16/9 border-foreground/20 border"
         />
+        <p className="type-label mt-3">As built · the entrance</p>
       </Container>
 
       <section className="border-foreground/20 border-t py-14 sm:py-20" aria-labelledby="story">
@@ -118,7 +126,13 @@ export default function AboutPage() {
           </p>
         }
       >
-        <ul className="mt-12 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
+        <TerraceBand
+          variant="elevation"
+          caption="Front elevation · the terrace as drawn"
+          className="mt-12"
+        />
+
+        <ul className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
           {units.map((unit) => (
             <li key={unit.id} className="flex flex-col">
               <div className="flex items-baseline justify-between gap-4">

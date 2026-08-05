@@ -10,6 +10,7 @@ import {
   Rule,
   Section,
 } from '@/components/primitives'
+import { TerraceBand } from '@/components/brand'
 import { FloorPlan } from '@/components/floor-plan'
 import { StatusBadge } from '@/components/status-badge'
 
@@ -54,6 +55,14 @@ export default function HomePage() {
           </div>
         </div>
       </Container>
+
+      {/* ── The terrace ───────────────────────────────────────────────────── */}
+      <TerraceBand
+        variant="perspective"
+        bleed
+        caption="The terrace on approach · Units 1 and 2"
+        className="pb-14 sm:pb-20"
+      />
 
       {/* ── The plans ─────────────────────────────────────────────────────── */}
       <section className="border-foreground/20 border-t py-14 sm:py-20">
@@ -108,7 +117,13 @@ export default function HomePage() {
           </p>
         }
       >
-        <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
+        <TerraceBand
+          variant="elevation"
+          caption="Front elevation · both units, drawn to the same scale"
+          className="mt-12"
+        />
+
+        <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
           {units.map((unit) => {
             const unitRooms = roomsForUnit(unit.id)
             return (

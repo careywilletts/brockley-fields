@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { nav, site, waitingListHref } from '@/lib/site'
+import { Logo } from '@/components/brand'
 import { cn } from '@/lib/utils'
 
 export function SiteHeader() {
@@ -27,10 +28,13 @@ export function SiteHeader() {
 
   return (
     <header className="bg-background sticky top-0 z-40">
-      <div className="border-foreground/85 mx-auto flex max-w-[1180px] items-baseline justify-between gap-4 border-b px-5 py-4 sm:px-8">
-        <Link href="/" className="group flex items-baseline gap-2.5" aria-label={`${site.fullName} — home`}>
-          <span className="type-display text-[15px] sm:text-[17px]">Brockley Fields</span>
-          <span className="type-label hidden sm:inline">SE4</span>
+      <div className="border-foreground/85 mx-auto flex max-w-[1180px] items-center justify-between gap-4 border-b px-5 py-3 sm:px-8">
+        <Link
+          href="/"
+          className="focus-visible:ring-primary shrink-0 focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
+          aria-label={`${site.fullName} — home`}
+        >
+          <Logo priority className="h-11 sm:h-14" />
         </Link>
 
         <div className="hidden items-baseline gap-6 lg:flex">
@@ -96,7 +100,7 @@ export function SiteHeader() {
         <nav
           id="mobile-nav"
           aria-label="Primary"
-          className="bg-background border-foreground/20 fixed inset-x-0 top-[57px] bottom-0 z-40 overflow-y-auto border-t lg:hidden"
+          className="bg-background border-foreground/20 fixed inset-x-0 top-[69px] bottom-0 z-40 overflow-y-auto border-t lg:hidden"
         >
           <ul className="flex flex-col px-5 pb-16 sm:px-8">
             {[...nav, { label: 'Waiting List', href: waitingListHref }].map((item) => (

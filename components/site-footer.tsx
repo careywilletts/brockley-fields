@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { nav, site, waitingListHref } from '@/lib/site'
+import { Logo } from '@/components/brand'
 
 export function SiteFooter() {
   return (
@@ -7,8 +8,8 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           <div className="max-w-[26rem]">
-            <p className="type-display text-[19px]">Brockley Fields</p>
-            <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
+            <Logo className="h-16 sm:h-20" />
+            <p className="text-muted-foreground mt-4 text-[15px] leading-relaxed">
               {site.tagline}
             </p>
             <p className="type-label mt-6">Get in touch</p>
