@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 419 526" width="419" height="526" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<rect width="419" height="526" fill="#F8EFDE"/>
+<line x1="40.0" y1="94.0" x2="398.8" y2="94.0" stroke="#9A968C" stroke-width="0.9" opacity="0.8"/>
+<line x1="86.0" y1="94.0" x2="86.0" y2="506.0" stroke="#9A968C" stroke-width="0.9" opacity="0.6"/>
+<line x1="288.8" y1="94.0" x2="288.8" y2="426.0" stroke="#9A968C" stroke-width="0.9" opacity="0.4"/>
+<polygon points="216.0,132.0 288.8,132.0 288.8,189.2 216.0,189.2" fill="#F8EFDE" stroke="#9A968C" stroke-width="1.8" stroke-linejoin="miter" opacity="0.85"/>
+<text x="252.4" y="164.6" font-size="9.5" fill="#9A968C" text-anchor="middle" letter-spacing="1.6">FIRE EXIT</text>
+<polygon points="86.0,132.0 216.0,132.0 216.0,189.2 288.8,189.2 288.8,324.4 216.0,324.4 216.0,392.0 86.0,392.0" fill="#FBF6EC" stroke="#3A3A38" stroke-width="3.4" stroke-linejoin="miter"/>
+<line x1="86.0" y1="132.0" x2="171.8" y2="132.0" stroke="#FBF6EC" stroke-width="7.5"/>
+<line x1="86.0" y1="132.0" x2="171.8" y2="132.0" stroke="#6C903C" stroke-width="4.8"/>
+<line x1="86.0" y1="386.8" x2="86.0" y2="347.8" stroke="#FBF6EC" stroke-width="7.5"/>
+<path d="M 86.0 386.8 A 39.0 39.0 0 0 0 125.0 347.8" fill="none" stroke="#9A968C" stroke-width="1.1" stroke-dasharray="3.5 3.5"/>
+<line x1="86.0" y1="347.8" x2="125.0" y2="347.8" stroke="#9A968C" stroke-width="1.6"/>
+<line x1="288.8" y1="158.0" x2="288.8" y2="132.0" stroke="#F8EFDE" stroke-width="4.0"/>
+<path d="M 288.8 158.0 A 26.0 26.0 0 0 0 314.8 132.0" fill="none" stroke="#9A968C" stroke-width="1.1" stroke-dasharray="3.5 3.5"/>
+<line x1="288.8" y1="132.0" x2="314.8" y2="132.0" stroke="#9A968C" stroke-width="1.2"/>
+<text x="92.0" y="122.0" font-size="11.5" fill="#9A968C" letter-spacing="1.4">3900 mm</text>
+<text x="301.8" y="140.0" font-size="11.5" fill="#9A968C" letter-spacing="1.4" transform="rotate(90 301.8 140.0)">5000 mm</text>
+<text x="187.4" y="271.0" font-size="27" fill="#3A3A38" text-anchor="middle" font-weight="300" letter-spacing="1.2">17 m²</text>
+<text x="86.0" y="54.0" font-size="17" fill="#3A3A38" font-weight="600" letter-spacing="2.4">STUDIO 2</text>
+<text x="86.0" y="72.0" font-size="10.5" fill="#9A968C" letter-spacing="1.8">THE YARD</text>
+<text x="92.0" y="442.0" font-size="10.5" fill="#6C903C" letter-spacing="1.2">NATURAL LIGHT</text>
+</svg>

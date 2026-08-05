@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 381 500" width="381" height="500" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+<rect width="381" height="500" fill="#F8EFDE"/>
+<line x1="40.0" y1="94.0" x2="361.2" y2="94.0" stroke="#9A968C" stroke-width="0.9" opacity="0.8"/>
+<line x1="86.0" y1="94.0" x2="86.0" y2="480.0" stroke="#9A968C" stroke-width="0.9" opacity="0.6"/>
+<line x1="277.2" y1="94.0" x2="277.2" y2="400.0" stroke="#9A968C" stroke-width="0.9" opacity="0.4"/>
+<polygon points="86.0,132.0 277.2,132.0 277.2,366.0 86.0,366.0" fill="#FBF6EC" stroke="#3A3A38" stroke-width="3.4" stroke-linejoin="miter"/>
+<line x1="89.1" y1="132.0" x2="213.4" y2="132.0" stroke="#FBF6EC" stroke-width="7.5"/>
+<line x1="89.1" y1="132.0" x2="213.4" y2="132.0" stroke="#6C903C" stroke-width="4.8"/>
+<line x1="235.6" y1="366.0" x2="277.2" y2="366.0" stroke="#FBF6EC" stroke-width="7.5"/>
+<path d="M 235.6 366.0 A 41.6 41.6 0 0 1 277.2 324.4" fill="none" stroke="#9A968C" stroke-width="1.1" stroke-dasharray="3.5 3.5"/>
+<line x1="277.2" y1="366.0" x2="277.2" y2="324.4" stroke="#9A968C" stroke-width="1.6"/>
+<text x="92.0" y="122.0" font-size="11.5" fill="#9A968C" letter-spacing="1.4">3677 mm</text>
+<text x="290.2" y="140.0" font-size="11.5" fill="#9A968C" letter-spacing="1.4" transform="rotate(90 290.2 140.0)">4500 mm</text>
+<text x="181.6" y="258.0" font-size="27" fill="#3A3A38" text-anchor="middle" font-weight="300" letter-spacing="1.2">16.5 m²</text>
+<text x="86.0" y="54.0" font-size="17" fill="#3A3A38" font-weight="600" letter-spacing="2.4">STUDIO 1</text>
+<text x="86.0" y="72.0" font-size="10.5" fill="#9A968C" letter-spacing="1.8">BROCKLEY FIELDS STUDIOS</text>
+<text x="92.0" y="416.0" font-size="10.5" fill="#6C903C" letter-spacing="1.2">FLOOR-TO-CEILING WINDOW</text>
+<text x="92.0" y="432.0" font-size="10.5" fill="#6C903C" letter-spacing="1.2">GREEN OUTLOOK</text>
+</svg>
