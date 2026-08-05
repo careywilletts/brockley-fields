@@ -14,27 +14,8 @@ import { site, waitingListHref } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Brockley Fields was built on a simple belief: people matter. Two units in southeast London, seven rooms, and no address published online.',
+    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios in Brockley, SE4, built on the belief that people matter.',
 }
-
-const principles = [
-  {
-    title: 'People before rooms',
-    body: 'We choose residents the way you would choose housemates. A room going to somebody who will be generous with it is worth more to the building than a room going to the highest bidder.',
-  },
-  {
-    title: 'Treated properly, priced honestly',
-    body: 'Every room is acoustically treated to the same standard, upstairs and down. The rent covers the building and nothing else — there is no margin being extracted here.',
-  },
-  {
-    title: 'A door that shuts',
-    body: 'Private rooms, held on a monthly basis, with keys. Not hot-desking, not hourly booking. You leave your setup where it is and come back to it tomorrow.',
-  },
-  {
-    title: 'No address online',
-    body: 'We share the address privately with people who are coming. It keeps the place calm for the residents and means nobody turns up unannounced during a vocal take.',
-  },
-]
 
 export default function AboutPage() {
   return (
@@ -45,14 +26,15 @@ export default function AboutPage() {
         intro={
           <>
             <p>
-              Brockley Fields is two units in {site.location}, run by the people who work in them.
-              There are ten residents with rooms of their own, four more in the extended circle, and
-              a waiting list that moves slowly for good reasons.
+              I&apos;m Carey Willetts. I&apos;ve been in the music industry since 2001 &mdash; first
+              as a founding member of Athlete, where we signed to Regal Records and then Parlophone,
+              released five albums over a decade, and picked up an Ivor Novello Award along the way.
+              Our debut album <em>Vehicles and Animals</em> was nominated for the Mercury Music
+              Prize. <em>Tourist</em> went to number one.
             </p>
             <p>
-              It was not built as an investment. It was built because the people who started it
-              could not find anywhere decent, affordable and quiet enough to work, and eventually
-              stopped waiting for somebody else to make one.
+              We learned what it meant to write songs together &mdash; properly together &mdash; and
+              that experience of collaboration as the engine of creativity has never left me.
             </p>
           </>
         }
@@ -68,19 +50,62 @@ export default function AboutPage() {
         />
       </Container>
 
-      <Section
-        label="How it works"
-        title="Four things we decided at the start and have not changed."
-      >
-        <ul className="mt-12 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
-          {principles.map((principle) => (
-            <li key={principle.title} className="border-foreground/20 border-t pt-5">
-              <h3 className="type-display text-[20px] leading-tight">{principle.title}</h3>
-              <p className="mt-3 max-w-[30rem] text-[16px] leading-relaxed">{principle.body}</p>
-            </li>
-          ))}
-        </ul>
-      </Section>
+      <section className="border-foreground/20 border-t py-14 sm:py-20" aria-labelledby="story">
+        <Container>
+          <div className="flex flex-col gap-10 md:flex-row md:gap-12">
+            <div className="md:w-[13rem] md:shrink-0">
+              <h2 id="story" className="type-label">
+                The story
+              </h2>
+            </div>
+            <div className="flex-1">
+              <div className="flex max-w-[38rem] flex-col gap-5 text-[17px] leading-relaxed">
+                <p>
+                  During those years I built a large recording studio in Greenwich. After Athlete I
+                  moved into songwriting and producing for other artists &mdash; working with Dermot
+                  Kennedy, Freya Ridings, Amber Run and others, and was shortlisted for Breakthrough
+                  Producer of the Year at the Music Producers Guild Awards in 2020. Good work, I
+                  found, still comes from the same place it always did: the right people, in the
+                  right room, at the right time.
+                </p>
+                <p>
+                  Which brought me back to the same problem every working songwriter eventually
+                  hits. Where do you actually go to work? Somewhere permanent, inspiring and
+                  affordable. It turns out that place is genuinely hard to find.
+                </p>
+                <p>
+                  After Covid, an opportunity came up. An office space in Brockley, SE4 &mdash; two
+                  units. A friend took one, I took the other. Between us we converted them into three
+                  studios each, built properly &mdash; soundproofed and acoustically treated by
+                  Fritz, whose work can be heard across studios all over the country. Large windows
+                  in every room, because I&apos;ve spent enough time in windowless rooms to know how
+                  much that matters. Plastered walls, warm finishes, high spec without being
+                  clinical. Spaces that feel like somewhere you want to be, not somewhere
+                  you&apos;re tolerating.
+                </p>
+                <p>
+                  That was four years ago. Word spread the way good things do &mdash; quietly,
+                  through people. This February we added two more studios downstairs. There are now
+                  five Brockley Fields studios, and between our tenants and the wider community
+                  around them, over nine music professionals working here every day.
+                </p>
+                <p>
+                  The ethos hasn&apos;t changed since day one:{' '}
+                  <span className="text-primary">people over things</span>. Affordable, high-quality
+                  spaces for the people who need them most. A building where the person next door
+                  might become your next collaborator, your sounding board, your co-writer. Where
+                  someone&apos;s already solved the problem you&apos;re stuck on.
+                </p>
+              </div>
+
+              <p className="type-display mt-10 max-w-[34rem] text-[24px] leading-tight text-pretty sm:text-[28px]">
+                Brockley Fields exists because I needed it to exist. I think a lot of you do too.
+              </p>
+              <p className="type-label mt-6">&mdash; Carey</p>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <Section
         label="The building"
