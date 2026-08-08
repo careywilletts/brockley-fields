@@ -42,7 +42,7 @@ export const people: Person[] = [
     credits: ['Placeholder credit — major label album, 2024', 'Placeholder credit — sync, 2023'],
     quote:
       'I had been writing in bedrooms for eight years. Having a door that shuts and a window that opens changed how much I get done in a day.',
-    bio: 'Placeholder bio. Naomi has been writing for other artists since her early twenties, mostly in the space between pop and soul. She took Studio 1 upstairs when the building opened and has barely left since.',
+    bio: 'Placeholder bio. Naomi has been writing for other artists since her early twenties, mostly in the space between pop and soul. She took Studio 1 at Brockley Fields Studios when the building opened and has barely left since.',
     portrait: '/images/person-1.png',
     handle: '@naomiachebe',
     links: [
@@ -60,7 +60,7 @@ export const people: Person[] = [
     credits: ['Placeholder credit — album mix, 2025', 'Placeholder credit — single mix, 2024'],
     quote:
       'The soundproofing is the real thing, not a bit of foam and a promise. I can work at proper level at nine at night and nobody knocks.',
-    bio: 'Placeholder bio. Rob mixes records — rock, indie, the occasional country session that arrives by accident. He shares the big upstairs room and has strong opinions about monitor placement.',
+    bio: 'Placeholder bio. Rob mixes records — rock, indie, the occasional country session that arrives by accident. He shares the big room at the Studios and has strong opinions about monitor placement.',
     portrait: '/images/person-2.png',
     handle: '@robdansonmix',
     links: [
@@ -77,7 +77,7 @@ export const people: Person[] = [
     oneLiner: 'Builds tracks out of almost nothing, then keeps going.',
     credits: ['Placeholder credit — EP production, 2025'],
     quote:
-      'I came for the room and stayed for the people upstairs. Three of the things I am proudest of started as a conversation by the kettle.',
+      'I came for the room and stayed for the people. Three of the things I am proudest of started as a conversation by the kettle.',
     bio: 'Placeholder bio. Dev produces and programmes, mostly for new artists, and is the person everyone asks when a session needs an extra pair of ears at short notice.',
     portrait: '/images/person-3.png',
     handle: '@devraichura',
@@ -96,7 +96,7 @@ export const people: Person[] = [
     credits: ['Placeholder credit — string arrangement, 2024', 'Placeholder credit — film score, 2023'],
     quote:
       'Fourteen square metres and a window is all I have ever needed. The rest is a piano and no interruptions.',
-    bio: 'Placeholder bio. Mei arranges strings and horns for records made all over London and writes for picture when the deadline allows. Studio 3 upstairs is mostly a piano and a lot of manuscript paper.',
+    bio: 'Placeholder bio. Mei arranges strings and horns for records made all over London and writes for picture when the deadline allows. Studio 3 at the Studios is mostly a piano and a lot of manuscript paper.',
     portrait: '/images/person-4.png',
     handle: '@meilindqvist',
     links: [

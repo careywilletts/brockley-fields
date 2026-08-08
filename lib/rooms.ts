@@ -36,7 +36,6 @@ export type Unit = {
   name: string
   shortName: string
   unitNumber: string
-  floor: string
   intro: string
   sharedSpaces: string
   hero: Photo
@@ -48,9 +47,7 @@ export const units: Unit[] = [
     name: 'Brockley Fields Studios',
     shortName: 'Studios',
     unitNumber: 'Unit 1',
-    floor: 'Upstairs',
-    intro:
-      'Three studios with floor-to-ceiling windows and two with outlooks over green space.',
+    intro: 'Three studios with floor-to-ceiling windows, two with outlooks over green space.',
     sharedSpaces: 'Kitchen/dining area and 17 m² communal space.',
     hero: {
       src: '/images/window-green.png',
@@ -62,7 +59,6 @@ export const units: Unit[] = [
     name: 'Brockley Fields The Yard',
     shortName: 'The Yard',
     unitNumber: 'Unit 2',
-    floor: 'Downstairs',
     intro: 'Two music studios and two offices. More of a hangout vibe.',
     sharedSpaces: '25 m² reception/communal area, kitchen/dining, bathroom.',
     hero: {
@@ -73,7 +69,7 @@ export const units: Unit[] = [
 ]
 
 export const rooms: Room[] = [
-  // ── Brockley Fields Studios — upstairs ──────────────────────────────────
+  // ── Brockley Fields Studios ─────────────────────────────────────────────
   {
     slug: 'upstairs-studio-1',
     name: 'Studio 1',
@@ -89,7 +85,10 @@ export const rooms: Room[] = [
     blurb:
       'A square, calm room at the front of the building. The window runs the full width of one wall, so the light changes all day and you always know what the weather is doing.',
     photos: [
-      { src: '/images/room-a.png', alt: 'Studio 1 upstairs, empty, with tall window and wood floor' },
+      {
+        src: '/images/room-a.png',
+        alt: 'Studio 1 at Brockley Fields Studios, empty, with tall window and wood floor',
+      },
       { src: '/images/window-green.png', alt: 'The green outlook from Studio 1' },
       { src: '/images/detail-plaster.png', alt: 'Bare plaster wall detail in Studio 1' },
     ],
@@ -110,7 +109,10 @@ export const rooms: Room[] = [
     blurb:
       'The largest room in the building. Long enough to put a live area at one end and still have a proper working position at the other. Two people share it comfortably.',
     photos: [
-      { src: '/images/hero-studio.png', alt: 'Studio 2 upstairs, the largest room, empty' },
+      {
+        src: '/images/hero-studio.png',
+        alt: 'Studio 2 at Brockley Fields Studios, the largest room, empty',
+      },
       { src: '/images/room-d.png', alt: 'The far end of Studio 2 with acoustic treatment' },
       { src: '/images/corridor.png', alt: 'The soundproofed door into Studio 2' },
     ],
@@ -129,15 +131,18 @@ export const rooms: Room[] = [
     floorPlanPng:
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/upstairs-studio-3-nHnqNXkZY3oJ8OpYYOdKD9FgnkvCBU.png',
     blurb:
-      'The smallest of the upstairs rooms and the one people are most surprised by. Wide rather than deep, with the window along the long wall — it feels much bigger than the number suggests.',
+      'The smallest of the three Studios rooms and the one people are most surprised by. Wide rather than deep, with the window along the long wall — it feels much bigger than the number suggests.',
     photos: [
-      { src: '/images/room-c.png', alt: 'Studio 3 upstairs, empty, with a desk beneath the window' },
+      {
+        src: '/images/room-c.png',
+        alt: 'Studio 3 at Brockley Fields Studios, empty, with a desk beneath the window',
+      },
       { src: '/images/detail-plaster.png', alt: 'Plaster and timber detail in Studio 3' },
     ],
     occupants: ['mei-lindqvist'],
   },
 
-  // ── The Yard — downstairs ──────────────────────────────────────────────
+  // ── Brockley Fields The Yard ────────────────────────────────────────────
   {
     slug: 'yard-studio-1',
     name: 'Studio 1',
