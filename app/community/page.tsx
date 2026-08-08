@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { residents, family } from '@/lib/people'
+import { residents } from '@/lib/people'
 import { units, getRoom, spaceCount } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import {
@@ -28,12 +28,11 @@ export default function CommunityPage() {
         intro={
           <>
             <p>
-              {site.mission} These are the people who hold the keys — writers, producers, engineers,
-              a manager and a publisher, spread across two units and {spaceCount} spaces.
+              {site.mission} These are the people who hold the keys — writers, producers and
+              engineers, spread across two units and {spaceCount} spaces.
             </p>
             <p>
-              There is a second circle too: the singers, supervisors and players who are here most
-              weeks without renting a room. You will find them on{' '}
+              Everybody here is part of the family, and their full bios are on{' '}
               <InlineLink href="/part-of-the-family">Part of the Family</InlineLink>.
             </p>
           </>
@@ -88,7 +87,7 @@ export default function CommunityPage() {
 
       {/*
         The neighbourhood, moved over from the about page: it sits with the people
-        rather than the founding story, and leads into the extended circle below.
+        rather than the founding story, and leads into the full bios below.
       */}
       <Section
         label="The neighbourhood"
@@ -127,9 +126,9 @@ export default function CommunityPage() {
         <Container className="py-16 sm:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12">
             <div>
-              <p className="type-label">{family.length} more in the extended circle</p>
+              <p className="type-label">The longer read</p>
               <h2 className="type-display mt-3 max-w-[28rem] text-[26px] text-balance sm:text-[34px]">
-                Not everyone who belongs here pays rent.
+                Everybody here is part of the family.
               </h2>
             </div>
             <ActionLink href="/part-of-the-family" className="shrink-0">

@@ -215,7 +215,8 @@ export const rooms: Room[] = [
       { src: '/images/room-b.png', alt: 'The Yard Studio 1, empty, with soundproofed door' },
       { src: '/images/communal.png', alt: 'The Yard communal area outside Studio 1' },
     ],
-    occupants: ['kofi-bell-hughes', 'sam-ojo'],
+    // Tenanted, but the resident's details are still to be collected.
+    occupants: [],
   },
   {
     slug: 'yard-studio-2',
@@ -235,7 +236,7 @@ export const rooms: Room[] = [
       { src: '/images/room-d.png', alt: 'The Yard Studio 2, empty, showing the L-shaped return' },
       { src: '/images/yard.png', alt: 'The courtyard beyond Studio 2' },
     ],
-    occupants: ['orla-finn', 'delroy-pierce'],
+    occupants: [],
   },
   {
     slug: 'yard-office-1',
@@ -254,7 +255,7 @@ export const rooms: Room[] = [
     photos: [
       { src: '/images/room-c.png', alt: 'Office 1 in the Yard, empty, with a desk under the window' },
     ],
-    occupants: ['yasmin-haddad'],
+    occupants: [],
   },
   {
     slug: 'yard-office-2',
@@ -273,7 +274,7 @@ export const rooms: Room[] = [
     photos: [
       { src: '/images/room-c.png', alt: 'Office 2 in the Yard, empty' },
     ],
-    occupants: ['gerry-wallace'],
+    occupants: [],
   },
 ]
 

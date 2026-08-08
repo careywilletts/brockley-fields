@@ -1,44 +1,133 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { family } from '@/lib/people'
+import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { ActionLink, Container, InlineLink, PageHeader } from '@/components/primitives'
-import { PersonCard } from '@/components/person-card'
+import { PersonPortrait } from '@/components/person-portrait'
 
 export const metadata: Metadata = {
   title: 'Part of the Family',
-  description:
-    'The session singers, players, supervisors and studio manager who are at Brockley Fields Studios most weeks without renting a room.',
+  description: `The writers, producers and engineers who work out of Brockley Fields Studios in ${site.location} — everyone in the building, in their own words.`,
 }
 
 export default function PartOfTheFamilyPage() {
   return (
     <>
       <PageHeader
-        label={`${family.length} people, no keys`}
-        title="Here most weeks. Not on the rent roll."
+        label="Everyone in the building"
+        title="Everybody here is part of the family."
         intro={
           <>
             <p>
-              A studio building is not only its tenants. These are the people who turn up for
-              sessions, take the records out into the world, and keep the diary straight — as much
-              part of the place as anyone with a door of their own.
+              Studios and offices alike — there is no inner circle and no separate list. The people
+              below hold the keys to the rooms, and between them they have written, produced,
+              engineered and mixed a great deal of what you have heard.
             </p>
             <p>
-              The ten residents with rooms of their own are on the{' '}
-              <InlineLink href="/community">Community</InlineLink> page.
+              Short introductions and room details are on the{' '}
+              <InlineLink href="/community">Community</InlineLink> page. This is the longer read.
             </p>
           </>
         }
       />
 
-      <section className="border-foreground/20 border-t py-14 sm:py-20">
+      {/*
+        A roster rather than a card grid: full bios are the point of this page,
+        so each person gets a row with room to actually read them.
+      */}
+      <section className="border-foreground/20 border-t">
         <Container>
-          <ul className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {family.map((person, i) => (
-              <li key={person.slug}>
-                <PersonCard person={person} priority={i < 2} />
-              </li>
-            ))}
+          <ul>
+            {family.map((person, i) => {
+              const room = person.roomSlug ? getRoom(person.roomSlug) : undefined
+              const unit = room ? getUnit(room.unit) : undefined
+
+              // The handle is already shown as an Instagram link, so drop any
+              // listed link that points at the same place.
+              const handleHref = `https://instagram.com/${person.handle.slice(1)}`
+              const extraLinks = person.links.filter(
+                (link) => link.href.replace(/\/$/, '') !== handleHref,
+              )
+
+              return (
+                <li
+                  key={person.slug}
+                  className={
+                    i > 0 ? 'border-foreground/20 border-t py-14 sm:py-20' : 'py-14 sm:py-20'
+                  }
+                >
+                  <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+                    <div className="md:w-[13rem] md:shrink-0">
+                      <PersonPortrait
+                        person={person}
+                        className="aspect-4/5 max-w-[10rem] md:max-w-none"
+                        sizes="(min-width: 768px) 13rem, 10rem"
+                        priority={i < 2}
+                      />
+                      {room && unit && (
+                        <p className="type-label mt-4">
+                          <Link
+                            href={`/studios/${room.slug}`}
+                            className="hover:text-primary transition-colors"
+                          >
+                            {room.name}
+                          </Link>
+                          {` · ${unit.shortName}`}
+                        </p>
+                      )}
+                      {person.relationship && !room && (
+                        <p className="type-label mt-4">{person.relationship}</p>
+                      )}
+                    </div>
+
+                    <div className="flex-1">
+                      {/* Ink rather than the accent colour: at display size a
+                          green heading fights the rest of the page. */}
+                      <h2 className="type-display text-[26px] sm:text-[32px]">
+                        <Link
+                          href={`/community/${person.slug}`}
+                          className="hover:text-primary transition-colors"
+                        >
+                          {person.name}
+                        </Link>
+                      </h2>
+                      <p className="type-label mt-3">{person.disciplines.join(' · ')}</p>
+
+                      <p className="mt-6 max-w-[42rem] text-[17px] leading-relaxed">{person.bio}</p>
+
+                      {person.credits.length > 0 && (
+                        <div className="mt-7 max-w-[42rem]">
+                          <p className="type-label">Selected work</p>
+                          <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+                            {person.credits.map((credit) => (
+                              <li key={credit} className="text-[17px]">
+                                {credit}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+                        <li className="text-[17px]">
+                          <InlineLink href={handleHref} external>
+                            {person.handle}
+                          </InlineLink>
+                        </li>
+                        {extraLinks.map((link) => (
+                          <li key={link.href} className="text-[17px]">
+                            <InlineLink href={link.href} external>
+                              {link.label}
+                            </InlineLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              )
+            })}
           </ul>
         </Container>
       </section>
@@ -47,18 +136,17 @@ export default function PartOfTheFamilyPage() {
         <Container className="py-16 sm:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12">
             <div>
-              <p className="type-label">Working with someone here?</p>
+              <p className="type-label">Want a room in the building?</p>
               <h2 className="type-display mt-3 max-w-[28rem] text-[26px] text-balance sm:text-[34px]">
-                Tell us and we will put you on this page.
+                Rooms come up two or three times a year.
               </h2>
               <p className="mt-5 max-w-[34rem] text-[17px] leading-relaxed">
-                No form for this one — just email{' '}
-                <InlineLink href={`mailto:${site.email}`}>{site.email}</InlineLink> with who you work
-                with and what you do.
+                Put your name down and we will come to you when one does. Or just email{' '}
+                <InlineLink href={`mailto:${site.email}`}>{site.email}</InlineLink>.
               </p>
             </div>
-            <ActionLink href={`mailto:${site.email}`} className="shrink-0">
-              Get in touch
+            <ActionLink href="/studios" className="shrink-0">
+              See the studios
             </ActionLink>
           </div>
         </Container>

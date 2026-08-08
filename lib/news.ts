@@ -47,20 +47,6 @@ export const events: Event[] = [
 
 export const news: NewsItem[] = [
   {
-    slug: 'orla-album',
-    date: '2026-07-20',
-    title: 'Orla Finn’s debut lands',
-    description:
-      'Written and tracked almost entirely in the Yard, mixed thirty feet away by Delroy. Out now on all the usual places.',
-  },
-  {
-    slug: 'gerry-signing',
-    date: '2026-05-15',
-    title: 'Gerry signs a writer from two doors down',
-    description:
-      'Sam Ojo joins the publishing roster. The whole negotiation happened at the kitchen table.',
-  },
-  {
     slug: 'yard-treated',
     date: '2026-04-01',
     title: 'The Yard rooms finish acoustic treatment',
