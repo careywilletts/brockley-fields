@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { nav, site, waitingListHref } from '@/lib/site'
 import { Logo } from '@/components/brand'
+import { HeaderBackButton } from '@/components/back-link'
 import { cn } from '@/lib/utils'
 
 export function SiteHeader() {
@@ -36,6 +37,10 @@ export function SiteHeader() {
         >
           <Logo priority className="h-11 sm:h-14" />
         </Link>
+
+        {/* Sits next to the logo so it reads as "back" for the site, not the
+            surrounding page. Present at every breakpoint. */}
+        <HeaderBackButton className="mr-auto" />
 
         <div className="hidden items-baseline gap-6 lg:flex">
           <a

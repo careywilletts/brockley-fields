@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 const STACK_KEY = 'bf:nav-stack'
@@ -73,6 +73,28 @@ function canGoBack() {
   return readStack().length > 1
 }
 
+/** The page a back step would land on, or undefined if there is not one. */
+function previousPath(): string | undefined {
+  const stack = readStack()
+  return stack.length > 1 ? stack[stack.length - 2] : undefined
+}
+
+/**
+ * Re-checked on every route change so the control appears the moment there is
+ * somewhere to go back to, and disappears when there is not. Starts false so
+ * the server and client agree on the first render.
+ */
+export function usePreviousPath() {
+  const pathname = usePathname()
+  const [previous, setPrevious] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    setPrevious(previousPath())
+  }, [pathname])
+
+  return previous
+}
+
 /**
  * Back control that steps through the site's own history.
  *
@@ -113,6 +135,42 @@ export function BackLink({
     >
       <span aria-hidden>&larr;</span>
       {children}
+    </Link>
+  )
+}
+
+/**
+ * The site's own back button, in the header on every page.
+ *
+ * The browser's back button acts on the embedding page when the site is shown
+ * inside an iframe, which reads as the current page reloading. This one always
+ * steps the site's own history, so "back" means the previous page everywhere.
+ */
+export function HeaderBackButton({ className }: { className?: string }) {
+  const router = useRouter()
+  const previous = usePreviousPath()
+
+  // Nothing to go back to on a first arrival, so the control stays out of the
+  // way rather than sitting there dead.
+  if (!previous) return null
+
+  return (
+    <Link
+      href={previous}
+      className={cn(
+        'type-label-ink hover:text-primary inline-flex shrink-0 items-center gap-1.5 transition-colors',
+        className,
+      )}
+      onClick={(event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+
+        event.preventDefault()
+        writeStack(readStack().slice(0, -1))
+        router.back()
+      }}
+    >
+      <span aria-hidden>&larr;</span>
+      Back
     </Link>
   )
 }
