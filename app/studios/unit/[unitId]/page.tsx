@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import { units, roomsForUnit, type UnitId } from '@/lib/rooms'
 import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
-import { StatusBadge } from '@/components/status-badge'
+import { RoomCard } from '@/components/room-card'
 
 export function generateStaticParams() {
   return units.map((unit) => ({ unitId: unit.id }))
@@ -169,39 +168,25 @@ export default async function UnitPage({ params }: { params: Promise<{ unitId: s
         </Container>
       </section>
 
-      {/* The rooms themselves live on their own pages — this is the way in. */}
+      {/*
+        The rooms as photographic cards. Full width rather than in the indented
+        label column the sections above use, so three cards fit across.
+      */}
       <section className="border-foreground/20 border-t py-12 sm:py-16" aria-labelledby="rooms">
         <Container>
-          <div className="flex flex-col gap-8 md:flex-row md:gap-12">
-            <h2 id="rooms" className="type-label md:w-[13rem] md:shrink-0">
-              The rooms
-            </h2>
-            <div className="max-w-[46rem] flex-1">
-              <Rule weight="heavy" />
-              <ul className="flex flex-col">
-                {unitRooms.map((room) => (
-                  <li key={room.slug} className="border-foreground/20 border-b">
-                    <Link
-                      href={`/studios/${room.slug}`}
-                      className="hover:text-primary flex items-baseline justify-between gap-4 py-4 transition-colors"
-                    >
-                      <span className="text-[16px]">
-                        {room.name}
-                        <span className="text-muted-foreground">
-                          {' '}
-                          · {room.area} · {room.dimensions}
-                        </span>
-                      </span>
-                      <StatusBadge status={room.status} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <p className="type-label mt-5">
-                Each room has its own page, with a scale plan and dimensions.
-              </p>
-            </div>
-          </div>
+          <h2 id="rooms" className="type-label-ink">
+            The rooms
+          </h2>
+          <ul className="mt-8 grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+            {unitRooms.map((room) => (
+              <li key={room.slug}>
+                <RoomCard room={room} />
+              </li>
+            ))}
+          </ul>
+          <p className="type-label mt-10">
+            Each room has its own page, with a scale plan and dimensions.
+          </p>
         </Container>
       </section>
 

@@ -57,7 +57,11 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
             </li>
             <li aria-hidden>·</li>
             <li>
-              <InlineLink href={`/studios#${unit.id}`} className="no-underline hover:underline">
+              {/* The unit's own overview page, now that the rooms live there. */}
+              <InlineLink
+                href={`/studios/unit/${unit.id}`}
+                className="no-underline hover:underline"
+              >
                 {unit.shortName}
               </InlineLink>
             </li>

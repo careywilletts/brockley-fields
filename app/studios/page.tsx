@@ -3,7 +3,6 @@ import { units, roomsForUnit, rooms } from '@/lib/rooms'
 import { waitingListHref } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
 import { TerraceBand } from '@/components/brand'
-import { RoomCard } from '@/components/room-card'
 import { StatusBadge } from '@/components/status-badge'
 
 export const metadata: Metadata = {
@@ -119,40 +118,6 @@ export default function StudiosPage() {
           </ul>
         </Container>
       </section>
-
-      {units.map((unit) => {
-        const unitRooms = roomsForUnit(unit.id)
-        return (
-          <section
-            key={unit.id}
-            id={unit.id}
-            className="border-foreground/20 border-t py-14 sm:py-20"
-          >
-            <Container>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-10">
-                <div>
-                  <p className="type-label">{unit.unitNumber}</p>
-                  <h2 className="type-display mt-3 text-[26px] sm:text-[34px]">{unit.name}</h2>
-                </div>
-                <InlineLink
-                  href={`/studios/unit/${unit.id}`}
-                  className="type-label-ink shrink-0 no-underline"
-                >
-                  View the space →
-                </InlineLink>
-              </div>
-
-              <ul className="mt-12 grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-                {unitRooms.map((room) => (
-                  <li key={room.slug}>
-                    <RoomCard room={room} />
-                  </li>
-                ))}
-              </ul>
-            </Container>
-          </section>
-        )
-      })}
 
       <section className="border-foreground/20 border-t">
         <Container className="py-16 sm:py-20">
