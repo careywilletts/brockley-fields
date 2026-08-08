@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { people, getPerson } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
-import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
+import { ActionLink, Container, InlineLink, Rule } from '@/components/primitives'
+import { PersonPortrait } from '@/components/person-portrait'
 import { StatusBadge } from '@/components/status-badge'
 
 export function generateStaticParams() {
@@ -64,9 +65,8 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
 
         <div className="mt-8 flex flex-col gap-10 lg:flex-row lg:gap-16">
           <div className="max-w-[20rem] lg:w-[30%] lg:max-w-none lg:shrink-0">
-            <Photo
-              src={person.portrait}
-              alt={`Portrait of ${person.name}`}
+            <PersonPortrait
+              person={person}
               className="aspect-4/5"
               sizes="(min-width: 1024px) 30vw, 320px"
               priority
@@ -129,20 +129,23 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
         </div>
       </Container>
 
-      {/* Their words, given room to breathe. */}
-      <section className="border-foreground/20 border-y">
-        <Container className="py-14 sm:py-20">
-          <figure className="max-w-[44rem]">
-            <blockquote className="type-display text-[22px] leading-[1.3] text-pretty sm:text-[30px]">
-              {`\u201C${person.quote}\u201D`}
-            </blockquote>
-            <figcaption className="type-label mt-6">
-              {person.name}
-              {room && unit ? ` · ${room.name}, ${unit.shortName}` : ` · ${person.relationship}`}
-            </figcaption>
-          </figure>
-        </Container>
-      </section>
+      {/* Their words, given room to breathe. Omitted entirely until we have a
+          real quote from them — never invent one. */}
+      {person.quote && (
+        <section className="border-foreground/20 border-y">
+          <Container className="py-14 sm:py-20">
+            <figure className="max-w-[44rem]">
+              <blockquote className="type-display text-[22px] leading-[1.3] text-pretty sm:text-[30px]">
+                {`\u201C${person.quote}\u201D`}
+              </blockquote>
+              <figcaption className="type-label mt-6">
+                {person.name}
+                {room && unit ? ` · ${room.name}, ${unit.shortName}` : ` · ${person.relationship}`}
+              </figcaption>
+            </figure>
+          </Container>
+        </section>
+      )}
 
       <Container className="py-14 sm:py-20">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">

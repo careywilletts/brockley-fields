@@ -7,6 +7,7 @@ import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
 import { BackLink } from '@/components/back-link'
 import { FloorPlan } from '@/components/floor-plan'
+import { PersonPortrait } from '@/components/person-portrait'
 import { StatusBadge } from '@/components/status-badge'
 
 export function generateStaticParams() {
@@ -167,9 +168,8 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
               <ul className="flex max-w-[46rem] flex-1 flex-col gap-8">
                 {occupants.map((person) => (
                   <li key={person.slug} className="flex gap-5">
-                    <Photo
-                      src={person.portrait}
-                      alt={`Portrait of ${person.name}`}
+                    <PersonPortrait
+                      person={person}
                       className="aspect-square w-20 shrink-0 sm:w-28"
                       sizes="112px"
                     />

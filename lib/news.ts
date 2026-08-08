@@ -54,20 +54,6 @@ export const news: NewsItem[] = [
       'Written and tracked almost entirely in the Yard, mixed thirty feet away by Delroy. Out now on all the usual places.',
   },
   {
-    slug: 'naomi-cut',
-    date: '2026-06-30',
-    title: 'Naomi Achebe takes a cut on a major album',
-    description:
-      'A song that started as a voice note in Studio 1, finished in the same room eleven months later.',
-  },
-  {
-    slug: 'mei-sync',
-    date: '2026-06-02',
-    title: 'Mei Lindqvist scores her first feature',
-    description:
-      'Strings written in a fourteen square metre room and recorded across town. Premiere in the autumn.',
-  },
-  {
     slug: 'gerry-signing',
     date: '2026-05-15',
     title: 'Gerry signs a writer from two doors down',

@@ -161,7 +161,7 @@ export const rooms: Room[] = [
     floorPlanPng:
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/upstairs-studio-2-SbbmfXA0vmVjSXedLG5WcBLMpwuRFU.png',
     blurb:
-      'The largest room in the building. Long enough to put a live area at one end and still have a proper working position at the other. Two people share it comfortably.',
+      'The largest room in the building. Long enough to put a live area at one end and still have a proper working position at the other.',
     photos: [
       {
         src: '/images/hero-studio.png',
@@ -170,7 +170,7 @@ export const rooms: Room[] = [
       { src: '/images/room-d.png', alt: 'The far end of Studio 2 with acoustic treatment' },
       { src: '/images/corridor.png', alt: 'The soundproofed door into Studio 2' },
     ],
-    occupants: ['rob-danson', 'dev-raichura'],
+    occupants: ['carey-willetts'],
   },
   {
     slug: 'upstairs-studio-3',

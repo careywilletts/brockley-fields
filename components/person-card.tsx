@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import { PersonPortrait } from '@/components/person-portrait'
 import type { Person } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 
@@ -16,6 +16,7 @@ export function PersonCard({ person, priority = false }: { person: Person; prior
         <PersonPortrait
           person={person}
           className="aspect-[4/5]"
+          imageClassName="transition-transform duration-700 group-hover:scale-[1.02]"
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
           priority={priority}
         />
