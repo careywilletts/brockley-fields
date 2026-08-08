@@ -31,8 +31,9 @@ export default function StudiosPage() {
         </h1>
         <div className="mt-7 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
-            They are a short walk apart and share a waiting list, a kettle habit and most of the same
-            people. Beyond that they behave nothing alike.
+            Situated in <span className="text-primary">zone 2</span>, only a 2 minute walk from
+            Brockley Station. We are surrounded by incredible coffee, quirky bars, vibrant
+            restaurants and loads of green spaces&hellip;
           </p>
           <p>
             {available.length === 0 ? (
