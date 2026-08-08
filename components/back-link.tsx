@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useSyncExternalStore } from 'react'
 import { cn } from '@/lib/utils'
 
 const STACK_KEY = 'bf:nav-stack'
@@ -20,6 +20,34 @@ let currentIndex = 0
  * double-invoked effects in development cannot reset it the way a ref would.
  */
 let documentSeen = false
+
+/**
+ * Set by popstate, cleared once the resulting route change has been recorded.
+ * Tells the tracker that the next change is a step through the history rather
+ * than a new page.
+ */
+let traversalPending = false
+
+/**
+ * Anything showing a back destination, notified after the record changes.
+ *
+ * The tracker lives in the layout and the controls are its children, and React
+ * runs a child's effects before its parent's. Without this the controls would
+ * read the record a beat before the tracker had updated it, and show the page
+ * they were already on.
+ */
+const listeners = new Set<() => void>()
+
+function subscribe(listener: () => void) {
+  listeners.add(listener)
+  return () => {
+    listeners.delete(listener)
+  }
+}
+
+function notify() {
+  for (const listener of listeners) listener()
+}
 
 /**
  * useLayoutEffect warns when it runs during server rendering. These components
@@ -63,54 +91,110 @@ function writeStack(stack: string[]) {
 export function NavDepthTracker() {
   const pathname = usePathname()
 
-  // A layout effect so the record is current before anything paints, keeping
-  // the Back control's destination right on a page's very first render.
+  // popstate fires for history traversals — the browser's back and forward
+  // buttons, and our own history.back() — and never for a new navigation. That
+  // makes it the one dependable signal for telling a step through the history
+  // apart from a fresh page, which guessing from paths alone cannot do when the
+  // same page appears twice in the record.
   useIsomorphicLayoutEffect(() => {
-    const stack = readStack()
-
-    // A fresh document, or a reload, starts the record again. Without this a
-    // reload would keep the old record and leave Back pointing at this same
-    // page.
-    const [navEntry] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[]
-    if (stack.length === 0 || (!documentSeen && navEntry?.type !== 'back_forward')) {
-      documentSeen = true
-      writeStack([pathname])
-      currentIndex = 0
-      return
+    const onPopState = () => {
+      traversalPending = true
     }
-    documentSeen = true
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
-    // Already recorded as where we are: nothing to do. This guard is what makes
-    // the effect safe to run more than once for the same page — a repeat used to
-    // be mistaken for a new visit and append a duplicate, which corrupted the
-    // record and left Back pointing at the current page.
-    if (stack[currentIndex] === pathname) return
-
-    if (stack[currentIndex - 1] === pathname) {
-      // A step backwards, from either this control or the browser's own button.
-      currentIndex -= 1
-      return
-    }
-
-    if (stack[currentIndex + 1] === pathname) {
-      // A step forwards, via the browser's forward button.
-      currentIndex += 1
-      return
-    }
-
-    // A genuinely new page. It follows the current position, so any entries
-    // ahead of it are no longer reachable and get dropped.
-    const index = currentIndex + 1
-    writeStack([...stack.slice(0, index), pathname])
-    currentIndex = index
+  // Still runs on every route change, so the record keeps up even on pages with
+  // no Back control on screen to read it.
+  useIsomorphicLayoutEffect(() => {
+    if (record(pathname)) notify()
   }, [pathname])
 
   return null
 }
 
+/**
+ * Brings the record up to date for the page now showing.
+ *
+ * Idempotent: calling it repeatedly for the same page changes nothing, which is
+ * what lets both the tracker and the controls call it freely. Returns whether
+ * anything actually moved, so only real changes trigger a re-render.
+ */
+function record(pathname: string): boolean {
+  if (typeof window === 'undefined') return false
+
+  const stack = readStack()
+
+  // A fresh document, or a reload, starts the record again. Without this a
+  // reload would keep the old record and leave Back pointing at this same page.
+  const [navEntry] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[]
+  if (stack.length === 0 || (!documentSeen && navEntry?.type !== 'back_forward')) {
+    documentSeen = true
+    writeStack([pathname])
+    currentIndex = 0
+    return true
+  }
+  documentSeen = true
+
+  // Already recorded as where we are: nothing to do. This guard is what makes the
+  // function safe to call more than once for the same page — a repeat used to be
+  // mistaken for a new visit and append a duplicate, which corrupted the record
+  // and left Back pointing at the current page.
+  if (stack[currentIndex] === pathname) return false
+
+  const traversed = traversalPending
+  traversalPending = false
+
+  if (traversed) {
+    // A step through the history. Move to whichever neighbour this is, and if it
+    // is neither, find the page in the record — a traversal never adds to it.
+    if (stack[currentIndex - 1] === pathname) currentIndex -= 1
+    else if (stack[currentIndex + 1] === pathname) currentIndex += 1
+    else {
+      const found = stack.lastIndexOf(pathname)
+      if (found >= 0) currentIndex = found
+    }
+    return true
+  }
+
+  // A genuinely new page. It follows the current position, so any entries ahead
+  // of it are no longer reachable and get dropped.
+  const index = currentIndex + 1
+  writeStack([...stack.slice(0, index), pathname])
+  currentIndex = index
+  return true
+}
+
+/**
+ * Where the given page sits in the record, and what lies behind it.
+ *
+ * Takes the tracked position only when the record agrees that it is the page we
+ * are on, and otherwise locates the page in the record directly. That makes the
+ * answer depend on the page being rendered rather than on which effect happened
+ * to run first — the ordering that previously left Back labelled with the page it
+ * was already on.
+ */
+function navPosition(pathname: string): { index: number; previous?: string } {
+  // Bring the record up to date first. Recording used to live in an effect while
+  // reading happened during render, so a control could read a position the
+  // tracker had not moved yet and show a destination one step out of date — on
+  // the way back, the page just arrived at. Doing both here means there is only
+  // one order of events, whoever asks first.
+  record(pathname)
+
+  const stack = readStack()
+  const index = stack[currentIndex] === pathname ? currentIndex : stack.lastIndexOf(pathname)
+
+  if (index < 0) return { index: 0 }
+
+  const previous = index > 0 ? stack[index - 1] : undefined
+  // A repeat of the current page is not somewhere to go back to.
+  return { index, previous: previous === pathname ? undefined : previous }
+}
+
 /** True when `history.back()` is known to land on a previous page of ours. */
-function canPopHistory() {
-  return currentIndex > 0
+function canPopHistory(pathname: string) {
+  return navPosition(pathname).index > 0
 }
 
 /**
@@ -120,23 +204,19 @@ function canPopHistory() {
  */
 export function usePreviousPath() {
   const pathname = usePathname()
-  const [previous, setPrevious] = useState<string | undefined>(undefined)
 
-  useIsomorphicLayoutEffect(() => {
-    // Runs after the tracker's effect above — child effects fire before a
-    // parent's, and the tracker sits in the layout — so read on a microtask to
-    // be sure the record and index are settled first.
-    let cancelled = false
-    Promise.resolve().then(() => {
-      if (cancelled) return
-      const stack = readStack()
-      const candidate = currentIndex > 0 ? stack[currentIndex - 1] : undefined
-      setPrevious(candidate)
-    })
-    return () => {
-      cancelled = true
-    }
-  }, [pathname])
+  // useSyncExternalStore reads the record during render and re-reads whenever the
+  // tracker reports a change. Holding the answer in state instead meant it was
+  // written by an effect, and effects run child-first — so a control could paint
+  // using the record as it stood before the tracker had updated it, labelled with
+  // the page it was already on. Reading at render time removes that ordering
+  // question altogether.
+  const previous = useSyncExternalStore(
+    subscribe,
+    () => navPosition(pathname).previous,
+    // Nothing to go back to until the browser is involved.
+    () => undefined,
+  )
 
   // Never point at the page we are already on: that is the "button does
   // nothing" symptom, and a reload is exactly what it would look like.
@@ -187,6 +267,7 @@ export function BackLink({
  * takes over to turn the push into a genuine step backwards.
  */
 export function HeaderBackButton({ className }: { className?: string }) {
+  const pathname = usePathname()
   const previous = usePreviousPath()
 
   // Nothing to go back to on a first arrival, so the control stays out of the
@@ -204,7 +285,7 @@ export function HeaderBackButton({ className }: { className?: string }) {
         // Let modified clicks (new tab, middle click) behave normally.
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
         // No entry of ours to pop — follow the href and push instead.
-        if (!canPopHistory()) return
+        if (!canPopHistory(pathname)) return
 
         event.preventDefault()
         window.history.back()
