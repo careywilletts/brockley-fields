@@ -27,13 +27,13 @@ export default function StudiosPage() {
             where they are written rather than being re-balanced. */}
         <h1 className="type-display mt-3 text-[34px] text-wrap sm:text-[52px]">
           Creative spaces,
-          <span className="block">real community</span>
+          <span className="text-primary block">real community</span>
         </h1>
         <div className="mt-7 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
-            Situated in <span className="text-primary">zone 2</span>, only a 2 minute walk from
+            Situated in <strong className="font-semibold">zone 2</strong>, only a 2 minute walk from
             Brockley Station. We are surrounded by incredible coffee, quirky bars, vibrant
-            restaurants and loads of green spaces&hellip;
+            restaurants and loads of green spaces.
           </p>
           <p>
             {available.length === 0 ? (
