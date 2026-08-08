@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { family } from '@/lib/people'
+import { family, personRoomSlugs } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { ActionLink, Container, InlineLink, PageHeader } from '@/components/primitives'
@@ -40,12 +40,16 @@ export default function PartOfTheFamilyPage() {
         <Container>
           <ul>
             {family.map((person, i) => {
-              const room = person.roomSlug ? getRoom(person.roomSlug) : undefined
-              const unit = room ? getUnit(room.unit) : undefined
+              const roomList = personRoomSlugs(person)
+                .map(getRoom)
+                .filter((r): r is NonNullable<typeof r> => Boolean(r))
+              const unit = roomList[0] ? getUnit(roomList[0].unit) : undefined
 
               // The handle is already shown as an Instagram link, so drop any
               // listed link that points at the same place.
-              const handleHref = `https://instagram.com/${person.handle.slice(1)}`
+              const handleHref = person.handle
+                ? `https://instagram.com/${person.handle.slice(1)}`
+                : undefined
               const extraLinks = person.links.filter(
                 (link) => link.href.replace(/\/$/, '') !== handleHref,
               )
@@ -65,18 +69,23 @@ export default function PartOfTheFamilyPage() {
                         sizes="(min-width: 768px) 13rem, 10rem"
                         priority={i < 2}
                       />
-                      {room && unit && (
+                      {roomList.length > 0 && unit && (
                         <p className="type-label mt-4">
-                          <Link
-                            href={`/studios/${room.slug}`}
-                            className="hover:text-primary transition-colors"
-                          >
-                            {room.name}
-                          </Link>
+                          {roomList.map((r, index) => (
+                            <span key={r.slug}>
+                              {index > 0 && ' & '}
+                              <Link
+                                href={`/studios/${r.slug}`}
+                                className="hover:text-primary transition-colors"
+                              >
+                                {r.name}
+                              </Link>
+                            </span>
+                          ))}
                           {` · ${unit.shortName}`}
                         </p>
                       )}
-                      {person.relationship && !room && (
+                      {person.relationship && roomList.length === 0 && (
                         <p className="type-label mt-4">{person.relationship}</p>
                       )}
                     </div>
@@ -109,20 +118,26 @@ export default function PartOfTheFamilyPage() {
                         </div>
                       )}
 
-                      <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
-                        <li className="text-[17px]">
-                          <InlineLink href={handleHref} external>
-                            {person.handle}
-                          </InlineLink>
-                        </li>
-                        {extraLinks.map((link) => (
-                          <li key={link.href} className="text-[17px]">
-                            <InlineLink href={link.href} external>
-                              {link.label}
-                            </InlineLink>
-                          </li>
-                        ))}
-                      </ul>
+                      {/* Omitted for anyone with nothing to link to, rather
+                          than leaving an empty row. */}
+                      {(handleHref || extraLinks.length > 0) && (
+                        <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+                          {handleHref && person.handle && (
+                            <li className="text-[17px]">
+                              <InlineLink href={handleHref} external>
+                                {person.handle}
+                              </InlineLink>
+                            </li>
+                          )}
+                          {extraLinks.map((link) => (
+                            <li key={link.href} className="text-[17px]">
+                              <InlineLink href={link.href} external>
+                                {link.label}
+                              </InlineLink>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </div>
                 </li>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { residents } from '@/lib/people'
+import { residents, personRoomSlugs } from '@/lib/people'
 import { units, getRoom, spaceCount } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import {
@@ -52,10 +52,9 @@ export default function CommunityPage() {
 
       {units.map((unit) => {
         // Group by the room's actual unit rather than by slug shape.
-        const unitPeople = residents.filter((person) => {
-          const room = person.roomSlug ? getRoom(person.roomSlug) : undefined
-          return room?.unit === unit.id
-        })
+        const unitPeople = residents.filter((person) =>
+          personRoomSlugs(person).some((slug) => getRoom(slug)?.unit === unit.id),
+        )
         if (unitPeople.length === 0) return null
 
         return (

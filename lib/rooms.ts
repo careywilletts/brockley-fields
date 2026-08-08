@@ -215,8 +215,7 @@ export const rooms: Room[] = [
       { src: '/images/room-b.png', alt: 'The Yard Studio 1, empty, with soundproofed door' },
       { src: '/images/communal.png', alt: 'The Yard communal area outside Studio 1' },
     ],
-    // Tenanted, but the resident's details are still to be collected.
-    occupants: [],
+    occupants: ['atticus-blue'],
   },
   {
     slug: 'yard-studio-2',
@@ -236,7 +235,7 @@ export const rooms: Room[] = [
       { src: '/images/room-d.png', alt: 'The Yard Studio 2, empty, showing the L-shaped return' },
       { src: '/images/yard.png', alt: 'The courtyard beyond Studio 2' },
     ],
-    occupants: [],
+    occupants: ['rich-cooper'],
   },
   {
     slug: 'yard-office-1',
@@ -255,7 +254,7 @@ export const rooms: Room[] = [
     photos: [
       { src: '/images/room-c.png', alt: 'Office 1 in the Yard, empty, with a desk under the window' },
     ],
-    occupants: [],
+    occupants: ['david-eserin'],
   },
   {
     slug: 'yard-office-2',
@@ -274,7 +273,7 @@ export const rooms: Room[] = [
     photos: [
       { src: '/images/room-c.png', alt: 'Office 2 in the Yard, empty' },
     ],
-    occupants: [],
+    occupants: ['david-eserin'],
   },
 ]
 
@@ -295,6 +294,24 @@ export function roomsForUnit(id: UnitId): Room[] {
 /** "Studio 1 · Brockley Fields Studios" — used in the waiting list dropdown. */
 export function roomLabel(room: Room): string {
   return `${room.name} · ${getUnit(room.unit).name}`
+}
+
+/**
+ * Names several rooms in one breath: "Office 1" alone, or "Office 1 & 2" for
+ * somebody holding two. Collapses the shared word when every room is the same
+ * kind of space, so it reads as one thing rather than a list.
+ */
+export function roomsLabel(list: Room[]): string {
+  if (list.length === 0) return ''
+  if (list.length === 1) return list[0].name
+
+  const words = list.map((room) => room.name.split(' '))
+  const prefix = words[0][0]
+  const allSamePrefix = words.every((parts) => parts.length === 2 && parts[0] === prefix)
+
+  return allSamePrefix
+    ? `${prefix} ${words.map((parts) => parts[1]).join(' & ')}`
+    : list.map((room) => room.name).join(' & ')
 }
 
 export const studioCount = rooms.filter((r) => r.kind === 'studio').length

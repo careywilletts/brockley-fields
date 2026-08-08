@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { PersonPortrait } from '@/components/person-portrait'
-import type { Person } from '@/lib/people'
-import { getRoom, getUnit } from '@/lib/rooms'
+import { personRoomSlugs, type Person } from '@/lib/people'
+import { getRoom, getUnit, roomsLabel } from '@/lib/rooms'
 
 export function PersonCard({ person, priority = false }: { person: Person; priority?: boolean }) {
-  const room = person.roomSlug ? getRoom(person.roomSlug) : undefined
-  const unit = room ? getUnit(room.unit) : undefined
+  const roomList = personRoomSlugs(person)
+    .map(getRoom)
+    .filter((r): r is NonNullable<typeof r> => Boolean(r))
+  const unit = roomList[0] ? getUnit(roomList[0].unit) : undefined
 
   return (
     <article className="flex flex-col">
@@ -31,7 +33,9 @@ export function PersonCard({ person, priority = false }: { person: Person; prior
       <p className="mt-3 text-[15px] leading-relaxed">{person.oneLiner}</p>
 
       <p className="text-muted-foreground mt-3 text-[13px]">
-        {room && unit ? `${room.name} · ${unit.shortName}` : person.relationship}
+        {roomList.length > 0 && unit
+          ? `${roomsLabel(roomList)} · ${unit.shortName}`
+          : person.relationship}
       </p>
     </article>
   )

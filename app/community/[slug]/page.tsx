@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { people, getPerson } from '@/lib/people'
+import { people, getPerson, personRoomSlugs } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Rule } from '@/components/primitives'
@@ -31,16 +31,18 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
   const person = getPerson(slug)
   if (!person) notFound()
 
-  const room = person.roomSlug ? getRoom(person.roomSlug) : undefined
+  const ownRoomSlugs = personRoomSlugs(person)
+  const roomList = ownRoomSlugs.map(getRoom).filter((r): r is NonNullable<typeof r> => Boolean(r))
+  const room = roomList[0]
   const unit = room ? getUnit(room.unit) : undefined
   const isResident = person.group === 'resident'
   const indexHref = isResident ? '/community' : '/part-of-the-family'
   const indexLabel = isResident ? 'Community' : 'Part of the Family'
 
-  // Neighbours: everyone else in the same room, then the rest of the same group.
-  const roommates = person.roomSlug
-    ? people.filter((p) => p.slug !== person.slug && p.roomSlug === person.roomSlug)
-    : []
+  // Neighbours: anyone sharing any of their rooms, then the rest of the group.
+  const roommates = people.filter(
+    (p) => p.slug !== person.slug && personRoomSlugs(p).some((s) => ownRoomSlugs.includes(s)),
+  )
   const others = people
     .filter((p) => p.group === person.group && p.slug !== person.slug)
     .filter((p) => !roommates.some((r) => r.slug === p.slug))
@@ -82,14 +84,22 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
             <dl className="border-foreground/85 mt-9 max-w-[38rem] border-t">
               <div className="border-foreground/20 flex flex-col gap-1 border-b py-3 sm:flex-row sm:items-baseline sm:gap-8">
                 <dt className="type-label sm:w-36 sm:shrink-0">
-                  {isResident ? 'Room' : 'Connection'}
+                  {isResident ? (roomList.length > 1 ? 'Rooms' : 'Room') : 'Connection'}
                 </dt>
                 <dd className="flex flex-wrap items-center gap-x-3 text-[16px]">
                   {room && unit ? (
                     <>
-                      <InlineLink href={`/studios/${room.slug}`}>
-                        {room.name} · {unit.shortName}
-                      </InlineLink>
+                      {/* Each room links separately so both office pages are
+                          reachable from here. */}
+                      <span className="flex flex-wrap items-center gap-x-1.5">
+                        {roomList.map((r, index) => (
+                          <span key={r.slug}>
+                            {index > 0 && ' & '}
+                            <InlineLink href={`/studios/${r.slug}`}>{r.name}</InlineLink>
+                          </span>
+                        ))}
+                        {` · ${unit.shortName}`}
+                      </span>
                       <StatusBadge status={room.status} />
                     </>
                   ) : (
@@ -113,17 +123,21 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                 </div>
               )}
 
-              <div className="border-foreground/20 flex flex-col gap-1 border-b py-3 sm:flex-row sm:items-baseline sm:gap-8">
-                <dt className="type-label sm:w-36 sm:shrink-0">Elsewhere</dt>
-                <dd className="flex flex-wrap items-baseline gap-x-5 gap-y-1 text-[16px]">
-                  <span className="text-muted-foreground">{person.handle}</span>
-                  {person.links.map((link) => (
-                    <InlineLink key={link.href + link.label} href={link.href} external>
-                      {link.label}
-                    </InlineLink>
-                  ))}
-                </dd>
-              </div>
+              {(person.handle || person.links.length > 0) && (
+                <div className="border-foreground/20 flex flex-col gap-1 border-b py-3 sm:flex-row sm:items-baseline sm:gap-8">
+                  <dt className="type-label sm:w-36 sm:shrink-0">Elsewhere</dt>
+                  <dd className="flex flex-wrap items-baseline gap-x-5 gap-y-1 text-[16px]">
+                    {person.handle && (
+                      <span className="text-muted-foreground">{person.handle}</span>
+                    )}
+                    {person.links.map((link) => (
+                      <InlineLink key={link.href + link.label} href={link.href} external>
+                        {link.label}
+                      </InlineLink>
+                    ))}
+                  </dd>
+                </div>
+              )}
             </dl>
           </div>
         </div>

@@ -1,9 +1,9 @@
 /**
  * The people of Brockley Fields. Real content only — no placeholders.
  *
- * Four of the seven people in the building are listed. The Yard residents are
- * still to come: add them here with a `roomSlug` and they appear on the
- * Community page, Part of the Family page and their room page at once.
+ * All seven people in the building are listed. Adding someone with a
+ * `roomSlug` puts them on the Community page, the Part of the Family page and
+ * their room page at once.
  *
  * `portrait` and `quote` stay undefined until we have the genuine article.
  * Never fill them with an invented quote or a generated likeness — every page
@@ -26,10 +26,17 @@ export type Person = {
   bio: string
   /** A real photograph. Undefined until they have sent one. */
   portrait?: string
-  handle: string
+  /** Instagram handle. Undefined for people who do not have one. */
+  handle?: string
   links: PersonLink[]
   /** Only for residents — matches a slug in lib/rooms.ts */
   roomSlug?: string
+  /**
+   * Further rooms the same person occupies, for anyone holding more than one
+   * space. Every page reads rooms through `personRoomSlugs` so a second room
+   * shows up everywhere at once.
+   */
+  alsoRoomSlugs?: string[]
   /** Shown instead of a room for extended-circle people. */
   relationship?: string
 }
@@ -84,9 +91,44 @@ export const people: Person[] = [
     links: [{ label: 'Instagram', href: 'https://instagram.com/joshager' }],
     roomSlug: 'upstairs-studio-3',
   },
-  // The four Yard rooms are tenanted, but we do not yet have those residents'
-  // names and bios. They are deliberately left out rather than filled with
-  // invented people — the room pages omit the occupant block cleanly.
+  // ── Brockley Fields The Yard ───────────────────────────────────────────
+  {
+    slug: 'atticus-blue',
+    name: 'Atticus Blue',
+    group: 'resident',
+    disciplines: ['Singer-Songwriter', 'Producer'],
+    oneLiner: 'Self-taught, and road-tested on the busiest pavements in London.',
+    credits: [],
+    bio: "Atticus Blue is a London-based independent singer-songwriter and self-taught music producer. He first gained local recognition through prominent street busking performances in areas like London's Southbank and Leicester Square.",
+    handle: '@atticus.blue',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/atticus.blue' }],
+    roomSlug: 'yard-studio-1',
+  },
+  {
+    slug: 'rich-cooper',
+    name: 'Rich Cooper',
+    group: 'resident',
+    disciplines: ['Producer', 'Writer', 'Mixer'],
+    oneLiner: 'Produces, writes and mixes across alternative, pop and indie.',
+    credits: ['Rina Sawayama', 'CMAT', 'Tom Odell', 'Josef Salvat', 'The Temper Trap'],
+    bio: 'Rich Cooper is a London-based music producer, writer and mixer known for his work with prominent alternative, pop and indie artists such as Josef Salvat, CMAT, Rina Sawayama, Tom Odell and The Temper Trap.',
+    handle: '@rich_cooper_',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/rich_cooper_' }],
+    roomSlug: 'yard-studio-2',
+  },
+  {
+    slug: 'david-eserin',
+    name: 'David Eserin',
+    group: 'resident',
+    disciplines: ['Product Leader', 'Entrepreneur', 'Music Technology'],
+    oneLiner: 'Builds the software the rest of the building ends up using.',
+    credits: ['Reflex', 'New Sonic Arts', 'Version Music'],
+    bio: 'David Eserin is a seasoned product leader and entrepreneur in the music technology sector, with a track record of building groundbreaking creative software — from frameworks like Reflex to music tools like New Sonic Arts and open platforms like Version Music — bridging production, distribution and marketing through next-generation tech.',
+    links: [],
+    // Takes both offices in the Yard as one commercial space.
+    roomSlug: 'yard-office-1',
+    alsoRoomSlugs: ['yard-office-2'],
+  },
 ]
 
 export const residents = people.filter((p) => p.group === 'resident')
@@ -108,5 +150,16 @@ export function peopleForRoom(slugs: string[]): Person[] {
     .filter((p): p is Person => Boolean(p))
 }
 
+/**
+ * Every room a person occupies, primary first. Use this rather than reading
+ * `roomSlug` directly so anyone holding two rooms is handled everywhere.
+ */
+export function personRoomSlugs(person: Person): string[] {
+  return person.roomSlug ? [person.roomSlug, ...(person.alsoRoomSlugs ?? [])] : []
+}
+
 /** Every handle whose posts feed the aggregated wall. */
-export const allHandles = ['@brockleyfields', ...people.map((p) => p.handle)]
+export const allHandles = [
+  '@brockleyfields',
+  ...people.map((p) => p.handle).filter((h): h is string => Boolean(h)),
+]
