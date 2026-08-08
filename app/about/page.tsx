@@ -15,7 +15,7 @@ import { site, waitingListHref } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios and two private offices in Brockley, SE4, built on the belief that people matter.',
+    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios and two creative spaces in Brockley, SE4, built on the belief that people matter.',
 }
 
 export default function AboutPage() {
@@ -28,14 +28,18 @@ export default function AboutPage() {
           <>
             <p>
               I&apos;m Carey Willetts. I&apos;ve been in the music industry since 2001 &mdash; first
-              as a founding member of Athlete, where we signed to Regal Records and then Parlophone,
-              released five albums over a decade, and picked up an Ivor Novello Award along the way.
-              Our debut album <em>Vehicles and Animals</em> was nominated for the Mercury Music
-              Prize. <em>Tourist</em> went to number one.
+              as a founding member of Athlete, signed to Regal Records and then Parlophone, releasing
+              five albums over a decade, and picked up an Ivor Novello Award along the way. Our debut
+              album <em>Vehicles and Animals</em> was nominated for the Mercury Music Prize and{' '}
+              <em>Tourist</em> went to number one.
             </p>
             <p>
-              We learned what it meant to write songs together &mdash; properly together &mdash; and
-              that experience of collaboration as the engine of creativity has never left me.
+              In Athlete I learned what it meant to write songs together and the value of
+              collaboration has never left me. So, it was a natural transition to write and produce
+              songs with other artists and in 2020 I was shortlisted for Breakthrough Producer of the
+              Year at the Music Producers Guild Awards. Most recently I have written and produced
+              with Dermot Kennedy, Freya Ridings, Amber Run, Asher Banks, Jeremy Loops and Kingfishr,
+              and have been part of three more number one albums.
             </p>
           </>
         }
@@ -70,41 +74,32 @@ export default function AboutPage() {
             <div className="flex-1">
               <div className="flex max-w-[38rem] flex-col gap-5 text-[17px] leading-relaxed">
                 <p>
-                  During those years I built a large recording studio in Greenwich. After Athlete I
-                  moved into songwriting and producing for other artists &mdash; working with Dermot
-                  Kennedy, Freya Ridings, Amber Run and others, and was shortlisted for Breakthrough
-                  Producer of the Year at the Music Producers Guild Awards in 2020. Good work, I
-                  found, still comes from the same place it always did: the right people, in the
-                  right room, at the right time.
+                  I find that great songs still come from the same place they always did: the right
+                  people, in the right room, at the right time. And that brought me back to the same
+                  problem every working songwriter eventually hits &mdash; where do you actually go
+                  to work? Somewhere permanent, inspiring and affordable. It turns out that place is
+                  genuinely hard to find.
                 </p>
                 <p>
-                  Which brought me back to the same problem every working songwriter eventually
-                  hits. Where do you actually go to work? Somewhere permanent, inspiring and
-                  affordable. It turns out that place is genuinely hard to find.
+                  Having built a large recording studio in Greenwich for Athlete, I know what makes a
+                  space worth spending time in. So when a new opportunity came up &mdash; two large
+                  commercial units in Brockley, with great space, loads of natural light, a view of
+                  green spaces, in an existing hub full of creative businesses &mdash; I
+                  couldn&apos;t say no.
                 </p>
                 <p>
-                  After Covid, an opportunity came up. An office space in Brockley, SE4 &mdash; two
-                  units. A friend took one, I took the other, and we converted them properly
-                  &mdash; soundproofed and acoustically treated by
-                  Fritz, whose work can be heard across studios all over the country. Large windows
-                  in every room, because I&apos;ve spent enough time in windowless rooms to know how
-                  much that matters. Plastered walls, warm finishes, high spec without being
-                  clinical. Spaces that feel like somewhere you want to be, not somewhere
-                  you&apos;re tolerating.
+                  Now we have five recording studios and two creative spaces, all soundproofed and
+                  acoustically treated. Large windows are in every room, because I&apos;ve spent
+                  enough time in dark rooms to know how much that matters. Plastered walls, warm
+                  finishes, high spec without being clinical. Spaces that feel like somewhere you
+                  want to be, not somewhere you&apos;re tolerating.
                 </p>
                 <p>
-                  That was four years ago. Word spread the way good things do &mdash; quietly,
-                  through people. This February we added two more studios at the Yard. There are now
-                  five Brockley Fields studios plus two private offices &mdash; seven spaces in all
-                  &mdash; and between our tenants and the wider community around them, over nine
-                  music professionals working here every day.
-                </p>
-                <p>
-                  The ethos hasn&apos;t changed since day one:{' '}
+                  This is a building where the person next door might become your next collaborator,
+                  your sounding board, your co-writer. Where someone&apos;s already solved the
+                  problem you&apos;re stuck on. Our ethos hasn&apos;t changed since day one:{' '}
                   <span className="text-primary">people over things</span>. Affordable, high-quality
-                  spaces for the people who need them most. A building where the person next door
-                  might become your next collaborator, your sounding board, your co-writer. Where
-                  someone&apos;s already solved the problem you&apos;re stuck on.
+                  spaces for the people who need them most.
                 </p>
               </div>
 
