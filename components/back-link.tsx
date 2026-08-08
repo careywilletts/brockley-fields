@@ -149,15 +149,30 @@ function record(pathname: string): void {
   const traversed = traversalPending
   traversalPending = false
 
+  // Check the neighbours before anything else, and without consulting the
+  // popstate flag. A single step is overwhelmingly the common case, and it is
+  // recognisable on its own: if the page either side of us in the record is the
+  // one now showing, that is where we have moved to.
+  //
+  // This used to be reached only when the flag was set, which made a missed
+  // popstate destructive rather than merely unhelpful — the step was filed as a
+  // new page, and appending it truncated everything ahead. That is what left the
+  // record holding the same page twice and Back pointing at the page it was on.
+  if (stack[currentIndex - 1] === pathname) {
+    currentIndex -= 1
+    return
+  }
+
+  if (stack[currentIndex + 1] === pathname) {
+    currentIndex += 1
+    return
+  }
+
+  // Not adjacent. Only a traversal can be somewhere else in the record, and it
+  // never adds to it, so the flag is worth trusting for that alone.
   if (traversed) {
-    // A step through the history. Move to whichever neighbour this is, and if it
-    // is neither, find the page in the record — a traversal never adds to it.
-    if (stack[currentIndex - 1] === pathname) currentIndex -= 1
-    else if (stack[currentIndex + 1] === pathname) currentIndex += 1
-    else {
-      const found = stack.lastIndexOf(pathname)
-      if (found >= 0) currentIndex = found
-    }
+    const found = stack.lastIndexOf(pathname)
+    if (found >= 0) currentIndex = found
     return
   }
 
