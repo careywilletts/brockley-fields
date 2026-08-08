@@ -98,7 +98,8 @@ export default function AboutPage() {
                   This is a building where the person next door might become your next collaborator,
                   your sounding board, your co-writer. Where someone&apos;s already solved the
                   problem you&apos;re stuck on. Our ethos hasn&apos;t changed since day one:{' '}
-                  <span className="text-primary">people over things</span>. Affordable, high-quality
+                  <strong className="text-primary font-semibold">people over things</strong>.
+                  Affordable, high-quality
                   spaces for the people who need them most.
                 </p>
               </div>
@@ -111,7 +112,7 @@ export default function AboutPage() {
             <div className="flex flex-col md:w-[38%] md:shrink-0">
               <p className="type-display text-[24px] leading-tight text-pretty sm:text-[28px]">
                 Brockley Fields exists because I needed it to exist.{' '}
-                <span className="text-primary">I think a lot of you do too.</span>
+                <span className="text-primary">I think a lot of you do too</span>
               </p>
               <p className="type-label mt-6 md:mt-auto md:pt-6">&mdash; Carey</p>
             </div>
