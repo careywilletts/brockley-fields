@@ -48,6 +48,32 @@ const terraces: Record<Terrace, { src: string; width: number; height: number; al
 }
 
 /**
+ * The perspective plate used as a full-bleed backdrop rather than a framed
+ * band: the road runs the entire width of the page and the copy sits over it.
+ *
+ * Drawn at its natural aspect and never cropped, so the road keeps running off
+ * the left-hand edge of the plate. The caller sizes and positions it: anchoring
+ * it to the right of the page puts the terrace itself clear of the text measure
+ * and leaves the road to carry on leftwards underneath the copy.
+ */
+export function TerraceBackdrop({ className }: { className?: string }) {
+  const art = terraces.perspective
+  return (
+    // Decorative here: the surrounding copy already describes the building.
+    <div aria-hidden="true" className={cn('pointer-events-none', className)}>
+      <Image
+        src={art.src}
+        alt=""
+        width={art.width}
+        height={art.height}
+        sizes="80vw"
+        className="h-auto w-full"
+      />
+    </div>
+  )
+}
+
+/**
  * The terrace drawings are wide panoramas (roughly 4.3:1 and 3.2:1), so they
  * only work as horizontal bands. `bleed` runs the drawing edge to edge for the
  * one signature moment on the homepage; the contained variant sits inside the

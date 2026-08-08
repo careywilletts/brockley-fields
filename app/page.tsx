@@ -10,7 +10,7 @@ import {
   Rule,
   Section,
 } from '@/components/primitives'
-import { TerraceBand } from '@/components/brand'
+import { TerraceBand, TerraceBackdrop } from '@/components/brand'
 import { StatusBadge } from '@/components/status-badge'
 
 export default function HomePage() {
@@ -50,49 +50,59 @@ export default function HomePage() {
       </Container>
 
       {/* ── Why we exist ──────────────────────────────────────────────────── */}
-      <Section label="Why we exist">
-        {/* `items-end` drops the drawing so its road lines up with the button row. */}
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-16">
-          <div className="lg:flex-1">
-            {/* Matched to the hero h1 scale so both straplines carry equal weight. */}
-            <h2 className="type-display max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[54px]">
-              To collaborate <span className="text-primary">and create</span>
-            </h2>
-            <div className="mt-6 flex max-w-[38rem] flex-col gap-4 text-[17px] leading-relaxed">
-              <p>
-                Brockley Fields is based in the heart of Southeast London, with five carefully
-                designed studios and two office spaces which are full of natural light and spaces in
-                which you want to creatively spend your day. All are sound proofed, treated and with
-                communal spaces.
-              </p>
-              <p>
-                What&apos;s happened since has been the best part &ndash; songwriters, producers,
-                mixers, arrangers and managers who work side by side. We collaborate, spark ideas
-                and create. That&apos;s not accidental, it&apos;s the whole point.
-              </p>
-            </div>
-            {/* Left to fill the column so the three boxes sit on one line. */}
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <ActionLink href="/about" variant="fill">
-                Our story
-              </ActionLink>
-              <ActionLink href="/studios" variant="fill">
-                All {spaceCount} spaces
-              </ActionLink>
-              <ActionLink href={waitingListHref} variant="fill">
-                Waiting list
-              </ActionLink>
+      {/*
+        Hand-rolled rather than using <Section> because the drawing has to break
+        out of the container and bleed to both edges of the page.
+      */}
+      <section className="border-foreground/20 relative isolate border-t py-14 sm:py-20">
+        <Container>
+          {/*
+            The drawing is anchored to the bottom of this copy block and pulled
+            down by the same amount as the button row's top margin, so the near
+            kerb lands exactly on the top edge of the boxes — the road meets
+            them rather than running through the labels. At 76% of the page and
+            anchored right, the terrace itself stays clear of the text measure
+            while the road carries on leftwards behind the copy.
+          */}
+          <div className="relative isolate">
+            <TerraceBackdrop className="absolute right-0 -bottom-9 z-0 hidden w-[76%] md:block" />
+            <div className="relative z-10">
+              <p className="type-label">Why we exist</p>
+              {/* Matched to the hero h1 scale so both straplines carry equal weight. */}
+              <h2 className="type-display mt-3 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[54px]">
+                To collaborate <span className="text-primary">and create</span>
+              </h2>
+              {/* Held to a narrow measure so the copy stays clear of the terrace. */}
+              <div className="mt-6 flex max-w-[27rem] flex-col gap-4 text-[17px] leading-relaxed">
+                <p>
+                  Brockley Fields is based in the heart of Southeast London, with five carefully
+                  designed studios and two office spaces which are full of natural light and spaces
+                  in which you want to creatively spend your day. All are sound proofed, treated and
+                  with communal spaces.
+                </p>
+                <p>
+                  What&apos;s happened since has been the best part &ndash; songwriters, producers,
+                  mixers, arrangers and managers who work side by side. We collaborate, spark ideas
+                  and create. That&apos;s not accidental, it&apos;s the whole point.
+                </p>
+              </div>
             </div>
           </div>
-          {/* ~42% so the drawing sits beside the copy, not over it. No caption:
-              the drawing is scene-setting here, not a documented plate. */}
-          {/* -mb-2 pulls the road up onto the button baseline: the plate carries
-              a couple of pixels of blank paper below the kerb. */}
-          <div className="lg:-mb-2 lg:w-[42%] lg:shrink-0">
-            <TerraceBand variant="perspective" crop />
+          <div className="relative z-10 mt-9 flex flex-wrap items-center gap-3">
+            <ActionLink href="/about" variant="fill">
+              Our story
+            </ActionLink>
+            <ActionLink href="/studios" variant="fill">
+              All {spaceCount} spaces
+            </ActionLink>
+            <ActionLink href={waitingListHref} variant="fill">
+              Waiting list
+            </ActionLink>
           </div>
-        </div>
-      </Section>
+          {/* The backdrop is hidden below md, so the drawing sits inline there. */}
+          <TerraceBand variant="perspective" crop className="mt-10 md:hidden" />
+        </Container>
+      </section>
 
       {/* ── The two units ─────────────────────────────────────────────────── */}
       <Section>
