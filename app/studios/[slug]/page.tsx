@@ -74,9 +74,9 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
           </ol>
         </nav>
 
-        {/* Steps back through the site's own history, which the browser's own
-            back button cannot do reliably when the site is embedded. */}
-        <BackLink fallbackHref={`/studios/unit/${unit.id}`} className="type-label-ink mt-5">
+        {/* A named step up to the unit. Returning to whatever page you came
+            from is the Back button in the header. */}
+        <BackLink href={`/studios/unit/${unit.id}`} className="type-label-ink mt-5">
           Back to {unit.shortName}
         </BackLink>
 

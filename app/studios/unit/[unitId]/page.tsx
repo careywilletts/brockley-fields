@@ -67,7 +67,7 @@ export default async function UnitPage({ params }: { params: Promise<{ unitId: s
           </ol>
         </nav>
 
-        <BackLink fallbackHref="/studios" className="type-label-ink mt-5">
+        <BackLink href="/studios" className="type-label-ink mt-5">
           Back to the building
         </BackLink>
 

@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 const STACK_KEY = 'bf:nav-stack'
@@ -13,6 +13,12 @@ const STACK_KEY = 'bf:nav-stack'
  * what lets us tell a genuine new document apart from a repeated effect run.
  */
 let initialised = false
+
+/**
+ * useLayoutEffect warns when it runs during server rendering. These components
+ * are client-only in practice, but the guard keeps the console clean.
+ */
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 function readStack(): string[] {
   try {
@@ -44,7 +50,9 @@ function writeStack(stack: string[]) {
 export function NavDepthTracker() {
   const pathname = usePathname()
 
-  useEffect(() => {
+  // A layout effect so the record is updated before anything paints, keeping
+  // the Back control's destination correct on the very first render of a page.
+  useIsomorphicLayoutEffect(() => {
     if (!initialised) {
       initialised = true
 
@@ -59,24 +67,48 @@ export function NavDepthTracker() {
     }
 
     const stack = readStack()
+
     // Ignore repeats so a re-render can never look like a new page.
-    if (stack[stack.length - 1] !== pathname) {
-      writeStack([...stack, pathname])
+    if (stack[stack.length - 1] === pathname) return
+
+    if (stack[stack.length - 2] === pathname) {
+      // Landing on the entry behind the current one is a step backwards —
+      // whether that came from our own control or the browser's back button.
+      // It has to shorten the record, not extend it: appending here would make
+      // the page just left look like the previous page, and "back" would then
+      // bounce between two pages or point at nothing.
+      writeStack(stack.slice(0, -1))
+      return
     }
+
+    writeStack([...stack, pathname])
   }, [pathname])
 
   return null
 }
 
-/** True when a previous page inside the site exists to go back to. */
-function canGoBack() {
-  return readStack().length > 1
-}
-
-/** The page a back step would land on, or undefined if there is not one. */
-function previousPath(): string | undefined {
+/**
+ * The page a back step would land on, or undefined if there is not one.
+ *
+ * Derived from where we actually are rather than from the end of the record,
+ * because this can run before the tracker's effect has updated it — after a
+ * browser back, for instance. Finding the current page in the record and taking
+ * the entry before it is correct whether or not the trim has happened yet;
+ * reading the last entry blindly can return the page we are already on, which
+ * gives a button that appears to do nothing.
+ */
+function previousPath(currentPath: string): string | undefined {
   const stack = readStack()
-  return stack.length > 1 ? stack[stack.length - 2] : undefined
+  const index = stack.lastIndexOf(currentPath)
+
+  if (index > 0) return stack[index - 1]
+  // Not in the record yet: the last entry is the page we came from, unless it
+  // is this same page.
+  if (index === -1) {
+    const last = stack[stack.length - 1]
+    return last && last !== currentPath ? last : undefined
+  }
+  return undefined
 }
 
 /**
@@ -88,50 +120,40 @@ export function usePreviousPath() {
   const pathname = usePathname()
   const [previous, setPrevious] = useState<string | undefined>(undefined)
 
-  useEffect(() => {
-    setPrevious(previousPath())
+  // Runs after the tracker's layout effect above, so the record is already
+  // current by the time we read it.
+  useIsomorphicLayoutEffect(() => {
+    setPrevious(previousPath(pathname))
   }, [pathname])
 
-  return previous
+  // Never point at the page we are already on: that is the "button does
+  // nothing" symptom, and a reload is exactly what it would look like.
+  return previous === pathname ? undefined : previous
 }
 
 /**
- * Back control that steps through the site's own history.
+ * A named step up the hierarchy — "Back to The Yard" and the like.
  *
- * The browser's own back button is unreliable when the site is embedded in an
- * iframe (a preview pane, for instance) because it acts on the embedding page
- * instead, which reads as the current page simply reloading. This steps the
- * site's own history, so it behaves the same either way, and falls back to a
- * plain link to the parent page when there is nothing to go back to.
+ * Deliberately a fixed destination: the label names where it goes, so it must
+ * always go there. Returning to the previous page regardless of what the label
+ * says is the header's Back button, below.
  */
 export function BackLink({
-  fallbackHref,
+  href,
   children,
   className,
 }: {
-  fallbackHref: string
+  href: string
   children: React.ReactNode
   className?: string
 }) {
-  const router = useRouter()
-
   return (
     <Link
-      href={fallbackHref}
+      href={href}
       className={cn(
         'text-primary decoration-primary/40 hover:decoration-primary inline-flex items-center gap-2 underline decoration-1 underline-offset-4 transition-colors',
         className,
       )}
-      onClick={(event) => {
-        // Let modified clicks (new tab, middle click) behave normally.
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-        if (!canGoBack()) return
-
-        event.preventDefault()
-        // Drop the page being left so repeated presses keep walking backwards.
-        writeStack(readStack().slice(0, -1))
-        router.back()
-      }}
     >
       <span aria-hidden>&larr;</span>
       {children}
@@ -142,12 +164,11 @@ export function BackLink({
 /**
  * The site's own back button, in the header on every page.
  *
- * The browser's back button acts on the embedding page when the site is shown
- * inside an iframe, which reads as the current page reloading. This one always
- * steps the site's own history, so "back" means the previous page everywhere.
+ * A plain link to the previous page, for the reasons given on BackLink above.
+ * Being a real link also means the destination shows in the status bar and
+ * cmd-click opens it in a new tab.
  */
 export function HeaderBackButton({ className }: { className?: string }) {
-  const router = useRouter()
   const previous = usePreviousPath()
 
   // Nothing to go back to on a first arrival, so the control stays out of the
@@ -161,13 +182,6 @@ export function HeaderBackButton({ className }: { className?: string }) {
         'type-label-ink hover:text-primary inline-flex shrink-0 items-center gap-1.5 transition-colors',
         className,
       )}
-      onClick={(event) => {
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-
-        event.preventDefault()
-        writeStack(readStack().slice(0, -1))
-        router.back()
-      }}
     >
       <span aria-hidden>&larr;</span>
       Back
