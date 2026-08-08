@@ -69,22 +69,22 @@ export default function HomePage() {
                 and create. That&apos;s not accidental, it&apos;s the whole point.
               </p>
             </div>
-            {/* Capped to the text measure so the three boxes wrap as a group. */}
-            <div className="mt-9 flex max-w-[38rem] flex-wrap items-center gap-3">
+            {/* Left to fill the column so the three boxes sit on one line. */}
+            <div className="mt-9 flex flex-wrap items-center gap-3">
               <ActionLink href="/about" variant="fill">
-                How the building came about
+                Our story
               </ActionLink>
               <ActionLink href="/studios" variant="fill">
-                See all {spaceCount} spaces
+                All {spaceCount} spaces
               </ActionLink>
               <ActionLink href={waitingListHref} variant="fill">
-                Join the waiting list
+                Waiting list
               </ActionLink>
             </div>
           </div>
           {/* Deliberately ~40% so the drawing sits beside the copy, not over it. */}
           <div className="lg:w-[40%] lg:shrink-0">
-            <TerraceBand variant="perspective" caption="The terrace on approach" />
+            <TerraceBand variant="perspective" crop caption="The terrace on approach" />
           </div>
         </div>
       </Section>

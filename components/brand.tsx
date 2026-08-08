@@ -57,12 +57,19 @@ export function TerraceBand({
   variant,
   caption,
   bleed = false,
+  crop = false,
   priority = false,
   className,
 }: {
   variant: Terrace
   caption?: string
   bleed?: boolean
+  /**
+   * Renders the drawing inside a taller window, scaled up and anchored right
+   * where the buildings are grouped. Use in narrow columns, where the natural
+   * panorama would otherwise flatten to an unreadable strip.
+   */
+  crop?: boolean
   priority?: boolean
   className?: string
 }) {
@@ -74,7 +81,24 @@ export function TerraceBand({
    * anchored to the right (where the buildings sit) inside a fixed-height
    * window, so the terrace stays legible; from `sm` up it sits at natural width.
    */
-  const image = (
+  const image = crop ? (
+    /**
+     * `object-contain` rather than `cover` so the terrace is never sliced
+     * mid-building: the drawing scales to fit the window and keeps its full
+     * width, anchored right where the buildings are grouped.
+     */
+    <div className="h-40 overflow-hidden sm:h-52">
+      <Image
+        src={art.src}
+        alt={art.alt}
+        width={art.width}
+        height={art.height}
+        sizes="(min-width: 1024px) 40vw, 100vw"
+        priority={priority}
+        className="h-full w-full object-contain object-right"
+      />
+    </div>
+  ) : (
     <div className="h-32 overflow-hidden sm:h-auto sm:overflow-visible">
       <Image
         src={art.src}
