@@ -23,7 +23,11 @@ export default function AboutPage() {
     <>
       <PageHeader
         label="About"
-        title={site.mission}
+        title={
+          <>
+            Brockley Fields: <span className="text-primary">the journey</span>
+          </>
+        }
         intro={
           <>
             <p>
@@ -45,34 +49,21 @@ export default function AboutPage() {
         }
       />
 
-      <TerraceBand
-        variant="perspective"
-        bleed
-        caption="As drawn · the terrace along the street"
-        priority
-        className="pb-12 sm:pb-16"
-      />
-
-      <Container>
-        <Photo
-          src="/images/exterior.png"
-          alt="The entrance to the Brockley Fields building on a quiet residential street"
-          sizes="(min-width: 1024px) 1180px, 100vw"
-          className="aspect-16/9 border-foreground/20 border"
-        />
-        <p className="type-label mt-3">As built · the entrance</p>
-      </Container>
+      <TerraceBand variant="perspective" bleed priority className="pb-12 sm:pb-16" />
 
       <section className="border-foreground/20 border-t py-14 sm:py-20" aria-labelledby="story">
         <Container>
-          <div className="flex flex-col gap-10 md:flex-row md:gap-12">
-            <div className="md:w-[13rem] md:shrink-0">
+          {/*
+            Copy left, strapline right, top-aligned. The "The story" label moves
+            inside the copy column rather than keeping its own narrow column —
+            three columns would squeeze the body copy below a readable measure.
+          */}
+          <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-12">
+            <div className="md:flex-1">
               <h2 id="story" className="type-label">
                 The story
               </h2>
-            </div>
-            <div className="flex-1">
-              <div className="flex max-w-[38rem] flex-col gap-5 text-[17px] leading-relaxed">
+              <div className="mt-5 flex flex-col gap-5 text-[17px] leading-relaxed">
                 <p>
                   I find that great songs still come from the same place they always did: the right
                   people, in the right room, at the right time. And that brought me back to the same
@@ -102,8 +93,10 @@ export default function AboutPage() {
                   spaces for the people who need them most.
                 </p>
               </div>
+            </div>
 
-              <p className="type-display mt-10 max-w-[34rem] text-[24px] leading-tight text-pretty sm:text-[28px]">
+            <div className="md:w-[38%] md:shrink-0">
+              <p className="type-display text-[24px] leading-tight text-pretty sm:text-[28px]">
                 Brockley Fields exists because I needed it to exist. I think a lot of you do too.
               </p>
               <p className="type-label mt-6">&mdash; Carey</p>

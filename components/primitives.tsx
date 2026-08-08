@@ -67,7 +67,8 @@ export function PageHeader({
   intro,
 }: {
   label: string
-  title: string
+  /** ReactNode rather than string so a page can highlight part of its title. */
+  title: React.ReactNode
   intro?: React.ReactNode
 }) {
   return (
