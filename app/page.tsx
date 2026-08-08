@@ -89,11 +89,7 @@ export default function HomePage() {
           Contained rather than `bleed`, since it sits inside the Section's
           container — the panorama still gets the full text measure to run across.
         */}
-        <TerraceBand
-          variant="elevation"
-          caption="Front elevation · both units, drawn to the same scale"
-          className="mt-10"
-        />
+        <TerraceBand variant="elevation" className="mt-10" />
       </Section>
 
       {/* ── The two units ─────────────────────────────────────────────────── */}
@@ -110,12 +106,10 @@ export default function HomePage() {
                   sizes="(min-width: 768px) 45vw, 100vw"
                 />
                 {/*
-                  "Unit 1 · Upstairs" as the eyebrow, so the heading can carry
+                  The unit number alone as the eyebrow, so the heading can carry
                   the unit's full name rather than the abbreviated shortName.
                 */}
-                <p className="type-label mt-4">
-                  {unit.unitNumber} · {unit.floor}
-                </p>
+                <p className="type-label mt-4">{unit.unitNumber}</p>
                 <h3 className="type-display mt-2 text-[22px]">{unit.name}</h3>
                 <p className="mt-3 text-[16px] leading-relaxed">{unit.intro}</p>
                 <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
