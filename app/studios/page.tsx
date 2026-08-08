@@ -31,16 +31,21 @@ export default function StudiosPage() {
         </h1>
         <div className="mt-7 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
-            Situated in <strong className="font-semibold">zone 2</strong>, only a 2 minute walk from
+            Situated in <strong className="text-primary font-semibold">zone 2</strong>, only a 2
+            minute walk from
             Brockley Station. We are surrounded by incredible coffee, quirky bars, vibrant
             restaurants and loads of green spaces.
           </p>
           <p>
             {available.length === 0 ? (
               <>
-                Everything is currently occupied.{' '}
-                <InlineLink href={waitingListHref}>Join the waiting list</InlineLink> and we will
-                come to you before a room is advertised.
+                {/* The sentence break is a real line break here, as written. */}
+                All studios are currently occupied.
+                <br />
+                <InlineLink href={waitingListHref} className="font-semibold">
+                  Join the waiting list
+                </InlineLink>{' '}
+                and we will contact you before we advertise.
               </>
             ) : (
               <>
