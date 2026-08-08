@@ -23,8 +23,11 @@ export default function StudiosPage() {
       */}
       <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
         <p className="type-label">The building</p>
-        <h1 className="type-display mt-3 max-w-[46rem] text-[34px] text-balance sm:text-[52px]">
-          Two units, one postcode, two completely different atmospheres.
+        {/* text-wrap rather than text-balance, so the two lines break exactly
+            where they are written rather than being re-balanced. */}
+        <h1 className="type-display mt-3 text-[34px] text-wrap sm:text-[52px]">
+          Creative spaces,
+          <span className="block">real community</span>
         </h1>
         <div className="mt-7 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
