@@ -110,12 +110,13 @@ export default function HomePage() {
                   sizes="(min-width: 768px) 45vw, 100vw"
                 />
                 {/*
-                  The unit name is now the eyebrow label, replacing the old
-                  "Unit 1 · Upstairs" line, so the heading carries the shortName
-                  to avoid printing the same words twice.
+                  "Unit 1 · Upstairs" as the eyebrow, so the heading can carry
+                  the unit's full name rather than the abbreviated shortName.
                 */}
-                <p className="type-label mt-4">{unit.name}</p>
-                <h3 className="type-display mt-2 text-[22px]">{unit.shortName}</h3>
+                <p className="type-label mt-4">
+                  {unit.unitNumber} · {unit.floor}
+                </p>
+                <h3 className="type-display mt-2 text-[22px]">{unit.name}</h3>
                 <p className="mt-3 text-[16px] leading-relaxed">{unit.intro}</p>
                 <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
                   Shared: {unit.sharedSpaces}

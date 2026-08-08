@@ -36,6 +36,8 @@ export type Unit = {
   name: string
   shortName: string
   unitNumber: string
+  /** Which floor the unit occupies, used alongside unitNumber as a label. */
+  floor: string
   intro: string
   sharedSpaces: string
   hero: Photo
@@ -47,6 +49,7 @@ export const units: Unit[] = [
     name: 'Brockley Fields Studios',
     shortName: 'Studios',
     unitNumber: 'Unit 1',
+    floor: 'Upstairs',
     intro: 'Three studios with floor-to-ceiling windows, two with outlooks over green space.',
     sharedSpaces: 'Kitchen/dining area and 17 m² communal space.',
     hero: {
@@ -59,6 +62,7 @@ export const units: Unit[] = [
     name: 'Brockley Fields The Yard',
     shortName: 'The Yard',
     unitNumber: 'Unit 2',
+    floor: 'Downstairs',
     intro: 'Two music studios and two offices. More of a hangout vibe.',
     sharedSpaces: '25 m² reception/communal area, kitchen/dining, bathroom.',
     hero: {
