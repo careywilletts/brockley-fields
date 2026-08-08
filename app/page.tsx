@@ -51,10 +51,12 @@ export default function HomePage() {
 
       {/* ── Why we exist ──────────────────────────────────────────────────── */}
       <Section label="Why we exist">
-        <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
+        {/* `items-end` drops the drawing so its road lines up with the button row. */}
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-16">
           <div className="lg:flex-1">
-            <h2 className="type-display max-w-[22rem] text-[22px] text-balance sm:text-[26px]">
-              To collaborate and create
+            {/* Matched to the hero h1 scale so both straplines carry equal weight. */}
+            <h2 className="type-display max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[54px]">
+              To collaborate <span className="text-primary">and create</span>
             </h2>
             <div className="mt-6 flex max-w-[38rem] flex-col gap-4 text-[17px] leading-relaxed">
               <p>
@@ -82,9 +84,12 @@ export default function HomePage() {
               </ActionLink>
             </div>
           </div>
-          {/* Deliberately ~40% so the drawing sits beside the copy, not over it. */}
-          <div className="lg:w-[40%] lg:shrink-0">
-            <TerraceBand variant="perspective" crop caption="The terrace on approach" />
+          {/* ~42% so the drawing sits beside the copy, not over it. No caption:
+              the drawing is scene-setting here, not a documented plate. */}
+          {/* -mb-2 pulls the road up onto the button baseline: the plate carries
+              a couple of pixels of blank paper below the kerb. */}
+          <div className="lg:-mb-2 lg:w-[42%] lg:shrink-0">
+            <TerraceBand variant="perspective" crop />
           </div>
         </div>
       </Section>

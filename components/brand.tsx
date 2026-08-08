@@ -83,19 +83,20 @@ export function TerraceBand({
    */
   const image = crop ? (
     /**
-     * `object-contain` rather than `cover` so the terrace is never sliced
-     * mid-building: the drawing scales to fit the window and keeps its full
-     * width, anchored right where the buildings are grouped.
+     * `object-cover` anchored right crops away the empty road on the left of
+     * the plate, so the terrace itself fills the frame and reads large. The
+     * road runs along the bottom edge of the box, which lets a parent using
+     * `items-end` line the road up with the foot of the adjacent column.
      */
-    <div className="h-40 overflow-hidden sm:h-52">
+    <div className="h-44 overflow-hidden sm:h-56 md:h-60">
       <Image
         src={art.src}
         alt={art.alt}
         width={art.width}
         height={art.height}
-        sizes="(min-width: 1024px) 40vw, 100vw"
+        sizes="(min-width: 768px) 42vw, 100vw"
         priority={priority}
-        className="h-full w-full object-contain object-right"
+        className="h-full w-full object-cover object-right"
       />
     </div>
   ) : (
@@ -130,7 +131,12 @@ export function TerraceBand({
 
   return (
     <div className={className}>
-      <div className="border-foreground/20 border-t border-b py-2">{image}</div>
+      {/*
+        The cropped variant already reads as a full-bleed scene, so it skips the
+        hairline rules and padding the documented plates use — those would add
+        height below the road and break alignment with the adjacent column.
+      */}
+      {crop ? image : <div className="border-foreground/20 border-t border-b py-2">{image}</div>}
       {caption && <p className="type-label mt-3">{caption}</p>}
     </div>
   )
