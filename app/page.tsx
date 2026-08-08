@@ -26,8 +26,8 @@ export default function HomePage() {
           <div className="lg:flex-1">
             <p className="type-label">Brockley, SE4</p>
             <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
-              Brockley Fields was built on a simple belief: people matter
-              <span className="text-primary">.</span>
+              Brockley Fields was built on a simple belief:{' '}
+              <span className="text-primary">people matter.</span>
             </h1>
             <p className="mt-8 max-w-[34rem] text-[18px] leading-relaxed">
               One of the hardest parts of being a creative person is finding a space to work. Then
