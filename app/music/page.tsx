@@ -120,7 +120,7 @@ export default function MusicPage() {
 
       <Section
         label="Credits"
-        title="If you hear something you like, the person who made it is upstairs."
+        title="If you hear something you like, the person who made it is three doors away."
         intro={
           <>
             <p>

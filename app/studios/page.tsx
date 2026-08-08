@@ -94,9 +94,7 @@ export default function StudiosPage() {
                   />
                 </div>
                 <div className="lg:flex-1">
-                  <p className="type-label">
-                    {unit.unitNumber} · {unit.floor}
-                  </p>
+                  <p className="type-label">{unit.name}</p>
                   <h2 className="type-display mt-3 text-[26px] sm:text-[34px]">{unit.name}</h2>
                   <p className="mt-5 max-w-[38rem] text-[17px] leading-relaxed">{unit.intro}</p>
                   <dl className="border-foreground/20 mt-7 flex flex-col border-t">

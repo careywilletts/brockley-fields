@@ -40,7 +40,7 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
     { term: 'Type', detail: room.kind === 'office' ? 'Private office' : 'Music studio' },
     { term: 'Floor area', detail: room.area },
     { term: 'Dimensions', detail: room.dimensions },
-    { term: 'Unit', detail: `${unit.name} · ${unit.unitNumber}, ${unit.floor}` },
+    { term: 'Unit', detail: `${unit.name} · ${unit.unitNumber}` },
     { term: 'Shared spaces', detail: unit.sharedSpaces },
     { term: 'Status', detail: <StatusBadge status={room.status} /> },
   ]

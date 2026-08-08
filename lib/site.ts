@@ -11,9 +11,10 @@ export const site = {
 } as const
 
 export const nav = [
+  { label: 'Home', href: '/' },
   { label: 'Studios', href: '/studios' },
-  { label: 'Community', href: '/community' },
   { label: 'Part of the Family', href: '/part-of-the-family' },
+  { label: 'Community', href: '/community' },
   { label: 'Music', href: '/music' },
   { label: 'Events & News', href: '/events-and-news' },
   { label: 'Gallery', href: '/gallery' },

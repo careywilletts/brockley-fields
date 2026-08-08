@@ -48,7 +48,7 @@ const captionPool = [
   'Borrowed a preamp off next door. Again.',
   'Something new coming.',
   'Tea break has become a two-hour A&R meeting.',
-  'Tracking upstairs, kettle on downstairs.',
+  'Tracking at the Studios, kettle on at the Yard.',
   'Six months of work, out on Friday.',
   'The light does this for about forty minutes a day.',
   'Session two of three.',

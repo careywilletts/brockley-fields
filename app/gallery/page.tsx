@@ -14,7 +14,7 @@ import { waitingListHref } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
-    'Photographs of both units at Brockley Fields Studios — the upstairs studios and the Yard, the kitchens, the corridors and the courtyard.',
+    'Photographs of both units at Brockley Fields — the Studios and the Yard, the kitchens, the corridors and the courtyard.',
 }
 
 /**

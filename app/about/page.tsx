@@ -94,7 +94,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   That was four years ago. Word spread the way good things do &mdash; quietly,
-                  through people. This February we added two more studios downstairs. There are now
+                  through people. This February we added two more studios at the Yard. There are now
                   five Brockley Fields studios plus two private offices &mdash; seven spaces in all
                   &mdash; and between our tenants and the wider community around them, over nine
                   music professionals working here every day.
@@ -138,9 +138,7 @@ export default function AboutPage() {
             <li key={unit.id} className="flex flex-col">
               <div className="flex items-baseline justify-between gap-4">
                 <h3 className="type-display text-[22px]">{unit.name}</h3>
-                <p className="type-label text-muted-foreground shrink-0">
-                  {unit.unitNumber} · {unit.floor}
-                </p>
+                <p className="type-label text-muted-foreground shrink-0">{unit.unitNumber}</p>
               </div>
               <Rule />
               <p className="mt-4 text-[16px] leading-relaxed">{unit.intro}</p>

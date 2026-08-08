@@ -153,7 +153,15 @@ export function InlineLink({
   )
 }
 
-/** Squared-off signage button. Two weights only. */
+/**
+ * Squared-off signage button.
+ *
+ * - `solid`   — charcoal fill, greens on hover. The primary call to action.
+ * - `outline` — outlined, border and text green on hover.
+ * - `fill`    — outlined at rest, floods with the green accent on hover. Used
+ *               where several equal-weight choices sit together, so none of
+ *               them reads as the primary action until pointed at.
+ */
 export function ActionLink({
   href,
   children,
@@ -162,17 +170,20 @@ export function ActionLink({
 }: {
   href: string
   children: React.ReactNode
-  variant?: 'solid' | 'outline'
+  variant?: 'solid' | 'outline' | 'fill'
   className?: string
 }) {
+  const variants = {
+    solid: 'bg-foreground text-background hover:bg-primary',
+    outline: 'border-foreground/60 hover:border-primary hover:text-primary border',
+    fill: 'border-foreground/60 hover:bg-primary hover:text-primary-foreground hover:border-primary border',
+  }
   return (
     <Link
       href={href}
       className={cn(
         'type-label-ink inline-flex items-center justify-center px-5 py-3 transition-colors',
-        variant === 'solid'
-          ? 'bg-foreground text-background hover:bg-primary'
-          : 'border-foreground/60 hover:border-primary hover:text-primary border',
+        variants[variant],
         className,
       )}
     >

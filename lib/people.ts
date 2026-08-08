@@ -217,7 +217,7 @@ export const people: Person[] = [
     oneLiner: 'In the building most weeks, on half the records that leave it.',
     credits: ['Placeholder credit — backing vocals, 2025'],
     quote: 'I do not have a room here. I am here constantly.',
-    bio: 'Placeholder bio. Tasha sings on sessions across both units and has an unofficial mug in the upstairs kitchen.',
+    bio: 'Placeholder bio. Tasha sings on sessions across both units and has an unofficial mug in the Studios kitchen.',
     portrait: '/images/person-11.png',
     handle: '@tashaboateng',
     links: [{ label: 'Instagram', href: 'https://instagram.com' }],

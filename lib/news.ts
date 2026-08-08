@@ -32,7 +32,7 @@ export const events: Event[] = [
     date: '2026-08-28',
     title: 'Listening Session',
     description:
-      'Residents play works in progress on the big monitors upstairs. Honest feedback, no phones out. Sixteen people maximum.',
+      'Residents play works in progress on the big monitors at the Studios. Honest feedback, no phones out. Sixteen people maximum.',
     cta: { label: 'Ask for a place', href: '/waiting-list' },
   },
   {
@@ -58,7 +58,7 @@ export const news: NewsItem[] = [
     date: '2026-06-30',
     title: 'Naomi Achebe takes a cut on a major album',
     description:
-      'A song that started as a voice note in Studio 1 upstairs, finished in the same room eleven months later.',
+      'A song that started as a voice note in Studio 1, finished in the same room eleven months later.',
   },
   {
     slug: 'mei-sync',
@@ -79,7 +79,7 @@ export const news: NewsItem[] = [
     date: '2026-04-01',
     title: 'The Yard rooms finish acoustic treatment',
     description:
-      'Both downstairs studios are now treated to the same standard as upstairs. You can hear the difference from the corridor.',
+      'Both Yard studios are now treated to the same standard as the Studios rooms. You can hear the difference from the corridor.',
   },
 ]
 
