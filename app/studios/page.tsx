@@ -126,53 +126,45 @@ export default function StudiosPage() {
       */}
       <section className="border-foreground/20 border-t py-14 sm:py-20" aria-labelledby="contact">
         <Container>
-          <div className="flex flex-col gap-10 md:flex-row md:gap-12">
-            <div className="md:w-[13rem] md:shrink-0">
-              <p className="type-label">Contact</p>
-            </div>
-            <div className="flex-1">
-              <h2 id="contact" className="type-display max-w-[30rem] text-[26px] sm:text-[32px]">
-                Rooms come up two or three times a year.
-              </h2>
-              <p className="mt-5 max-w-[42rem] text-[17px] leading-relaxed">
-                When one does, we go down the waiting list and start a conversation. Tell us what
-                you make and what you need a room for — that is genuinely all we are reading for.
-              </p>
+          {/* Label sits directly above the heading, flush with the page's left
+              edge, matching the way the page header itself is set. */}
+          <p className="type-label">Contact</p>
+          <h2 id="contact" className="type-display mt-3 max-w-[30rem] text-[26px] sm:text-[32px]">
+            Rooms come up two or three times a year.
+          </h2>
+          <p className="mt-5 max-w-[42rem] text-[17px] leading-relaxed">
+            When one does, we go down the waiting list and start a conversation. Tell us what you
+            make and what you need a room for — that is genuinely all we are reading for.
+          </p>
 
-              {/*
-                Held in one column until lg: the label column to the left leaves
-                too little room for three across, which wrapped the address
-                onto four lines at tablet widths.
-              */}
-              <dl className="mt-9 flex flex-col gap-5 lg:flex-row lg:gap-14">
-                <div>
-                  <dt className="type-label">Email</dt>
-                  <dd className="mt-1 text-[17px]">
-                    <InlineLink href={`mailto:${site.email}`}>{site.email}</InlineLink>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="type-label">Instagram</dt>
-                  <dd className="mt-1 text-[17px]">
-                    <InlineLink href={site.instagramUrl} external>
-                      {site.instagram}
-                    </InlineLink>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="type-label">Where</dt>
-                  <dd className="text-muted-foreground mt-1 text-[17px]">
-                    {site.location}
-                    <span className="block text-[14px]">Address shared with applicants</span>
-                  </dd>
-                </div>
-              </dl>
-
-              <ActionLink href={waitingListHref} className="mt-9">
-                Join the waiting list
-              </ActionLink>
+          {/* Full width now the label column is gone, so three across fits. */}
+          <dl className="mt-9 flex flex-col gap-5 sm:flex-row sm:gap-14">
+            <div>
+              <dt className="type-label">Email</dt>
+              <dd className="mt-1 text-[17px]">
+                <InlineLink href={`mailto:${site.email}`}>{site.email}</InlineLink>
+              </dd>
             </div>
-          </div>
+            <div>
+              <dt className="type-label">Instagram</dt>
+              <dd className="mt-1 text-[17px]">
+                <InlineLink href={site.instagramUrl} external>
+                  {site.instagram}
+                </InlineLink>
+              </dd>
+            </div>
+            <div>
+              <dt className="type-label">Where</dt>
+              <dd className="text-muted-foreground mt-1 text-[17px]">
+                {site.location}
+                <span className="block text-[14px]">Address shared with applicants</span>
+              </dd>
+            </div>
+          </dl>
+
+          <ActionLink href={waitingListHref} className="mt-9">
+            Join the waiting list
+          </ActionLink>
         </Container>
       </section>
     </>
