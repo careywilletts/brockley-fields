@@ -30,10 +30,10 @@ export default function StudiosPage() {
         </h1>
         <div className="mt-7 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
-            Situated in <strong className="text-primary font-semibold">zone 2</strong>, only a 2
-            minute walk from
-            Brockley Station. We are surrounded by incredible coffee, quirky bars, vibrant
-            restaurants and loads of green spaces.
+            Just a two-minute walk from Brockley Station,{' '}
+            <strong className="text-primary font-semibold">Zone 2</strong>, we are located on a quiet
+            road in the heart of a creative neighbourhood, with great coffee, good food, and green
+            space close by.
           </p>
           <p>
             {available.length === 0 ? (
