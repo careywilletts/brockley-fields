@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useLayoutEffect, useSyncExternalStore } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 const STACK_KEY = 'bf:nav-stack'
@@ -107,7 +107,11 @@ export function NavDepthTracker() {
   // Still runs on every route change, so the record keeps up even on pages with
   // no Back control on screen to read it.
   useIsomorphicLayoutEffect(() => {
-    if (record(pathname)) notify()
+    record(pathname)
+    // Always notify, not just on a change: a control may have rendered from the
+    // record before this ran and be showing the fallback answer. This is a layout
+    // effect, so the corrected value is in place before the browser paints.
+    notify()
   }, [pathname])
 
   return null
@@ -116,12 +120,12 @@ export function NavDepthTracker() {
 /**
  * Brings the record up to date for the page now showing.
  *
- * Idempotent: calling it repeatedly for the same page changes nothing, which is
- * what lets both the tracker and the controls call it freely. Returns whether
- * anything actually moved, so only real changes trigger a re-render.
+ * Called only from the tracker's effect, never during render: it consumes the
+ * popstate flag, and doing that mid-render mistook a step backwards for a new
+ * page. Idempotent, so a repeat run for the same page changes nothing.
  */
-function record(pathname: string): boolean {
-  if (typeof window === 'undefined') return false
+function record(pathname: string): void {
+  if (typeof window === 'undefined') return
 
   const stack = readStack()
 
@@ -132,7 +136,7 @@ function record(pathname: string): boolean {
     documentSeen = true
     writeStack([pathname])
     currentIndex = 0
-    return true
+    return
   }
   documentSeen = true
 
@@ -140,7 +144,7 @@ function record(pathname: string): boolean {
   // function safe to call more than once for the same page — a repeat used to be
   // mistaken for a new visit and append a duplicate, which corrupted the record
   // and left Back pointing at the current page.
-  if (stack[currentIndex] === pathname) return false
+  if (stack[currentIndex] === pathname) return
 
   const traversed = traversalPending
   traversalPending = false
@@ -154,7 +158,7 @@ function record(pathname: string): boolean {
       const found = stack.lastIndexOf(pathname)
       if (found >= 0) currentIndex = found
     }
-    return true
+    return
   }
 
   // A genuinely new page. It follows the current position, so any entries ahead
@@ -162,7 +166,6 @@ function record(pathname: string): boolean {
   const index = currentIndex + 1
   writeStack([...stack.slice(0, index), pathname])
   currentIndex = index
-  return true
 }
 
 /**
@@ -175,14 +178,18 @@ function record(pathname: string): boolean {
  * was already on.
  */
 function navPosition(pathname: string): { index: number; previous?: string } {
-  // Bring the record up to date first. Recording used to live in an effect while
-  // reading happened during render, so a control could read a position the
-  // tracker had not moved yet and show a destination one step out of date — on
-  // the way back, the page just arrived at. Doing both here means there is only
-  // one order of events, whoever asks first.
-  record(pathname)
+  // Strictly read-only. This runs during render, and an earlier version brought
+  // the record up to date here too — which consumed the popstate flag before the
+  // route change had finished, so a step backwards was filed as a new page and
+  // overwrote the entries ahead of it. Recording belongs to the tracker's effect
+  // alone; it notifies afterwards, and this is read again.
+  if (typeof window === 'undefined') return { index: 0 }
 
   const stack = readStack()
+
+  // Prefer the tracked position, but only when the record agrees it is this page.
+  // Mid-route-change it still points at the page being left, and the fallback
+  // finds where we actually are.
   const index = stack[currentIndex] === pathname ? currentIndex : stack.lastIndexOf(pathname)
 
   if (index < 0) return { index: 0 }
@@ -205,22 +212,28 @@ function canPopHistory(pathname: string) {
 export function usePreviousPath() {
   const pathname = usePathname()
 
-  // useSyncExternalStore reads the record during render and re-reads whenever the
-  // tracker reports a change. Holding the answer in state instead meant it was
-  // written by an effect, and effects run child-first — so a control could paint
-  // using the record as it stood before the tracker had updated it, labelled with
-  // the page it was already on. Reading at render time removes that ordering
-  // question altogether.
-  const previous = useSyncExternalStore(
-    subscribe,
-    () => navPosition(pathname).previous,
-    // Nothing to go back to until the browser is involved.
-    () => undefined,
-  )
+  // The answer is kept together with the page it was worked out for. That pairing
+  // is what makes a stale value unusable rather than merely unlikely: one carried
+  // over from the previous page is recognisably not for this one and is ignored,
+  // instead of being shown as a destination that points at the page just arrived
+  // at.
+  const [resolved, setResolved] = useState<{ for: string; previous?: string }>({ for: '' })
+
+  useIsomorphicLayoutEffect(() => {
+    // Read once now, then again whenever the tracker reports a change. The
+    // tracker records in a layout effect and always notifies, so the corrected
+    // value lands before the browser paints.
+    const read = () => setResolved({ for: pathname, previous: navPosition(pathname).previous })
+    read()
+    return subscribe(read)
+  }, [pathname])
+
+  // A destination worked out for a different page tells us nothing about this one.
+  if (resolved.for !== pathname) return undefined
 
   // Never point at the page we are already on: that is the "button does
   // nothing" symptom, and a reload is exactly what it would look like.
-  return previous === pathname ? undefined : previous
+  return resolved.previous === pathname ? undefined : resolved.previous
 }
 
 /**
