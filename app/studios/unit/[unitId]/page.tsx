@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { units, roomsForUnit, type UnitId } from '@/lib/rooms'
 import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
+import { BackLink } from '@/components/back-link'
 import { RoomCard } from '@/components/room-card'
 
 export function generateStaticParams() {
@@ -65,6 +66,10 @@ export default async function UnitPage({ params }: { params: Promise<{ unitId: s
             </li>
           </ol>
         </nav>
+
+        <BackLink fallbackHref="/studios" className="type-label-ink mt-5">
+          Back to the building
+        </BackLink>
 
         <p className="type-label mt-6">{unit.unitNumber}</p>
         <h1 className="type-display mt-3 text-[34px] sm:text-[52px]">{unit.name}</h1>

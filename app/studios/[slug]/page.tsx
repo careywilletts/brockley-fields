@@ -5,6 +5,7 @@ import { rooms, getRoom, getUnit, roomsForUnit, spaceCount } from '@/lib/rooms'
 import { peopleForRoom } from '@/lib/people'
 import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
+import { BackLink } from '@/components/back-link'
 import { FloorPlan } from '@/components/floor-plan'
 import { StatusBadge } from '@/components/status-badge'
 
@@ -71,6 +72,12 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
             </li>
           </ol>
         </nav>
+
+        {/* Steps back through the site's own history, which the browser's own
+            back button cannot do reliably when the site is embedded. */}
+        <BackLink fallbackHref={`/studios/unit/${unit.id}`} className="type-label-ink mt-5">
+          Back to {unit.shortName}
+        </BackLink>
 
         <div className="mt-6 flex flex-wrap items-baseline gap-x-5 gap-y-3">
           <h1 className="type-display text-[36px] sm:text-[52px]">{room.name}</h1>
