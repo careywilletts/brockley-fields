@@ -27,7 +27,7 @@ export default function HomePage() {
             <p className="type-label">Brockley, SE4</p>
             <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
               Brockley Fields was built on a simple belief:{' '}
-              <span className="text-primary">people matter.</span>
+              <span className="text-primary">people matter</span>
             </h1>
             <p className="mt-8 max-w-[34rem] text-[18px] leading-relaxed">
               One of the hardest parts of being a creative person is finding a space to work. Then
@@ -64,7 +64,7 @@ export default function HomePage() {
         <div className="mt-6 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
             Brockley Fields is based in the heart of Southeast London, with five carefully designed
-            studios and two office spaces which are full of natural light and spaces in which you
+            studios and two commercial spaces which are full of natural light and spaces in which you
             want to creatively spend your day. All are sound proofed, treated and with communal
             spaces.
           </p>
@@ -86,16 +86,14 @@ export default function HomePage() {
           </ActionLink>
         </div>
         {/*
-          Landscape rather than the earlier portrait crop: at full container width
-          a 4:5 frame would stand roughly 750px tall and swamp the copy above it.
+          Contained rather than `bleed`, since it sits inside the Section's
+          container — the panorama still gets the full text measure to run across.
         */}
-        <Photo
-          src="/images/window-green.png"
-          alt="Floor-to-ceiling studio windows looking out onto greenery"
-          className="mt-10 aspect-4/3 sm:aspect-16/9"
-          sizes="(min-width: 1280px) 1200px, 100vw"
+        <TerraceBand
+          variant="elevation"
+          caption="Front elevation · both units, drawn to the same scale"
+          className="mt-10"
         />
-        <p className="type-label mt-3">Floor-to-ceiling windows, green outlook</p>
       </Section>
 
       {/* ── The two units ─────────────────────────────────────────────────── */}
@@ -144,26 +142,20 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── The drawings ──────────────────────────────────────────────────── */}
+      {/* ── The terrace on approach ───────────────────────────────────────── */}
       {/*
-        Both terrace drawings are extreme panoramas, so they only ever appear as
-        full-width bands — never inside a column, where they collapse to a strip.
-        Their job here is to break the page up before What's on.
+        The elevation moved up into "Why we exist", so the perspective view takes
+        this slot. Image band only — its job is to break the page up before
+        What's on.
       */}
       <TerraceBand
         variant="perspective"
         bleed
         caption="The terrace on approach"
-        className="pt-14 sm:pt-20"
-      />
-      <TerraceBand
-        variant="elevation"
-        bleed
-        caption="Front elevation · both units, drawn to the same scale"
         className="py-14 sm:py-20"
       />
 
-      {/* ── Next event + news ─────────────────────────────────────────────── */}
+      {/* ── Next event + news ────────────��────────────────────────────────── */}
       <Section label="What's on">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
           <div className="lg:w-[46%] lg:shrink-0">
