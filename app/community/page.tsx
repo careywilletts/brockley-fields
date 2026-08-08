@@ -2,7 +2,14 @@ import type { Metadata } from 'next'
 import { residents, family } from '@/lib/people'
 import { units, getRoom, spaceCount } from '@/lib/rooms'
 import { site } from '@/lib/site'
-import { ActionLink, Container, InlineLink, PageHeader } from '@/components/primitives'
+import {
+  ActionLink,
+  Container,
+  InlineLink,
+  PageHeader,
+  Photo,
+  Section,
+} from '@/components/primitives'
 import { PersonCard } from '@/components/person-card'
 
 export const metadata: Metadata = {
@@ -78,6 +85,43 @@ export default function CommunityPage() {
           </section>
         )
       })}
+
+      {/*
+        The neighbourhood, moved over from the about page: it sits with the people
+        rather than the founding story, and leads into the extended circle below.
+      */}
+      <Section
+        label="The neighbourhood"
+        title="Brockley, which is quieter than it has any right to be."
+        intro={
+          <>
+            <p>
+              Southeast London, fifteen minutes from London Bridge, on a street where the loudest
+              thing most afternoons is somebody&apos;s extension being built. There is a park at the
+              end of the road and enough cafés to argue about.
+            </p>
+            <p>
+              We do not publish the address. Applicants get it by email, and everybody who has been
+              here once knows exactly which door it is.
+            </p>
+          </>
+        }
+      >
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <Photo
+            src="/images/brockley.png"
+            alt="A quiet residential street in Brockley, southeast London"
+            className="border-foreground/20 aspect-4/3 border sm:col-span-2"
+            sizes="(min-width: 640px) 60vw, 100vw"
+          />
+          <Photo
+            src="/images/yard.png"
+            alt="The enclosed courtyard behind the Yard unit"
+            className="border-foreground/20 aspect-4/3 border"
+            sizes="(min-width: 640px) 30vw, 100vw"
+          />
+        </div>
+      </Section>
 
       <section className="border-foreground/20 border-t">
         <Container className="py-16 sm:py-20">

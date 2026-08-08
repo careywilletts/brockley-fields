@@ -4,9 +4,7 @@ import {
   Container,
   InlineLink,
   PageHeader,
-  Photo,
   Rule,
-  Section,
 } from '@/components/primitives'
 import { TerraceBand } from '@/components/brand'
 import { site, waitingListHref } from '@/lib/site'
@@ -118,39 +116,6 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
-
-      <Section
-        label="The neighbourhood"
-        title="Brockley, which is quieter than it has any right to be."
-        intro={
-          <>
-            <p>
-              Southeast London, fifteen minutes from London Bridge, on a street where the loudest
-              thing most afternoons is somebody&apos;s extension being built. There is a park at
-              the end of the road and enough cafés to argue about.
-            </p>
-            <p>
-              We do not publish the address. Applicants get it by email, and everybody who has been
-              here once knows exactly which door it is.
-            </p>
-          </>
-        }
-      >
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <Photo
-            src="/images/brockley.png"
-            alt="A quiet residential street in Brockley, southeast London"
-            className="border-foreground/20 aspect-4/3 border sm:col-span-2"
-            sizes="(min-width: 640px) 60vw, 100vw"
-          />
-          <Photo
-            src="/images/yard.png"
-            alt="The enclosed courtyard behind the Yard unit"
-            className="border-foreground/20 aspect-4/3 border"
-            sizes="(min-width: 640px) 30vw, 100vw"
-          />
-        </div>
-      </Section>
 
       <section className="border-foreground/20 border-t py-14 sm:py-20" aria-labelledby="contact">
         <Container>
