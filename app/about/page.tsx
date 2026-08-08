@@ -25,9 +25,15 @@ export default function AboutPage() {
         label="About"
         title={
           <>
-            Brockley Fields: <span className="text-primary">the journey</span>
+            Brockley Fields:{' '}
+            {/* `block` forces the break, so the two halves always sit on their own line. */}
+            <span className="text-primary block">the journey</span>
           </>
         }
+        // The default 34rem measure is too narrow for "Brockley Fields:" at
+        // 52px, which wrapped it onto two lines of its own. `text-wrap` undoes
+        // the inherited text-balance so it cannot re-break either.
+        titleClassName="max-w-none text-wrap"
         intro={
           <>
             <p>
@@ -54,16 +60,19 @@ export default function AboutPage() {
       <section className="border-foreground/20 border-t py-14 sm:py-20" aria-labelledby="story">
         <Container>
           {/*
-            Copy left, strapline right, top-aligned. The "The story" label moves
-            inside the copy column rather than keeping its own narrow column —
-            three columns would squeeze the body copy below a readable measure.
+            Copy left, strapline right. Columns stretch to equal height so the
+            sign-off can be pushed to the foot of the body copy.
           */}
-          <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-12">
+          <div className="flex flex-col gap-10 md:flex-row md:gap-12">
             <div className="md:flex-1">
-              <h2 id="story" className="type-label">
+              {/*
+                Kept for the section's aria-labelledby, but visually hidden: the
+                grey "The story" label is no longer wanted above the copy.
+              */}
+              <h2 id="story" className="sr-only">
                 The story
               </h2>
-              <div className="mt-5 flex flex-col gap-5 text-[17px] leading-relaxed">
+              <div className="flex flex-col gap-5 text-[17px] leading-relaxed">
                 <p>
                   I find that great songs still come from the same place they always did: the right
                   people, in the right room, at the right time. And that brought me back to the same
@@ -95,11 +104,16 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="md:w-[38%] md:shrink-0">
+            {/*
+              A column so the sign-off can be pushed down with `mt-auto`, landing
+              level with the last line of the body copy on the left.
+            */}
+            <div className="flex flex-col md:w-[38%] md:shrink-0">
               <p className="type-display text-[24px] leading-tight text-pretty sm:text-[28px]">
-                Brockley Fields exists because I needed it to exist. I think a lot of you do too.
+                Brockley Fields exists because I needed it to exist.{' '}
+                <span className="text-primary">I think a lot of you do too.</span>
               </p>
-              <p className="type-label mt-6">&mdash; Carey</p>
+              <p className="type-label mt-6 md:mt-auto md:pt-6">&mdash; Carey</p>
             </div>
           </div>
         </Container>

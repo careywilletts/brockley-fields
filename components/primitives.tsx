@@ -64,17 +64,25 @@ export function Section({
 export function PageHeader({
   label,
   title,
+  titleClassName,
   intro,
 }: {
   label: string
   /** ReactNode rather than string so a page can highlight part of its title. */
   title: React.ReactNode
+  /** Escape hatch for titles that need a wider measure than the default. */
+  titleClassName?: string
   intro?: React.ReactNode
 }) {
   return (
     <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
       <p className="type-label">{label}</p>
-      <h1 className="type-display mt-3 max-w-[34rem] text-[34px] text-balance sm:text-[52px]">
+      <h1
+        className={cn(
+          'type-display mt-3 max-w-[34rem] text-[34px] text-balance sm:text-[52px]',
+          titleClassName,
+        )}
+      >
         {title}
       </h1>
       {intro && (
