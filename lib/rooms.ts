@@ -146,7 +146,7 @@ export const rooms: Room[] = [
       { src: '/images/window-green.png', alt: 'The green outlook from Studio 1' },
       { src: '/images/detail-plaster.png', alt: 'Bare plaster wall detail in Studio 1' },
     ],
-    occupants: ['naomi-achebe'],
+    occupants: ['scott-verrill'],
   },
   {
     slug: 'upstairs-studio-2',
@@ -193,7 +193,7 @@ export const rooms: Room[] = [
       },
       { src: '/images/detail-plaster.png', alt: 'Plaster and timber detail in Studio 3' },
     ],
-    occupants: ['mei-lindqvist'],
+    occupants: ['matt-rist', 'josh-ager'],
   },
 
   // ── Brockley Fields The Yard ────────────────────────────────────────────

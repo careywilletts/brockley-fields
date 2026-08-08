@@ -13,20 +13,12 @@ export function PersonCard({ person, priority = false }: { person: Person; prior
         href={`/community/${person.slug}`}
         className="focus-visible:ring-primary group flex flex-col focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
       >
-        <div className="bg-secondary border-foreground/20 relative aspect-[4/5] overflow-hidden border">
-          <Image
-            src={person.portrait || '/placeholder.svg'}
-            alt={`Portrait of ${person.name}`}
-            fill
-            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-            priority={priority}
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-          />
-          <div
-            aria-hidden
-            className="bg-background pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-multiply"
-          />
-        </div>
+        <PersonPortrait
+          person={person}
+          className="aspect-[4/5]"
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          priority={priority}
+        />
 
         <h3 className="type-display group-hover:text-primary mt-4 text-[18px] transition-colors">
           {person.name}

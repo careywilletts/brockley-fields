@@ -1,9 +1,13 @@
 /**
- * PLACEHOLDER CONTENT.
+ * MIXED REAL AND PLACEHOLDER CONTENT.
  *
- * Every name, credit, quote and link below is a stand-in so the layout can be
- * judged with realistic content in it. Swap each entry for the real resident
- * once bios, credits, portraits and handles have been collected.
+ * Studios 1 and 3 hold real residents. Everyone else is still a stand-in so
+ * the layout can be judged with realistic content in it — swap each remaining
+ * entry as bios, credits, portraits and handles are collected.
+ *
+ * For real people, `portrait` and `quote` are left undefined until we have the
+ * genuine article. Never fill them with an invented quote or a generated
+ * likeness: the pages are built to omit both cleanly.
  *
  * `group: 'resident'`  → Community page (formal tenants)
  * `group: 'family'`    → Part of the Family page (extended circle)
@@ -20,10 +24,11 @@ export type Person = {
   oneLiner: string
   /** 2–3 notable credits. Leave empty if they have none listed. */
   credits: string[]
-  /** Their words about the building. */
-  quote: string
+  /** Their words about the building. Undefined until they have given us one. */
+  quote?: string
   bio: string
-  portrait: string
+  /** A real photograph. Undefined until they have sent one. */
+  portrait?: string
   handle: string
   links: PersonLink[]
   /** Only for residents — matches a slug in lib/rooms.ts */
@@ -33,22 +38,17 @@ export type Person = {
 }
 
 export const people: Person[] = [
+  // ── Real resident ──────────────────────────────────────────────────────
   {
-    slug: 'naomi-achebe',
-    name: 'Naomi Achebe',
+    slug: 'scott-verrill',
+    name: 'Scott Verrill',
     group: 'resident',
-    disciplines: ['Songwriter', 'Topliner'],
-    oneLiner: 'Writes the melody before anyone has decided what the song is about.',
-    credits: ['Placeholder credit — major label album, 2024', 'Placeholder credit — sync, 2023'],
-    quote:
-      'I had been writing in bedrooms for eight years. Having a door that shuts and a window that opens changed how much I get done in a day.',
-    bio: 'Placeholder bio. Naomi has been writing for other artists since her early twenties, mostly in the space between pop and soul. She took Studio 1 at Brockley Fields Studios when the building opened and has barely left since.',
-    portrait: '/images/person-1.png',
-    handle: '@naomiachebe',
-    links: [
-      { label: 'Spotify', href: 'https://open.spotify.com' },
-      { label: 'Instagram', href: 'https://instagram.com' },
-    ],
+    disciplines: ['Singer', 'Songwriter', 'Producer'],
+    oneLiner: 'One half of Good Neighbours, writing and producing out of Studio 1.',
+    credits: ['Good Neighbours', 'KYKO'],
+    bio: 'Scott Verrill is a singer, songwriter and producer from South London. He is best known as one half of the viral indie-rock duo Good Neighbours alongside Oli Fox, and previously made music and released projects under solo aliases including KYKO.',
+    handle: '@itsgoodscott',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/itsgoodscott' }],
     roomSlug: 'upstairs-studio-1',
   },
   {
@@ -87,22 +87,29 @@ export const people: Person[] = [
     ],
     roomSlug: 'upstairs-studio-2',
   },
+  // ── Real residents ─────────────────────────────────────────────────────
   {
-    slug: 'mei-lindqvist',
-    name: 'Mei Lindqvist',
+    slug: 'matt-rist',
+    name: 'Matt Rist',
     group: 'resident',
-    disciplines: ['Arranger', 'String Writer'],
-    oneLiner: 'Writes the parts that make a demo sound like a record.',
-    credits: ['Placeholder credit — string arrangement, 2024', 'Placeholder credit — film score, 2023'],
-    quote:
-      'Fourteen square metres and a window is all I have ever needed. The rest is a piano and no interruptions.',
-    bio: 'Placeholder bio. Mei arranges strings and horns for records made all over London and writes for picture when the deadline allows. Studio 3 at the Studios is mostly a piano and a lot of manuscript paper.',
-    portrait: '/images/person-4.png',
-    handle: '@meilindqvist',
-    links: [
-      { label: 'Website', href: 'https://example.com' },
-      { label: 'Spotify', href: 'https://open.spotify.com' },
-    ],
+    disciplines: ['Songwriter', 'Music Producer', 'Audio Engineer'],
+    oneLiner: 'Started out as a label engineer and has been making records ever since.',
+    credits: ['The 1975', 'Freya Ridings', 'Sekou'],
+    bio: 'Matt Rist is a London-based songwriter, music producer and audio engineer. Matt began his career as an in-house engineer for the UK independent label Good Soldier and has since collaborated with major labels including Island, Republic, Capitol and EMI, contributing to projects for artists such as The 1975, Freya Ridings and Sekou.',
+    handle: '@mattrist__',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/mattrist__' }],
+    roomSlug: 'upstairs-studio-3',
+  },
+  {
+    slug: 'josh-ager',
+    name: 'Josh Ager',
+    group: 'resident',
+    disciplines: ['Mixing Engineer', 'Production Engineer'],
+    oneLiner: 'Over a hundred released tracks across UK indie-pop and alternative.',
+    credits: ['Beabadoobee', 'Matilda Mann', 'Sofy', 'Girli'],
+    bio: 'Josh Ager is a London-based mixing and production engineer. He has worked on over 100 released tracks across the UK indie-pop and alternative scenes, collaborating with notable acts including Sofy, Matilda Mann, Girli and Beabadoobee.',
+    handle: '@joshager',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/joshager' }],
     roomSlug: 'upstairs-studio-3',
   },
   {
