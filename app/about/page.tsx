@@ -9,7 +9,6 @@ import {
   Section,
 } from '@/components/primitives'
 import { TerraceBand } from '@/components/brand'
-import { units } from '@/lib/rooms'
 import { site, waitingListHref } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -119,42 +118,6 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
-
-      <Section
-        label="The building"
-        title="Two units, one postcode, two completely different atmospheres."
-        intro={
-          <p>
-            They are a short walk apart and share a waiting list, a kettle habit and most of the
-            same people. Beyond that they behave nothing alike.
-          </p>
-        }
-      >
-        <TerraceBand
-          variant="elevation"
-          caption="Front elevation · the terrace as drawn"
-          className="mt-12"
-        />
-
-        <ul className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
-          {units.map((unit) => (
-            <li key={unit.id} className="flex flex-col">
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="type-display text-[22px]">{unit.name}</h3>
-                <p className="type-label text-muted-foreground shrink-0">{unit.unitNumber}</p>
-              </div>
-              <Rule />
-              <p className="mt-4 text-[16px] leading-relaxed">{unit.intro}</p>
-              <p className="type-label mt-4">{unit.sharedSpaces}</p>
-              <div className="mt-5">
-                <InlineLink href="/studios" className="type-label-ink">
-                  See the rooms and plans
-                </InlineLink>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </Section>
 
       <Section
         label="The neighbourhood"

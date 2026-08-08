@@ -8,7 +8,9 @@ import {
   PageHeader,
   Photo,
   Rule,
+  Section,
 } from '@/components/primitives'
+import { TerraceBand } from '@/components/brand'
 import { RoomCard } from '@/components/room-card'
 import { StatusBadge } from '@/components/status-badge'
 
@@ -50,6 +52,50 @@ export default function StudiosPage() {
           </>
         }
       />
+
+      {/*
+        The building, moved over from the about page: it introduces the two units
+        before the room-by-room detail below, which is what this page is for.
+      */}
+      <Section
+        label="The building"
+        title="Two units, one postcode, two completely different atmospheres."
+        intro={
+          <p>
+            They are a short walk apart and share a waiting list, a kettle habit and most of the same
+            people. Beyond that they behave nothing alike.
+          </p>
+        }
+      >
+        <TerraceBand
+          variant="elevation"
+          caption="Front elevation · the terrace as drawn"
+          className="mt-12"
+        />
+
+        <ul className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
+          {units.map((unit) => (
+            <li key={unit.id} className="flex flex-col">
+              <div className="flex items-baseline justify-between gap-4">
+                <h2 className="type-display text-[22px]">{unit.name}</h2>
+                <p className="type-label text-muted-foreground shrink-0">{unit.unitNumber}</p>
+              </div>
+              <Rule />
+              <p className="mt-4 text-[16px] leading-relaxed">{unit.intro}</p>
+              <p className="type-label mt-4">{unit.sharedSpaces}</p>
+              <div className="mt-5">
+                {/*
+                  An in-page anchor now rather than a link to /studios, since the
+                  rooms and plans are further down this same page.
+                */}
+                <InlineLink href={`#${unit.id}`} className="type-label-ink">
+                  See the rooms and plans
+                </InlineLink>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
       {/* Availability index — the answer most visitors came for, before the detail. */}
       <Container className="pb-14 sm:pb-20">
