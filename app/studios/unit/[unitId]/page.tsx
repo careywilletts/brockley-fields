@@ -56,7 +56,7 @@ export default async function UnitPage({ params }: { params: Promise<{ unitId: s
           <ol className="flex flex-wrap items-center gap-x-2">
             <li>
               <InlineLink href="/studios" className="no-underline hover:underline">
-                All rooms
+                The building
               </InlineLink>
             </li>
             <li aria-hidden>·</li>

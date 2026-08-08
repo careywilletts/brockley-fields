@@ -52,7 +52,7 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
           <ol className="flex flex-wrap items-center gap-x-2">
             <li>
               <InlineLink href="/studios" className="no-underline hover:underline">
-                All rooms
+                The building
               </InlineLink>
             </li>
             <li aria-hidden>·</li>
