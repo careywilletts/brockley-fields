@@ -128,13 +128,14 @@ export default function StudiosPage() {
         <Container>
           {/* Label sits directly above the heading, flush with the page's left
               edge, matching the way the page header itself is set. */}
-          <p className="type-label">Contact</p>
+          <p className="type-label">We don&apos;t have rooms often.</p>
           <h2 id="contact" className="type-display mt-3 max-w-[30rem] text-[26px] sm:text-[32px]">
-            Rooms come up two or three times a year.
+            But when we do, we want the right people in them.
           </h2>
           <p className="mt-5 max-w-[42rem] text-[17px] leading-relaxed">
-            When one does, we go down the waiting list and start a conversation. Tell us what you
-            make and what you need a room for — that is genuinely all we are reading for.
+            When a room becomes available, we work through our waiting list and start a
+            conversation. Tell us what you make and what you need the space for — that&apos;s all we
+            need to know.
           </p>
 
           {/* Full width now the label column is gone, so three across fits. */}
