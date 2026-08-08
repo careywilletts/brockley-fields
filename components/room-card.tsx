@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import type { Room } from '@/lib/rooms'
 import { StatusBadge } from '@/components/status-badge'
-import { FloorPlan } from '@/components/floor-plan'
+import { Photo } from '@/components/primitives'
 import { peopleForRoom } from '@/lib/people'
 
 /**
- * The listing card leads with the drawing rather than a photograph — the plans
- * are the most honest thing we have about each room.
+ * The listing card leads with a photograph. The scale drawing is useful but not
+ * the first thing you want, so it lives on the room's own page.
  */
 export function RoomCard({ room, priority = false }: { room: Room; priority?: boolean }) {
   const occupants = peopleForRoom(room.occupants)
@@ -18,7 +18,13 @@ export function RoomCard({ room, priority = false }: { room: Room; priority?: bo
         className="focus-visible:ring-primary group block focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
       >
         <div className="transition-opacity group-hover:opacity-90">
-          <FloorPlan room={room} priority={priority} />
+          <Photo
+            src={room.photos[0].src}
+            alt={room.photos[0].alt}
+            className="aspect-4/3"
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            priority={priority}
+          />
         </div>
 
         <div className="mt-5 flex items-baseline justify-between gap-4">

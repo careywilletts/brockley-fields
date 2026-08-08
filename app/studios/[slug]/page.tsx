@@ -78,47 +78,36 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
         <p className="mt-7 max-w-[42rem] text-[18px] leading-relaxed">{room.blurb}</p>
       </Container>
 
-      {/* Plan and photographs side by side — the drawing leads. */}
+      {/* Photographs lead — the drawing follows further down the page. */}
       <section className="border-foreground/20 border-t py-12 sm:py-16">
         <Container>
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-14">
-            {/* The drawing is capped on small screens so its internal
-                dimension labels stay at a sane size. */}
-            <div className="max-w-[26rem] lg:w-[38%] lg:max-w-none lg:shrink-0">
-              <p className="type-label-ink mb-4">Scale plan</p>
-              <FloorPlan room={room} priority />
-            </div>
-
-            <div className="lg:flex-1">
-              <p className="type-label-ink mb-4">The room</p>
-              <div className="flex flex-col gap-4">
-                <Photo
-                  src={room.photos[0].src}
-                  alt={room.photos[0].alt}
-                  className="aspect-3/2"
-                  sizes="(min-width: 1024px) 58vw, 100vw"
-                  priority
-                />
-                {room.photos.length > 1 && (
-                  <ul className="grid grid-cols-2 gap-4">
-                    {room.photos.slice(1).map((photo) => (
-                      <li key={photo.src + photo.alt}>
-                        <Photo
-                          src={photo.src}
-                          alt={photo.alt}
-                          className="aspect-4/3"
-                          sizes="(min-width: 1024px) 29vw, 50vw"
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              <p className="type-label mt-3">
-                Room photography is indicative while the shoot is finished.
-              </p>
-            </div>
+          <p className="type-label-ink mb-6">The room</p>
+          <div className="flex flex-col gap-4">
+            <Photo
+              src={room.photos[0].src}
+              alt={room.photos[0].alt}
+              className="aspect-16/9"
+              sizes="(min-width: 1180px) 1116px, 100vw"
+              priority
+            />
+            {room.photos.length > 1 && (
+              <ul className="grid grid-cols-2 gap-4">
+                {room.photos.slice(1).map((photo) => (
+                  <li key={photo.src + photo.alt}>
+                    <Photo
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="aspect-4/3"
+                      sizes="(min-width: 1180px) 550px, 50vw"
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
+          <p className="type-label mt-3">
+            Room photography is indicative while the shoot is finished.
+          </p>
         </Container>
       </section>
 
@@ -138,6 +127,22 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
                 </div>
               ))}
             </dl>
+          </div>
+        </Container>
+      </section>
+
+      {/*
+        The scale drawing. This is the only place on the site a per-room plan
+        appears — useful, but not what you want first.
+      */}
+      <section className="border-foreground/20 border-t py-12 sm:py-16">
+        <Container>
+          <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+            <p className="type-label md:w-[13rem] md:shrink-0">Scale plan</p>
+            {/* Capped so the drawing's internal dimension labels stay legible. */}
+            <div className="max-w-[26rem] flex-1">
+              <FloorPlan room={room} />
+            </div>
           </div>
         </Container>
       </section>

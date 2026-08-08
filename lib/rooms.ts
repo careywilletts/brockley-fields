@@ -39,6 +39,16 @@ export type Unit = {
   intro: string
   sharedSpaces: string
   hero: Photo
+  /** Longer description, one string per paragraph, for the unit overview page. */
+  overview: string[]
+  /** Photographs of the unit as a whole — the communal parts, not the rooms. */
+  gallery: Photo[]
+  /**
+   * Whole-unit layout drawing for the overview page. Optional: the overview
+   * page simply omits the plan block until a drawing is supplied here, so
+   * nothing renders broken in the meantime.
+   */
+  unitPlan?: Photo
 }
 
 export const units: Unit[] = [
@@ -53,6 +63,28 @@ export const units: Unit[] = [
       src: '/images/window-green.png',
       alt: 'A floor-to-ceiling studio window looking out onto green trees',
     },
+    overview: [
+      'Unit 1 is the quieter of the two. Three studios off a single corridor, each one soundproofed and acoustically treated, with a kitchen and dining area at the end that everybody ends up in at some point during the day.',
+      'Every room has a floor-to-ceiling window and two of the three look out over green space. It is the unit people choose when they want to put their head down and work — sociable when you want it, easy to disappear into when you do not.',
+    ],
+    gallery: [
+      {
+        src: '/images/hero-studio.png',
+        alt: 'A studio at Brockley Fields Studios with a tall window and wood floor',
+      },
+      {
+        src: '/images/corridor.png',
+        alt: 'The corridor running between the three studios in Unit 1',
+      },
+      {
+        src: '/images/kitchen.png',
+        alt: 'The shared kitchen and dining area at Brockley Fields Studios',
+      },
+      {
+        src: '/images/detail-plaster.png',
+        alt: 'Bare plaster and timber detail in Unit 1',
+      },
+    ],
   },
   {
     id: 'yard',
@@ -65,6 +97,28 @@ export const units: Unit[] = [
       src: '/images/yard.png',
       alt: 'The enclosed courtyard behind the Yard unit, with a bench and climbing vine',
     },
+    overview: [
+      'Unit 2 is built around its middle. A 25 m² reception and communal area sits at the centre, with two music studios and two private offices opening off it, plus a kitchen, dining area and bathroom.',
+      'That layout makes it the more social of the two units — you cannot really cross it without talking to somebody. The two offices suit anyone whose day is mostly calls rather than sessions, and there is a courtyard out the back for when a room stops being the answer.',
+    ],
+    gallery: [
+      {
+        src: '/images/communal.png',
+        alt: 'The reception and communal area at the centre of the Yard',
+      },
+      {
+        src: '/images/yard.png',
+        alt: 'The enclosed courtyard behind the Yard, with a bench and climbing vine',
+      },
+      {
+        src: '/images/room-b.png',
+        alt: 'One of the two music studios at the Yard',
+      },
+      {
+        src: '/images/kitchen.png',
+        alt: 'The kitchen and dining area at the Yard',
+      },
+    ],
   },
 ]
 
