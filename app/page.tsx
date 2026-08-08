@@ -51,70 +51,51 @@ export default function HomePage() {
 
       {/* ── Why we exist ──────────────────────────────────────────────────── */}
       {/*
-        The eyebrow lives inside the copy column rather than in Section's own
-        label slot: that slot sits in a row above the children, which would push
-        the image down and stop the two columns lining up at the top.
+        Single column at every width: copy first, then the photograph as a wide
+        band beneath it. Side by side, the two never balanced — the copy runs long
+        enough that the image column had to be either a thin strip or taller than
+        the text beside it.
       */}
-      <Section>
-        {/*
-          Image left, copy right, top-aligned via `items-start` so the top of the
-          photograph lines up with the eyebrow label. `order` flips the pair on
-          mobile, where the copy has to come first and the image sits below it.
-        */}
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:gap-10 lg:gap-16">
-          {/*
-            The window photograph rather than the terrace drawing: that drawing is
-            a ~4:1 panorama and can only ever work as a full-width band, so it now
-            lives lower down the page beside the elevation. A portrait 4:5 crop
-            fills this column properly.
-          */}
-          <div className="order-2 md:order-1 md:w-[45%] md:shrink-0">
-            <Photo
-              src="/images/window-green.png"
-              alt="Floor-to-ceiling studio windows looking out onto greenery"
-              className="aspect-4/5"
-              sizes="(min-width: 768px) 45vw, 100vw"
-            />
-            <p className="type-label mt-3">Floor-to-ceiling windows, green outlook</p>
-          </div>
-
-          <div className="order-1 md:order-2 md:flex-1">
-            <p className="type-label">Why we exist</p>
-            {/* Matched to the hero h1 scale so both straplines carry equal weight. */}
-            {/*
-              Stepped down at md: from there the copy shares the row with the
-              photograph, so the hero's 42px would break "To collaborate" across
-              two lines in the narrower column.
-            */}
-            <h2 className="type-display mt-3 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] md:text-[34px] lg:text-[44px]">
-              To collaborate <span className="text-primary">and create</span>
-            </h2>
-            <div className="mt-6 flex flex-col gap-4 text-[17px] leading-relaxed">
-              <p>
-                Brockley Fields is based in the heart of Southeast London, with five carefully
-                designed studios and two office spaces which are full of natural light and spaces in
-                which you want to creatively spend your day. All are sound proofed, treated and with
-                communal spaces.
-              </p>
-              <p>
-                What&apos;s happened since has been the best part &ndash; songwriters, producers,
-                mixers, arrangers and managers who work side by side. We collaborate, spark ideas
-                and create. That&apos;s not accidental, it&apos;s the whole point.
-              </p>
-            </div>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <ActionLink href="/about" variant="fill">
-                Our story
-              </ActionLink>
-              <ActionLink href="/studios" variant="fill">
-                All {spaceCount} spaces
-              </ActionLink>
-              <ActionLink href={waitingListHref} variant="fill">
-                Waiting list
-              </ActionLink>
-            </div>
-          </div>
+      <Section label="Why we exist">
+        {/* Full measure, so the heading gets the same scale as the hero. */}
+        <h2 className="type-display max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
+          To collaborate <span className="text-primary">and create</span>
+        </h2>
+        <div className="mt-6 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
+          <p>
+            Brockley Fields is based in the heart of Southeast London, with five carefully designed
+            studios and two office spaces which are full of natural light and spaces in which you
+            want to creatively spend your day. All are sound proofed, treated and with communal
+            spaces.
+          </p>
+          <p>
+            What&apos;s happened since has been the best part &ndash; songwriters, producers, mixers,
+            arrangers and managers who work side by side. We collaborate, spark ideas and create.
+            That&apos;s not accidental, it&apos;s the whole point.
+          </p>
         </div>
+        <div className="mt-9 flex flex-wrap items-center gap-3">
+          <ActionLink href="/about" variant="fill">
+            Our story
+          </ActionLink>
+          <ActionLink href="/studios" variant="fill">
+            All {spaceCount} spaces
+          </ActionLink>
+          <ActionLink href={waitingListHref} variant="fill">
+            Waiting list
+          </ActionLink>
+        </div>
+        {/*
+          Landscape rather than the earlier portrait crop: at full container width
+          a 4:5 frame would stand roughly 750px tall and swamp the copy above it.
+        */}
+        <Photo
+          src="/images/window-green.png"
+          alt="Floor-to-ceiling studio windows looking out onto greenery"
+          className="mt-10 aspect-4/3 sm:aspect-16/9"
+          sizes="(min-width: 1280px) 1200px, 100vw"
+        />
+        <p className="type-label mt-3">Floor-to-ceiling windows, green outlook</p>
       </Section>
 
       {/* ── The two units ─────────────────────────────────────────────────── */}
