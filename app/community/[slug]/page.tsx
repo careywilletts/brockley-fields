@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { people, getPerson, personRoomSlugs } from '@/lib/people'
+import { people, getPerson, personRoomSlugs, bioParagraphs } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Rule } from '@/components/primitives'
@@ -88,7 +88,11 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
             <h1 className="type-display text-[36px] sm:text-[52px]">{person.name}</h1>
             <p className="type-label mt-3">{person.disciplines.join(' · ')}</p>
             <p className="mt-7 max-w-[38rem] text-[19px] leading-relaxed">{person.oneLiner}</p>
-            <p className="mt-5 max-w-[38rem] text-[17px] leading-relaxed">{person.bio}</p>
+            {bioParagraphs(person).map((paragraph, i) => (
+              <p key={i} className="mt-5 max-w-[38rem] text-[17px] leading-relaxed [&+p]:mt-4">
+                {paragraph}
+              </p>
+            ))}
 
             <dl className="border-foreground/85 mt-9 max-w-[38rem] border-t">
               <div className="border-foreground/20 flex flex-col gap-1 border-b py-3 sm:flex-row sm:items-baseline sm:gap-8">

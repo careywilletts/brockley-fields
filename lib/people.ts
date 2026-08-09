@@ -29,7 +29,11 @@ export type Person = {
   credits: string[]
   /** Their words about the building. Undefined until they have given us one. */
   quote?: string
-  bio: string
+  /**
+   * Pass an array to break a longer bio into paragraphs rather than one
+   * unreadable block. Both pages that render a bio handle either form.
+   */
+  bio: string | string[]
   /** A real photograph. Undefined until they have sent one. */
   portrait?: string
   /** Instagram handle. Undefined for people who do not have one. */
@@ -70,7 +74,12 @@ export const people: Person[] = [
     shortRole: 'Songwriter / Producer',
     oneLiner: 'Songwriter and producer. Founded the building, and writes and produces from Studio 2.',
     credits: ['Athlete', 'Dermot Kennedy', 'Freya Ridings', 'Kingfishr'],
-    bio: 'Carey was a founding member of the multi-platinum-selling indie band Athlete. Along with his fellow band members, he wrote hits including Half Light, Superhuman Touch, El Salvador, You Got The Style, Chances, and Wires — which won an Ivor Novello Award for Best Contemporary Single. Since then, Carey has established himself as a sought-after producer and songwriter. He has worked extensively with Dermot Kennedy, co-writing and producing Better Days, which has streamed over 240 million times on Spotify alone. Other artist collaborations include Freya Ridings, Asha Banks, Tom Speight, Kingfishr, and You Me At Six, and Carey was shortlisted for Breakthrough Producer of the Year at the Music Producers Guild Awards. Carey also runs a label called Brickfield Records, which has released EPs by Jack Cullen and Harry Lyon to date.',
+    bio: [
+      'Carey was a founding member of the multi-platinum-selling indie band Athlete, whose hit Wires won an Ivor Novello Award for Best Contemporary Single.',
+      'Carey is now a songwriter and producer who has worked extensively with Dermot Kennedy since 2017, and collaborated with Freya Ridings, Asha Banks, Tom Speight, Kingfishr and You Me At Six.',
+      'Carey was shortlisted for Breakthrough Producer of the Year at the Music Producers Guild Awards.',
+      'Carey also runs a label called Brickfield Records, which has so far released EPs by Jack Cullen and Harry Lyon.',
+    ],
     portrait: '/images/people/carey-willetts.jpg',
     handle: '@brockleyfields',
     links: [
@@ -160,6 +169,14 @@ export const family = people
 
 export function getPerson(slug: string): Person | undefined {
   return people.find((p) => p.slug === slug)
+}
+
+/**
+ * A bio as paragraphs, whether it was written as one string or several. Both
+ * pages that show a bio read it through here so the two stay in step.
+ */
+export function bioParagraphs(person: Person): string[] {
+  return Array.isArray(person.bio) ? person.bio : [person.bio]
 }
 
 export function peopleForRoom(slugs: string[]): Person[] {

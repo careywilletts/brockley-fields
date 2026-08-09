@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { family, personRoomSlugs } from '@/lib/people'
+import { family, personRoomSlugs, bioParagraphs } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { ActionLink, Container, InlineLink, PageHeader } from '@/components/primitives'
@@ -107,7 +107,14 @@ export default function PartOfTheFamilyPage() {
                       </h2>
                       <p className="type-label mt-3">{person.disciplines.join(' · ')}</p>
 
-                      <p className="mt-6 max-w-[42rem] text-[17px] leading-relaxed">{person.bio}</p>
+                      {bioParagraphs(person).map((paragraph, i) => (
+                        <p
+                          key={i}
+                          className="mt-6 max-w-[42rem] text-[17px] leading-relaxed [&+p]:mt-4"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
 
                       {person.credits.length > 0 && (
                         <div className="mt-7 max-w-[42rem]">
