@@ -57,4 +57,16 @@ export const extendedFamily: Ally[] = [
       alt: 'Portrait of Daniel Moyler',
     },
   },
+  {
+    name: 'Joel Pott',
+    blurb: [
+      'Joel is best known as the frontman of the multi-platinum indie band Athlete, across four studio albums. Athlete’s single Wires earned the prestigious Ivor Novello Award for Best Contemporary Song.',
+      'These days Joel is a songwriter and producer, collaborating with artists including Joy Crookes, Jack Savoretti, Shura, Tom Walker, Elderbrook and Mabel.',
+      'In 2017 he was nominated for Breakthrough Producer of the Year by the Music Producers Guild, and his songwriting has garnered two further Ivor Novello Award nominations. Joel also co-wrote and produced George Ezra’s number one album Gold Rush Kid.',
+    ],
+    portrait: {
+      src: '/images/extended-family/joel-pott.png',
+      alt: 'Portrait of Joel Pott',
+    },
+  },
 ]
