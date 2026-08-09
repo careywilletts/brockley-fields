@@ -117,4 +117,12 @@ export const places: Place[] = [
       alt: 'People sitting on the grass slope of Telegraph Hill Park at dusk, looking out over rooftops and trees to the London skyline',
     },
   },
+  {
+    name: 'Hilly Fields',
+    blurb: 'The hardest park run in London.',
+    photo: {
+      src: '/images/hilly-fields.jpg',
+      alt: 'The stone circle on Hilly Fields: rounded standing stones set in bright green grass with a row of trees behind',
+    },
+  },
 ]
