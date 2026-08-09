@@ -22,7 +22,7 @@ export default function StudiosPage() {
         this block carries the h1.
       */}
       <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
-        <p className="type-label">The building</p>
+        <p className="type-label type-eyebrow">The building</p>
         {/* text-wrap rather than text-balance, so the two lines break exactly
             where they are written rather than being re-balanced. */}
         <h1 className="type-display mt-3 text-[34px] text-wrap sm:text-[52px]">
