@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { site } from '@/lib/site'
+import { places } from '@/lib/places'
 import { ActionLink, Container, PageHeader, Photo, Section } from '@/components/primitives'
+import { PlaceCard } from '@/components/place-card'
 
 export const metadata: Metadata = {
   title: 'Community',
@@ -72,18 +74,23 @@ export default function CommunityPage() {
         </Container>
       </section>
 
-      {/* Holding copy: the real text for this section is still being written. */}
+      {/* Places come from lib/places.ts, so adding a neighbour there puts it here. */}
       <Section
         id="wider-community"
         title="The wider community"
         intro={
           <p>
-            The building does not stand on its own. This is where we will write about the people and
-            places around it — the neighbours, the shops and the studios nearby that make this part
-            of London what it is.
+            The building does not stand on its own. These are the places around it that make this
+            part of London what it is.
           </p>
         }
-      />
+      >
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {places.map((place, i) => (
+            <PlaceCard key={place.name} place={place} priority={i === 0} />
+          ))}
+        </div>
+      </Section>
     </>
   )
 }
