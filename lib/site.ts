@@ -15,8 +15,7 @@ export const nav = [
   { label: 'Studios', href: '/studios' },
   { label: 'Part of the Family', href: '/part-of-the-family' },
   { label: 'Community', href: '/community' },
-  { label: 'Music', href: '/music' },
-  { label: 'Events & News', href: '/events-and-news' },
+  { label: 'News', href: '/news' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'About', href: '/about' },
 ] as const

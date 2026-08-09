@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { site, waitingListHref } from '@/lib/site'
 import { units, roomsForUnit, studioCount, officeCount, spaceCount } from '@/lib/rooms'
-import { events, news, formatDate, formatDateShort } from '@/lib/news'
+import { news, formatDateShort } from '@/lib/news'
 import {
   ActionLink,
   Container,
@@ -14,7 +14,6 @@ import { TerraceBand } from '@/components/brand'
 import { StatusBadge } from '@/components/status-badge'
 
 export default function HomePage() {
-  const nextEvent = [...events].sort((a, b) => a.date.localeCompare(b.date))[0]
   const latestNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3)
 
   return (
@@ -137,29 +136,26 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Next event + news ────────────��────────────────────────────────── */}
-      <Section label="What's on">
+      {/* ── Latest news ───────────────────────────────────────────────────── */}
+      {/*
+        Events are on hold, so this is a single news column with the heading on
+        the left rather than the old "next event + lately" two-column split.
+      */}
+      <Section label="News">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-          <div className="lg:w-[46%] lg:shrink-0">
-            <p className="type-label-ink text-primary">Next up</p>
-            <div className="border-foreground/85 mt-4 border-t pt-6">
-              <p className="type-label">{formatDate(nextEvent.date)}</p>
-              <h3 className="type-display mt-2 text-[26px] sm:text-[30px]">{nextEvent.title}</h3>
-              <p className="mt-4 text-[16px] leading-relaxed">{nextEvent.description}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {nextEvent.cta && (
-                  <ActionLink href={nextEvent.cta.href}>{nextEvent.cta.label}</ActionLink>
-                )}
-                <ActionLink href="/events-and-news" variant="outline">
-                  Everything else on
-                </ActionLink>
-              </div>
+          <div className="lg:w-[38%] lg:shrink-0">
+            <h2 className="type-display max-w-[20rem] text-[26px] text-balance sm:text-[30px]">
+              What the residents have been up to.
+            </h2>
+            <div className="mt-6">
+              <ActionLink href="/news" variant="outline">
+                All news
+              </ActionLink>
             </div>
           </div>
 
           <div className="lg:flex-1">
-            <p className="type-label-ink">Lately</p>
-            <ul className="border-foreground/20 mt-4 flex flex-col border-t">
+            <ul className="border-foreground/20 flex flex-col border-t">
               {latestNews.map((item) => {
                 const d = formatDateShort(item.date)
                 return (

@@ -1,15 +1,10 @@
 /**
- * PLACEHOLDER CONTENT — events and news.
+ * PLACEHOLDER CONTENT — news.
  * Dates are ISO so they sort and format reliably.
+ *
+ * Events were removed for now and can come back alongside an events page when
+ * there are dates worth publishing.
  */
-
-export type Event = {
-  slug: string
-  date: string
-  title: string
-  description: string
-  cta?: { label: string; href: string }
-}
 
 export type NewsItem = {
   slug: string
@@ -17,33 +12,6 @@ export type NewsItem = {
   title: string
   description: string
 }
-
-export const events: Event[] = [
-  {
-    slug: 'open-day-spring',
-    date: '2026-09-12',
-    title: 'Open Day',
-    description:
-      'Both units open from midday. Come and see the rooms, meet the people in them, and stay for as long as you like. No appointment, no pitch.',
-    cta: { label: 'Let us know you’re coming', href: '/waiting-list' },
-  },
-  {
-    slug: 'listening-session-autumn',
-    date: '2026-08-28',
-    title: 'Listening Session',
-    description:
-      'Residents play works in progress on the big monitors at the Studios. Honest feedback, no phones out. Sixteen people maximum.',
-    cta: { label: 'Ask for a place', href: '/waiting-list' },
-  },
-  {
-    slug: 'collaborator-evening',
-    date: '2026-08-14',
-    title: 'Collaborator Evening',
-    description:
-      'An evening for writers, producers and players who do not have a room here but should know the people who do. Bring somebody with you.',
-    cta: { label: 'Get on the list', href: '/waiting-list' },
-  },
-]
 
 export const news: NewsItem[] = [
   {
