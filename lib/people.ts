@@ -104,6 +104,7 @@ export const people: Person[] = [
     oneLiner: 'Self-taught, and road-tested on the busiest pavements in London.',
     credits: [],
     bio: "Atticus Blue is a London-based independent singer-songwriter and self-taught music producer. He first gained local recognition through prominent street busking performances in areas like London's Southbank and Leicester Square.",
+    portrait: '/images/people/atticus-blue.png',
     handle: '@atticus.blue',
     links: [{ label: 'Instagram', href: 'https://instagram.com/atticus.blue' }],
     roomSlug: 'yard-studio-1',
