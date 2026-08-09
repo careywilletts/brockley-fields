@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // STEP 2 PROBE: disable client router cache reuse so every back/forward
-  // navigation refetches instead of reusing a cached segment.
-  experimental: {
-    staleTimes: { dynamic: 0, static: 0 },
-  },
   images: {
     unoptimized: true,
   },
