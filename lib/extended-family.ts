@@ -21,6 +21,12 @@ export type Ally = {
   /** Their own site. Shown as one link labelled with the bare domain. */
   website?: string
   /**
+   * Their page on their manager's site. Labelled with the company rather than
+   * the bare domain, since a URL like jaxmanagement.com/daniel-moyler is long
+   * and says nothing the name beside it does not already say.
+   */
+  management?: { company: string; href: string }
+  /**
    * Logos, unlike photographs, must not be cropped — this is drawn contained
    * inside a square, so any aspect ratio is safe to add.
    */
@@ -60,6 +66,7 @@ export const extendedFamily: Ally[] = [
       'His work has earned him Engineer of the Year at the 2020 MPG Awards and a 2021 Grammy for his contributions to Dua Lipa’s Future Nostalgia.',
     ],
     handle: 'danielmoyler',
+    management: { company: 'Jax Management', href: 'https://jaxmanagement.com/daniel-moyler' },
     portrait: {
       src: '/images/extended-family/daniel-moyler.png',
       alt: 'Portrait of Daniel Moyler',
@@ -72,9 +79,16 @@ export const extendedFamily: Ally[] = [
       'These days Joel is a songwriter and producer, collaborating with artists including Joy Crookes, Jack Savoretti, Shura, Tom Walker, Elderbrook and Mabel.',
       'In 2017 he was nominated for Breakthrough Producer of the Year by the Music Producers Guild, and his songwriting has garnered two further Ivor Novello Award nominations. Joel also co-wrote and produced George Ezra’s number one album Gold Rush Kid.',
     ],
+    management: {
+      company: 'Jax Management',
+      href: 'https://jaxmanagement.com/joel-laslett-pott',
+    },
     portrait: {
       src: '/images/extended-family/joel-pott.png',
       alt: 'Portrait of Joel Pott',
+      // A tall 394x522 frame with his cap near the top: centring the square
+      // crop sliced the top of his head off, so pull the window up.
+      focus: '50% 6%',
     },
   },
   {
@@ -85,6 +99,7 @@ export const extendedFamily: Ally[] = [
       'He has toured internationally as a session musician with artists including Tom Misch and Tom Chaplin before moving into songwriting and production. Today he collaborates with artists to develop distinctive, authentic sounds through songwriting, production and string arranging.',
     ],
     handle: 'tobietripp',
+    management: { company: 'Jax Management', href: 'https://jaxmanagement.com/tobie-tripp' },
     portrait: {
       src: '/images/extended-family/tobie-tripp.png',
       alt: 'Portrait of Tobie Tripp',
@@ -98,6 +113,7 @@ export const extendedFamily: Ally[] = [
       'Jonny co-wrote the Ronan Keating single Little Thing Called Love, which spent six weeks on the A-list, and he co-wrote Second Hand News from Birdy’s top five album.',
     ],
     handle: 'heresjonnywright',
+    management: { company: 'Jax Management', href: 'https://jaxmanagement.com/jonny-wright' },
     portrait: {
       src: '/images/extended-family/jonny-wright.png',
       alt: 'Portrait of Jonny Wright',
@@ -126,6 +142,7 @@ export const extendedFamily: Ally[] = [
       'One of Alex’s most notable achievements is his contribution to the soundtrack of the film Yesterday, which he co-produced alongside Daniel Pemberton.',
     ],
     handle: 'alexwildwood',
+    management: { company: 'Jax Management', href: 'https://jaxmanagement.com/alex-wildwood' },
     portrait: {
       src: '/images/extended-family/alex-wildwood.png',
       alt: 'Portrait of Alex Wildwood',

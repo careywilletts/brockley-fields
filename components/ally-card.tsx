@@ -38,7 +38,7 @@ export function AllyCard({ ally, priority = false }: { ally: Ally; priority?: bo
           </p>
         ))}
 
-        {(ally.handle || domain) && (
+        {(ally.handle || domain || ally.management) && (
           <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1">
             {ally.handle && (
               <li>
@@ -61,6 +61,18 @@ export function AllyCard({ ally, priority = false }: { ally: Ally; priority?: bo
                   className="type-label-ink text-primary decoration-primary/40 hover:decoration-primary underline decoration-1 underline-offset-4 transition-colors"
                 >
                   {domain}
+                </a>
+              </li>
+            )}
+            {ally.management && (
+              <li>
+                <a
+                  href={ally.management.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="type-label-ink text-primary decoration-primary/40 hover:decoration-primary underline decoration-1 underline-offset-4 transition-colors"
+                >
+                  {ally.management.company}
                 </a>
               </li>
             )}
