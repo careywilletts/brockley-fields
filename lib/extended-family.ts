@@ -82,4 +82,17 @@ export const extendedFamily: Ally[] = [
       alt: 'Portrait of Tobie Tripp',
     },
   },
+  {
+    name: 'Jonny Wright',
+    blurb: [
+      'Jonny’s songs have been cut by the likes of Aurora, Freya Ridings, Birdy, Foxes, Gracey, Lucy McWilliams and Fickle Friends.',
+      'His songs have been placed across film, TV and video games including Ridley Scott’s Equals, Grey’s Anatomy and Mass Effect for Electronic Arts. He also composed and produced the full score for Sky Arts’ Foxtrot, starring Billie Piper and Ben Whishaw.',
+      'Jonny co-wrote the Ronan Keating single Little Thing Called Love, which spent six weeks on the A-list, and he co-wrote Second Hand News from Birdy’s top five album.',
+    ],
+    handle: 'heresjonnywright',
+    portrait: {
+      src: '/images/extended-family/jonny-wright.png',
+      alt: 'Portrait of Jonny Wright',
+    },
+  },
 ]
