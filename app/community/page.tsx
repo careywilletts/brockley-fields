@@ -75,8 +75,7 @@ export default function CommunityPage() {
       {/* Holding copy: the real text for this section is still being written. */}
       <Section
         id="wider-community"
-        label="The wider community"
-        title="Beyond the front door."
+        title="The wider community"
         intro={
           <p>
             The building does not stand on its own. This is where we will write about the people and
