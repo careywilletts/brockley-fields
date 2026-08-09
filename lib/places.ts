@@ -36,4 +36,13 @@ export const places: Place[] = [
       alt: 'The navy shopfront of Browns of Brockley with gold signage, pavement tables out front and a muralled building next door',
     },
   },
+  {
+    name: 'Brockley Brewery',
+    blurb: 'Best taproom in London.',
+    handle: 'brockleybrewery',
+    photo: {
+      src: '/images/brockley-brewery.png',
+      alt: 'The Brockley Brewing Company frontage: painted signage on brick above bright yellow mural doors showing a blossom tree, a parakeet and a fox',
+    },
+  },
 ]
