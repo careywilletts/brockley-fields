@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { site } from '@/lib/site'
 import { places } from '@/lib/places'
+import { extendedFamily } from '@/lib/extended-family'
 import { ActionLink, Container, PageHeader, Photo, Section } from '@/components/primitives'
 import { PlaceCard } from '@/components/place-card'
+import { AllyCard } from '@/components/ally-card'
 
 export const metadata: Metadata = {
   title: 'Community',
@@ -71,6 +73,16 @@ export default function CommunityPage() {
               Part of the Family
             </ActionLink>
           </div>
+
+          {/* Everyone in lib/extended-family.ts: the people we work with who do
+              not hold keys to a room. */}
+          {extendedFamily.length > 0 && (
+            <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-8 sm:mt-14 sm:grid-cols-2">
+              {extendedFamily.map((ally, i) => (
+                <AllyCard key={ally.name} ally={ally} priority={i === 0} />
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 
