@@ -119,4 +119,18 @@ export const extendedFamily: Ally[] = [
       focus: '38% 35%',
     },
   },
+  {
+    name: 'Alex Wildwood',
+    blurb: [
+      'Alex is a music producer, songwriter and multi-instrumentalist. With a career that has taken him across the US, UK and Australasia, he has worked with musicians including Monjola, Muroki, Riiki Reid, Call Me Loop, The Veronicas, Cat and Calmel, and GRAACE.',
+      'One of Alex’s most notable achievements is his contribution to the soundtrack of the film Yesterday, which he co-produced alongside Daniel Pemberton.',
+    ],
+    handle: 'alexwildwood',
+    portrait: {
+      src: '/images/extended-family/alex-wildwood.png',
+      alt: 'Portrait of Alex Wildwood',
+      // Three-quarter-body shot: his face sits near the top of the frame.
+      focus: '50% 18%',
+    },
+  },
 ]
