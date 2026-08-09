@@ -27,4 +27,13 @@ export const places: Place[] = [
       alt: 'Inside Water into Beer: blue shelves of craft beer cans and bottles, glass-fronted fridges and a few small tables',
     },
   },
+  {
+    name: 'Browns of Brockley',
+    blurb: 'Best coffee in London.',
+    handle: 'brownsofbrockley',
+    photo: {
+      src: '/images/browns-of-brockley.jpg',
+      alt: 'The navy shopfront of Browns of Brockley with gold signage, pavement tables out front and a muralled building next door',
+    },
+  },
 ]
