@@ -28,13 +28,12 @@ export default function CommunityPage() {
         intro={
           <>
             <p>
-              Southeast London, fifteen minutes from London Bridge, on a street where the loudest
-              thing most afternoons is somebody&apos;s extension being built. There is a park at the
-              end of the road and enough cafés to argue about.
+              Southeast London, 18 minutes from Shoreditch High Street and 12 minutes from London
+              Bridge. A quiet, no-through road with a creative community which includes architects,
+              photographers, musicians, writers, a bakery, events management and PR.
             </p>
             <p>
-              We do not publish the address. Applicants get it by email, and everybody who has been
-              here once knows exactly which door it is.
+              There is a park at the end of the road and enough cafés and bars to argue about.
             </p>
           </>
         }
