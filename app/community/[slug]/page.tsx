@@ -191,7 +191,9 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                     className="hover:text-primary flex items-baseline justify-between gap-4 py-3 transition-colors"
                   >
                     <span className="text-[15px]">{neighbour.name}</span>
-                    <span className="type-label">{neighbour.disciplines[0]}</span>
+                    <span className="type-label">
+                      {neighbour.shortRole ?? neighbour.disciplines[0]}
+                    </span>
                   </Link>
                 </li>
               ))}

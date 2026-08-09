@@ -17,6 +17,12 @@ export type Person = {
   name: string
   group: 'resident' | 'family'
   disciplines: string[]
+  /**
+   * What to show where there is only room for one line of role. Defaults to the
+   * first discipline, which is enough for most people but drops the second half
+   * of a double act like songwriter / producer.
+   */
+  shortRole?: string
   /** One line that does the work of an introduction. */
   oneLiner: string
   /** 2–3 notable credits. Leave empty if they have none listed. */
@@ -60,8 +66,9 @@ export const people: Person[] = [
     slug: 'carey-willetts',
     name: 'Carey Willetts',
     group: 'resident',
-    disciplines: ['Producer', 'Songwriter', 'Founder'],
-    oneLiner: 'Founded the building. Writes and produces from Studio 2.',
+    disciplines: ['Songwriter', 'Producer', 'Founder'],
+    shortRole: 'Songwriter / Producer',
+    oneLiner: 'Songwriter and producer. Founded the building, and writes and produces from Studio 2.',
     credits: ['Athlete', 'Dermot Kennedy', 'Freya Ridings', 'Kingfishr'],
     bio: 'Carey was a founding member of the multi-platinum-selling indie band Athlete. Along with his fellow band members, he wrote hits including Half Light, Superhuman Touch, El Salvador, You Got The Style, Chances, and Wires — which won an Ivor Novello Award for Best Contemporary Single. Since then, Carey has established himself as a sought-after producer and songwriter. He has worked extensively with Dermot Kennedy, co-writing and producing Better Days, which has streamed over 240 million times on Spotify alone. Other artist collaborations include Freya Ridings, Asha Banks, Tom Speight, Kingfishr, and You Me At Six, and Carey was shortlisted for Breakthrough Producer of the Year at the Music Producers Guild Awards. Carey also runs a label called Brickfield Records, which has released EPs by Jack Cullen and Harry Lyon to date.',
     portrait: '/images/people/carey-willetts.jpg',
