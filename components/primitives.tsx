@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
@@ -32,7 +33,8 @@ export function Section({
   id,
 }: {
   label?: string
-  title?: string
+  /** ReactNode rather than string so a section can highlight part of its title. */
+  title?: React.ReactNode
   intro?: React.ReactNode
   children?: React.ReactNode
   className?: string
@@ -43,9 +45,13 @@ export function Section({
       <Container>
         {(label || title || intro) && (
           <div className="flex flex-col gap-4 md:flex-row md:gap-12">
-            <div className="md:w-[13rem] md:shrink-0">
-              {label && <p className="type-label">{label}</p>}
-            </div>
+            {/* Only reserve the label gutter when there is a label, so an
+                unlabelled section runs flush to the left margin. */}
+            {label && (
+              <div className="md:w-[13rem] md:shrink-0">
+                <p className="type-label">{label}</p>
+              </div>
+            )}
             <div className="max-w-[46rem]">
               {title && <h2 className="type-display text-[26px] sm:text-[32px]">{title}</h2>}
               {intro && (
@@ -64,16 +70,27 @@ export function Section({
 export function PageHeader({
   label,
   title,
+  titleClassName,
   intro,
 }: {
-  label: string
-  title: string
+  /** Optional: a page can open straight on its title with no eyebrow label. */
+  label?: string
+  /** ReactNode rather than string so a page can highlight part of its title. */
+  title: React.ReactNode
+  /** Escape hatch for titles that need a wider measure than the default. */
+  titleClassName?: string
   intro?: React.ReactNode
 }) {
   return (
     <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
-      <p className="type-label">{label}</p>
-      <h1 className="type-display mt-3 max-w-[34rem] text-[34px] text-balance sm:text-[52px]">
+      {label && <p className="type-label">{label}</p>}
+      <h1
+        className={cn(
+          'type-display max-w-[34rem] text-[34px] text-balance sm:text-[52px]',
+          label && 'mt-3',
+          titleClassName,
+        )}
+      >
         {title}
       </h1>
       {intro && (
@@ -94,6 +111,7 @@ export function Photo({
   alt,
   className,
   imageClassName,
+  imageStyle,
   sizes = '(min-width: 1024px) 33vw, 100vw',
   priority = false,
   fill = true,
@@ -102,6 +120,8 @@ export function Photo({
   alt: string
   className?: string
   imageClassName?: string
+  /** For per-image values Tailwind cannot express, such as a crop's focal point. */
+  imageStyle?: CSSProperties
   sizes?: string
   priority?: boolean
   fill?: boolean
@@ -115,12 +135,43 @@ export function Photo({
         sizes={sizes}
         priority={priority}
         className={cn('object-cover', imageClassName)}
+        style={imageStyle}
       />
       <div
         aria-hidden
         className="bg-background pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-multiply"
       />
     </div>
+  )
+}
+
+/**
+ * A named step up the hierarchy — "Back to The Yard" and the like.
+ *
+ * Deliberately a fixed destination: the label names where it goes, so it must
+ * always go there. An ordinary link with no history handling of any kind, which
+ * is why it lives here rather than with anything that listens to the history.
+ */
+export function BackLink({
+  href,
+  children,
+  className,
+}: {
+  href: string
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'text-primary decoration-primary/40 hover:decoration-primary inline-flex items-center gap-2 underline decoration-1 underline-offset-4 transition-colors',
+        className,
+      )}
+    >
+      <span aria-hidden>&larr;</span>
+      {children}
+    </Link>
   )
 }
 
@@ -153,7 +204,15 @@ export function InlineLink({
   )
 }
 
-/** Squared-off signage button. Two weights only. */
+/**
+ * Squared-off signage button.
+ *
+ * - `solid`   — charcoal fill, greens on hover. The primary call to action.
+ * - `outline` — outlined, border and text green on hover.
+ * - `fill`    — outlined at rest, floods with the green accent on hover. Used
+ *               where several equal-weight choices sit together, so none of
+ *               them reads as the primary action until pointed at.
+ */
 export function ActionLink({
   href,
   children,
@@ -162,17 +221,20 @@ export function ActionLink({
 }: {
   href: string
   children: React.ReactNode
-  variant?: 'solid' | 'outline'
+  variant?: 'solid' | 'outline' | 'fill'
   className?: string
 }) {
+  const variants = {
+    solid: 'bg-foreground text-background hover:bg-primary',
+    outline: 'border-foreground/60 hover:border-primary hover:text-primary border',
+    fill: 'border-foreground/60 hover:bg-primary hover:text-primary-foreground hover:border-primary border',
+  }
   return (
     <Link
       href={href}
       className={cn(
         'type-label-ink inline-flex items-center justify-center px-5 py-3 transition-colors',
-        variant === 'solid'
-          ? 'bg-foreground text-background hover:bg-primary'
-          : 'border-foreground/60 hover:border-primary hover:text-primary border',
+        variants[variant],
         className,
       )}
     >

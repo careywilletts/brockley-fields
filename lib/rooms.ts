@@ -36,10 +36,19 @@ export type Unit = {
   name: string
   shortName: string
   unitNumber: string
-  floor: string
   intro: string
   sharedSpaces: string
   hero: Photo
+  /** Longer description, one string per paragraph, for the unit overview page. */
+  overview: string[]
+  /** Photographs of the unit as a whole — the communal parts, not the rooms. */
+  gallery: Photo[]
+  /**
+   * Whole-unit layout drawing for the overview page. Optional: the overview
+   * page simply omits the plan block until a drawing is supplied here, so
+   * nothing renders broken in the meantime.
+   */
+  unitPlan?: Photo
 }
 
 export const units: Unit[] = [
@@ -48,32 +57,73 @@ export const units: Unit[] = [
     name: 'Brockley Fields Studios',
     shortName: 'Studios',
     unitNumber: 'Unit 1',
-    floor: 'Upstairs',
-    intro:
-      'Three studios with floor-to-ceiling windows and two with outlooks over green space.',
+    intro: 'Three studios with floor-to-ceiling windows, two with outlooks over green space.',
     sharedSpaces: 'Kitchen/dining area and 17 m² communal space.',
     hero: {
       src: '/images/window-green.png',
       alt: 'A floor-to-ceiling studio window looking out onto green trees',
     },
+    overview: [
+      'Unit 1 is the quieter of the two. Three studios off a single corridor, each one soundproofed and acoustically treated, with a kitchen and dining area at the end that everybody ends up in at some point during the day.',
+      'Every room has a floor-to-ceiling window and two of the three look out over green space. It is the unit people choose when they want to put their head down and work — sociable when you want it, easy to disappear into when you do not.',
+    ],
+    gallery: [
+      {
+        src: '/images/hero-studio.png',
+        alt: 'A studio at Brockley Fields Studios with a tall window and wood floor',
+      },
+      {
+        src: '/images/corridor.png',
+        alt: 'The corridor running between the three studios in Unit 1',
+      },
+      {
+        src: '/images/kitchen.png',
+        alt: 'The shared kitchen and dining area at Brockley Fields Studios',
+      },
+      {
+        src: '/images/detail-plaster.png',
+        alt: 'Bare plaster and timber detail in Unit 1',
+      },
+    ],
   },
   {
     id: 'yard',
     name: 'Brockley Fields The Yard',
     shortName: 'The Yard',
     unitNumber: 'Unit 2',
-    floor: 'Downstairs',
     intro: 'Two music studios and two offices. More of a hangout vibe.',
     sharedSpaces: '25 m² reception/communal area, kitchen/dining, bathroom.',
     hero: {
       src: '/images/yard.png',
       alt: 'The enclosed courtyard behind the Yard unit, with a bench and climbing vine',
     },
+    overview: [
+      'Unit 2 is built around its middle. A 25 m² reception and communal area sits at the centre, with two music studios and two private offices opening off it, plus a kitchen, dining area and bathroom.',
+      'That layout makes it the more social of the two units — you cannot really cross it without talking to somebody. The two offices suit anyone whose day is mostly calls rather than sessions, and there is a courtyard out the back for when a room stops being the answer.',
+    ],
+    gallery: [
+      {
+        src: '/images/communal.png',
+        alt: 'The reception and communal area at the centre of the Yard',
+      },
+      {
+        src: '/images/yard.png',
+        alt: 'The enclosed courtyard behind the Yard, with a bench and climbing vine',
+      },
+      {
+        src: '/images/room-b.png',
+        alt: 'One of the two music studios at the Yard',
+      },
+      {
+        src: '/images/kitchen.png',
+        alt: 'The kitchen and dining area at the Yard',
+      },
+    ],
   },
 ]
 
 export const rooms: Room[] = [
-  // ── Brockley Fields Studios — upstairs ──────────────────────────────────
+  // ── Brockley Fields Studios ─────────────────────────────────────────────
   {
     slug: 'upstairs-studio-1',
     name: 'Studio 1',
@@ -89,11 +139,14 @@ export const rooms: Room[] = [
     blurb:
       'A square, calm room at the front of the building. The window runs the full width of one wall, so the light changes all day and you always know what the weather is doing.',
     photos: [
-      { src: '/images/room-a.png', alt: 'Studio 1 upstairs, empty, with tall window and wood floor' },
+      {
+        src: '/images/room-a.png',
+        alt: 'Studio 1 at Brockley Fields Studios, empty, with tall window and wood floor',
+      },
       { src: '/images/window-green.png', alt: 'The green outlook from Studio 1' },
       { src: '/images/detail-plaster.png', alt: 'Bare plaster wall detail in Studio 1' },
     ],
-    occupants: ['naomi-achebe'],
+    occupants: ['scott-verrill'],
   },
   {
     slug: 'upstairs-studio-2',
@@ -108,13 +161,16 @@ export const rooms: Room[] = [
     floorPlanPng:
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/upstairs-studio-2-SbbmfXA0vmVjSXedLG5WcBLMpwuRFU.png',
     blurb:
-      'The largest room in the building. Long enough to put a live area at one end and still have a proper working position at the other. Two people share it comfortably.',
+      'The largest room in the building. Long enough to put a live area at one end and still have a proper working position at the other.',
     photos: [
-      { src: '/images/hero-studio.png', alt: 'Studio 2 upstairs, the largest room, empty' },
+      {
+        src: '/images/hero-studio.png',
+        alt: 'Studio 2 at Brockley Fields Studios, the largest room, empty',
+      },
       { src: '/images/room-d.png', alt: 'The far end of Studio 2 with acoustic treatment' },
       { src: '/images/corridor.png', alt: 'The soundproofed door into Studio 2' },
     ],
-    occupants: ['rob-danson', 'dev-raichura'],
+    occupants: ['carey-willetts'],
   },
   {
     slug: 'upstairs-studio-3',
@@ -129,15 +185,18 @@ export const rooms: Room[] = [
     floorPlanPng:
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/upstairs-studio-3-nHnqNXkZY3oJ8OpYYOdKD9FgnkvCBU.png',
     blurb:
-      'The smallest of the upstairs rooms and the one people are most surprised by. Wide rather than deep, with the window along the long wall — it feels much bigger than the number suggests.',
+      'The smallest of the three Studios rooms and the one people are most surprised by. Wide rather than deep, with the window along the long wall — it feels much bigger than the number suggests.',
     photos: [
-      { src: '/images/room-c.png', alt: 'Studio 3 upstairs, empty, with a desk beneath the window' },
+      {
+        src: '/images/room-c.png',
+        alt: 'Studio 3 at Brockley Fields Studios, empty, with a desk beneath the window',
+      },
       { src: '/images/detail-plaster.png', alt: 'Plaster and timber detail in Studio 3' },
     ],
-    occupants: ['mei-lindqvist'],
+    occupants: ['matt-rist', 'josh-ager'],
   },
 
-  // ── The Yard — downstairs ──────────────────────────────────────────────
+  // ── Brockley Fields The Yard ────────────────────────────────────────────
   {
     slug: 'yard-studio-1',
     name: 'Studio 1',
@@ -156,7 +215,7 @@ export const rooms: Room[] = [
       { src: '/images/room-b.png', alt: 'The Yard Studio 1, empty, with soundproofed door' },
       { src: '/images/communal.png', alt: 'The Yard communal area outside Studio 1' },
     ],
-    occupants: ['kofi-bell-hughes', 'sam-ojo'],
+    occupants: ['atticus-blue'],
   },
   {
     slug: 'yard-studio-2',
@@ -176,7 +235,7 @@ export const rooms: Room[] = [
       { src: '/images/room-d.png', alt: 'The Yard Studio 2, empty, showing the L-shaped return' },
       { src: '/images/yard.png', alt: 'The courtyard beyond Studio 2' },
     ],
-    occupants: ['orla-finn', 'delroy-pierce'],
+    occupants: ['rich-cooper'],
   },
   {
     slug: 'yard-office-1',
@@ -195,7 +254,7 @@ export const rooms: Room[] = [
     photos: [
       { src: '/images/room-c.png', alt: 'Office 1 in the Yard, empty, with a desk under the window' },
     ],
-    occupants: ['yasmin-haddad'],
+    occupants: ['david-eserin'],
   },
   {
     slug: 'yard-office-2',
@@ -214,7 +273,7 @@ export const rooms: Room[] = [
     photos: [
       { src: '/images/room-c.png', alt: 'Office 2 in the Yard, empty' },
     ],
-    occupants: ['gerry-wallace'],
+    occupants: ['david-eserin'],
   },
 ]
 
@@ -235,6 +294,24 @@ export function roomsForUnit(id: UnitId): Room[] {
 /** "Studio 1 · Brockley Fields Studios" — used in the waiting list dropdown. */
 export function roomLabel(room: Room): string {
   return `${room.name} · ${getUnit(room.unit).name}`
+}
+
+/**
+ * Names several rooms in one breath: "Office 1" alone, or "Office 1 & 2" for
+ * somebody holding two. Collapses the shared word when every room is the same
+ * kind of space, so it reads as one thing rather than a list.
+ */
+export function roomsLabel(list: Room[]): string {
+  if (list.length === 0) return ''
+  if (list.length === 1) return list[0].name
+
+  const words = list.map((room) => room.name.split(' '))
+  const prefix = words[0][0]
+  const allSamePrefix = words.every((parts) => parts.length === 2 && parts[0] === prefix)
+
+  return allSamePrefix
+    ? `${prefix} ${words.map((parts) => parts[1]).join(' & ')}`
+    : list.map((room) => room.name).join(' & ')
 }
 
 export const studioCount = rooms.filter((r) => r.kind === 'studio').length

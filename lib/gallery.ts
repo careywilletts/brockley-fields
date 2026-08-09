@@ -7,14 +7,14 @@
 export type GalleryImage = { src: string; alt: string; span?: 'wide' | 'tall' }
 
 export const studiosGallery: GalleryImage[] = [
-  { src: '/images/hero-studio.png', alt: 'The largest upstairs studio, empty, lit from the window', span: 'wide' },
-  { src: '/images/room-a.png', alt: 'An upstairs studio with a desk beneath a floor-to-ceiling window', span: 'tall' },
+  { src: '/images/hero-studio.png', alt: 'The largest studio, empty, lit from the window', span: 'wide' },
+  { src: '/images/room-a.png', alt: 'A studio with a desk beneath a floor-to-ceiling window', span: 'tall' },
   { src: '/images/window-green.png', alt: 'Trees and grass seen through a studio window' },
   { src: '/images/detail-plaster.png', alt: 'Bare plaster meeting a timber door frame' },
-  { src: '/images/room-d.png', alt: 'Acoustic absorbers in the corner of an upstairs studio', span: 'tall' },
-  { src: '/images/corridor.png', alt: 'The upstairs corridor with a studio door ajar' },
-  { src: '/images/kitchen.png', alt: 'The upstairs kitchen and dining table', span: 'wide' },
-  { src: '/images/room-c.png', alt: 'A small upstairs room set up as a writing space' },
+  { src: '/images/room-d.png', alt: 'Acoustic absorbers in the corner of a studio', span: 'tall' },
+  { src: '/images/corridor.png', alt: 'The Studios corridor with a studio door ajar' },
+  { src: '/images/kitchen.png', alt: 'The Studios kitchen and dining table', span: 'wide' },
+  { src: '/images/room-c.png', alt: 'A small room set up as a writing space' },
 ]
 
 export const yardGallery: GalleryImage[] = [

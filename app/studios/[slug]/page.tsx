@@ -4,8 +4,9 @@ import Link from 'next/link'
 import { rooms, getRoom, getUnit, roomsForUnit, spaceCount } from '@/lib/rooms'
 import { peopleForRoom } from '@/lib/people'
 import { site, waitingListHref } from '@/lib/site'
-import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
+import { ActionLink, BackLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
 import { FloorPlan } from '@/components/floor-plan'
+import { PersonPortrait } from '@/components/person-portrait'
 import { StatusBadge } from '@/components/status-badge'
 
 export function generateStaticParams() {
@@ -40,7 +41,7 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
     { term: 'Type', detail: room.kind === 'office' ? 'Private office' : 'Music studio' },
     { term: 'Floor area', detail: room.area },
     { term: 'Dimensions', detail: room.dimensions },
-    { term: 'Unit', detail: `${unit.name} · ${unit.unitNumber}, ${unit.floor}` },
+    { term: 'Unit', detail: `${unit.name} · ${unit.unitNumber}` },
     { term: 'Shared spaces', detail: unit.sharedSpaces },
     { term: 'Status', detail: <StatusBadge status={room.status} /> },
   ]
@@ -52,12 +53,16 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
           <ol className="flex flex-wrap items-center gap-x-2">
             <li>
               <InlineLink href="/studios" className="no-underline hover:underline">
-                All rooms
+                The building
               </InlineLink>
             </li>
             <li aria-hidden>·</li>
             <li>
-              <InlineLink href={`/studios#${unit.id}`} className="no-underline hover:underline">
+              {/* The unit's own overview page, now that the rooms live there. */}
+              <InlineLink
+                href={`/studios/unit/${unit.id}`}
+                className="no-underline hover:underline"
+              >
                 {unit.shortName}
               </InlineLink>
             </li>
@@ -67,6 +72,12 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
             </li>
           </ol>
         </nav>
+
+        {/* A named step up to the unit. Returning to whatever page you came
+            from is the Back button in the header. */}
+        <BackLink href={`/studios/unit/${unit.id}`} className="type-label-ink mt-5">
+          Back to {unit.shortName}
+        </BackLink>
 
         <div className="mt-6 flex flex-wrap items-baseline gap-x-5 gap-y-3">
           <h1 className="type-display text-[36px] sm:text-[52px]">{room.name}</h1>
@@ -78,47 +89,36 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
         <p className="mt-7 max-w-[42rem] text-[18px] leading-relaxed">{room.blurb}</p>
       </Container>
 
-      {/* Plan and photographs side by side — the drawing leads. */}
+      {/* Photographs lead — the drawing follows further down the page. */}
       <section className="border-foreground/20 border-t py-12 sm:py-16">
         <Container>
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-14">
-            {/* The drawing is capped on small screens so its internal
-                dimension labels stay at a sane size. */}
-            <div className="max-w-[26rem] lg:w-[38%] lg:max-w-none lg:shrink-0">
-              <p className="type-label-ink mb-4">Scale plan</p>
-              <FloorPlan room={room} priority />
-            </div>
-
-            <div className="lg:flex-1">
-              <p className="type-label-ink mb-4">The room</p>
-              <div className="flex flex-col gap-4">
-                <Photo
-                  src={room.photos[0].src}
-                  alt={room.photos[0].alt}
-                  className="aspect-3/2"
-                  sizes="(min-width: 1024px) 58vw, 100vw"
-                  priority
-                />
-                {room.photos.length > 1 && (
-                  <ul className="grid grid-cols-2 gap-4">
-                    {room.photos.slice(1).map((photo) => (
-                      <li key={photo.src + photo.alt}>
-                        <Photo
-                          src={photo.src}
-                          alt={photo.alt}
-                          className="aspect-4/3"
-                          sizes="(min-width: 1024px) 29vw, 50vw"
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              <p className="type-label mt-3">
-                Room photography is indicative while the shoot is finished.
-              </p>
-            </div>
+          <p className="type-label-ink mb-6">The room</p>
+          <div className="flex flex-col gap-4">
+            <Photo
+              src={room.photos[0].src}
+              alt={room.photos[0].alt}
+              className="aspect-16/9"
+              sizes="(min-width: 1180px) 1116px, 100vw"
+              priority
+            />
+            {room.photos.length > 1 && (
+              <ul className="grid grid-cols-2 gap-4">
+                {room.photos.slice(1).map((photo) => (
+                  <li key={photo.src + photo.alt}>
+                    <Photo
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="aspect-4/3"
+                      sizes="(min-width: 1180px) 550px, 50vw"
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
+          <p className="type-label mt-3">
+            Room photography is indicative while the shoot is finished.
+          </p>
         </Container>
       </section>
 
@@ -142,6 +142,22 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
         </Container>
       </section>
 
+      {/*
+        The scale drawing. This is the only place on the site a per-room plan
+        appears — useful, but not what you want first.
+      */}
+      <section className="border-foreground/20 border-t py-12 sm:py-16">
+        <Container>
+          <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+            <p className="type-label md:w-[13rem] md:shrink-0">Scale plan</p>
+            {/* Capped so the drawing's internal dimension labels stay legible. */}
+            <div className="max-w-[26rem] flex-1">
+              <FloorPlan room={room} />
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Who is in it */}
       {occupants.length > 0 && (
         <section className="border-foreground/20 border-t py-12 sm:py-16">
@@ -151,9 +167,8 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
               <ul className="flex max-w-[46rem] flex-1 flex-col gap-8">
                 {occupants.map((person) => (
                   <li key={person.slug} className="flex gap-5">
-                    <Photo
-                      src={person.portrait}
-                      alt={`Portrait of ${person.name}`}
+                    <PersonPortrait
+                      person={person}
                       className="aspect-square w-20 shrink-0 sm:w-28"
                       sizes="112px"
                     />

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { site, waitingListHref } from '@/lib/site'
-import { rooms, units, roomsForUnit, studioCount, officeCount, spaceCount } from '@/lib/rooms'
-import { events, news, formatDate, formatDateShort } from '@/lib/news'
+import { units, roomsForUnit, studioCount, officeCount, spaceCount } from '@/lib/rooms'
+import { news, formatDateShort } from '@/lib/news'
 import {
   ActionLink,
   Container,
@@ -11,36 +11,28 @@ import {
   Section,
 } from '@/components/primitives'
 import { TerraceBand } from '@/components/brand'
-import { FloorPlan } from '@/components/floor-plan'
 import { StatusBadge } from '@/components/status-badge'
 
 export default function HomePage() {
-  const nextEvent = [...events].sort((a, b) => a.date.localeCompare(b.date))[0]
   const latestNews = [...news].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3)
-  const planStrip = rooms.slice(0, 4)
 
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <Container className="pt-14 pb-16 sm:pt-24 sm:pb-24">
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:gap-16">
+        {/* Buttons moved to "Why we exist", so the columns align at the top now. */}
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
           <div className="lg:flex-1">
-            <p className="type-label">{site.location}</p>
+            <p className="type-label">Brockley, SE4</p>
             <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
               Brockley Fields was built on a simple belief:{' '}
-              <span className="text-primary">people matter</span>.
+              <span className="text-primary">people matter</span>
             </h1>
             <p className="mt-8 max-w-[34rem] text-[18px] leading-relaxed">
-              One of the hardest parts of making a living from being creative is finding a space to
-              work &ndash; really work &ndash; and a place that is inspiring and affordable. So we
-              did something about it.
+              One of the hardest parts of being a creative person is finding a space to work. Then
+              finding a place to create that is inspiring and affordable is even harder, so we did
+              something about it.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <ActionLink href={waitingListHref}>Join the waiting list</ActionLink>
-              <ActionLink href="/studios" variant="outline">
-                See all {spaceCount} spaces
-              </ActionLink>
-            </div>
           </div>
 
           <div className="lg:w-[42%] lg:shrink-0">
@@ -51,94 +43,94 @@ export default function HomePage() {
               sizes="(min-width: 1024px) 42vw, 100vw"
               priority
             />
-            <p className="type-label mt-3">Studio 2 · Upstairs · 26 m²</p>
+            <p className="type-label mt-3">Studio 2 · Brockley Fields Studios · 26 m²</p>
           </div>
         </div>
       </Container>
 
-      {/* ── The terrace ───────────────────────────────────────────────────── */}
-      <TerraceBand
-        variant="perspective"
-        bleed
-        caption="The terrace on approach · Units 1 and 2"
-        className="pb-14 sm:pb-20"
-      />
-
-      {/* ── The plans ─────────────────────────────────────────────────────── */}
-      <section className="border-foreground/20 border-t py-14 sm:py-20">
-        <Container>
-          <div className="flex flex-col gap-4 md:flex-row md:items-baseline md:justify-between md:gap-12">
-            <div>
-              <p className="type-label">Every room, measured</p>
-              <h2 className="type-display mt-3 max-w-[30rem] text-[26px] text-balance sm:text-[32px]">
-                We publish the drawings, not just the adjectives.
-              </h2>
-            </div>
-            <InlineLink href="/studios" className="type-label-ink shrink-0 no-underline">
-              All {spaceCount} spaces →
-            </InlineLink>
-          </div>
-
-          <ul className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {planStrip.map((room, i) => (
-              <li key={room.slug}>
-                <Link
-                  href={`/studios/${room.slug}`}
-                  className="focus-visible:ring-primary group block focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:outline-none"
-                >
-                  <div className="transition-opacity group-hover:opacity-90">
-                    <FloorPlan room={room} priority={i < 2} />
-                  </div>
-                  <div className="mt-4 flex items-baseline justify-between gap-3">
-                    <h3 className="type-display group-hover:text-primary text-[18px] transition-colors">
-                      {room.name}
-                    </h3>
-                    <StatusBadge status={room.status} />
-                  </div>
-                  <p className="type-label mt-2">
-                    {room.area} · {units.find((u) => u.id === room.unit)?.shortName}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      {/* ── Two units ─────────────────────────────────────────────────────── */}
-      <Section
-        label="Two units"
-        title="Upstairs is for concentration. The Yard is for company."
-        intro={
+      {/* ── Why we exist ──────────────────────────────────────────────────── */}
+      {/*
+        Single column at every width: copy first, then the photograph as a wide
+        band beneath it. Side by side, the two never balanced — the copy runs long
+        enough that the image column had to be either a thin strip or taller than
+        the text beside it.
+      */}
+      <Section label="Why we exist">
+        {/* Full measure, so the heading gets the same scale as the hero. */}
+        <h2 className="type-display max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
+          To collaborate <span className="text-primary">and create</span>
+        </h2>
+        <div className="mt-6 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
-            Same building, two different temperaments. Between them: {studioCount} studios,{' '}
-            {officeCount} offices, two kitchens, two communal rooms and a kettle that is always just
-            about to boil.
+            Brockley Fields is based in the heart of Southeast London, with five carefully designed
+            studios and two commercial spaces which are full of natural light in which you want to
+            creatively spend your day. All are sound proofed, treated and with communal spaces.
           </p>
-        }
-      >
-        <TerraceBand
-          variant="elevation"
-          caption="Front elevation · both units, drawn to the same scale"
-          className="mt-12"
-        />
+          <p>
+            What&apos;s happened since has been the best part &ndash; songwriters, producers, mixers,
+            arrangers and managers who work side by side. We collaborate, spark ideas and create.
+            That&apos;s not accidental, it&apos;s the whole point.
+          </p>
+        </div>
+        <div className="mt-9 flex flex-wrap items-center gap-3">
+          <ActionLink href="/about" variant="fill">
+            Our story
+          </ActionLink>
+          <ActionLink href="/studios" variant="fill">
+            All {spaceCount} spaces
+          </ActionLink>
+          <ActionLink href={waitingListHref} variant="fill">
+            Waiting list
+          </ActionLink>
+        </div>
+        {/*
+          Contained rather than `bleed`, since it sits inside the Section's
+          container — the panorama still gets the full text measure to run across.
+        */}
+        <TerraceBand variant="elevation" className="mt-10" />
+      </Section>
 
-        <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
+      {/* ── The two units ─────────────────────────────────────────────────── */}
+      <Section>
+        <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
           {units.map((unit) => {
             const unitRooms = roomsForUnit(unit.id)
             return (
               <article key={unit.id} className="flex flex-col">
-                <Photo
-                  src={unit.hero.src}
-                  alt={unit.hero.alt}
-                  className="aspect-3/2"
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                />
-                <p className="type-label mt-4">
-                  {unit.unitNumber} · {unit.floor}
-                </p>
-                <h3 className="type-display mt-2 text-[22px]">{unit.name}</h3>
-                <p className="mt-3 text-[16px] leading-relaxed">{unit.intro}</p>
+                {/*
+                  Title above the photograph, as on the Studios page: the unit
+                  number alone as the eyebrow, so the heading can carry the
+                  unit's full name rather than the abbreviated shortName.
+                */}
+                <p className="type-label">{unit.unitNumber}</p>
+                {/*
+                  The heading and the photograph both lead to the unit. The
+                  photo link is hidden from assistive tech and taken out of the
+                  tab order so it does not repeat the heading link beside it.
+                */}
+                <h3 className="type-display mt-2 text-[22px]">
+                  <Link
+                    href={`/studios/unit/${unit.id}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {unit.name}
+                  </Link>
+                </h3>
+                <Link
+                  href={`/studios/unit/${unit.id}`}
+                  aria-hidden
+                  tabIndex={-1}
+                  className="group mt-4 block"
+                >
+                  <Photo
+                    src={unit.hero.src}
+                    alt={unit.hero.alt}
+                    className="aspect-3/2"
+                    imageClassName="transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(min-width: 768px) 45vw, 100vw"
+                  />
+                </Link>
+                <p className="mt-4 text-[16px] leading-relaxed">{unit.intro}</p>
                 <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
                   Shared: {unit.sharedSpaces}
                 </p>
@@ -164,66 +156,26 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── People matter ─────────────────────────────────────────────────── */}
-      <Section label="Why we exist">
-        <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-          <div className="lg:flex-1">
-            <h2 className="type-display max-w-[22rem] text-[28px] text-balance sm:text-[36px]">
-              That&apos;s not accidental. It&apos;s the whole point.
-            </h2>
-            <div className="mt-7 flex max-w-[38rem] flex-col gap-4 text-[17px] leading-relaxed">
-              <p>
-                Brockley Fields is based in the heart of Southeast London, with five carefully
-                designed studios which are full of natural light, soundproofed, treated and with
-                communal spaces. This is a place where you actually want to creatively spend your
-                day.
-              </p>
-              <p>
-                What&apos;s happened since has been the best part &ndash; songwriters, producers,
-                mixers, arrangers and managers who work side by side. We collaborate, spark ideas
-                and create.
-              </p>
-              <p>
-                <InlineLink href="/about">Read how the building came about</InlineLink>, or{' '}
-                <InlineLink href="/part-of-the-family">meet the family</InlineLink>.
-              </p>
-            </div>
-          </div>
-          <div className="lg:w-[38%] lg:shrink-0">
-            <Photo
-              src="/images/kitchen.png"
-              alt="The shared kitchen with a long wooden table and mismatched chairs"
-              className="aspect-4/5"
-              sizes="(min-width: 1024px) 38vw, 100vw"
-            />
-            <p className="type-label mt-3">The kitchen, where most of it happens</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* ── Next event + news ─────────────────────────────────────────────── */}
-      <Section label="What's on">
+      {/* ── Latest news ───────────────────────────────────────────────────── */}
+      {/*
+        Events are on hold, so this is a single news column with the heading on
+        the left rather than the old "next event + lately" two-column split.
+      */}
+      <Section label="News">
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
-          <div className="lg:w-[46%] lg:shrink-0">
-            <p className="type-label-ink text-primary">Next up</p>
-            <div className="border-foreground/85 mt-4 border-t pt-6">
-              <p className="type-label">{formatDate(nextEvent.date)}</p>
-              <h3 className="type-display mt-2 text-[26px] sm:text-[30px]">{nextEvent.title}</h3>
-              <p className="mt-4 text-[16px] leading-relaxed">{nextEvent.description}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {nextEvent.cta && (
-                  <ActionLink href={nextEvent.cta.href}>{nextEvent.cta.label}</ActionLink>
-                )}
-                <ActionLink href="/events-and-news" variant="outline">
-                  Everything else on
-                </ActionLink>
-              </div>
+          <div className="lg:w-[38%] lg:shrink-0">
+            <h2 className="type-display max-w-[20rem] text-[26px] text-balance sm:text-[30px]">
+              What the residents have been up to.
+            </h2>
+            <div className="mt-6">
+              <ActionLink href="/news" variant="outline">
+                All news
+              </ActionLink>
             </div>
           </div>
 
           <div className="lg:flex-1">
-            <p className="type-label-ink">Lately</p>
-            <ul className="border-foreground/20 mt-4 flex flex-col border-t">
+            <ul className="border-foreground/20 flex flex-col border-t">
               {latestNews.map((item) => {
                 const d = formatDateShort(item.date)
                 return (

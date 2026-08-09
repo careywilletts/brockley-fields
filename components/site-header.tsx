@@ -37,7 +37,7 @@ export function SiteHeader() {
           <Logo priority className="h-11 sm:h-14" />
         </Link>
 
-        <div className="hidden items-baseline gap-6 lg:flex">
+        <div className="ml-auto hidden items-baseline gap-6 lg:flex">
           <a
             href={site.instagramUrl}
             target="_blank"

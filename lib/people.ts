@@ -1,12 +1,13 @@
 /**
- * PLACEHOLDER CONTENT.
+ * The people of Brockley Fields. Real content only — no placeholders.
  *
- * Every name, credit, quote and link below is a stand-in so the layout can be
- * judged with realistic content in it. Swap each entry for the real resident
- * once bios, credits, portraits and handles have been collected.
+ * All seven people in the building are listed. Adding someone with a
+ * `roomSlug` puts them on the Community page, the Part of the Family page and
+ * their room page at once.
  *
- * `group: 'resident'`  → Community page (formal tenants)
- * `group: 'family'`    → Part of the Family page (extended circle)
+ * `portrait` and `quote` stay undefined until we have the genuine article.
+ * Never fill them with an invented quote or a generated likeness — every page
+ * is built to omit both cleanly.
  */
 
 export type PersonLink = { label: string; href: string }
@@ -16,262 +17,168 @@ export type Person = {
   name: string
   group: 'resident' | 'family'
   disciplines: string[]
+  /**
+   * What to show where there is only room for one line of role. Defaults to the
+   * first discipline, which is enough for most people but drops the second half
+   * of a double act like songwriter / producer.
+   */
+  shortRole?: string
   /** One line that does the work of an introduction. */
   oneLiner: string
   /** 2–3 notable credits. Leave empty if they have none listed. */
   credits: string[]
-  /** Their words about the building. */
-  quote: string
-  bio: string
-  portrait: string
-  handle: string
+  /** Their words about the building. Undefined until they have given us one. */
+  quote?: string
+  /**
+   * Pass an array to break a longer bio into paragraphs rather than one
+   * unreadable block. Both pages that render a bio handle either form.
+   */
+  bio: string | string[]
+  /** A real photograph. Undefined until they have sent one. */
+  portrait?: string
+  /** Instagram handle. Undefined for people who do not have one. */
+  handle?: string
   links: PersonLink[]
   /** Only for residents — matches a slug in lib/rooms.ts */
   roomSlug?: string
+  /**
+   * Further rooms the same person occupies, for anyone holding more than one
+   * space. Every page reads rooms through `personRoomSlugs` so a second room
+   * shows up everywhere at once.
+   */
+  alsoRoomSlugs?: string[]
   /** Shown instead of a room for extended-circle people. */
   relationship?: string
 }
 
 export const people: Person[] = [
+  // ── Brockley Fields Studios ────────────────────────────────────────────
   {
-    slug: 'naomi-achebe',
-    name: 'Naomi Achebe',
+    slug: 'scott-verrill',
+    name: 'Scott Verrill',
     group: 'resident',
-    disciplines: ['Songwriter', 'Topliner'],
-    oneLiner: 'Writes the melody before anyone has decided what the song is about.',
-    credits: ['Placeholder credit — major label album, 2024', 'Placeholder credit — sync, 2023'],
-    quote:
-      'I had been writing in bedrooms for eight years. Having a door that shuts and a window that opens changed how much I get done in a day.',
-    bio: 'Placeholder bio. Naomi has been writing for other artists since her early twenties, mostly in the space between pop and soul. She took Studio 1 upstairs when the building opened and has barely left since.',
-    portrait: '/images/person-1.png',
-    handle: '@naomiachebe',
-    links: [
-      { label: 'Spotify', href: 'https://open.spotify.com' },
-      { label: 'Instagram', href: 'https://instagram.com' },
-    ],
+    disciplines: ['Singer', 'Songwriter', 'Producer'],
+    oneLiner: 'One half of Good Neighbours, writing and producing out of Studio 1.',
+    credits: ['Good Neighbours', 'KYKO'],
+    bio: 'Scott Verrill is a singer, songwriter and producer from South London. He is best known as one half of the viral indie-rock duo Good Neighbours alongside Oli Fox, and previously made music and released projects under solo aliases including KYKO.',
+    portrait: '/images/people/scott-verrill.webp',
+    handle: '@itsgoodscott',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/itsgoodscott' }],
     roomSlug: 'upstairs-studio-1',
   },
   {
-    slug: 'rob-danson',
-    name: 'Rob Danson',
+    slug: 'carey-willetts',
+    name: 'Carey Willetts',
     group: 'resident',
-    disciplines: ['Mix Engineer'],
-    oneLiner: 'Twenty years of records, mixed loud and finished on time.',
-    credits: ['Placeholder credit — album mix, 2025', 'Placeholder credit — single mix, 2024'],
-    quote:
-      'The soundproofing is the real thing, not a bit of foam and a promise. I can work at proper level at nine at night and nobody knocks.',
-    bio: 'Placeholder bio. Rob mixes records — rock, indie, the occasional country session that arrives by accident. He shares the big upstairs room and has strong opinions about monitor placement.',
-    portrait: '/images/person-2.png',
-    handle: '@robdansonmix',
+    disciplines: ['Songwriter', 'Producer', 'Founder'],
+    shortRole: 'Songwriter / Producer',
+    oneLiner: 'Songwriter and producer. Founded the building, and writes and produces from Studio 2.',
+    credits: ['Athlete', 'Dermot Kennedy', 'Freya Ridings', 'Kingfishr'],
+    bio: [
+      'Carey was a founding member of the multi-platinum-selling indie band Athlete, whose hit Wires won an Ivor Novello Award for Best Contemporary Single.',
+      'Carey is now a songwriter and producer who has worked extensively with Dermot Kennedy since 2017, and collaborated with Freya Ridings, Asha Banks, Tom Speight, Kingfishr and You Me At Six.',
+      'Carey was shortlisted for Breakthrough Producer of the Year at the Music Producers Guild Awards.',
+      'Carey also runs a label called Brickfield Records, which has so far released EPs by Jack Cullen and Harry Lyon.',
+    ],
+    portrait: '/images/people/carey-willetts.jpg',
+    // His own account rather than the building's. @brockleyfields is still
+    // listed on its own in `allHandles` below, so the wall is unaffected.
+    handle: '@carey.willetts',
     links: [
-      { label: 'Website', href: 'https://example.com' },
-      { label: 'Instagram', href: 'https://instagram.com' },
+      { label: 'Brickfield Records', href: 'https://brickfieldrecords.com/index.php' },
+      { label: '@brickfield.records', href: 'https://instagram.com/brickfield.records' },
+      { label: 'Jax Management', href: 'https://jaxmanagement.com/carey-willetts' },
     ],
     roomSlug: 'upstairs-studio-2',
   },
   {
-    slug: 'dev-raichura',
-    name: 'Dev Raichura',
+    slug: 'matt-rist',
+    name: 'Matt Rist',
     group: 'resident',
-    disciplines: ['Producer', 'Programmer'],
-    oneLiner: 'Builds tracks out of almost nothing, then keeps going.',
-    credits: ['Placeholder credit — EP production, 2025'],
-    quote:
-      'I came for the room and stayed for the people upstairs. Three of the things I am proudest of started as a conversation by the kettle.',
-    bio: 'Placeholder bio. Dev produces and programmes, mostly for new artists, and is the person everyone asks when a session needs an extra pair of ears at short notice.',
-    portrait: '/images/person-3.png',
-    handle: '@devraichura',
-    links: [
-      { label: 'SoundCloud', href: 'https://soundcloud.com' },
-      { label: 'Instagram', href: 'https://instagram.com' },
-    ],
-    roomSlug: 'upstairs-studio-2',
-  },
-  {
-    slug: 'mei-lindqvist',
-    name: 'Mei Lindqvist',
-    group: 'resident',
-    disciplines: ['Arranger', 'String Writer'],
-    oneLiner: 'Writes the parts that make a demo sound like a record.',
-    credits: ['Placeholder credit — string arrangement, 2024', 'Placeholder credit — film score, 2023'],
-    quote:
-      'Fourteen square metres and a window is all I have ever needed. The rest is a piano and no interruptions.',
-    bio: 'Placeholder bio. Mei arranges strings and horns for records made all over London and writes for picture when the deadline allows. Studio 3 upstairs is mostly a piano and a lot of manuscript paper.',
-    portrait: '/images/person-4.png',
-    handle: '@meilindqvist',
-    links: [
-      { label: 'Website', href: 'https://example.com' },
-      { label: 'Spotify', href: 'https://open.spotify.com' },
-    ],
+    disciplines: ['Songwriter', 'Music Producer', 'Audio Engineer'],
+    oneLiner: 'Started out as a label engineer and has been making records ever since.',
+    credits: ['The 1975', 'Freya Ridings', 'Sekou'],
+    bio: 'Matt Rist is a London-based songwriter, music producer and audio engineer. Matt began his career as an in-house engineer for the UK independent label Good Soldier and has since collaborated with major labels including Island, Republic, Capitol and EMI, contributing to projects for artists such as The 1975, Freya Ridings and Sekou.',
+    portrait: '/images/people/matt-rist.webp',
+    handle: '@mattrist__',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/mattrist__' }],
     roomSlug: 'upstairs-studio-3',
   },
   {
-    slug: 'kofi-bell-hughes',
-    name: 'Kofi Bell-Hughes',
+    slug: 'josh-ager',
+    name: 'Josh Ager',
     group: 'resident',
-    disciplines: ['Producer', 'Multi-instrumentalist'],
-    oneLiner: 'Plays everything, badly enough to be interesting and well enough to keep.',
-    credits: ['Placeholder credit — album production, 2025', 'Placeholder credit — remix, 2024'],
-    quote:
-      'The Yard is the sociable end of the building. You leave your door open and something happens.',
-    bio: 'Placeholder bio. Kofi produces and plays, and has slowly filled the Yard studio with instruments other people are welcome to borrow.',
-    portrait: '/images/person-5.png',
-    handle: '@kofibh',
-    links: [
-      { label: 'Spotify', href: 'https://open.spotify.com' },
-      { label: 'Instagram', href: 'https://instagram.com' },
-    ],
+    disciplines: ['Mixing Engineer', 'Production Engineer'],
+    oneLiner: 'Over a hundred released tracks across UK indie-pop and alternative.',
+    credits: ['Beabadoobee', 'Matilda Mann', 'Sofy', 'Girli'],
+    bio: 'Josh Ager is a London-based mixing and production engineer. He has worked on over 100 released tracks across the UK indie-pop and alternative scenes, collaborating with notable acts including Sofy, Matilda Mann, Girli and Beabadoobee.',
+    portrait: '/images/people/josh-ager.jpg',
+    handle: '@joshager',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/joshager' }],
+    roomSlug: 'upstairs-studio-3',
+  },
+  // ── Brockley Fields The Yard ───────────────────────────────────────────
+  {
+    slug: 'atticus-blue',
+    name: 'Atticus Blue',
+    group: 'resident',
+    disciplines: ['Singer-Songwriter', 'Producer'],
+    oneLiner: 'Self-taught, and road-tested on the busiest pavements in London.',
+    credits: [],
+    bio: "Atticus Blue is a London-based independent singer-songwriter and self-taught music producer. He first gained local recognition through prominent street busking performances in areas like London's Southbank and Leicester Square.",
+    portrait: '/images/people/atticus-blue.png',
+    handle: '@atticus.blue',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/atticus.blue' }],
     roomSlug: 'yard-studio-1',
   },
   {
-    slug: 'sam-ojo',
-    name: 'Sam Ojo',
+    slug: 'rich-cooper',
+    name: 'Rich Cooper',
     group: 'resident',
-    disciplines: ['Producer', 'Beatmaker'],
-    oneLiner: 'Makes beats fast and finishes them slowly.',
-    credits: ['Placeholder credit — mixtape production, 2025'],
-    quote:
-      'I am the youngest person here by about a decade and it is the best thing that has happened to my work.',
-    bio: 'Placeholder bio. Sam shares the Yard studio, works mostly in rap and club records, and is the reason the building now owns a decent drum machine.',
-    portrait: '/images/person-8.png',
-    handle: '@samojo',
-    links: [
-      { label: 'SoundCloud', href: 'https://soundcloud.com' },
-      { label: 'Instagram', href: 'https://instagram.com' },
-    ],
-    roomSlug: 'yard-studio-1',
-  },
-  {
-    slug: 'orla-finn',
-    name: 'Orla Finn',
-    group: 'resident',
-    disciplines: ['Songwriter', 'Artist'],
-    oneLiner: 'Writes her own records and other people’s when they ask nicely.',
-    credits: ['Placeholder credit — debut album, 2024'],
-    quote:
-      'The L-shape gives me a corner to sing in that I did not have to build. I did not know I wanted that until I had it.',
-    bio: 'Placeholder bio. Orla is an artist and writer working out of the L-shaped Yard studio, where the short leg has quietly become a vocal booth.',
-    portrait: '/images/person-6.png',
-    handle: '@orlafinnmusic',
-    links: [
-      { label: 'Spotify', href: 'https://open.spotify.com' },
-      { label: 'Rough Trade', href: 'https://roughtrade.com' },
-    ],
+    disciplines: ['Producer', 'Writer', 'Mixer'],
+    oneLiner: 'Produces, writes and mixes across alternative, pop and indie.',
+    credits: ['Rina Sawayama', 'CMAT', 'Tom Odell', 'Josef Salvat', 'The Temper Trap'],
+    bio: 'Rich Cooper is a London-based music producer, writer and mixer known for his work with prominent alternative, pop and indie artists such as Josef Salvat, CMAT, Rina Sawayama, Tom Odell and The Temper Trap.',
+    portrait: '/images/people/rich-cooper.jpg',
+    handle: '@rich_cooper_',
+    links: [{ label: 'Instagram', href: 'https://instagram.com/rich_cooper_' }],
     roomSlug: 'yard-studio-2',
   },
   {
-    slug: 'delroy-pierce',
-    name: 'Delroy Pierce',
+    slug: 'david-eserin',
+    name: 'David Eserin',
     group: 'resident',
-    disciplines: ['Mixer', 'Engineer'],
-    oneLiner: 'Has recorded more vocals than anyone else in the postcode.',
-    credits: ['Placeholder credit — album engineering, 2025', 'Placeholder credit — live album, 2022'],
-    quote:
-      'Affordable and treated properly is not a combination you find often. I looked for two years before this.',
-    bio: 'Placeholder bio. Delroy engineers and mixes, largely vocal-led records, and shares the L-shaped Yard studio with Orla.',
-    portrait: '/images/person-7.png',
-    handle: '@delroypierce',
-    links: [
-      { label: 'Website', href: 'https://example.com' },
-      { label: 'Instagram', href: 'https://instagram.com' },
-    ],
-    roomSlug: 'yard-studio-2',
-  },
-  {
-    slug: 'yasmin-haddad',
-    name: 'Yasmin Haddad',
-    group: 'resident',
-    disciplines: ['Artist Manager'],
-    oneLiner: 'Manages four artists and answers the phone before anyone else is up.',
-    credits: [],
-    quote:
-      'Being in the same building as the people who make the records my artists need is worth more than any office in town.',
-    bio: 'Placeholder bio. Yasmin runs her management roster out of Office 1 in the Yard, and is the first person residents ask when a contract lands in their inbox.',
-    portrait: '/images/person-9.png',
-    handle: '@yasminhaddadmgmt',
-    links: [{ label: 'Website', href: 'https://example.com' }],
-    roomSlug: 'yard-office-1',
-  },
-  {
-    slug: 'gerry-wallace',
-    name: 'Gerry Wallace',
-    group: 'resident',
-    disciplines: ['Publisher', 'A&R'],
-    oneLiner: 'Signs writers, then leaves them alone to write.',
-    credits: [],
-    quote:
-      'I have signed two people from this building without leaving the building. That is not normally how it works.',
-    bio: 'Placeholder bio. Gerry runs a small publishing operation from Office 2 and can usually be found at the kitchen table rather than at his desk.',
-    portrait: '/images/person-10.png',
-    handle: '@gerrywallacepub',
-    links: [{ label: 'Website', href: 'https://example.com' }],
-    roomSlug: 'yard-office-2',
-  },
-
-  // ── Part of the family ─────────────────────────────────────────────────
-  {
-    slug: 'tasha-boateng',
-    name: 'Tasha Boateng',
-    group: 'family',
-    disciplines: ['Session Vocalist'],
-    oneLiner: 'In the building most weeks, on half the records that leave it.',
-    credits: ['Placeholder credit — backing vocals, 2025'],
-    quote: 'I do not have a room here. I am here constantly.',
-    bio: 'Placeholder bio. Tasha sings on sessions across both units and has an unofficial mug in the upstairs kitchen.',
-    portrait: '/images/person-11.png',
-    handle: '@tashaboateng',
-    links: [{ label: 'Instagram', href: 'https://instagram.com' }],
-    relationship: 'Regular collaborator',
-  },
-  {
-    slug: 'priya-sandhu',
-    name: 'Priya Sandhu',
-    group: 'family',
-    disciplines: ['Music Supervisor'],
-    oneLiner: 'Puts the building’s records into other people’s films.',
-    credits: ['Placeholder credit — feature film supervision, 2024'],
-    quote: 'I come here to listen to things before anyone else can.',
-    bio: 'Placeholder bio. Priya supervises music for film and television and treats Brockley Fields as her first port of call.',
-    portrait: '/images/person-12.png',
-    handle: '@priyasandhu',
-    links: [{ label: 'Website', href: 'https://example.com' }],
-    relationship: 'Adjacent business',
-  },
-  {
-    slug: 'jean-marsh',
-    name: 'Jean Marsh',
-    group: 'family',
-    disciplines: ['Studio Manager', 'Bookings'],
-    oneLiner: 'Knows where everything is and who borrowed it.',
-    credits: [],
-    quote: 'Somebody has to run the diary, and it turns out I like it.',
-    bio: 'Placeholder bio. Jean handles bookings, keys and the waiting list, and has been keeping the building upright since the second month.',
-    portrait: '/images/person-13.png',
-    handle: '@brockleyfields',
+    disciplines: ['Product Leader', 'Entrepreneur', 'Music Technology'],
+    oneLiner: 'Builds the software the rest of the building ends up using.',
+    credits: ['Reflex', 'New Sonic Arts', 'Version Music'],
+    portrait: '/images/people/david-eserin.png',
+    bio: 'David Eserin is a seasoned product leader and entrepreneur in the music technology sector, with a track record of building groundbreaking creative software — from frameworks like Reflex to music tools like New Sonic Arts and open platforms like Version Music — bridging production, distribution and marketing through next-generation tech.',
     links: [],
-    relationship: 'Keeps the place running',
-  },
-  {
-    slug: 'ezra-quaye',
-    name: 'Ezra Quaye',
-    group: 'family',
-    disciplines: ['Drummer'],
-    oneLiner: 'The reason the neighbours have never once complained.',
-    credits: ['Placeholder credit — album drums, 2025'],
-    quote: 'They built a room I can actually hit things in. That is rarer than it sounds.',
-    bio: 'Placeholder bio. Ezra plays on sessions in both units and tests the soundproofing more thoroughly than anyone.',
-    portrait: '/images/person-14.png',
-    handle: '@ezraquaye',
-    links: [{ label: 'Instagram', href: 'https://instagram.com' }],
-    relationship: 'Regular collaborator',
+    // Takes both offices in the Yard as one commercial space.
+    roomSlug: 'yard-office-1',
+    alsoRoomSlugs: ['yard-office-2'],
   },
 ]
 
 export const residents = people.filter((p) => p.group === 'resident')
-export const family = people.filter((p) => p.group === 'family')
+
+/**
+ * Everyone who works in the building is part of the family, so this is the
+ * whole list rather than a subset. Kept as its own export because the Part of
+ * the Family page reads better saying what it means.
+ */
+export const family = people
 
 export function getPerson(slug: string): Person | undefined {
   return people.find((p) => p.slug === slug)
+}
+
+/**
+ * A bio as paragraphs, whether it was written as one string or several. Both
+ * pages that show a bio read it through here so the two stay in step.
+ */
+export function bioParagraphs(person: Person): string[] {
+  return Array.isArray(person.bio) ? person.bio : [person.bio]
 }
 
 export function peopleForRoom(slugs: string[]): Person[] {
@@ -280,5 +187,16 @@ export function peopleForRoom(slugs: string[]): Person[] {
     .filter((p): p is Person => Boolean(p))
 }
 
+/**
+ * Every room a person occupies, primary first. Use this rather than reading
+ * `roomSlug` directly so anyone holding two rooms is handled everywhere.
+ */
+export function personRoomSlugs(person: Person): string[] {
+  return person.roomSlug ? [person.roomSlug, ...(person.alsoRoomSlugs ?? [])] : []
+}
+
 /** Every handle whose posts feed the aggregated wall. */
-export const allHandles = ['@brockleyfields', ...people.map((p) => p.handle)]
+export const allHandles = [
+  '@brockleyfields',
+  ...people.map((p) => p.handle).filter((h): h is string => Boolean(h)),
+]

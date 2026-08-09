@@ -11,11 +11,11 @@ export const site = {
 } as const
 
 export const nav = [
+  { label: 'Home', href: '/' },
   { label: 'Studios', href: '/studios' },
-  { label: 'Community', href: '/community' },
   { label: 'Part of the Family', href: '/part-of-the-family' },
-  { label: 'Music', href: '/music' },
-  { label: 'Events & News', href: '/events-and-news' },
+  { label: 'Community', href: '/community' },
+  { label: 'News', href: '/news' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'About', href: '/about' },
 ] as const

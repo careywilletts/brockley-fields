@@ -39,7 +39,14 @@ export function SiteFooter() {
           <nav aria-label="Footer">
             <p className="type-label">Pages</p>
             <ul className="mt-2 flex flex-col gap-1 text-[15px] sm:columns-2 sm:gap-x-12">
-              {[...nav, { label: 'Waiting List', href: waitingListHref }].map((item) => (
+              {/*
+                Home is a header-nav affordance only — the footer already sits at the
+                bottom of the page and its logo links home, so it stays as it was.
+              */}
+              {[
+                ...nav.filter((item) => item.href !== '/'),
+                { label: 'Waiting List', href: waitingListHref },
+              ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="hover:text-primary transition-colors">
                     {item.label}

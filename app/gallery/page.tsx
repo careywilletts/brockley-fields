@@ -14,7 +14,7 @@ import { waitingListHref } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
-    'Photographs of both units at Brockley Fields Studios — the upstairs studios and the Yard, the kitchens, the corridors and the courtyard.',
+    'Photographs of both units at Brockley Fields — the Studios and the Yard, the kitchens, the corridors and the courtyard.',
 }
 
 /**
@@ -105,7 +105,8 @@ export default function GalleryPage() {
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <p className="max-w-[34rem] text-[17px] leading-relaxed">
               Photographs only get you so far. The rooms are best understood by standing in them —
-              come to an <InlineLink href="/events-and-news">open day</InlineLink>.
+              put your name on the <InlineLink href={waitingListHref}>waiting list</InlineLink> and
+              we will let you know when you can visit.
             </p>
             <ActionLink href={waitingListHref}>Join the waiting list</ActionLink>
           </div>
