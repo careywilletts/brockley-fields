@@ -21,6 +21,7 @@ export default function PartOfTheFamilyPage() {
             Part of <span className="text-primary">the family</span>
           </>
         }
+        intro={<p>Meet the people who call Brockley Fields home.</p>}
       />
 
       {/*
