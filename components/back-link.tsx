@@ -96,12 +96,23 @@ export function NavDepthTracker() {
   // makes it the one dependable signal for telling a step through the history
   // apart from a fresh page, which guessing from paths alone cannot do when the
   // same page appears twice in the record.
-  // BISECT3: popstate listener disabled.
+  useIsomorphicLayoutEffect(() => {
+    const onPopState = () => {
+      traversalPending = true
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
   // Still runs on every route change, so the record keeps up even on pages with
   // no Back control on screen to read it.
-  // BISECT4: record() disabled too. Tracker now does nothing but read pathname.
-  console.log('[v0] BISECT4 tracker render', pathname)
+  useIsomorphicLayoutEffect(() => {
+    record(pathname)
+    // Always notify, not just on a change: a control may have rendered from the
+    // record before this ran and be showing the fallback answer. This is a layout
+    // effect, so the corrected value is in place before the browser paints.
+    notify()
+  }, [pathname])
 
   return null
 }

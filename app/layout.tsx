@@ -1,6 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { NavDepthTracker } from '@/components/back-link'
 import { Archivo, Work_Sans } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
@@ -55,7 +54,6 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <NavDepthTracker />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
