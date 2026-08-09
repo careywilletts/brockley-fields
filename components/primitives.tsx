@@ -32,7 +32,8 @@ export function Section({
   id,
 }: {
   label?: string
-  title?: string
+  /** ReactNode rather than string so a section can highlight part of its title. */
+  title?: React.ReactNode
   intro?: React.ReactNode
   children?: React.ReactNode
   className?: string
@@ -43,9 +44,13 @@ export function Section({
       <Container>
         {(label || title || intro) && (
           <div className="flex flex-col gap-4 md:flex-row md:gap-12">
-            <div className="md:w-[13rem] md:shrink-0">
-              {label && <p className="type-label">{label}</p>}
-            </div>
+            {/* Only reserve the label gutter when there is a label, so an
+                unlabelled section runs flush to the left margin. */}
+            {label && (
+              <div className="md:w-[13rem] md:shrink-0">
+                <p className="type-label">{label}</p>
+              </div>
+            )}
             <div className="max-w-[46rem]">
               {title && <h2 className="type-display text-[26px] sm:text-[32px]">{title}</h2>}
               {intro && (

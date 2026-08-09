@@ -89,8 +89,12 @@ export default function CommunityPage() {
         rather than the founding story, and leads into the full bios below.
       */}
       <Section
-        label="Brockley"
-        title="The best place in London"
+        title={
+          <>
+            Brockley
+            <span className="text-primary block">The best place in London</span>
+          </>
+        }
         intro={
           <>
             <p>
@@ -105,18 +109,20 @@ export default function CommunityPage() {
           </>
         }
       >
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {/* Both images are close to square, so an equal pair keeps the murals
+            intact rather than cropping them to a wider ratio. */}
+        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Photo
-            src="/images/brockley.png"
-            alt="A quiet residential street in Brockley, southeast London"
-            className="border-foreground/20 aspect-4/3 border sm:col-span-2"
-            sizes="(min-width: 640px) 60vw, 100vw"
+            src="/images/brockley-bridge.jpg"
+            alt="The railway bridge in Brockley, with a blue and yellow BROCKLEY mural painted on the brick arch beneath it"
+            className="border-foreground/20 aspect-square border"
+            sizes="(min-width: 640px) 45vw, 100vw"
           />
           <Photo
-            src="/images/yard.png"
-            alt="The enclosed courtyard behind the Yard unit"
-            className="border-foreground/20 aspect-4/3 border"
-            sizes="(min-width: 640px) 30vw, 100vw"
+            src="/images/se4.jpg"
+            alt="A green corner shop in Brockley beside gates painted with a large blue SE4 mural"
+            className="border-foreground/20 aspect-square border"
+            sizes="(min-width: 640px) 45vw, 100vw"
           />
         </div>
       </Section>
