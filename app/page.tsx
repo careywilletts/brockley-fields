@@ -64,9 +64,8 @@ export default function HomePage() {
         <div className="mt-6 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           <p>
             Brockley Fields is based in the heart of Southeast London, with five carefully designed
-            studios and two commercial spaces which are full of natural light and spaces in which you
-            want to creatively spend your day. All are sound proofed, treated and with communal
-            spaces.
+            studios and two commercial spaces which are full of natural light in which you want to
+            creatively spend your day. All are sound proofed, treated and with communal spaces.
           </p>
           <p>
             What&apos;s happened since has been the best part &ndash; songwriters, producers, mixers,
