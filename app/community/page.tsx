@@ -21,7 +21,7 @@ export default function CommunityPage() {
       <PageHeader
         title={
           <>
-            Brockley
+            Brockley, SE4
             <span className="text-primary block">The best place in London</span>
           </>
         }

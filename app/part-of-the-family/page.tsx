@@ -16,7 +16,7 @@ export default function PartOfTheFamilyPage() {
     <>
       <PageHeader
         label="Everyone in the building"
-        title="Everybody here is part of the family."
+        title="Part of the family"
         intro={
           <>
             <p>
