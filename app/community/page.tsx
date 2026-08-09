@@ -1,94 +1,20 @@
 import type { Metadata } from 'next'
-import { residents, personRoomSlugs } from '@/lib/people'
-import { units, getRoom, spaceCount } from '@/lib/rooms'
 import { site } from '@/lib/site'
-import {
-  ActionLink,
-  Container,
-  InlineLink,
-  PageHeader,
-  Photo,
-  Section,
-} from '@/components/primitives'
-import { PersonCard } from '@/components/person-card'
+import { ActionLink, Container, PageHeader, Photo, Section } from '@/components/primitives'
 
 export const metadata: Metadata = {
   title: 'Community',
-  description: `The songwriters, producers, engineers, managers and publishers who work out of Brockley Fields Studios in ${site.location}. ${residents.length} residents across two units.`,
+  description: `Brockley Fields Studios sits in Brockley, ${site.location} — the neighbourhood, the extended family of writers and producers who pass through, and the wider community around the building.`,
 }
 
 export default function CommunityPage() {
-  const disciplines = Array.from(new Set(residents.flatMap((p) => p.disciplines))).sort()
-
   return (
     <>
-      <PageHeader
-        label={`${residents.length} residents`}
-        title="The building is the people in it."
-        intro={
-          <>
-            <p>
-              {site.mission} These are the people who hold the keys — writers, producers and
-              engineers, spread across two units and {spaceCount} spaces.
-            </p>
-            <p>
-              Everybody here is part of the family, and their full bios are on{' '}
-              <InlineLink href="/part-of-the-family">Part of the Family</InlineLink>.
-            </p>
-          </>
-        }
-      />
-
-      {/* What is actually in the building, stated plainly. */}
-      <Container className="pb-14 sm:pb-20">
-        <ul className="border-foreground/85 flex flex-wrap gap-x-6 gap-y-2 border-t pt-4">
-          {disciplines.map((discipline) => (
-            <li key={discipline} className="type-label">
-              {discipline}
-            </li>
-          ))}
-        </ul>
-      </Container>
-
-      {units.map((unit) => {
-        // Group by the room's actual unit rather than by slug shape.
-        const unitPeople = residents.filter((person) =>
-          personRoomSlugs(person).some((slug) => getRoom(slug)?.unit === unit.id),
-        )
-        if (unitPeople.length === 0) return null
-
-        return (
-          <section
-            key={unit.id}
-            id={unit.id}
-            className="border-foreground/20 border-t py-14 sm:py-20"
-          >
-            <Container>
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
-                <h2 className="type-display text-[26px] sm:text-[34px]">{unit.name}</h2>
-                <p className="type-label shrink-0 whitespace-nowrap">
-                  {unitPeople.length} {unitPeople.length === 1 ? 'person' : 'people'} ·{' '}
-                  {unit.unitNumber}
-                </p>
-              </div>
-
-              <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-                {unitPeople.map((person, i) => (
-                  <li key={person.slug}>
-                    <PersonCard person={person} priority={unit.id === 'studios' && i < 2} />
-                  </li>
-                ))}
-              </ul>
-            </Container>
-          </section>
-        )
-      })}
-
       {/*
-        The neighbourhood, moved over from the about page: it sits with the people
-        rather than the founding story, and leads into the full bios below.
+        The page opens on the neighbourhood itself. The residents are not listed
+        here any more: their full bios live on Part of the Family, linked below.
       */}
-      <Section
+      <PageHeader
         title={
           <>
             Brockley
@@ -108,15 +34,18 @@ export default function CommunityPage() {
             </p>
           </>
         }
-      >
-        {/* Both images are close to square, so an equal pair keeps the murals
-            intact rather than cropping them to a wider ratio. */}
-        <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
+      />
+
+      {/* Both images are close to square, so an equal pair keeps the murals
+          intact rather than cropping them to a wider ratio. */}
+      <Container className="pb-14 sm:pb-20">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Photo
             src="/images/brockley-bridge.jpg"
             alt="The railway bridge in Brockley, with a blue and yellow BROCKLEY mural painted on the brick arch beneath it"
             className="border-foreground/20 aspect-square border"
             sizes="(min-width: 640px) 45vw, 100vw"
+            priority
           />
           <Photo
             src="/images/se4.jpg"
@@ -125,13 +54,13 @@ export default function CommunityPage() {
             sizes="(min-width: 640px) 45vw, 100vw"
           />
         </div>
-      </Section>
+      </Container>
 
-      <section className="border-foreground/20 border-t">
+      <section id="extended-family" className="border-foreground/20 border-t">
         <Container className="py-16 sm:py-20">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12">
             <div>
-              <p className="type-label">The longer read</p>
+              <p className="type-label">Extended family</p>
               <h2 className="type-display mt-3 max-w-[28rem] text-[26px] text-balance sm:text-[34px]">
                 Everybody here is part of the family.
               </h2>
@@ -142,6 +71,20 @@ export default function CommunityPage() {
           </div>
         </Container>
       </section>
+
+      {/* Holding copy: the real text for this section is still being written. */}
+      <Section
+        id="wider-community"
+        label="The wider community"
+        title="Beyond the front door."
+        intro={
+          <p>
+            The building does not stand on its own. This is where we will write about the people and
+            places around it — the neighbours, the shops and the studios nearby that make this part
+            of London what it is.
+          </p>
+        }
+      />
     </>
   )
 }
