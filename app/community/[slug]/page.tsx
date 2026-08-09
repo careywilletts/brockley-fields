@@ -39,6 +39,15 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
   const indexHref = isResident ? '/community' : '/part-of-the-family'
   const indexLabel = isResident ? 'Community' : 'Part of the Family'
 
+  // The handle is the link, so there is no need for a second "Instagram" link
+  // pointing at the same profile. Anything else they list still stands.
+  const instagramUrl = person.handle
+    ? `https://instagram.com/${person.handle.replace(/^@/, '')}`
+    : undefined
+  const otherLinks = person.links.filter(
+    (link) => link.href.toLowerCase() !== instagramUrl?.toLowerCase(),
+  )
+
   // Neighbours: anyone sharing any of their rooms, then the rest of the group.
   const roommates = people.filter(
     (p) => p.slug !== person.slug && personRoomSlugs(p).some((s) => ownRoomSlugs.includes(s)),
@@ -123,14 +132,16 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                 </div>
               )}
 
-              {(person.handle || person.links.length > 0) && (
+              {(person.handle || otherLinks.length > 0) && (
                 <div className="border-foreground/20 flex flex-col gap-1 border-b py-3 sm:flex-row sm:items-baseline sm:gap-8">
-                  <dt className="type-label sm:w-36 sm:shrink-0">Elsewhere</dt>
+                  <dt className="type-label sm:w-36 sm:shrink-0">Find them</dt>
                   <dd className="flex flex-wrap items-baseline gap-x-5 gap-y-1 text-[16px]">
-                    {person.handle && (
-                      <span className="text-muted-foreground">{person.handle}</span>
+                    {person.handle && instagramUrl && (
+                      <InlineLink href={instagramUrl} external>
+                        {person.handle}
+                      </InlineLink>
                     )}
-                    {person.links.map((link) => (
+                    {otherLinks.map((link) => (
                       <InlineLink key={link.href + link.label} href={link.href} external>
                         {link.label}
                       </InlineLink>
