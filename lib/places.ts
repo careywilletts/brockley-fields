@@ -90,4 +90,13 @@ export const places: Place[] = [
       alt: 'A small dog in a yellow knitted jumper sitting on a stool outside The Broca Café, under its yellow frontage and white lettering',
     },
   },
+  {
+    name: 'Mauby',
+    blurb: 'Best Caribbean small plates in London.',
+    handle: 'maubybrockley',
+    photo: {
+      src: '/images/mauby.jpg',
+      alt: 'The window of Mauby at dusk, warmly lit inside with MAUBY lettered on the wall and festoon lights above the shopfront',
+    },
+  },
 ]
