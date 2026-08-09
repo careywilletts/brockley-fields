@@ -108,4 +108,13 @@ export const places: Place[] = [
       alt: 'The coral orange frontage of Ellary’s, with white lettering above an awning and a small table and chairs on the pavement',
     },
   },
+  {
+    name: 'Telegraph Hill',
+    blurb: 'The best view of London.',
+    handle: 'telegraphhillpark',
+    photo: {
+      src: '/images/telegraph-hill.jpg',
+      alt: 'People sitting on the grass slope of Telegraph Hill Park at dusk, looking out over rooftops and trees to the London skyline',
+    },
+  },
 ]
