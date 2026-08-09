@@ -120,6 +120,7 @@ export const places: Place[] = [
   {
     name: 'Hilly Fields',
     blurb: 'The hardest park run in London.',
+    handle: 'hilly_fields_se4',
     photo: {
       src: '/images/hilly-fields.jpg',
       alt: 'The stone circle on Hilly Fields: rounded standing stones set in bright green grass with a row of trees behind',
