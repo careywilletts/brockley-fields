@@ -45,4 +45,13 @@ export const places: Place[] = [
       alt: 'The Brockley Brewing Company frontage: painted signage on brick above bright yellow mural doors showing a blossom tree, a parakeet and a fox',
     },
   },
+  {
+    name: 'Good as Gold',
+    blurb: 'Best cafe in London.',
+    handle: 'goodasgoldldn',
+    photo: {
+      src: '/images/good-as-gold.png',
+      alt: 'The white corner frontage of Good as Gold in the sun, with people sitting at pavement tables outside',
+    },
+  },
 ]
