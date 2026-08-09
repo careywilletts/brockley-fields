@@ -23,8 +23,7 @@ export default function HomePage() {
         {/* Buttons moved to "Why we exist", so the columns align at the top now. */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
           <div className="lg:flex-1">
-            {/* Local size bump only; the shared .type-label stays 11px elsewhere. */}
-            <p className="type-label text-[15px]">London, SE4</p>
+            <p className="type-label">London, SE4</p>
             <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
               Brockley Fields was built on a simple belief:{' '}
               <span className="text-primary">people matter</span>
@@ -56,8 +55,7 @@ export default function HomePage() {
         enough that the image column had to be either a thin strip or taller than
         the text beside it.
       */}
-      {/* labelClassName matches the hero eyebrow's 15px, up from the default 11px. */}
-      <Section label="Why we exist" labelClassName="text-[15px]">
+      <Section label="Why we exist">
         {/* mt-5 matches the hero's eyebrow-to-title gap (label sits in the Section header above). */}
         <h2 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
           To collaborate <span className="text-primary">and create</span>
@@ -160,7 +158,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Latest news ───────────────────────────────────────────────────── */}
+      {/* ── Latest news ────────────���──────────────────────────────────────── */}
       {/*
         Events are on hold, so this is a single news column with the heading on
         the left rather than the old "next event + lately" two-column split.

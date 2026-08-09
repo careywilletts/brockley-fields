@@ -117,7 +117,8 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: 0.6875rem;
+    /* 15px, matched to the hero eyebrow ("London, SE4"). */
+    font-size: 0.9375rem;
     line-height: 1.4;
     color: var(--rule);
   }
@@ -127,7 +128,7 @@
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    font-size: 0.6875rem;
+    font-size: 0.9375rem;
     line-height: 1.4;
     color: var(--foreground);
   }

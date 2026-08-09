@@ -30,12 +30,9 @@ export function Section({
   intro,
   children,
   className,
-  labelClassName,
   id,
 }: {
   label?: string
-  /** For per-section tweaks to the eyebrow, e.g. a larger size on the homepage. */
-  labelClassName?: string
   /** ReactNode rather than string so a section can highlight part of its title. */
   title?: React.ReactNode
   intro?: React.ReactNode
@@ -52,7 +49,7 @@ export function Section({
                 unlabelled section runs flush to the left margin. */}
             {label && (
               <div className="md:w-[13rem] md:shrink-0">
-                <p className={cn('type-label', labelClassName)}>{label}</p>
+                <p className="type-label">{label}</p>
               </div>
             )}
             <div className="max-w-[46rem]">
