@@ -16,7 +16,11 @@ export default function PartOfTheFamilyPage() {
     <>
       <PageHeader
         label="Everyone in the building"
-        title="Part of the family"
+        title={
+          <>
+            Part of <span className="text-primary">the family</span>
+          </>
+        }
         intro={
           <>
             <p>
