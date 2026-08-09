@@ -133,6 +133,36 @@ export function Photo({
   )
 }
 
+/**
+ * A named step up the hierarchy — "Back to The Yard" and the like.
+ *
+ * Deliberately a fixed destination: the label names where it goes, so it must
+ * always go there. An ordinary link with no history handling of any kind, which
+ * is why it lives here rather than with anything that listens to the history.
+ */
+export function BackLink({
+  href,
+  children,
+  className,
+}: {
+  href: string
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'text-primary decoration-primary/40 hover:decoration-primary inline-flex items-center gap-2 underline decoration-1 underline-offset-4 transition-colors',
+        className,
+      )}
+    >
+      <span aria-hidden>&larr;</span>
+      {children}
+    </Link>
+  )
+}
+
 export function InlineLink({
   href,
   children,

@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { units, roomsForUnit, type UnitId } from '@/lib/rooms'
 import { site, waitingListHref } from '@/lib/site'
-import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
-import { BackLink } from '@/components/back-link'
+import { ActionLink, BackLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
 import { RoomCard } from '@/components/room-card'
 
 export function generateStaticParams() {
