@@ -65,7 +65,7 @@ export default function CommunityPage() {
             <div>
               <p className="type-label">Extended family</p>
               <h2 className="type-display mt-3 max-w-[28rem] text-[26px] text-balance sm:text-[34px]">
-                Everybody here is part of the family.
+                Everybody here is <span className="text-primary">part of the family</span>.
               </h2>
             </div>
             <ActionLink href="/part-of-the-family" className="shrink-0">

@@ -15,7 +15,11 @@ export default function NewsPage() {
     <>
       <PageHeader
         label="News"
-        title="Things worth knowing."
+        title={
+          <>
+            Things worth <span className="text-primary">knowing</span>.
+          </>
+        }
         intro={<p>What the residents have been up to, and what has been changing in the rooms.</p>}
       />
 
