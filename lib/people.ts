@@ -98,7 +98,7 @@ export const people: Person[] = [
     disciplines: ['Songwriter', 'Music Producer', 'Audio Engineer'],
     oneLiner: 'Started out as a label engineer and has been making records ever since.',
     credits: ['The 1975', 'Freya Ridings', 'Sekou'],
-    bio: 'Matt Rist is a London-based songwriter, music producer and audio engineer. Matt began his career as an in-house engineer for the UK independent label Good Soldier and has since collaborated with major labels including Island, Republic, Capitol and EMI, contributing to projects for artists such as The 1975, Freya Ridings and Sekou.',
+    bio: 'Matt Rist is a songwriter, music producer and audio engineer. Matt began his career as an in-house engineer for the UK independent label Good Soldier and has since collaborated with major labels including Island, Republic, Capitol and EMI, contributing to projects for artists such as The 1975, Freya Ridings and Sekou.',
     portrait: '/images/people/matt-rist.webp',
     handle: '@mattrist__',
     links: [{ label: 'Instagram', href: 'https://instagram.com/mattrist__' }],
