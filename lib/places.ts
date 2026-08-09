@@ -81,4 +81,13 @@ export const places: Place[] = [
       alt: 'Two pints of Guinness held up outside Skehans, with the red-brick pub and its hanging flower baskets behind',
     },
   },
+  {
+    name: 'The Broca Café',
+    blurb: 'Best vegan café in London.',
+    handle: 'thebrocacafe',
+    photo: {
+      src: '/images/broca-cafe.jpg',
+      alt: 'A small dog in a yellow knitted jumper sitting on a stool outside The Broca Café, under its yellow frontage and white lettering',
+    },
+  },
 ]
