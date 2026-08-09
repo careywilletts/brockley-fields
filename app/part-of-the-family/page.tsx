@@ -21,19 +21,6 @@ export default function PartOfTheFamilyPage() {
             Part of <span className="text-primary">the family</span>
           </>
         }
-        intro={
-          <>
-            <p>
-              Studios and offices alike — there is no inner circle and no separate list. The people
-              below hold the keys to the rooms, and between them they have written, produced,
-              engineered and mixed a great deal of what you have heard.
-            </p>
-            <p>
-              Short introductions and room details are on the{' '}
-              <InlineLink href="/community">Community</InlineLink> page. This is the longer read.
-            </p>
-          </>
-        }
       />
 
       {/*
