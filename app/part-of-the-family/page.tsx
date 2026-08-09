@@ -74,7 +74,7 @@ export default function PartOfTheFamilyPage() {
                               </Link>
                             </span>
                           ))}
-                          {` · ${unit.shortName}`}
+                          {` · ${unit.residentLabel ?? unit.shortName}`}
                         </p>
                       )}
                       {person.relationship && roomList.length === 0 && (

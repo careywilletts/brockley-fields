@@ -35,6 +35,12 @@ export type Unit = {
   id: UnitId
   name: string
   shortName: string
+  /**
+   * How the building is named in a resident's location tag (e.g. "Studio 1 ·
+   * Brockley Fields"). Falls back to shortName when omitted, so this only
+   * overrides the person-facing labels and never the unit/room page copy.
+   */
+  residentLabel?: string
   unitNumber: string
   intro: string
   sharedSpaces: string
@@ -56,6 +62,7 @@ export const units: Unit[] = [
     id: 'studios',
     name: 'Brockley Fields Studios',
     shortName: 'Studios',
+    residentLabel: 'Brockley Fields',
     unitNumber: 'Unit 1',
     intro: 'Three studios with floor-to-ceiling windows, two with outlooks over green space.',
     sharedSpaces: 'Kitchen/dining area and 17 m² communal space.',

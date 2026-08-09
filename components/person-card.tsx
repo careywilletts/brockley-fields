@@ -34,7 +34,7 @@ export function PersonCard({ person, priority = false }: { person: Person; prior
 
       <p className="text-muted-foreground mt-3 text-[13px]">
         {roomList.length > 0 && unit
-          ? `${roomsLabel(roomList)} · ${unit.shortName}`
+          ? `${roomsLabel(roomList)} · ${unit.residentLabel ?? unit.shortName}`
           : person.relationship}
       </p>
     </article>
