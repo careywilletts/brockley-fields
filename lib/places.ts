@@ -63,4 +63,13 @@ export const places: Place[] = [
       alt: 'The terrace outside Parlez at golden hour, busy with people at tables under green parasols',
     },
   },
+  {
+    name: 'Joyce',
+    blurb: 'Best bar in London.',
+    handle: 'joyce.brockley',
+    photo: {
+      src: '/images/joyce.png',
+      alt: 'The dark grey corner frontage of Joyce, with hanging baskets, festoon lights and people at pavement tables',
+    },
+  },
 ]
