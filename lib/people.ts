@@ -73,7 +73,11 @@ export const people: Person[] = [
     bio: 'Carey was a founding member of the multi-platinum-selling indie band Athlete. Along with his fellow band members, he wrote hits including Half Light, Superhuman Touch, El Salvador, You Got The Style, Chances, and Wires — which won an Ivor Novello Award for Best Contemporary Single. Since then, Carey has established himself as a sought-after producer and songwriter. He has worked extensively with Dermot Kennedy, co-writing and producing Better Days, which has streamed over 240 million times on Spotify alone. Other artist collaborations include Freya Ridings, Asha Banks, Tom Speight, Kingfishr, and You Me At Six, and Carey was shortlisted for Breakthrough Producer of the Year at the Music Producers Guild Awards. Carey also runs a label called Brickfield Records, which has released EPs by Jack Cullen and Harry Lyon to date.',
     portrait: '/images/people/carey-willetts.jpg',
     handle: '@brockleyfields',
-    links: [{ label: 'Brickfield Records', href: 'https://instagram.com/brickfieldrecords' }],
+    links: [
+      { label: 'Brickfield Records', href: 'https://brickfieldrecords.com/index.php' },
+      { label: '@brickfield.records', href: 'https://instagram.com/brickfield.records' },
+      { label: 'Jax Management', href: 'https://jaxmanagement.com/carey-willetts' },
+    ],
     roomSlug: 'upstairs-studio-2',
   },
   {
