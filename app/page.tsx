@@ -98,19 +98,20 @@ export default function HomePage() {
             const unitRooms = roomsForUnit(unit.id)
             return (
               <article key={unit.id} className="flex flex-col">
+                {/*
+                  Title above the photograph, as on the Studios page: the unit
+                  number alone as the eyebrow, so the heading can carry the
+                  unit's full name rather than the abbreviated shortName.
+                */}
+                <p className="type-label">{unit.unitNumber}</p>
+                <h3 className="type-display mt-2 text-[22px]">{unit.name}</h3>
                 <Photo
                   src={unit.hero.src}
                   alt={unit.hero.alt}
-                  className="aspect-3/2"
+                  className="mt-4 aspect-3/2"
                   sizes="(min-width: 768px) 45vw, 100vw"
                 />
-                {/*
-                  The unit number alone as the eyebrow, so the heading can carry
-                  the unit's full name rather than the abbreviated shortName.
-                */}
-                <p className="type-label mt-4">{unit.unitNumber}</p>
-                <h3 className="type-display mt-2 text-[22px]">{unit.name}</h3>
-                <p className="mt-3 text-[16px] leading-relaxed">{unit.intro}</p>
+                <p className="mt-4 text-[16px] leading-relaxed">{unit.intro}</p>
                 <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
                   Shared: {unit.sharedSpaces}
                 </p>
@@ -135,19 +136,6 @@ export default function HomePage() {
           })}
         </div>
       </Section>
-
-      {/* ── The terrace on approach ───────────────────────────────────────── */}
-      {/*
-        The elevation moved up into "Why we exist", so the perspective view takes
-        this slot. Image band only — its job is to break the page up before
-        What's on.
-      */}
-      <TerraceBand
-        variant="perspective"
-        bleed
-        caption="The terrace on approach"
-        className="py-14 sm:py-20"
-      />
 
       {/* ── Next event + news ────────────��────────────────────────────────── */}
       <Section label="What's on">
