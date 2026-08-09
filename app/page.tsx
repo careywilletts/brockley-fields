@@ -56,7 +56,8 @@ export default function HomePage() {
         enough that the image column had to be either a thin strip or taller than
         the text beside it.
       */}
-      <Section label="Why we exist">
+      {/* labelClassName matches the hero eyebrow's 15px, up from the default 11px. */}
+      <Section label="Why we exist" labelClassName="text-[15px]">
         {/* Full measure, so the heading gets the same scale as the hero. */}
         <h2 className="type-display max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
           To collaborate <span className="text-primary">and create</span>
