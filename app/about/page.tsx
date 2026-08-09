@@ -29,17 +29,17 @@ export default function AboutPage() {
             <p>
               I&apos;m Carey Willetts. I&apos;ve been in the music industry since 2001 &mdash; first
               as a founding member of Athlete, signed to Regal Records and then Parlophone, releasing
-              five albums over a decade, and picked up an Ivor Novello Award along the way. Our debut
+              five albums over a decade, and picking up an Ivor Novello Award along the way. Our debut
               album <em>Vehicles and Animals</em> was nominated for the Mercury Music Prize and{' '}
               <em>Tourist</em> went to number one.
             </p>
             <p>
-              In Athlete I learned what it meant to write songs together and the value of
+              In Athlete, I learned what it meant to write songs together and the value of
               collaboration has never left me. So, it was a natural transition to write and produce
-              songs with other artists and in 2020 I was shortlisted for Breakthrough Producer of the
-              Year at the Music Producers Guild Awards. Most recently I have written and produced
+              songs with other artists and in 2020, I was shortlisted for Breakthrough Producer of
+              the Year at the Music Producers Guild Awards. Most recently I have written and produced
               with Dermot Kennedy, Freya Ridings, Amber Run, Asher Banks, Jeremy Loops and Kingfishr,
-              and have been part of three more number one albums.
+              and have been part of a further three number one albums.
             </p>
           </>
         }
@@ -64,8 +64,11 @@ export default function AboutPage() {
               </h2>
               <div className="flex flex-col gap-5 text-[17px] leading-relaxed">
                 <p>
-                  I find that great songs still come from the same place they always did: the right
-                  people, in the right room, at the right time. And that brought me back to the same
+                  I find that great songs still come from the same place they always did:{' '}
+                  <strong className="text-primary font-semibold">
+                    the right people, in the right room, at the right time.
+                  </strong>{' '}
+                  And that brought me back to the same
                   problem every working songwriter eventually hits &mdash; where do you actually go
                   to work? Somewhere permanent, inspiring and affordable. It turns out that place is
                   genuinely hard to find.
