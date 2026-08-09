@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { units, roomsForUnit, rooms } from '@/lib/rooms'
 import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
@@ -70,18 +71,38 @@ export default function StudiosPage() {
               return (
                 <li key={unit.id} className="flex flex-col">
                   <div className="flex items-baseline justify-between gap-4">
-                    <h2 className="type-display text-[22px]">{unit.name}</h2>
+                    <h2 className="type-display text-[22px]">
+                      <Link
+                        href={`/studios/unit/${unit.id}`}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {unit.name}
+                      </Link>
+                    </h2>
                     <p className="type-label text-muted-foreground shrink-0">{unit.unitNumber}</p>
                   </div>
                   <Rule />
 
-                  <Photo
-                    src={unit.hero.src}
-                    alt={unit.hero.alt}
-                    className="mt-5 aspect-4/3"
-                    sizes="(min-width: 768px) 46vw, 100vw"
-                    priority={i === 0}
-                  />
+                  {/*
+                    The photograph leads to the unit as well. Hidden from
+                    assistive tech and out of the tab order, since the heading
+                    above and "View the space" below already go there.
+                  */}
+                  <Link
+                    href={`/studios/unit/${unit.id}`}
+                    aria-hidden
+                    tabIndex={-1}
+                    className="group mt-5 block"
+                  >
+                    <Photo
+                      src={unit.hero.src}
+                      alt={unit.hero.alt}
+                      className="aspect-4/3"
+                      imageClassName="transition-transform duration-500 group-hover:scale-[1.03]"
+                      sizes="(min-width: 768px) 46vw, 100vw"
+                      priority={i === 0}
+                    />
+                  </Link>
 
                   <p className="mt-5 text-[16px] leading-relaxed">{unit.intro}</p>
                   {/* Two lines reserved from md up, where the columns sit side

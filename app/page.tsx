@@ -103,13 +103,33 @@ export default function HomePage() {
                   unit's full name rather than the abbreviated shortName.
                 */}
                 <p className="type-label">{unit.unitNumber}</p>
-                <h3 className="type-display mt-2 text-[22px]">{unit.name}</h3>
-                <Photo
-                  src={unit.hero.src}
-                  alt={unit.hero.alt}
-                  className="mt-4 aspect-3/2"
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                />
+                {/*
+                  The heading and the photograph both lead to the unit. The
+                  photo link is hidden from assistive tech and taken out of the
+                  tab order so it does not repeat the heading link beside it.
+                */}
+                <h3 className="type-display mt-2 text-[22px]">
+                  <Link
+                    href={`/studios/unit/${unit.id}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {unit.name}
+                  </Link>
+                </h3>
+                <Link
+                  href={`/studios/unit/${unit.id}`}
+                  aria-hidden
+                  tabIndex={-1}
+                  className="group mt-4 block"
+                >
+                  <Photo
+                    src={unit.hero.src}
+                    alt={unit.hero.alt}
+                    className="aspect-3/2"
+                    imageClassName="transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(min-width: 768px) 45vw, 100vw"
+                  />
+                </Link>
                 <p className="mt-4 text-[16px] leading-relaxed">{unit.intro}</p>
                 <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
                   Shared: {unit.sharedSpaces}
