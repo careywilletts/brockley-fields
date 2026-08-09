@@ -81,7 +81,9 @@ export const people: Person[] = [
       'Carey also runs a label called Brickfield Records, which has so far released EPs by Jack Cullen and Harry Lyon.',
     ],
     portrait: '/images/people/carey-willetts.jpg',
-    handle: '@brockleyfields',
+    // His own account rather than the building's. @brockleyfields is still
+    // listed on its own in `allHandles` below, so the wall is unaffected.
+    handle: '@carey.willetts',
     links: [
       { label: 'Brickfield Records', href: 'https://brickfieldrecords.com/index.php' },
       { label: '@brickfield.records', href: 'https://instagram.com/brickfield.records' },
