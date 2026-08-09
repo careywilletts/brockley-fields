@@ -99,4 +99,13 @@ export const places: Place[] = [
       alt: 'The window of Mauby at dusk, warmly lit inside with MAUBY lettered on the wall and festoon lights above the shopfront',
     },
   },
+  {
+    name: 'Ellary’s',
+    blurb: 'Best family run restaurant in London.',
+    handle: 'ellarysbrockley',
+    photo: {
+      src: '/images/ellarys.jpg',
+      alt: 'The coral orange frontage of Ellary’s, with white lettering above an awning and a small table and chairs on the pavement',
+    },
+  },
 ]
