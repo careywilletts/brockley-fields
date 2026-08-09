@@ -15,7 +15,7 @@ export default function PartOfTheFamilyPage() {
   return (
     <>
       <PageHeader
-        label="Everyone in the building"
+        label="In the building"
         title={
           <>
             Part of <span className="text-primary">the family</span>
