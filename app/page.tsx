@@ -30,7 +30,7 @@ export default function HomePage() {
               <span className="text-primary">people matter</span>
             </h1>
             <p className="mt-8 max-w-[34rem] text-[18px] leading-relaxed">
-              One of the hardest parts of being a creative person is finding a space to work. Then
+              One of the hardest parts of being a creative person is finding a space to work. Then,
               finding a place to create that is inspiring and affordable is even harder, so we did
               something about it.
             </p>
@@ -70,8 +70,10 @@ export default function HomePage() {
           </p>
           <p>
             What&apos;s happened since has been the best part &ndash; songwriters, producers, mixers,
-            arrangers and managers who work side by side. We collaborate, spark ideas and create.
-            That&apos;s not accidental, it&apos;s the whole point.
+            arrangers and managers who work side by side. We collaborate, spark ideas and create.{' '}
+            <strong className="text-primary font-semibold">
+              That&apos;s not accidental, it&apos;s the whole point.
+            </strong>
           </p>
         </div>
         <div className="mt-9 flex flex-wrap items-center gap-3">
