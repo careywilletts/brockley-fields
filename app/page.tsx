@@ -23,7 +23,8 @@ export default function HomePage() {
         {/* Buttons moved to "Why we exist", so the columns align at the top now. */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
           <div className="lg:flex-1">
-            <p className="type-label">Brockley, SE4</p>
+            {/* Local size bump only; the shared .type-label stays 11px elsewhere. */}
+            <p className="type-label text-[15px]">London, SE4</p>
             <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
               Brockley Fields was built on a simple belief:{' '}
               <span className="text-primary">people matter</span>
