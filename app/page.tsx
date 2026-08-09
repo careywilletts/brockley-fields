@@ -58,8 +58,8 @@ export default function HomePage() {
       */}
       {/* labelClassName matches the hero eyebrow's 15px, up from the default 11px. */}
       <Section label="Why we exist" labelClassName="text-[15px]">
-        {/* Full measure, so the heading gets the same scale as the hero. */}
-        <h2 className="type-display max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
+        {/* mt-5 matches the hero's eyebrow-to-title gap (label sits in the Section header above). */}
+        <h2 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
           To collaborate <span className="text-primary">and create</span>
         </h2>
         <div className="mt-6 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
