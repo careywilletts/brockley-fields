@@ -23,6 +23,7 @@ export function AllyCard({ ally, priority = false }: { ally: Ally; priority?: bo
           alt={image.alt}
           className="border-foreground/20 size-20 shrink-0 border"
           imageClassName={ally.logo ? 'object-contain' : 'object-cover'}
+          imageStyle={ally.portrait?.focus ? { objectPosition: ally.portrait.focus } : undefined}
           sizes="80px"
           priority={priority}
         />

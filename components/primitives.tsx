@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
@@ -110,6 +111,7 @@ export function Photo({
   alt,
   className,
   imageClassName,
+  imageStyle,
   sizes = '(min-width: 1024px) 33vw, 100vw',
   priority = false,
   fill = true,
@@ -118,6 +120,8 @@ export function Photo({
   alt: string
   className?: string
   imageClassName?: string
+  /** For per-image values Tailwind cannot express, such as a crop's focal point. */
+  imageStyle?: CSSProperties
   sizes?: string
   priority?: boolean
   fill?: boolean
@@ -131,6 +135,7 @@ export function Photo({
         sizes={sizes}
         priority={priority}
         className={cn('object-cover', imageClassName)}
+        style={imageStyle}
       />
       <div
         aria-hidden
