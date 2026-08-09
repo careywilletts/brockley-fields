@@ -54,4 +54,13 @@ export const places: Place[] = [
       alt: 'The white corner frontage of Good as Gold in the sun, with people sitting at pavement tables outside',
     },
   },
+  {
+    name: 'Parlez',
+    blurb: 'Best brunch in London.',
+    handle: 'parlezlocal',
+    photo: {
+      src: '/images/parlez.jpg',
+      alt: 'The terrace outside Parlez at golden hour, busy with people at tables under green parasols',
+    },
+  },
 ]
