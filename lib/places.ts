@@ -72,4 +72,13 @@ export const places: Place[] = [
       alt: 'The dark grey corner frontage of Joyce, with hanging baskets, festoon lights and people at pavement tables',
     },
   },
+  {
+    name: 'Skehans',
+    blurb: 'Best pub in London.',
+    handle: 'skehansfreehouse',
+    photo: {
+      src: '/images/skehans.png',
+      alt: 'Two pints of Guinness held up outside Skehans, with the red-brick pub and its hanging flower baskets behind',
+    },
+  },
 ]
