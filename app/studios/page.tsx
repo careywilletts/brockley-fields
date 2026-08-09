@@ -151,7 +151,7 @@ export default function StudiosPage() {
               edge, matching the way the page header itself is set. */}
           <p className="type-label type-eyebrow">We don&apos;t have rooms often.</p>
           <h2 id="contact" className="type-display mt-3 max-w-[30rem] text-[26px] sm:text-[32px]">
-            But when we do, we love to welcome someone new.
+            But when we do, we <span className="text-primary">love to welcome</span> someone new.
           </h2>
           <p className="mt-5 max-w-[42rem] text-[17px] leading-relaxed">
             When a room becomes available, we work through our waiting list and start a
