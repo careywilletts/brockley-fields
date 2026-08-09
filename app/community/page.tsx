@@ -89,8 +89,8 @@ export default function CommunityPage() {
         rather than the founding story, and leads into the full bios below.
       */}
       <Section
-        label="The neighbourhood"
-        title="Brockley, which is quieter than it has any right to be."
+        label="Brockley"
+        title="The best place in London"
         intro={
           <>
             <p>
