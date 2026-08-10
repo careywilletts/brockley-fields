@@ -62,7 +62,7 @@ export const extendedFamily: Ally[] = [
   {
     name: 'Daniel Moyler',
     blurb: [
-      'Daniel has worked on records for Dermot Kennedy, Nectar Woode and Still Blank, and engineered Olivia Dean’s Messy and George Ezra’s Gold Rush Kid. He has also built long-standing creative relationships with producers such as Cam Blackwood, Joel Pott and Matt Hales, helping shape a range of acclaimed records across genres.',
+      'Daniel has worked on records for Dermot Kennedy, Nectar Woode and Still Blank, and engineered Olivia Dean’s Messy and George Ezra’s Gold Rush Kid. He has built long-standing creative relationships with producers Cam Blackwood, Joel Pott and Matt Hales, helping shape a range of acclaimed records across genres.',
       'His work has earned him Engineer of the Year at the 2020 MPG Awards and a 2021 Grammy for his contributions to Dua Lipa’s Future Nostalgia.',
     ],
     handle: 'danielmoyler',
@@ -95,8 +95,7 @@ export const extendedFamily: Ally[] = [
     name: 'Tobie Tripp',
     blurb: [
       'Tobie is a songwriter, producer, multi-instrumentalist and string arranger. He has collaborated with artists including Wizkid, Tom Misch, Dave, HONNE, George Ezra, MJ Cole, Joy Crookes, Matilda Mann, J Hus, Tom Chaplin, Olivia Dean, Venbee and Stormzy.',
-      'Classically trained in violin at the Royal Welsh College of Music and Drama, Tobie developed his musical voice through bands, jazz ensembles and a wide range of genres, shaping a style that blends pop, R&B, indie, jazz and beyond.',
-      'He has toured internationally as a session musician with artists including Tom Misch and Tom Chaplin before moving into songwriting and production. Today he collaborates with artists to develop distinctive, authentic sounds through songwriting, production and string arranging.',
+      'Tobie has toured internationally as a session musician with artists including Tom Misch and Tom Chaplin before moving into songwriting and production. Today he collaborates with artists to develop distinctive, authentic sounds through songwriting, production and string arranging.',
     ],
     handle: 'tobietripp',
     management: { company: 'Jax Management', href: 'https://jaxmanagement.com/tobie-tripp' },
