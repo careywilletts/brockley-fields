@@ -88,12 +88,10 @@ export default function CommunityPage() {
       {/* Places come from lib/places.ts, so adding a neighbour there puts it here. */}
       <Section
         id="wider-community"
-        title="The wider community"
-        intro={
-          <p>
-            The building does not stand on its own. These are the places around it that make this
-            part of London what it is.
-          </p>
+        title={
+          <>
+            Explore the <span className="text-primary">wider community</span>
+          </>
         }
       >
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

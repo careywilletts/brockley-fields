@@ -123,7 +123,7 @@ export const extendedFamily: Ally[] = [
     blurb: [
       'Jonny is a writer, producer, mixer and engineer, and a 2024 Grammy Award winner for his work on PinkPantheress’ Angel for the Barbie soundtrack.',
       'He has worked closely with PinkPantheress, mixing her debut album to hell with it, and has since recorded and mixed her latest singles including Boy’s a Liar Pt. 2 with Ice Spice, which peaked at number three on the Billboard Hot 100. He co-produced and mixed Bob Vylan’s album Humble As The Sun, and has mixed tracks for Goldlink, Rio Rainz, Llainwire and Lancey Foux.',
-      'Jonny has written with artists including Joey Maxwell, Deema and Sam Dotia, and in 2023 co-wrote and produced Eden Rain’s single Crumb. He is also an experienced engineer, working with the likes of Florence and The Machine, Lizzo and Dua Lipa.',
+      'Jonny has written with artists Joey Maxwell, Deema and Sam Dotia, and in 2023 co-wrote and produced Eden Rain’s single Crumb. He is also an experienced engineer, working with Florence and The Machine, Lizzo and Dua Lipa.',
     ],
     handle: 'jonnybreakwell',
     website: 'https://jonnybreakwell.com',
