@@ -90,7 +90,7 @@ export default function CommunityPage() {
         id="wider-community"
         title={
           <>
-            Explore the <span className="text-primary">wider community</span>
+            Explore the <span className="block text-primary">wider community</span>
           </>
         }
       >
