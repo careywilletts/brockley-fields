@@ -68,7 +68,7 @@ export const units: Unit[] = [
     sharedSpaces: 'Kitchen/dining area and 17 m² communal space.',
     hero: {
       src: '/images/studios-hero.jpg',
-      alt: 'The shared kitchen at Brockley Fields Studios, with green cabinets, a butler sink and a double bass by the door',
+      alt: 'A studio at Brockley Fields Studios, with a leather sofa, a mandolin, shelves of books and records, and keyboards along one wall',
     },
     overview: [
       'Unit 1 is the quieter of the two. Three studios off a single corridor, each one soundproofed and acoustically treated, with a kitchen and dining area at the end that everybody ends up in at some point during the day.',
