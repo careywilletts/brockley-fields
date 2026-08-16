@@ -20,20 +20,8 @@ export default function HomePage() {
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <Container className="pt-14 pb-16 sm:pt-24 sm:pb-24">
-        {/*
-          Buttons moved to "Why we exist", so the columns align at the top now.
-
-          From xl the two columns stretch to a shared height so the photograph
-          ends level with the copy instead of leaving a gap beneath it. A fixed
-          aspect ratio cannot do this: the height the photograph has to match
-          depends on how the headline wraps, which changes with the viewport.
-
-          Stretching is held back to xl deliberately. Between lg and xl the image
-          column is only ~400px wide while the headline wraps to a greater height,
-          so a full-height box there would be portrait and crop about half the
-          width out of this landscape photograph.
-        */}
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16 xl:items-stretch">
+        {/* Buttons moved to "Why we exist", so the columns align at the top now. */}
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
           <div className="lg:flex-1">
             <p className="type-label type-eyebrow">London, SE4</p>
             <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
@@ -47,14 +35,14 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="lg:w-[42%] lg:shrink-0 xl:flex xl:flex-col">
+          <div className="lg:w-[42%] lg:shrink-0">
             <Photo
               src="/images/home-hero.jpg"
-              alt="A studio at Brockley Fields Studios with an upright piano, an armchair and a floor-to-ceiling window looking onto trees"
-              /* flex-1 with min-h-0 so the photo takes its height from the
-                 stretched column rather than its own ratio; min-h-0 stops the
-                 fill image forcing a floor and overshooting the copy. */
-              className="aspect-4/3 xl:aspect-auto xl:min-h-0 xl:flex-1"
+              alt="A studio at Brockley Fields Studios: an upright piano with its lid open beneath gold discs and the Brockley Fields neon sign, guitars either side and a floor-to-ceiling window looking onto trees"
+              /* 3/4 matches the file's own 1500x2000, so nothing is cropped.
+                 Tall enough to sit close to the bottom of the copy without the
+                 flex-stretch trick the old landscape photograph needed. */
+              className="aspect-3/4"
               sizes="(min-width: 1024px) 42vw, 100vw"
               priority
             />
