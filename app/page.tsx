@@ -37,13 +37,13 @@ export default function HomePage() {
 
           <div className="lg:w-[42%] lg:shrink-0">
             <Photo
-              src="/images/hero-studio.png"
-              alt="An empty studio room with bare plaster walls and a tall window letting in daylight"
-              className="aspect-4/5"
+              src="/images/home-hero.jpg"
+              alt="A studio at Brockley Fields Studios with an upright piano, an armchair and a floor-to-ceiling window looking onto trees"
+              className="aspect-4/3"
               sizes="(min-width: 1024px) 42vw, 100vw"
               priority
             />
-            <p className="type-label mt-3">Studio 2 · Brockley Fields Studios · 26 m²</p>
+            <p className="type-label mt-3">Brockley Fields Studios · Unit 1</p>
           </div>
         </div>
       </Container>

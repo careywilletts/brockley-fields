@@ -67,8 +67,8 @@ export const units: Unit[] = [
     intro: 'Three studios with floor-to-ceiling windows, two with outlooks over green space.',
     sharedSpaces: 'Kitchen/dining area and 17 m² communal space.',
     hero: {
-      src: '/images/window-green.png',
-      alt: 'A floor-to-ceiling studio window looking out onto green trees',
+      src: '/images/studios-hero.jpg',
+      alt: 'The shared kitchen at Brockley Fields Studios, with green cabinets, a butler sink and a double bass by the door',
     },
     overview: [
       'Unit 1 is the quieter of the two. Three studios off a single corridor, each one soundproofed and acoustically treated, with a kitchen and dining area at the end that everybody ends up in at some point during the day.',
@@ -101,8 +101,8 @@ export const units: Unit[] = [
     intro: 'Two music studios and two offices. More of a hangout vibe.',
     sharedSpaces: '25 m² reception/communal area, kitchen/dining, bathroom.',
     hero: {
-      src: '/images/yard.png',
-      alt: 'The enclosed courtyard behind the Yard unit, with a bench and climbing vine',
+      src: '/images/yard-hero.jpg',
+      alt: 'The kitchen and dining area at the Yard, with a plywood table, red chairs and framed record sleeves',
     },
     overview: [
       'Unit 2 is built around its middle. A 25 m² reception and communal area sits at the centre, with two music studios and two private offices opening off it, plus a kitchen, dining area and bathroom.',
