@@ -113,22 +113,29 @@ export const units: Unit[] = [
       'Unit 2 is built around its middle. A 25 m² reception and communal area sits at the centre, with two music studios and two private offices opening off it, plus a kitchen, dining area and bathroom.',
       'That layout makes it the more social of the two units — you cannot really cross it without talking to somebody. The two offices suit anyone whose day is mostly calls rather than sessions, and there is a courtyard out the back for when a room stops being the answer.',
     ],
+    /*
+     * Real photography, same shape as the Studios gallery above: the landscape
+     * file leads because the lead slot is 16/9, and the portrait ones sit in
+     * the row beneath. yard-hero.jpg is reused rather than saved twice — the
+     * hero only appears on the home and studios index pages, never here, so
+     * there is no repeat within a single page.
+     */
     gallery: [
       {
-        src: '/images/communal.png',
-        alt: 'The reception and communal area at the centre of the Yard',
+        src: '/images/yard-studio.jpg',
+        alt: 'One of the two music studios at the Yard: a desk with monitor speakers and a mixing desk, an acoustic guitar on a stand, an upright piano miked up and a drum kit in the foreground',
       },
       {
-        src: '/images/yard.png',
-        alt: 'The enclosed courtyard behind the Yard, with a bench and climbing vine',
+        src: '/images/yard-hero.jpg',
+        alt: 'The kitchen and dining area at the Yard: a plywood table with red steel chairs, a long oak worktop and framed record sleeves along the wall',
       },
       {
-        src: '/images/room-b.png',
-        alt: 'One of the two music studios at the Yard',
+        src: '/images/yard-lounge.jpg',
+        alt: 'The communal corner at the Yard: a sofa with mustard cushions in the afternoon sun, a monstera by the window and a green step ladder against the wall',
       },
       {
-        src: '/images/kitchen.png',
-        alt: 'The kitchen and dining area at the Yard',
+        src: '/images/yard-shelves.jpg',
+        alt: 'A corner of the Yard kitchen: wire shelves holding a clock, bottles and trailing pothos above a tiled splashback and oak worktop',
       },
     ],
   },
