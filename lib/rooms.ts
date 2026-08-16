@@ -114,20 +114,19 @@ export const units: Unit[] = [
       'That layout makes it the more social of the two units — you cannot really cross it without talking to somebody. The two offices suit anyone whose day is mostly calls rather than sessions, and there is a courtyard out the back for when a room stops being the answer.',
     ],
     /*
-     * Real photography, same shape as the Studios gallery above: the landscape
-     * file leads because the lead slot is 16/9, and the portrait ones sit in
-     * the row beneath. yard-hero.jpg is reused rather than saved twice — the
-     * hero only appears on the home and studios index pages, never here, so
-     * there is no repeat within a single page.
+     * Real photography, same shape as the Studios gallery above: one lead
+     * photograph at 16/9 and three across beneath it at 4/3. yard-hero.jpg is
+     * reused rather than saved twice — the hero only appears on the home and
+     * studios index pages, never here, so there is no repeat within a page.
      */
     gallery: [
       {
-        src: '/images/yard-studio.jpg',
-        alt: 'One of the two music studios at the Yard: a desk with monitor speakers and a mixing desk, an acoustic guitar on a stand, an upright piano miked up and a drum kit in the foreground',
-      },
-      {
         src: '/images/yard-hero.jpg',
         alt: 'The kitchen and dining area at the Yard: a plywood table with red steel chairs, a long oak worktop and framed record sleeves along the wall',
+      },
+      {
+        src: '/images/yard-studio.jpg',
+        alt: 'One of the two music studios at the Yard: a desk with monitor speakers and a mixing desk, an acoustic guitar on a stand, an upright piano miked up and a drum kit in the foreground',
       },
       {
         src: '/images/yard-lounge.jpg',
