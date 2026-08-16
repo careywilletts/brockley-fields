@@ -89,8 +89,8 @@ export const units: Unit[] = [
         alt: 'A drum kit set up and miked in front of the full-height studio windows, with an upright piano to one side',
       },
       {
-        src: '/images/studios-hero.jpg',
-        alt: 'A leather sofa with a mandolin resting on it, shelves of books and records above, and keyboards stacked along the wall',
+        src: '/images/studios-empty-room.jpg',
+        alt: 'An empty studio: dark acoustic panelling, wide oak boards, a suspended acoustic cloud overhead and a floor-to-ceiling window looking onto trees',
       },
       {
         src: '/images/studios-kitchen.jpg',
