@@ -61,6 +61,23 @@ const originalFor = (file) => {
   return path.join(root, ORIGINALS_DIRNAME, relative)
 }
 
+/**
+ * Matching on basename too, so a bare filename works as well as a full path.
+ *
+ * Defined before the restore step so that `--only` narrows a restore as well as
+ * a grade — restoring every photo when one was asked for would quietly undo
+ * grades the user wanted to keep.
+ */
+const isSelected = (file) =>
+  !onlyList ||
+  onlyList.some(
+    (entry) =>
+      file === entry ||
+      file.endsWith(`/${entry}`) ||
+      path.relative(root, file) === entry ||
+      path.basename(file) === path.basename(entry),
+  )
+
 const files = await collectPhotos(root)
 if (files.length === 0) {
   console.log(`No photos found under ${root}.`)
@@ -70,6 +87,7 @@ if (files.length === 0) {
 if (restore) {
   let restored = 0
   for (const file of files) {
+    if (!isSelected(file)) continue
     const original = originalFor(file)
     if (await fileExists(original)) {
       await copyFile(original, file)
@@ -95,17 +113,6 @@ const measurements = []
 for (const file of files) measurements.push(await measurePhoto(sources.get(file)))
 
 const target = deriveTarget(measurements)
-
-/** Matching on basename too, so a bare filename works as well as a full path. */
-const isSelected = (file) =>
-  !onlyList ||
-  onlyList.some(
-    (entry) =>
-      file === entry ||
-      file.endsWith(`/${entry}`) ||
-      path.relative(root, file) === entry ||
-      path.basename(file) === path.basename(entry),
-  )
 
 const selected = files.filter(isSelected)
 
