@@ -180,13 +180,28 @@ export const rooms: Room[] = [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/upstairs-studio-2-SbbmfXA0vmVjSXedLG5WcBLMpwuRFU.png',
     blurb:
       'The largest room in the building. Long enough to put a live area at one end and still have a proper working position at the other.',
+    /*
+     * Real photography. The three landscape files are exactly 4/3 so they sit
+     * in the grid cells uncropped; the desk shot leads because it reads as the
+     * room, and only it has to give up height to the 16/9 lead slot.
+     */
     photos: [
       {
-        src: '/images/hero-studio.png',
-        alt: 'Studio 2 at Brockley Fields Studios, the largest room, empty',
+        src: '/images/upstairs-studio-2-desk.jpg',
+        alt: 'The working end of Studio 2: a wooden desk with monitor speakers and outboard racks, a Fender Precision bass on a stand and shelves of synthesisers along the wall',
       },
-      { src: '/images/room-d.png', alt: 'The far end of Studio 2 with acoustic treatment' },
-      { src: '/images/corridor.png', alt: 'The soundproofed door into Studio 2' },
+      {
+        src: '/images/upstairs-studio-2-window.jpg',
+        alt: 'The far end of Studio 2, with floor-to-ceiling glazing onto the trees, an armchair, an accordion on the floor and the upright piano in the corner',
+      },
+      {
+        src: '/images/upstairs-studio-2-piano.jpg',
+        alt: 'The upright piano in Studio 2 with its front removed to show the hammers and strings, beneath a Brockley Fields Studios neon sign and a fringed lamp',
+      },
+      {
+        src: '/images/upstairs-studio-2-wurlitzer.jpg',
+        alt: 'A Wurlitzer electronic piano in Studio 2 with a vintage Sankei organ resting on top and record sleeves propped behind',
+      },
     ],
     occupants: ['carey-willetts'],
   },

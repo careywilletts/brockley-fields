@@ -116,9 +116,13 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
               </ul>
             )}
           </div>
-          <p className="type-label mt-3">
-            Room photography is indicative while the shoot is finished.
-          </p>
+          {/* Rooms shot for real are .jpg; the remaining placeholders are the
+              original .png renders, so they still carry the caveat. */}
+          {room.photos.some((photo) => photo.src.endsWith('.png')) && (
+            <p className="type-label mt-3">
+              Room photography is indicative while the shoot is finished.
+            </p>
+          )}
         </Container>
       </section>
 
