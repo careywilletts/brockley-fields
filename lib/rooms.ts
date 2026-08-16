@@ -156,13 +156,26 @@ export const rooms: Room[] = [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/upstairs-studio-1-t3SWDDp7saD618o6RAYhe1bzH9WxD0.png',
     blurb:
       'A square, calm room at the front of the building. The window runs the full width of one wall, so the light changes all day and you always know what the weather is doing.',
+    /*
+     * Real photography, all 4/3 so the files sit in the grid cells uncropped —
+     * the portrait original was cropped to 4/3 on the way in rather than left
+     * to a centre crop. The empty wide shot leads because it reads as the room
+     * and only it gives up height to the 16/9 lead slot; the furnished shot
+     * follows, since the room is let and this is how it is actually used.
+     */
     photos: [
       {
-        src: '/images/room-a.png',
-        alt: 'Studio 1 at Brockley Fields Studios, empty, with tall window and wood floor',
+        src: '/images/upstairs-studio-1-empty.jpg',
+        alt: 'Studio 1 at Brockley Fields Studios, empty, showing the grey acoustic panelling, the cloud panel in the ceiling, the oak floor and the full-width window',
       },
-      { src: '/images/window-green.png', alt: 'The green outlook from Studio 1' },
-      { src: '/images/detail-plaster.png', alt: 'Bare plaster wall detail in Studio 1' },
+      {
+        src: '/images/upstairs-studio-1-desk.jpg',
+        alt: 'Studio 1 in use: a standing desk with a session open on screen, monitor speakers and racks of outboard gear, a yellow armchair and sofa by the window and an electric piano in the foreground',
+      },
+      {
+        src: '/images/upstairs-studio-1-window.jpg',
+        alt: 'The full-width window in Studio 1 looking straight out into the trees, with the blind rolled up and acoustic panels either side',
+      },
     ],
     occupants: ['scott-verrill'],
   },
