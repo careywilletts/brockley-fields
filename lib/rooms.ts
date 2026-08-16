@@ -181,9 +181,11 @@ export const rooms: Room[] = [
     blurb:
       'The largest room in the building. Long enough to put a live area at one end and still have a proper working position at the other.',
     /*
-     * Real photography. The three landscape files are exactly 4/3 so they sit
-     * in the grid cells uncropped; the desk shot leads because it reads as the
-     * room, and only it has to give up height to the 16/9 lead slot.
+     * Real photography, all 4/3 so the files sit in the grid cells uncropped —
+     * the two portrait originals were cropped to 4/3 on the way in rather than
+     * left to a centre crop. The desk shot leads because it reads as the room,
+     * and only it has to give up height to the 16/9 lead slot. Five photos fill
+     * the two-column grid evenly: one lead, then two full rows.
      */
     photos: [
       {
@@ -193,6 +195,10 @@ export const rooms: Room[] = [
       {
         src: '/images/upstairs-studio-2-window.jpg',
         alt: 'The far end of Studio 2, with floor-to-ceiling glazing onto the trees, an armchair, an accordion on the floor and the upright piano in the corner',
+      },
+      {
+        src: '/images/upstairs-studio-2-sofa.jpg',
+        alt: 'The sofa corner of Studio 2: a brown leather sofa with a bouzouki resting on it, plywood cube shelving of books and records above, and an acoustic guitar and old television beside it',
       },
       {
         src: '/images/upstairs-studio-2-piano.jpg',
