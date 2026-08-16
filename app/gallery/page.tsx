@@ -21,13 +21,10 @@ export const metadata: Metadata = {
  * Captionless mosaic. Wide images take two columns, tall images take two rows,
  * so the grid stays irregular the way a contact sheet does. Alt text carries
  * the description for screen readers instead.
- *
- * Dense flow, so a later photograph backfills a gap left by an earlier wide or
- * tall one rather than the mosaic ending in a ragged hole.
  */
 function Mosaic({ images, priority = false }: { images: GalleryImage[]; priority?: boolean }) {
   return (
-    <ul className="grid auto-rows-[11rem] grid-flow-dense grid-cols-2 gap-3 sm:auto-rows-[13rem] sm:grid-cols-3 lg:auto-rows-[15rem] lg:grid-cols-4">
+    <ul className="grid auto-rows-[11rem] grid-cols-2 gap-3 sm:auto-rows-[13rem] sm:grid-cols-3 lg:auto-rows-[15rem] lg:grid-cols-4">
       {images.map((image, index) => (
         <li
           key={`${image.src}-${index}`}

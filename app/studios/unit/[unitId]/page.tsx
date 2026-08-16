@@ -110,7 +110,11 @@ export default async function UnitPage({ params }: { params: Promise<{ unitId: s
               </ul>
             )}
           </div>
-          <p className="type-label mt-3">Photography is indicative while the shoot is finished.</p>
+          {/* Only the Yard is still on placeholders; the Studios photographs
+              are real, so the caveat would be untrue there. */}
+          {unit.id !== 'studios' && (
+            <p className="type-label mt-3">Photography is indicative while the shoot is finished.</p>
+          )}
         </Container>
       </section>
 

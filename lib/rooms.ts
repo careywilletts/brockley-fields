@@ -74,22 +74,27 @@ export const units: Unit[] = [
       'Unit 1 is the quieter of the two. Three studios off a single corridor, each one soundproofed and acoustically treated, with a kitchen and dining area at the end that everybody ends up in at some point during the day.',
       'Every room has a floor-to-ceiling window and two of the three look out over green space. It is the unit people choose when they want to put their head down and work — sociable when you want it, easy to disappear into when you do not.',
     ],
+    /*
+     * Real photography. The first is the wide lead image on the unit page and
+     * the other three form the row beneath it, so the lead is the landscape
+     * file — the portrait ones would be cropped hard at 16/9.
+     */
     gallery: [
       {
-        src: '/images/hero-studio.png',
-        alt: 'A studio at Brockley Fields Studios with a tall window and wood floor',
+        src: '/images/studios-piano.jpg',
+        alt: 'The corner of a studio: an open upright piano beneath gold discs and the Brockley Fields Studios neon sign, an accordion on the floor and a chair by the windows',
       },
       {
-        src: '/images/corridor.png',
-        alt: 'The corridor running between the three studios in Unit 1',
+        src: '/images/studios-live-room.jpg',
+        alt: 'A drum kit set up and miked in front of the full-height studio windows, with an upright piano to one side',
       },
       {
-        src: '/images/kitchen.png',
-        alt: 'The shared kitchen and dining area at Brockley Fields Studios',
+        src: '/images/studios-hero.jpg',
+        alt: 'A leather sofa with a mandolin resting on it, shelves of books and records above, and keyboards stacked along the wall',
       },
       {
-        src: '/images/detail-plaster.png',
-        alt: 'Bare plaster and timber detail in Unit 1',
+        src: '/images/studios-kitchen.jpg',
+        alt: 'The shared kitchen and dining area: green cabinets, a butler sink and a long timber worktop',
       },
     ],
   },
