@@ -263,9 +263,26 @@ export const rooms: Room[] = [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yard-studio-1-eZnMEQigAhEP9qJjcVx6bxkC60kzKu.png',
     blurb:
       'Almost exactly square, which makes it forgiving to set up in. Opens straight onto the Yard communal area, so it is the most sociable room in the building.',
+    /*
+     * Real photography, all 4/3 so the files sit in the grid cells uncropped —
+     * the portrait original was cropped to 4/3 on the way in rather than left
+     * to a centre crop. The room is let and fully kitted out, so the wide shot
+     * of it in use leads; it is also the only one that gives up height to the
+     * 16/9 lead slot.
+     */
     photos: [
-      { src: '/images/room-b.png', alt: 'The Yard Studio 1, empty, with soundproofed door' },
-      { src: '/images/communal.png', alt: 'The Yard communal area outside Studio 1' },
+      {
+        src: '/images/yard-studio-1-desk.jpg',
+        alt: 'Studio 1 in the Yard set up to record: a desk of outboard gear and synths between monitor speakers, a drum kit in the foreground, guitars on stands and an upright piano beside the window',
+      },
+      {
+        src: '/images/yard-studio-1-live-room.jpg',
+        alt: 'A wider corner view of Studio 1 in the Yard, showing the drum kit and desk under the treated ceiling panel, with the window onto the Yard and its festoon lights',
+      },
+      {
+        src: '/images/yard-studio-1-sofa.jpg',
+        alt: 'The far end of Studio 1 in the Yard: a striped sofa against floor-to-ceiling acoustic panels, the soundproofed door, an archtop guitar hung on the wall and overhead mics above the drum kit',
+      },
     ],
     occupants: ['atticus-blue'],
   },
