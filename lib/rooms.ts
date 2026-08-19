@@ -315,7 +315,7 @@ export const rooms: Room[] = [
       poster: '/images/yard-studio-1-tour-poster.jpg',
       description:
         'A walk around Studio 1 in the Yard before it was furnished, showing the bare floor, the acoustic panelling, the treated ceiling and the window onto the communal area',
-      caption: 'Filmed before the current tenant moved in.',
+      caption: 'Filmed before the current tenant moved in. No sound.',
     },
     occupants: ['atticus-blue'],
   },
