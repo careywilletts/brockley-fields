@@ -14,6 +14,19 @@ export type UnitId = 'studios' | 'yard'
 
 export type Photo = { src: string; alt: string }
 
+/**
+ * A walkthrough clip for a room. Optional per room, and takes the lead slot
+ * above the photo grid where present. `poster` is the still shown before
+ * playback: nothing but the poster downloads until the visitor asks for it, so
+ * these files stay off the critical path. Clips are silent, so there is no
+ * audio to caption; `description` is the accessible name for the player.
+ */
+export type RoomVideo = {
+  src: string
+  poster: string
+  description: string
+}
+
 export type Room = {
   slug: string
   name: string
@@ -27,6 +40,8 @@ export type Room = {
   floorPlanPng: string
   blurb: string
   photos: Photo[]
+  /** Walkthrough clip, shown above the photos. Omit where there isn't one. */
+  video?: RoomVideo
   /** Slugs from lib/people.ts */
   occupants: string[]
 }
