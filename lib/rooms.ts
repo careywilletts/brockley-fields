@@ -300,9 +300,25 @@ export const rooms: Room[] = [
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/yard-studio-2-ArsLuSaK9uKXtyE6NiBE7JGhXMFq1H.png',
     blurb:
       'The L-shape is a gift rather than a compromise — the return gives you a natural booth without building one. Fire exit off the short leg.',
+    /*
+     * Real photography, all 4/3 so the files sit in the grid cells uncropped.
+     * The establishing shot leads because it is the one that reads the L-shape.
+     * A fourth frame of the piano end was supplied but is close to a duplicate
+     * of the lead, so it is left out rather than shown twice.
+     */
     photos: [
-      { src: '/images/room-d.png', alt: 'The Yard Studio 2, empty, showing the L-shaped return' },
-      { src: '/images/yard.png', alt: 'The courtyard beyond Studio 2' },
+      {
+        src: '/images/yard-studio-2-room.jpg',
+        alt: 'Studio 2 in the Yard looking down the long leg of the L: a desk and monitors under the window, racks of synths to the left, an acoustic guitar on a stand and an upright piano miked up on the right',
+      },
+      {
+        src: '/images/yard-studio-2-gear-wall.jpg',
+        alt: 'The gear wall in Studio 2 in the Yard: shelves of synthesisers, a rack of outboard preamps and compressors, a tape echo, a valve combo amp and pedals, with a Telecaster hung on the acoustic panelling',
+      },
+      {
+        src: '/images/yard-studio-2-kit.jpg',
+        alt: 'The short leg of Studio 2 in the Yard used as a booth: a blue sparkle drum kit on a rug against a large acoustic absorber, a bass and a classical guitar on the wall, and an armchair beside the door',
+      },
     ],
     occupants: ['rich-cooper'],
   },
