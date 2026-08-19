@@ -353,6 +353,18 @@ export const rooms: Room[] = [
         alt: 'The short leg of Studio 2 in the Yard used as a booth: a blue sparkle drum kit on a rug against a large acoustic absorber, a bass and a classical guitar on the wall, and an armchair beside the door',
       },
     ],
+    /*
+     * As with Studio 1: filmed empty, before the tenant moved in. The bare
+     * shell is the more useful view for anyone judging whether their own setup
+     * fits, but it has to be captioned or it contradicts the photographs above.
+     */
+    video: {
+      src: '/videos/yard-studio-2-tour.mp4',
+      poster: '/images/yard-studio-2-tour-poster.jpg',
+      description:
+        'A walk around Studio 2 in the Yard before it was furnished, showing the bare floor, the acoustic panelling, the window onto the communal area and the return that forms the short leg of the L',
+      caption: 'Filmed before the current tenant moved in. No sound.',
+    },
     occupants: ['rich-cooper'],
   },
   {
