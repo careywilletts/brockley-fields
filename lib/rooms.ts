@@ -15,16 +15,21 @@ export type UnitId = 'studios' | 'yard'
 export type Photo = { src: string; alt: string }
 
 /**
- * A walkthrough clip for a room. Optional per room, and takes the lead slot
- * above the photo grid where present. `poster` is the still shown before
- * playback: nothing but the poster downloads until the visitor asks for it, so
- * these files stay off the critical path. Clips are silent, so there is no
- * audio to caption; `description` is the accessible name for the player.
+ * A walkthrough clip for a room. Optional per room, and shown after the photos
+ * where present. `poster` is the still shown before playback: nothing but the
+ * poster downloads until the visitor asks for it, so the clip stays off the
+ * critical path. Clips are silent, so there is no audio to caption;
+ * `description` is the accessible name for the player.
+ *
+ * `caption` is printed under the player and is not decorative — a clip filmed
+ * at a different time from the photographs has to say so, or it reads as the
+ * room's current state.
  */
 export type RoomVideo = {
   src: string
   poster: string
   description: string
+  caption?: string
 }
 
 export type Room = {
@@ -40,7 +45,7 @@ export type Room = {
   floorPlanPng: string
   blurb: string
   photos: Photo[]
-  /** Walkthrough clip, shown above the photos. Omit where there isn't one. */
+  /** Walkthrough clip, shown after the photos. Omit where there isn't one. */
   video?: RoomVideo
   /** Slugs from lib/people.ts */
   occupants: string[]
@@ -299,6 +304,19 @@ export const rooms: Room[] = [
         alt: 'The far end of Studio 1 in the Yard: a striped sofa against floor-to-ceiling acoustic panels, the soundproofed door, an archtop guitar hung on the wall and overhead mics above the drum kit',
       },
     ],
+    /*
+     * Filmed before the tenant moved in, so it shows the empty shell — which is
+     * the more useful view for anyone weighing up a room of their own, but only
+     * if it is captioned as such. Uncaptioned it would contradict the
+     * photographs directly above it.
+     */
+    video: {
+      src: '/videos/yard-studio-1-tour.mp4',
+      poster: '/images/yard-studio-1-tour-poster.jpg',
+      description:
+        'A walk around Studio 1 in the Yard before it was furnished, showing the bare floor, the acoustic panelling, the treated ceiling and the window onto the communal area',
+      caption: 'Filmed before the current tenant moved in.',
+    },
     occupants: ['atticus-blue'],
   },
   {

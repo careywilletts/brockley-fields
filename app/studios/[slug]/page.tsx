@@ -5,6 +5,7 @@ import { rooms, getRoom, getUnit, roomsForUnit, spaceCount } from '@/lib/rooms'
 import { peopleForRoom } from '@/lib/people'
 import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, BackLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
+import { RoomVideoPlayer } from '@/components/room-video'
 import { FloorPlan } from '@/components/floor-plan'
 import { PersonPortrait } from '@/components/person-portrait'
 import { StatusBadge } from '@/components/status-badge'
@@ -122,6 +123,14 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
             <p className="type-label mt-3">
               Room photography is indicative while the shoot is finished.
             </p>
+          )}
+          {/* The walkthrough sits after the stills: it is the fuller view of the
+              room but costs a download, so the photographs do the first work. */}
+          {room.video && (
+            <div className="mt-8">
+              <p className="type-label-ink mb-4">Walkthrough</p>
+              <RoomVideoPlayer video={room.video} />
+            </div>
           )}
         </Container>
       </section>
