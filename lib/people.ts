@@ -151,9 +151,9 @@ export const people: Person[] = [
     disciplines: ['Product Leader', 'Entrepreneur', 'Music Technology'],
     oneLiner: 'Builds the software the rest of the building ends up using.',
     credits: ['Reflex', 'New Sonic Arts', 'Version Music'],
-    portrait: '/images/people/david-eserin.png',
+    portrait: '/images/people/david-eserin.jpg',
     bio: 'David Eserin is a seasoned product leader and entrepreneur in the music technology sector, with a track record of building groundbreaking creative software — from frameworks like Reflex to music tools like New Sonic Arts and open platforms like Version Music — bridging production, distribution and marketing through next-generation tech.',
-    links: [],
+    links: [{ label: 'Reflex++', href: 'https://reflexplusplus.dev' }],
     // Takes both offices in the Yard as one commercial space.
     roomSlug: 'yard-office-1',
     alsoRoomSlugs: ['yard-office-2'],
