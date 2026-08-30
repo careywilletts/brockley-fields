@@ -7,6 +7,7 @@ import {
   Photo,
   Rule,
 } from '@/components/primitives'
+import { buildTeaser } from '@/lib/build'
 import { getGallery, type GallerySection } from '@/lib/gallery'
 import { spaceCount } from '@/lib/rooms'
 import { waitingListHref } from '@/lib/site'
@@ -95,6 +96,49 @@ export default async function GalleryPage() {
           </section>
         ))
       )}
+
+      <section
+        className="border-foreground/20 border-t py-12 sm:py-16"
+        aria-labelledby="gallery-build"
+      >
+        <Container>
+          <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+            <div className="md:w-[20rem] md:shrink-0">
+              <p className="type-label type-eyebrow">Follow the build</p>
+              <h2 id="gallery-build" className="type-display mt-3 text-[26px] sm:text-[32px]">
+                See how these rooms were made
+              </h2>
+              <p className="mt-4 text-[17px] leading-relaxed text-pretty">
+                Every studio started as a tired office and was rebuilt from the shell up. Follow the
+                strip-out, the framing and the hand-wrapped fabric walls, unit by unit.
+              </p>
+              <div className="mt-6">
+                <ActionLink href="/follow-the-build">Follow the build</ActionLink>
+              </div>
+            </div>
+            <div className="grid flex-1 grid-cols-3 gap-3">
+              <Photo
+                src={buildTeaser.before.src}
+                alt={buildTeaser.before.alt}
+                className="aspect-3/2 border-foreground/20 border"
+                sizes="(min-width: 768px) 22vw, 30vw"
+              />
+              <Photo
+                src={buildTeaser.human.src}
+                alt={buildTeaser.human.alt}
+                className="aspect-3/2 border-foreground/20 border"
+                sizes="(min-width: 768px) 22vw, 30vw"
+              />
+              <Photo
+                src={buildTeaser.after.src}
+                alt={buildTeaser.after.alt}
+                className="aspect-3/2 border-foreground/20 border"
+                sizes="(min-width: 768px) 22vw, 30vw"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <section className="border-foreground/20 border-t py-12 sm:py-16">
         <Container>
