@@ -28,6 +28,7 @@ const IMAGE_RE = /\.(jpe?g|png|webp|avif)$/i
 
 const SECTION_TITLES: Record<string, string> = {
   'brockley-fields-studios': 'Brockley Fields Studios',
+  'studio-2': 'Studio 2',
   'the-yard': 'The Yard',
 }
 
@@ -60,6 +61,22 @@ const ALT: Record<string, string> = {
     'A close view of the Yard\u2019s wire wall-shelves styled with a beige vase, a clock, a reed diffuser, bottles and trailing pothos, above an oak worktop with a wooden board, salt and pepper grinders and a stainless microwave.',
   'the-yard/06-glazed-partition.jpg':
     'A threshold in the Yard\u2019s communal area: a black Crittall-style glazed partition and door opening onto the wood-floored hallway, lit by a caged pendant, with a framed \u201chumble\u201d print and the dining table edge in view.',
+  'studio-2/01-live-room.jpg':
+    'A wide view of Studio 2 at Brockley Fields Studios: reclaimed oak floors and warm plaster walls, a green mid-century armchair by the full-height windows onto the trees, a dracaena plant, a red accordion, and the black upright piano in the corner.',
+  'studio-2/02-piano-corner.jpg':
+    'The piano corner of Studio 2: a black Kawai upright beneath a shelf of framed gold and platinum discs and the neon \u201cBrockley Fields Studios\u201d sign, with a fringed vintage lamp, a dracaena and a red accordion on the oak floor by the window.',
+  'studio-2/03-piano-and-guitars.jpg':
+    'Studio 2\u2019s upright piano seen front-on with its top open, flanked by a Gibson semi-hollow guitar on a stand and an archtop guitar resting on the rug, below the framed discs, neon sign and fringed lamp.',
+  'studio-2/04-piano-mic.jpg':
+    'A moody, warmly-lit view of Studio 2\u2019s upright piano set up for recording, with a pair of condenser microphones over the open lid, a classical guitar leaning against the stool and the neon sign glowing behind.',
+  'studio-2/05-drum-kit.jpg':
+    'A vintage silver-sparkle drum kit in Studio 2, its bass drum bearing a hand-painted swan logo, set on a patterned rug in front of a Fender and a VOX amplifier, with a green mid-century armchair beside the window.',
+  'studio-2/06-drums-and-piano.jpg':
+    'Studio 2 bathed in sunlight: the sparkle drum kit and ride cymbal in the foreground by the full-height windows, with the black upright piano, neon sign and framed discs across the room.',
+  'studio-2/07-amp-stack.jpg':
+    'A corner of Studio 2 with a Fender Deluxe and a VOX amplifier stacked on reclaimed-timber shelving, a sunburst semi-hollow guitar leaning beside them and a green mid-century armchair at the full-height window.',
+  'studio-2/08-awards-shelf.jpg':
+    'A detail in Studio 2 of the framed gold and platinum record awards on a timber shelf above the neon \u201cBrockley Fields Studios\u201d sign, official chart trophies and a fringed vintage lamp.',
 }
 
 function humanize(slug: string) {
