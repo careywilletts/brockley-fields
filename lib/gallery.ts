@@ -28,6 +28,7 @@ const IMAGE_RE = /\.(jpe?g|png|webp|avif)$/i
 
 const SECTION_TITLES: Record<string, string> = {
   'brockley-fields-studios': 'Brockley Fields Studios',
+  'the-yard': 'The Yard',
 }
 
 const ALT: Record<string, string> = {
@@ -47,6 +48,18 @@ const ALT: Record<string, string> = {
     'A view from the communal hallway through an open acoustic door into one of the control rooms, showing studio monitors, racks of outboard equipment, a bass guitar and a chair on a rug amid blue acoustic panelling.',
   'brockley-fields-studios/08-kitchen-window.jpg':
     'A wide view across the communal kitchen and dining area, with exposed silver ductwork overhead, the bench table on the left and the oxblood chair and double bass framed by the window onto the courtyard.',
+  'the-yard/01-dining-room.jpg':
+    'The communal dining area at the Yard: a plywood-topped table with red-framed vintage school chairs beneath caged industrial pendants and an exposed black steel beam, with framed music prints on the wall and the kitchen run beyond.',
+  'the-yard/02-lounge-sofa.jpg':
+    'A sunlit lounge corner at the Yard: a mustard sofa piled with yellow velvet cushions beside a large monstera and a full-height window, with a green vintage step-ladder and a yellow floor lamp against the kitchen units.',
+  'the-yard/03-kitchen-run.jpg':
+    'The kitchen run at the Yard: white cabinetry with an oak worktop, a sink, kettle and wine cooler, framed indie gig prints on the wall and mesh wire shelves holding trailing pothos, a clock and bottles.',
+  'the-yard/04-kitchen-detail.jpg':
+    'A detail of the Yard kitchen: a framed Sparklehorse \u201cGood Morning Spider\u201d print beside mesh wire shelves with trailing pothos, a clock and glass bottles, above an oak worktop with a kettle, chopping board and microwave.',
+  'the-yard/05-shelves-and-microwave.jpg':
+    'A close view of the Yard\u2019s wire wall-shelves styled with a beige vase, a clock, a reed diffuser, bottles and trailing pothos, above an oak worktop with a wooden board, salt and pepper grinders and a stainless microwave.',
+  'the-yard/06-glazed-partition.jpg':
+    'A threshold in the Yard\u2019s communal area: a black Crittall-style glazed partition and door opening onto the wood-floored hallway, lit by a caged pendant, with a framed \u201chumble\u201d print and the dining table edge in view.',
 }
 
 function humanize(slug: string) {
