@@ -41,8 +41,6 @@ const ALT: Record<string, string> = {
     'A detail of the kitchen: a butler sink with a gooseneck tap and metro-tiled splashback, below a reclaimed-timber shelf holding storage jars, chopping boards, glasses and a vintage Spruce Cleaning Services sign.',
   'brockley-fields-studios/04-desk-nook.jpg':
     'A writing nook in the communal area: a vintage school desk and matching bench with a grey steel frame, an articulated task lamp on the wall and a printer\u2019s tray of small curios above.',
-  'brockley-fields-studios/05-kitchen-run.jpg':
-    'The kitchen run at Brockley Fields Studios: green shaker cabinetry with timber worktops, a Belfast sink and integrated appliances, a tall cupboard topped with a film reel, and the seating corner by the window beyond.',
   'brockley-fields-studios/06-gig-poster.jpg':
     'A framed 2005 Bright Eyes gig poster with a blue toy-robot illustration, hung on a pink plaster wall between two green-painted doorways in the communal hallway.',
   'brockley-fields-studios/07-studio-doorway.jpg':
@@ -57,8 +55,6 @@ const ALT: Record<string, string> = {
     'The kitchen run at the Yard: white cabinetry with an oak worktop, a sink, kettle and wine cooler, framed indie gig prints on the wall and mesh wire shelves holding trailing pothos, a clock and bottles.',
   'the-yard/04-kitchen-detail.jpg':
     'A detail of the Yard kitchen: a framed Sparklehorse \u201cGood Morning Spider\u201d print beside mesh wire shelves with trailing pothos, a clock and glass bottles, above an oak worktop with a kettle, chopping board and microwave.',
-  'the-yard/05-shelves-and-microwave.jpg':
-    'A close view of the Yard\u2019s wire wall-shelves styled with a beige vase, a clock, a reed diffuser, bottles and trailing pothos, above an oak worktop with a wooden board, salt and pepper grinders and a stainless microwave.',
   'the-yard/06-glazed-partition.jpg':
     'A threshold in the Yard\u2019s communal area: a black Crittall-style glazed partition and door opening onto the wood-floored hallway, lit by a caged pendant, with a framed \u201chumble\u201d print and the dining table edge in view.',
   'studio-2/01-live-room.jpg':
