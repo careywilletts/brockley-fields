@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 /**
  * The "See the build" story: how the two commercial units went from a worn-out
  * open-plan office, back to the shell, and out the other side as soundproofed
- * studios. A curated four-phase narrative — order is meaningful, so it lives
+ * studios. A curated, ordered narrative — order is meaningful, so it lives
  * here as data rather than being auto-loaded from a folder like the gallery.
  */
 type BuildPhoto = { src: string; alt: string; className?: string; imageClassName?: string }
@@ -92,6 +92,54 @@ const buildPhases: BuildPhase[] = [
       {
         src: '/images/build/12-floor-laid.jpg',
         alt: 'A long room with its floating-floor boards laid toward a window onto trees, a boxed-in structural steel column and timber head framing overhead.',
+      },
+    ],
+  },
+  {
+    step: '05',
+    title: 'Lining for silence',
+    note: 'Acoustic plasterboard, then walls hand-wrapped in fabric over dense mineral wool \u2014 the slow, careful part that actually stops the sound.',
+    gridClass: 'grid grid-cols-2 gap-3 lg:grid-cols-4',
+    photos: [
+      {
+        src: '/images/build/13-soundboard-partition.jpg',
+        alt: 'A new room being built inside the shell, its partitions clad in dense grey acoustic plasterboard over metal studs, with a floor access hatch and a glazed door onto greenery.',
+      },
+      {
+        src: '/images/build/14-fabric-wrapping.jpg',
+        alt: 'Two builders wrapping a studio wall in grey acoustic fabric \u2014 one on a hop-up stapling the fabric to the ceiling battens, the other crouched below, with the hardboard substrate and wiring holes still visible.',
+      },
+      {
+        src: '/images/build/15-fabric-wall.jpg',
+        alt: 'A finished grey fabric-covered acoustic wall with dark trim, its power sockets being wired in mid-installation and a dust mask resting on a black plinth.',
+      },
+      {
+        src: '/images/build/16-fabric-fitout.jpg',
+        alt: 'A studio mid fit-out, its grey acoustic wall panels and a black-framed ceiling cloud being wrapped in fabric under warm downlights, with a worktable and step-ladder on the protected floor.',
+      },
+    ],
+  },
+  {
+    step: '06',
+    title: 'The finish',
+    note: 'Oak floors, olive acoustic panels and a hand-built kitchen \u2014 the rooms that Brockley Fields is today.',
+    gridClass: 'grid grid-cols-2 gap-3 lg:grid-cols-4',
+    photos: [
+      {
+        src: '/images/build/17-treated-room.jpg',
+        alt: 'A near-finished studio: olive-green fabric acoustic panels with oak trim, a black-framed ceiling raft with recessed downlights, industrial wall lamps, Crittall-style glazed doors and a warm oak floor.',
+      },
+      {
+        src: '/images/build/18-treated-room-doors.jpg',
+        alt: 'Another view of the treated room, looking toward the black Crittall-style glazed doors, with fabric acoustic panels, an articulated industrial wall light and the ceiling cloud overhead.',
+      },
+      {
+        src: '/images/build/19-oak-floor.jpg',
+        alt: 'A finished engineered-oak floating floor laid across a freshly plastered room, its boards running toward a window that looks out onto trees.',
+      },
+      {
+        src: '/images/build/20-kitchen.jpg',
+        alt: 'The communal kitchen mid fit-out: dark green shaker cabinets, a white Belfast sink with a brass tap, a live-edge timber worktop, a white metro-tile splashback, an under-counter fridge and a dishwasher.',
       },
     ],
   },
