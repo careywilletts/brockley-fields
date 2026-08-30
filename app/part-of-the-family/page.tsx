@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { family, personRoomSlugs, bioParagraphs } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
-import { ActionLink, Container, InlineLink, PageHeader } from '@/components/primitives'
+import { Container, InlineLink, PageHeader } from '@/components/primitives'
 import { PersonPortrait } from '@/components/person-portrait'
 
 export const metadata: Metadata = {
@@ -143,25 +143,6 @@ export default function PartOfTheFamilyPage() {
               )
             })}
           </ul>
-        </Container>
-      </section>
-
-      <section className="border-foreground/20 border-t">
-        <Container className="py-16 sm:py-20">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12">
-            <div>
-              <p className="type-label type-eyebrow">Want a room in the building?</p>
-              <h2 className="type-display mt-3 max-w-[28rem] text-[26px] text-balance sm:text-[34px]">
-                Rooms come up two or three times a year.
-              </h2>
-              <p className="mt-5 max-w-[34rem] text-[17px] leading-relaxed">
-                Put your name down and we&apos;ll come to you when one is free.
-              </p>
-            </div>
-            <ActionLink href="/waiting-list" className="shrink-0">
-              Join the waiting list
-            </ActionLink>
-          </div>
         </Container>
       </section>
     </>
