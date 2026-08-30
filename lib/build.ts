@@ -153,7 +153,7 @@ const brockleyFieldsStudios: BuildTrack = {
     {
       step: '06',
       title: 'The finish',
-      note: 'Oak floors, olive acoustic panels and a hand-built kitchen \u2014 the rooms that Brockley Fields is today.',
+      note: 'Oak floors, olive acoustic panels and a hand-built kitchen \u2014 then moved into and switched on. The rooms that Brockley Fields is today.',
       gridClass: 'grid grid-cols-2 gap-3 lg:grid-cols-4',
       photos: [
         {
@@ -171,6 +171,18 @@ const brockleyFieldsStudios: BuildTrack = {
         {
           src: '/images/build/20-kitchen.jpg',
           alt: 'The communal kitchen mid fit-out: dark green shaker cabinets, a white Belfast sink with a brass tap, a live-edge timber worktop, a white metro-tile splashback, an under-counter fridge and a dishwasher.',
+        },
+        {
+          src: '/images/build/23-studio-live.jpg',
+          alt: 'Studio 1 finished and in use: dark acoustic-fabric walls and a suspended grey ceiling cloud with downlights, racks of synths and outboard beside studio monitors, an upright piano, a rolling desk with a DAW on screen, a mustard-yellow armchair and a grey sofa, lit by a full-height window onto the trees.',
+        },
+        {
+          src: '/images/build/21-studio-desk.jpg',
+          alt: 'Studio 2 finished and kitted out: a reclaimed-timber control desk with monitors and racks of outboard gear, a sunburst Fender Precision bass, wall-shelved synthesizers including a Sequential and a Juno-106, a floor of guitar pedals and the neon \u201cBrockley Fields Studios\u201d sign with framed gold and platinum discs.',
+        },
+        {
+          src: '/images/build/22-studio-piano.jpg',
+          alt: 'The window corner of the finished Studio 2: a full-height glazed wall onto the trees, a green mid-century sling chair and a red accordion on the oak floor, and a black upright piano topped with the neon sign, framed gold and platinum awards and a fringed vintage lamp.',
         },
       ],
     },

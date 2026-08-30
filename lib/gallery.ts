@@ -83,10 +83,6 @@ const ALT: Record<string, string> = {
     'A corner of Studio 2 with a Fender Deluxe and a VOX amplifier stacked on reclaimed-timber shelving, a sunburst semi-hollow guitar leaning beside them and a green mid-century armchair at the full-height window.',
   'studio-2/08-awards-shelf.jpg':
     'A detail in Studio 2 of the framed gold and platinum record awards on a timber shelf above the neon \u201cBrockley Fields Studios\u201d sign, official chart trophies and a fringed vintage lamp.',
-  'studio-2/09-control-desk.jpg':
-    'The control desk in Studio 2 at Brockley Fields Studios: a reclaimed-timber desk with a monitor, Focal and Yamaha studio monitors and racks of outboard gear, a sunburst Fender Precision bass on a stand, wall-shelved synthesizers including a Sequential and a Juno-106, a large collection of guitar pedals on the floor, and the neon \u201cBrockley Fields Studios\u201d sign with framed gold and platinum discs to the left.',
-  'studio-2/10-window-corner.jpg':
-    'The window corner of Studio 2 at Brockley Fields Studios: a full-height glazed wall onto the trees, a green mid-century sling chair and a red accordion on the reclaimed-oak floor beside a potted dracaena, and a black upright piano with its front removed to expose the action, topped with the neon sign, framed gold and platinum awards and a fringed vintage lamp.',
   'the-yard-office/01-through-partition.jpg':
     'The Yard\u2019s communal office seen through a black Crittall-style glazed partition: a bright white-walled room with mustard-yellow tub chairs, a leafy plant and a suspended grey acoustic cloud, with a matching glazed door opening to a side room on the right.',
   'the-yard-office/02-partition-and-door.jpg':
