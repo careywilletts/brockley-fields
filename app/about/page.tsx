@@ -1,11 +1,106 @@
 import type { Metadata } from 'next'
-import { Container, PageHeader, Rule } from '@/components/primitives'
+import { ActionLink, Container, PageHeader, Photo, Rule, Section } from '@/components/primitives'
 import { TerraceBand } from '@/components/brand'
+import { cn } from '@/lib/utils'
+
+/**
+ * The "See the build" story: how the two commercial units went from a worn-out
+ * open-plan office, back to the shell, and out the other side as soundproofed
+ * studios. A curated four-phase narrative — order is meaningful, so it lives
+ * here as data rather than being auto-loaded from a folder like the gallery.
+ */
+type BuildPhoto = { src: string; alt: string; className?: string; imageClassName?: string }
+type BuildPhase = { step: string; title: string; note: string; gridClass: string; photos: BuildPhoto[] }
+
+const buildPhases: BuildPhase[] = [
+  {
+    step: '01',
+    title: 'Before',
+    note: 'The units had spent their last life as an open-plan office — banks of desks, exposed ducting and strip lights.',
+    gridClass: 'grid grid-cols-2 gap-3 sm:grid-cols-3',
+    photos: [
+      {
+        src: '/images/build/01-before-office.jpg',
+        alt: 'The units before conversion: an open-plan office with rows of white desks and monitors, mesh chairs, exposed ducting and strip lighting.',
+      },
+      {
+        src: '/images/build/02-before-storeroom.jpg',
+        alt: 'A back room before work began, used for office storage — spiral ventilation ducting overhead, slatted shelving, a fire-exit door and scattered equipment.',
+      },
+      {
+        src: '/images/build/03-before-empty.jpg',
+        alt: 'One of the units cleared but still in its office fit-out, with a glazed partition, a structural column, exposed ducting and a small kitchenette.',
+      },
+    ],
+  },
+  {
+    step: '02',
+    title: 'On paper',
+    note: 'Building C, drawn up: three rooms, a kitchen and a WC, walls measured to the millimetre.',
+    gridClass: 'grid grid-cols-1',
+    photos: [
+      {
+        src: '/images/build/04-floor-plan.jpg',
+        alt: 'The architect\u2019s floor plan for building C, showing three rooms of 16.5, 26 and 14 square metres, a small WC and a kitchen, with wall dimensions marked in millimetres.',
+        className: 'aspect-3/4 max-w-[22rem]',
+        imageClassName: 'object-contain',
+      },
+    ],
+  },
+  {
+    step: '03',
+    title: 'Strip-out',
+    note: 'Back to the shell — partitions down, plasterboard and mineral wool out, the services laid bare.',
+    gridClass: 'grid grid-cols-2 gap-3 sm:grid-cols-3',
+    photos: [
+      {
+        src: '/images/build/05-stripout-debris.jpg',
+        alt: 'Strip-out underway, seen through a glazed partition: piles of removed plasterboard and yellow mineral-wool insulation, a builder\u2019s rubble bag and a dustpan on the bare floor.',
+      },
+      {
+        src: '/images/build/06-stripout-partitions.jpg',
+        alt: 'A unit stripped back to metal-stud partitions with insulation exposed, a structural column, a pedestal fan and air-conditioning units waiting to be installed.',
+      },
+      {
+        src: '/images/build/07-stripout-wide.jpg',
+        alt: 'A wide view of a unit mid strip-out, with stud partitions, stacked timber, a step-ladder and trestle tables on bare grey carpet.',
+      },
+    ],
+  },
+  {
+    step: '04',
+    title: 'Rebuilt for sound',
+    note: 'New timber framing, floating floors on rubber isolation pucks and room-in-room construction — the bones of an acoustically treated studio.',
+    gridClass: 'grid grid-cols-2 gap-3 lg:grid-cols-3',
+    photos: [
+      {
+        src: '/images/build/08-floating-floor.jpg',
+        alt: 'An acoustic floating floor being laid — chipboard decking on rubber isolation pucks with timber battens set out, beside new metal-stud partitions and a stack of boards.',
+      },
+      {
+        src: '/images/build/09-osb-room.jpg',
+        alt: 'A small studio taking shape, framed and lined in Sterling OSB board, with the ceiling joists and insulation still exposed and a work light in the doorway.',
+      },
+      {
+        src: '/images/build/10-framing-lights.jpg',
+        alt: 'A larger room in timber-stud framing with new strip lights fitted, a step-ladder and a trestle table of tools mid-build.',
+      },
+      {
+        src: '/images/build/11-framing-window.jpg',
+        alt: 'A room fully framed in timber studwork with fresh lighting and a large window onto greenery, ready for lining and soundproofing.',
+      },
+      {
+        src: '/images/build/12-floor-laid.jpg',
+        alt: 'A long room with its floating-floor boards laid toward a window onto trees, a boxed-in structural steel column and timber head framing overhead.',
+      },
+    ],
+  },
+]
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios and two creative spaces in Brockley, SE4, built on the belief that people matter.',
+    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios and two creative spaces in Brockley, SE4 — plus a look at how the units were rebuilt from a tired office into acoustically treated studios.',
 }
 
 export default function AboutPage() {
@@ -112,6 +207,65 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      <Section
+        label="See the build"
+        title={
+          <>
+            From tired office to <span className="text-primary">five studios</span>
+          </>
+        }
+        intro={
+          <p>
+            The two units arrived as a worn-out open-plan office. Here&apos;s how they were taken
+            back to the shell and rebuilt &mdash; room within room &mdash; into soundproofed,
+            acoustically treated studios.
+          </p>
+        }
+      >
+        <div className="mt-12 flex flex-col">
+          {buildPhases.map((phase, i) => (
+            <div
+              key={phase.step}
+              className={cn(
+                'flex flex-col gap-6 py-10 md:flex-row md:gap-12',
+                i > 0 && 'border-foreground/20 border-t',
+              )}
+            >
+              <div className="md:w-[13rem] md:shrink-0">
+                <p className="type-label type-eyebrow">{phase.step}</p>
+                <h3 className="type-display mt-2 text-[20px]">{phase.title}</h3>
+                <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
+                  {phase.note}
+                </p>
+              </div>
+              <div className="md:flex-1">
+                <div className={phase.gridClass}>
+                  {phase.photos.map((photo) => (
+                    <Photo
+                      key={photo.src}
+                      src={photo.src}
+                      alt={photo.alt}
+                      className={photo.className ?? 'aspect-3/2'}
+                      imageClassName={photo.imageClassName}
+                      sizes="(min-width: 1024px) 28vw, (min-width: 768px) 30vw, 50vw"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="border-foreground/20 mt-4 flex flex-wrap gap-3 border-t pt-10">
+          <ActionLink href="/studios" variant="fill">
+            See the finished spaces
+          </ActionLink>
+          <ActionLink href="/gallery" variant="fill">
+            Photo gallery
+          </ActionLink>
+        </div>
+      </Section>
 
       <Rule />
     </>
