@@ -382,7 +382,10 @@ export const rooms: Room[] = [
     blurb:
       'A proper door-closing office for anyone who spends their day on calls rather than in a session. Window along the full front wall.',
     photos: [
-      { src: '/images/room-c.png', alt: 'Office 1 in the Yard, empty, with a desk under the window' },
+      {
+        src: '/images/office-partition.jpg',
+        alt: 'An office at the Yard seen through its black Crittall-style glazed partition: a bright white room with a suspended acoustic cloud, a brass desk lamp, monitors, a mustard-yellow chair and leafy plants, with a street window to one side and a framed door through to a second room',
+      },
     ],
     occupants: ['david-eserin'],
   },
@@ -401,7 +404,10 @@ export const rooms: Room[] = [
     blurb:
       'The smallest space we have, and the quietest corner of the Yard. Room for a desk, a chair and a filing cabinet you will never open.',
     photos: [
-      { src: '/images/room-c.png', alt: 'Office 2 in the Yard, empty' },
+      {
+        src: '/images/office-partition.jpg',
+        alt: 'An office at the Yard seen through its black Crittall-style glazed partition: a bright white room with a suspended acoustic cloud, a brass desk lamp, monitors, a mustard-yellow chair and leafy plants, with a street window to one side and a framed door through to a second room',
+      },
     ],
     occupants: ['david-eserin'],
   },
