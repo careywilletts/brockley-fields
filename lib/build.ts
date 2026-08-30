@@ -178,16 +178,98 @@ const brockleyFieldsStudios: BuildTrack = {
 }
 
 /**
- * The Yard — the second unit. Photos land next; until then the track renders a
- * short "being photographed" note so the two-track structure reads as intended.
- * New Yard build images live under /images/build/yard/.
+ * The Yard — the second unit, given the same treatment. Curated down to two
+ * frames per phase, leading each with the most legible or dramatic shot so the
+ * story reads as highlights rather than a progress log. Images live under
+ * /images/build/yard/.
  */
 const theYard: BuildTrack = {
   slug: 'the-yard',
   title: 'The Yard',
   blurb:
-    'The second unit, taken from shell to soundproofed studios in exactly the same way.',
-  phases: [],
+    'The second unit, given the same treatment: another tired office, stripped back and rebuilt into soundproofed rooms \u2014 this time with perforated-timber acoustic panels as the finishing touch.',
+  phases: [
+    {
+      step: '01',
+      title: 'Before',
+      note: 'Another end-of-life office: worn vinyl floors, a wall-hung boiler, strip lights and a back room lost to storage.',
+      gridClass: 'grid grid-cols-2 gap-3',
+      photos: [
+        {
+          src: '/images/build/yard/01-before-office.jpg',
+          alt: 'The Yard before conversion: a tired office with worn vinyl plank flooring, a wall-mounted boiler, exposed strip lights and ducting, and a small WC in the corner.',
+        },
+        {
+          src: '/images/build/yard/02-before-storeroom.jpg',
+          alt: 'A back room before work began, crammed with cardboard boxes, a bicycle, blue steel shelving and patched-up walls under fluorescent strip lights.',
+        },
+      ],
+    },
+    {
+      step: '02',
+      title: 'Stripped back and framed',
+      note: 'Partitions down to the shell, then a forest of new timber studwork setting out the rooms and a framed grid for the ceiling rafts.',
+      gridClass: 'grid grid-cols-2 gap-3',
+      photos: [
+        {
+          src: '/images/build/yard/03-framing-wide.jpg',
+          alt: 'A wide view of the unit mid-rebuild: extensive new timber-stud framing dividing the space into rooms, exposed timber ceiling beams and a workbench on trestles.',
+        },
+        {
+          src: '/images/build/yard/04-ceiling-frame.jpg',
+          alt: 'A ceiling being framed with black steel and timber into a suspended grid, temporary pendant bulbs and wiring hanging down over freshly plastered walls.',
+        },
+      ],
+    },
+    {
+      step: '03',
+      title: 'Room within a room',
+      note: 'Each studio built as a box inside the shell \u2014 lined in Sterling OSB and floated on a new timber floor, isolated from the structure around it.',
+      gridClass: 'grid grid-cols-2 gap-3',
+      photos: [
+        {
+          src: '/images/build/yard/05-osb-room.jpg',
+          alt: 'A studio taking shape as a room within a room, its walls and ceiling lined in Sterling OSB Zero board with mineral wool still exposed overhead and a work light on a tripod.',
+        },
+        {
+          src: '/images/build/yard/06-floating-floor.jpg',
+          alt: 'A new engineered-oak floor being laid across a room, with a plunge saw on its track, a Henry vacuum and ratchet straps tensioning the boards together.',
+        },
+      ],
+    },
+    {
+      step: '04',
+      title: 'Lining for silence',
+      note: 'Dense mineral wool and plaster to seal the rooms, and deep timber-framed cavities built out from the walls to trap the low end.',
+      gridClass: 'grid grid-cols-2 gap-3',
+      photos: [
+        {
+          src: '/images/build/yard/07-plastered.jpg',
+          alt: 'A freshly plastered room with a boxed-in structural steel beam overhead and a doorway through to an OSB-lined studio beyond.',
+        },
+        {
+          src: '/images/build/yard/08-bass-trap-frame.jpg',
+          alt: 'Two large timber-framed cavities with black trim built out from a plastered wall \u2014 the frames for deep acoustic bass-trap panels, with a drill and level resting on a step-ladder.',
+        },
+      ],
+    },
+    {
+      step: '05',
+      title: 'The finish',
+      note: 'The Yard\u2019s signature: perforated-timber acoustic panels across the walls and a matching ceiling cloud, lit from behind with a warm LED glow.',
+      gridClass: 'grid grid-cols-2 gap-3',
+      photos: [
+        {
+          src: '/images/build/yard/09-acoustic-panels.jpg',
+          alt: 'A near-finished room with two large brown perforated-timber acoustic panels on the wall and a matching perforated ceiling cloud above, lit from behind with a warm LED glow.',
+        },
+        {
+          src: '/images/build/yard/10-acoustic-cloud.jpg',
+          alt: 'Another view of the perforated-timber acoustic treatment: a suspended ceiling cloud and two wall panels glowing against warm plaster, with premium wood flooring boxed up ready to lay.',
+        },
+      ],
+    },
+  ],
 }
 
 export const buildTracks: BuildTrack[] = [brockleyFieldsStudios, theYard]
