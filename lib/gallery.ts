@@ -30,7 +30,10 @@ const SECTION_TITLES: Record<string, string> = {
   'brockley-fields-studios': 'Brockley Fields Studios',
   'studio-1': 'Studio 1',
   'studio-2': 'Studio 2',
-  'the-yard': 'The Yard',
+  'the-yard': 'The Yard — Kitchen & Lounge',
+  'the-yard-office': 'The Yard — Office',
+  'the-yard-studio-1': 'The Yard — Studio 1',
+  'the-yard-studio-2': 'The Yard — Studio 2',
 }
 
 const ALT: Record<string, string> = {
@@ -80,6 +83,24 @@ const ALT: Record<string, string> = {
     'A corner of Studio 2 with a Fender Deluxe and a VOX amplifier stacked on reclaimed-timber shelving, a sunburst semi-hollow guitar leaning beside them and a green mid-century armchair at the full-height window.',
   'studio-2/08-awards-shelf.jpg':
     'A detail in Studio 2 of the framed gold and platinum record awards on a timber shelf above the neon \u201cBrockley Fields Studios\u201d sign, official chart trophies and a fringed vintage lamp.',
+  'the-yard-office/01-through-partition.jpg':
+    'The Yard\u2019s communal office seen through a black Crittall-style glazed partition: a bright white-walled room with mustard-yellow tub chairs, a leafy plant and a suspended grey acoustic cloud, with a matching glazed door opening to a side room on the right.',
+  'the-yard-office/02-partition-and-door.jpg':
+    'The glazed internal partition and door into the Yard\u2019s communal office, set in a charcoal-panelled wall lit by a caged industrial pendant, with the white office and its mustard chairs visible beyond and a wood-floored side room through the door.',
+  'the-yard-studio-1/01-live-room.jpg':
+    'Studio 1 at the Yard set up to record: warm plaster and brown fabric acoustic panels with a suspended grey ceiling cloud, a copper-finish drum kit in the foreground, a desk of synths and outboard beneath studio monitors, a black upright piano and hollow-body guitars by the corner window, and a striped vintage sofa.',
+  'the-yard-studio-1/02-drums-and-desk.jpg':
+    'A high, moody view of Studio 1 at the Yard: the copper drum kit and a microphone stand on a patterned rug, the synth-and-outboard desk with monitors against the fabric-panelled wall, guitars and a black upright piano by the window, lit low and warm.',
+  'the-yard-studio-1/03-sofa-and-door.jpg':
+    'A corner of Studio 1 at the Yard: a striped vintage sofa against a large brown fabric acoustic panel, an acoustic door in a charcoal reveal, an archtop guitar hung on the warm plaster wall and the edge of the copper drum kit and a microphone to the right.',
+  'the-yard-studio-2/01-drum-kit.jpg':
+    'Studio 2 at the Yard: a blue-sparkle Ludwig drum kit on a patterned rug beneath an olive fabric acoustic panel, a red bass and a classical guitar hung either side of a charcoal acoustic door, a green mid-century armchair and warm plaster walls over a pale oak floor.',
+  'the-yard-studio-2/02-desk-and-piano.jpg':
+    'A wide view of Studio 2 at the Yard: a timber desk with monitors and a mixer by the window, an acoustic guitar and a valve amp, a rosewood Mornington upright piano with condenser mics over the open lid, and the blue drum kit in the foreground under a suspended ceiling cloud.',
+  'the-yard-studio-2/03-piano-corner.jpg':
+    'The piano corner of Studio 2 at the Yard: a rosewood Mornington upright piano miked up for recording beside two charcoal acoustic doors, an acoustic guitar on a stand, studio monitors on a stand and a desk by the fairy-lit window, with a cymbal and the blue drum kit in the foreground.',
+  'the-yard-studio-2/04-gear-wall.jpg':
+    'The instrument and outboard wall in Studio 2 at the Yard: open timber shelving loaded with synthesizers, a Fender amp, an OB-6 and Moog, compressors and preamps, a Telecaster hung on an olive panel, studio monitors on stands and a desk with a laptop by the fairy-lit window.',
 }
 
 function humanize(slug: string) {
