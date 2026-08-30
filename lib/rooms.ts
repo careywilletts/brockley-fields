@@ -87,8 +87,8 @@ export const units: Unit[] = [
     intro: 'Three studios with floor-to-ceiling windows, two with outlooks over green space.',
     sharedSpaces: 'Kitchen/dining area and 17 m² communal space.',
     hero: {
-      src: '/images/studios-hero.jpg',
-      alt: 'A studio at Brockley Fields Studios, with olive acoustic panelling, a suspended acoustic cloud, articulated wall lamps and wide oak boards',
+      src: '/images/studios-kitchen-diner.jpg',
+      alt: 'The shared kitchen and dining area at Brockley Fields Studios: green shaker cabinets with timber worktops, a butler sink and metro-tiled splashback, an open shelf of bottles and glasses, a red leather chair and a double bass by the window onto the courtyard',
     },
     overview: [
       'Unit 1 is the quieter of the two. Three studios off a single corridor, each one soundproofed and acoustically treated, with a kitchen and dining area at the end that everybody ends up in at some point during the day.',
