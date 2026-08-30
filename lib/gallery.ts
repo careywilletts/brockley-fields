@@ -28,6 +28,7 @@ const IMAGE_RE = /\.(jpe?g|png|webp|avif)$/i
 
 const SECTION_TITLES: Record<string, string> = {
   'brockley-fields-studios': 'Brockley Fields Studios',
+  'studio-1': 'Studio 1',
   'studio-2': 'Studio 2',
   'the-yard': 'The Yard',
 }
@@ -57,6 +58,12 @@ const ALT: Record<string, string> = {
     'A detail of the Yard kitchen: a framed Sparklehorse \u201cGood Morning Spider\u201d print beside mesh wire shelves with trailing pothos, a clock and glass bottles, above an oak worktop with a kettle, chopping board and microwave.',
   'the-yard/06-glazed-partition.jpg':
     'A threshold in the Yard\u2019s communal area: a black Crittall-style glazed partition and door opening onto the wood-floored hallway, lit by a caged pendant, with a framed \u201chumble\u201d print and the dining table edge in view.',
+  'studio-1/01-live-room.jpg':
+    'Studio 1 set up to work in: dark acoustic-fabric walls and a suspended grey ceiling cloud with downlights, racks of synths and outboard gear beside studio monitors on stands, an upright piano in the foreground, a rolling sit-stand desk with a DAW open on screen, a mustard-yellow armchair and a grey sofa, lit by a paper-lantern lamp and a full-height window onto the trees.',
+  'studio-1/02-empty-room.jpg':
+    'Studio 1 empty and finished: dark grey acoustic-fabric wall panels and a black-trimmed ceiling cloud with recessed downlights, a warm reclaimed-oak floor, a low black-topped plinth to one side and a full-height window looking onto greenery.',
+  'studio-1/03-window-wall.jpg':
+    'A detail of Studio 1\u2019s window wall: a tall black-framed glazed window onto sunlit trees, flanked by grey fabric acoustic panels over warm plaster, above the reclaimed-oak floor.',
   'studio-2/01-live-room.jpg':
     'A wide view of Studio 2 at Brockley Fields Studios: reclaimed oak floors and warm plaster walls, a green mid-century armchair by the full-height windows onto the trees, a dracaena plant, a red accordion, and the black upright piano in the corner.',
   'studio-2/02-piano-corner.jpg':
