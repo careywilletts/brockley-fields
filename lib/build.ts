@@ -262,15 +262,15 @@ const theYard: BuildTrack = {
       photos: [
         {
           src: '/images/build/yard/11-finished-studio-a.jpg',
-          alt: 'Studio 1 at the Yard, finished and set up to record: warm plaster and brown fabric acoustic panels with a suspended ceiling cloud, a copper drum kit, a desk of synths and outboard beneath studio monitors, a black upright piano and guitars by the corner window, and a striped vintage sofa.',
+          alt: 'The finished corner of Studio 1 at the Yard: a striped vintage sofa against brown fabric acoustic panels, a hollow-body Hofner guitar hung on the warm plaster wall beside an acoustic door, and a copper drum kit with an overhead mic.',
         },
         {
           src: '/images/build/yard/12-finished-studio-b.jpg',
-          alt: 'Studio 2 at the Yard, finished: a timber desk with monitors and a mixer by the window, an acoustic guitar and valve amp, a rosewood upright piano miked up under a suspended ceiling cloud, and a blue-sparkle drum kit in the foreground.',
+          alt: 'Studio 1 at the Yard, finished and set up to record: a desk of synths and outboard beneath studio monitors and a screen, a copper drum kit, a black grand piano and guitars by the corner window, all under a suspended ceiling cloud.',
         },
         {
           src: '/images/build/yard/13-finished-studio-c.jpg',
-          alt: 'The finished live-room corner of Studio 2 at the Yard: a blue-sparkle Ludwig drum kit on a patterned rug beneath an olive fabric acoustic panel, a red bass and classical guitar either side of a charcoal acoustic door, and a green mid-century armchair on the oak floor.',
+          alt: 'Studio 2 at the Yard, finished: a timber desk with monitors and a mixer by the window, an acoustic guitar and valve amp, a rosewood upright piano miked up under a suspended ceiling cloud, and a blue-sparkle drum kit in the foreground.',
         },
       ],
     },
