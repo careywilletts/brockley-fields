@@ -23,7 +23,7 @@ export type BuildPhoto = {
 export type BuildPhase = {
   step: string
   title: string
-  note: string
+  note?: string
   /** The grid the phase's photos flow into — tuned per phase to its count. */
   gridClass: string
   photos: BuildPhoto[]
@@ -42,12 +42,11 @@ const brockleyFieldsStudios: BuildTrack = {
   slug: 'brockley-fields-studios',
   title: 'Brockley Fields Studios',
   blurb:
-    'The first unit: a worn-out open-plan office taken back to the shell and rebuilt, room within room, into five soundproofed studios.',
+    'From a tired open-plan office to three soundproofed and treated floating studios.',
   phases: [
     {
       step: '01',
       title: 'Before',
-      note: 'The unit had spent its last life as an open-plan office — banks of desks, exposed ducting and strip lights.',
       gridClass: 'grid grid-cols-2 gap-3 sm:grid-cols-3',
       photos: [
         {
@@ -67,7 +66,6 @@ const brockleyFieldsStudios: BuildTrack = {
     {
       step: '02',
       title: 'On paper',
-      note: 'Building C, drawn up: three rooms, a kitchen and a WC, walls measured to the millimetre.',
       gridClass: 'grid grid-cols-1',
       photos: [
         {
@@ -80,8 +78,7 @@ const brockleyFieldsStudios: BuildTrack = {
     },
     {
       step: '03',
-      title: 'Strip-out',
-      note: 'Back to the shell — partitions down, plasterboard and mineral wool out, the services laid bare.',
+      title: 'Strip out',
       gridClass: 'grid grid-cols-2 gap-3 sm:grid-cols-3',
       photos: [
         {
@@ -101,7 +98,6 @@ const brockleyFieldsStudios: BuildTrack = {
     {
       step: '04',
       title: 'Rebuilt for sound',
-      note: 'New timber framing, floating floors on rubber isolation pucks and room-in-room construction — the bones of an acoustically treated studio.',
       gridClass: 'grid grid-cols-2 gap-3 lg:grid-cols-3',
       photos: [
         {
@@ -128,8 +124,7 @@ const brockleyFieldsStudios: BuildTrack = {
     },
     {
       step: '05',
-      title: 'Lining for silence',
-      note: 'Acoustic plasterboard, then walls hand-wrapped in fabric over dense mineral wool \u2014 the slow, careful part that actually stops the sound.',
+      title: 'Treatment',
       gridClass: 'grid grid-cols-2 gap-3 lg:grid-cols-4',
       photos: [
         {
@@ -153,7 +148,6 @@ const brockleyFieldsStudios: BuildTrack = {
     {
       step: '06',
       title: 'The finish',
-      note: 'Oak floors, olive acoustic panels and a hand-built kitchen \u2014 then moved into and switched on. The rooms that Brockley Fields is today.',
       gridClass: 'grid grid-cols-2 gap-3 lg:grid-cols-4',
       photos: [
         {
@@ -199,12 +193,11 @@ const theYard: BuildTrack = {
   slug: 'the-yard',
   title: 'The Yard',
   blurb:
-    'The second unit, given the same treatment: another tired office, stripped back and rebuilt into soundproofed rooms \u2014 this time with perforated-timber acoustic panels as the finishing touch.',
+    'The second unit, a disused office space turned into 2 studios, 2 office spaces and a large communal area.',
   phases: [
     {
       step: '01',
       title: 'Before',
-      note: 'Another end-of-life office: worn vinyl floors, a wall-hung boiler, strip lights and a back room lost to storage.',
       gridClass: 'grid grid-cols-2 gap-3',
       photos: [
         {
@@ -219,8 +212,7 @@ const theYard: BuildTrack = {
     },
     {
       step: '02',
-      title: 'Stripped back and framed',
-      note: 'Partitions down to the shell, then a forest of new timber studwork setting out the rooms and a framed grid for the ceiling rafts.',
+      title: 'Strip out',
       gridClass: 'grid grid-cols-2 gap-3',
       photos: [
         {
@@ -235,8 +227,7 @@ const theYard: BuildTrack = {
     },
     {
       step: '03',
-      title: 'Room within a room',
-      note: 'Each studio built as a box inside the shell \u2014 lined in Sterling OSB and floated on a new timber floor, isolated from the structure around it.',
+      title: 'Rebuilt for sound',
       gridClass: 'grid grid-cols-2 gap-3',
       photos: [
         {
@@ -251,8 +242,7 @@ const theYard: BuildTrack = {
     },
     {
       step: '04',
-      title: 'Lining for silence',
-      note: 'Dense mineral wool and plaster to seal the rooms, and deep timber-framed cavities built out from the walls to trap the low end.',
+      title: 'Treatment',
       gridClass: 'grid grid-cols-2 gap-3',
       photos: [
         {
@@ -268,7 +258,6 @@ const theYard: BuildTrack = {
     {
       step: '05',
       title: 'The finish',
-      note: 'The Yard\u2019s signature: perforated-timber acoustic panels across the walls and a matching ceiling cloud, lit from behind with a warm LED glow.',
       gridClass: 'grid grid-cols-2 gap-3',
       photos: [
         {

@@ -68,9 +68,11 @@ export default function FollowTheBuildPage() {
                     <div className="md:w-[13rem] md:shrink-0">
                       <p className="type-label type-eyebrow">{phase.step}</p>
                       <h3 className="type-display mt-2 text-[20px]">{phase.title}</h3>
-                      <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
-                        {phase.note}
-                      </p>
+                      {phase.note ? (
+                        <p className="text-muted-foreground mt-3 text-[15px] leading-relaxed">
+                          {phase.note}
+                        </p>
+                      ) : null}
                     </div>
                     <div className="md:flex-1">
                       <div className={phase.gridClass}>
