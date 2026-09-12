@@ -261,12 +261,16 @@ const theYard: BuildTrack = {
       gridClass: 'grid grid-cols-2 gap-3',
       photos: [
         {
-          src: '/images/build/yard/09-acoustic-panels.jpg',
-          alt: 'A near-finished room with two large brown perforated-timber acoustic panels on the wall and a matching perforated ceiling cloud above, lit from behind with a warm LED glow.',
+          src: '/images/build/yard/11-finished-studio-a.jpg',
+          alt: 'A finished, furnished studio: acoustic-fabric walls and a suspended ceiling cloud with downlights, studio monitors and outboard gear, an upright piano and comfortable seating, lit by a full-height window onto the trees.',
         },
         {
-          src: '/images/build/yard/10-acoustic-cloud.jpg',
-          alt: 'Another view of the perforated-timber acoustic treatment: a suspended ceiling cloud and two wall panels glowing against warm plaster, with premium wood flooring boxed up ready to lay.',
+          src: '/images/build/yard/12-finished-studio-b.jpg',
+          alt: 'Another finished studio room, warmly lit and fully kitted out with instruments, monitors and racked gear against dark acoustic-fabric walls.',
+        },
+        {
+          src: '/images/build/yard/13-finished-studio-c.jpg',
+          alt: 'A finished live room set up with a drum kit, ready to record, surrounded by acoustic treatment and warm studio lighting.',
         },
       ],
     },
