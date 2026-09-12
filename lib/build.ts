@@ -262,15 +262,15 @@ const theYard: BuildTrack = {
       photos: [
         {
           src: '/images/build/yard/11-finished-studio-a.jpg',
-          alt: 'A finished, furnished studio: acoustic-fabric walls and a suspended ceiling cloud with downlights, studio monitors and outboard gear, an upright piano and comfortable seating, lit by a full-height window onto the trees.',
+          alt: 'Studio 1 at the Yard, finished and set up to record: warm plaster and brown fabric acoustic panels with a suspended ceiling cloud, a copper drum kit, a desk of synths and outboard beneath studio monitors, a black upright piano and guitars by the corner window, and a striped vintage sofa.',
         },
         {
           src: '/images/build/yard/12-finished-studio-b.jpg',
-          alt: 'Another finished studio room, warmly lit and fully kitted out with instruments, monitors and racked gear against dark acoustic-fabric walls.',
+          alt: 'Studio 2 at the Yard, finished: a timber desk with monitors and a mixer by the window, an acoustic guitar and valve amp, a rosewood upright piano miked up under a suspended ceiling cloud, and a blue-sparkle drum kit in the foreground.',
         },
         {
           src: '/images/build/yard/13-finished-studio-c.jpg',
-          alt: 'A finished live room set up with a drum kit, ready to record, surrounded by acoustic treatment and warm studio lighting.',
+          alt: 'The finished live-room corner of Studio 2 at the Yard: a blue-sparkle Ludwig drum kit on a patterned rug beneath an olive fabric acoustic panel, a red bass and classical guitar either side of a charcoal acoustic door, and a green mid-century armchair on the oak floor.',
         },
       ],
     },
