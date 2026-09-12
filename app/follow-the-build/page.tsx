@@ -24,14 +24,11 @@ export default function FollowTheBuildPage() {
         intro={
           <>
             <p>
-              None of this arrived finished. Each unit came as a tired open-plan office, and every
-              studio was built from the shell up &mdash; stripped back, framed in timber, floated on
-              rubber and wrapped, by hand, in fabric until the room went quiet.
+              Each unit began life as a tired open-plan office. The studios were designed and built
+              with a practical but homely aesthetic, floating on rubber, sound proofed and treated to
+              suit artists, songwriters, producers and mixers alike.
             </p>
-            <p>
-              Here&apos;s the honest version, unit by unit: the mess, the framing and the moment it
-              all starts to look like somewhere you&apos;d want to be.
-            </p>
+            <p>Here&apos;s the build unit by unit, room by room: enjoy the journey.</p>
           </>
         }
       />
