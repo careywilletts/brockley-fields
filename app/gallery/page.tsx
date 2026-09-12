@@ -54,7 +54,11 @@ export default async function GalleryPage() {
     <>
       <PageHeader
         label="Gallery"
-        title="The building, without anybody tidying up first."
+        title={
+          <>
+            The building, <span className="text-primary">The place.</span>
+          </>
+        }
         intro={
           <p>
             Two units, {spaceCount} spaces, two kitchens and a courtyard. No captions — if you want
