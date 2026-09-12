@@ -60,11 +60,7 @@ export default async function GalleryPage() {
           </>
         }
         intro={
-          <p>
-            Two units, {spaceCount} spaces, two kitchens and a courtyard. No captions — if you want
-            to know what a room measures, the{' '}
-            <InlineLink href="/studios">plans are on the Studios page</InlineLink>.
-          </p>
+          <p>Two units, {spaceCount} spaces, zone 2, vibrant community.</p>
         }
       />
 
