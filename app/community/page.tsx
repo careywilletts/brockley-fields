@@ -39,8 +39,8 @@ export default function CommunityPage() {
         }
       />
 
-      {/* Both images are close to square, so an equal pair keeps the murals
-          intact rather than cropping them to a wider ratio. */}
+      {/* An equal pair on a square crop: the Brockley bridge mural beside a
+          summer evening on the neighbourhood's road-closed street terrace. */}
       <Container className="pb-14 sm:pb-20">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Photo
@@ -51,8 +51,8 @@ export default function CommunityPage() {
             priority
           />
           <Photo
-            src="/images/se4.jpg"
-            alt="A green corner shop in Brockley beside gates painted with a large blue SE4 mural"
+            src="/images/brockley-street.jpg"
+            alt="A summer evening on a road-closed Brockley street: people sitting at outdoor tables under white Victoria Málaga parasols, with pink-flowering trees and apartment blocks behind"
             className="border-foreground/20 aspect-square border"
             sizes="(min-width: 640px) 45vw, 100vw"
           />
