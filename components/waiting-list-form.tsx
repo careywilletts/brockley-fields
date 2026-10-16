@@ -201,8 +201,8 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
               className="border-foreground/40 accent-primary mt-0.5 size-4 shrink-0 border"
             />
             <span className="text-[16px] leading-relaxed">
-              Send me the newsletter — occasional notes on what is happening in the building. No more
-              than once a month.
+                Send me the newsletter — occasional notes on what&apos;s been happening in the building
+                and the community.
             </span>
           </label>
         </div>
