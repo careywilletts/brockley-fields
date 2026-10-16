@@ -3,10 +3,12 @@ import { NextResponse, type NextRequest } from 'next/server'
 // Pages that stay reachable while the holding page is switched on.
 const OPEN_PATHS = ['/holding', '/waiting-list']
 
-// Tolerant of stray quotes, spacing or trailing notes pasted into the env var value.
+// Any value switches the holding page on (the env form is easy to mis-fill);
+// only an explicit off/false/no/0, or deleting the variable, turns it off.
 function holdingPageEnabled() {
-  const value = (process.env.HOLDING_PAGE ?? '').trim().replace(/^["']/, '').toLowerCase()
-  return /^(on|true|yes|1)\b/.test(value)
+  const value = (process.env.HOLDING_PAGE ?? '').trim().replace(/^["']|["']$/g, '').toLowerCase()
+  if (!value) return false
+  return !/^(off|false|no|0)$/.test(value)
 }
 
 export function proxy(request: NextRequest) {
