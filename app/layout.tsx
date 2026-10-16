@@ -1,6 +1,8 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Archivo, Work_Sans } from 'next/font/google'
+import Link from 'next/link'
+import { Logo } from '@/components/brand'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { site } from '@/lib/site'
@@ -45,6 +47,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const holdingMode = process.env.HOLDING_PAGE === 'on'
+
   return (
     <html lang="en-GB" className="bg-background">
       <body className="paper-grain bg-background text-foreground font-sans antialiased">
@@ -54,9 +58,21 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SiteHeader />
+        {holdingMode ? (
+          <header className="mx-auto max-w-[1180px] px-5 sm:px-8">
+            <Link
+              href="/"
+              aria-label={`${site.fullName} — home`}
+              className="border-foreground/85 flex border-b py-4"
+            >
+              <Logo priority className="h-12 sm:h-16" />
+            </Link>
+          </header>
+        ) : (
+          <SiteHeader />
+        )}
         <main id="main">{children}</main>
-        <SiteFooter />
+        {!holdingMode && <SiteFooter />}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
