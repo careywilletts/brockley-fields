@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 // Pages that stay reachable while the holding page is switched on.
-const OPEN_PATHS = ['/holding', '/waiting-list']
+const OPEN_PATHS = ['/holding', '/waiting-list', '/privacy']
 
 // Any value switches the holding page on (the env form is easy to mis-fill);
 // only an explicit off/false/no/0, or deleting the variable, turns it off.
