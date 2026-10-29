@@ -1,6 +1,8 @@
 'use server'
 
+import { after } from 'next/server'
 import { db } from '@/lib/db'
+import { syncSignup } from '@/lib/signup-sync'
 import { waitingList } from '@/lib/db/schema'
 import { rooms } from '@/lib/rooms'
 
@@ -105,6 +107,19 @@ export async function joinWaitingList(
       values,
     }
   }
+
+  // Runs after the response is sent, so a slow or failing service never blocks the signup.
+  after(() =>
+    syncSignup({
+      name,
+      email,
+      discipline,
+      room: rooms.find((room) => room.slug === roomSlug)?.name ?? (roomSlug || null),
+      heardFrom: heardFrom || null,
+      message: message || null,
+      newsletter: newsletterOptIn,
+    }),
+  )
 
   return {
     status: 'success',
