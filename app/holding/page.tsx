@@ -44,7 +44,7 @@ export default function HoldingPage() {
                 Join the waiting list
               </ActionLink>
               <ActionLink href="/newsletter" variant="outline" className="px-7 py-4">
-                Just get the newsletter
+                Get the newsletter
               </ActionLink>
               <a
                 href={`mailto:${site.email}`}
