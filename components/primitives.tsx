@@ -72,6 +72,7 @@ export function PageHeader({
   title,
   titleClassName,
   intro,
+  aside,
 }: {
   /** Optional: a page can open straight on its title with no eyebrow label. */
   label?: string
@@ -80,9 +81,11 @@ export function PageHeader({
   /** Escape hatch for titles that need a wider measure than the default. */
   titleClassName?: string
   intro?: React.ReactNode
+  /** Shown beside the title on large screens and below the intro on small ones. */
+  aside?: React.ReactNode
 }) {
-  return (
-    <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
+  const heading = (
+    <>
       {label && <p className="type-label type-eyebrow">{label}</p>}
       <h1
         className={cn(
@@ -97,6 +100,19 @@ export function PageHeader({
         <div className="mt-7 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
           {intro}
         </div>
+      )}
+    </>
+  )
+
+  return (
+    <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
+      {aside ? (
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-16">
+          <div className="lg:w-[58%] lg:shrink-0">{heading}</div>
+          <div className="lg:flex-1">{aside}</div>
+        </div>
+      ) : (
+        heading
       )}
     </Container>
   )
