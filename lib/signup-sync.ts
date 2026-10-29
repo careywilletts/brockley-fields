@@ -1,4 +1,5 @@
 import 'server-only'
+import { sendConfirmationEmail } from '@/lib/confirmation-email'
 
 const AIRTABLE_BASE_ID = 'app9volcox6zYTFMZ'
 const AIRTABLE_TABLE_ID = 'tbl0wg4DfnkA2IMGx'
@@ -71,7 +72,10 @@ export async function addToMailerLite(signup: Signup) {
 
 /** Never throws: Neon is the source of truth, so these are best-effort copies. */
 export async function syncSignup(signup: Signup) {
-  const tasks: Array<[string, Promise<void>]> = [['Airtable', sendToAirtable(signup)]]
+  const tasks: Array<[string, Promise<void>]> = [
+    ['Airtable', sendToAirtable(signup)],
+    ['Confirmation email', sendConfirmationEmail(signup)],
+  ]
   if (signup.newsletter) tasks.push(['MailerLite', addToMailerLite(signup)])
 
   const results = await Promise.allSettled(tasks.map(([, task]) => task))
