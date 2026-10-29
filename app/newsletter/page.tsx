@@ -14,7 +14,7 @@ export default function NewsletterPage() {
       <PageHeader
         label="Newsletter"
         title="Carey's newsletter."
-        intro={<p>Including all things Brockley Fields Studios. Occasional, never spammy.</p>}
+        intro={<p>Including all things Brockley Fields Studios.</p>}
       />
       <section className="border-foreground/20 border-t py-14 sm:py-20">
         <Container>

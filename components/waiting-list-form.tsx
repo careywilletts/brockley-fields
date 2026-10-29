@@ -1,15 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
-import { joinWaitingList, type WaitingListState } from '@/app/actions/waiting-list'
 import { Rule } from '@/components/primitives'
+import { useWaitingList, WAITING_LIST_FORM_ID } from '@/components/waiting-list-provider'
 import { rooms, roomLabel } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { cn } from '@/lib/utils'
-
-const initialState: WaitingListState = { status: 'idle' }
 
 /** Shared input styling — squared off, ruled underneath rather than boxed in. */
 const fieldClasses =
@@ -58,7 +55,7 @@ function SubmitButton() {
 }
 
 export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string }) {
-  const [state, formAction] = useActionState(joinWaitingList, initialState)
+  const { state, formAction } = useWaitingList()
 
   if (state.status === 'success') {
     return (
@@ -87,7 +84,7 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
   const v = state.values ?? {}
 
   return (
-    <form action={formAction} className="max-w-[34rem]" noValidate>
+    <form id={WAITING_LIST_FORM_ID} action={formAction} className="max-w-[34rem]" noValidate>
       {/* Errors that aren't tied to one field (database trouble, oversized payload). */}
       {state.status === 'error' && state.message && (
         <p
@@ -99,25 +96,6 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
       )}
 
       <div className="flex flex-col gap-6">
-        <label
-          htmlFor="carey_newsletter_opt_in"
-          className="border-primary bg-primary/5 has-[:checked]:bg-primary/10 flex cursor-pointer items-start gap-4 border-2 p-5 transition-colors"
-        >
-          <input
-            id="carey_newsletter_opt_in"
-            name="carey_newsletter_opt_in"
-            type="checkbox"
-            value="true"
-            className="accent-primary mt-1 size-5 shrink-0"
-          />
-          <span className="flex flex-col gap-1">
-            <span className="type-label text-primary">Newsletter</span>
-            <span className="text-[17px] leading-relaxed">
-              Send me Carey&apos;s newsletter, including all things Brockley Fields Studios.
-            </span>
-          </span>
-        </label>
-
         <Field label="Your name" htmlFor="name" error={state.errors?.name}>
           <input
             id="name"

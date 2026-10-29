@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Container, InlineLink, PageHeader, Rule } from '@/components/primitives'
 import { WaitingListForm } from '@/components/waiting-list-form'
+import { NewsletterOptIn, WaitingListProvider } from '@/components/waiting-list-provider'
 import { getRoom, studioCount, officeCount } from '@/lib/rooms'
 import { site } from '@/lib/site'
 
@@ -21,7 +22,9 @@ export default async function WaitingListPage({
 
   return (
     <main>
+      <WaitingListProvider>
       <PageHeader
+        aside={<NewsletterOptIn />}
         label="Waiting List"
         title="All studios are currently occupied."
         intro={
@@ -93,6 +96,7 @@ export default async function WaitingListPage({
           </div>
         </Container>
       </section>
+      </WaitingListProvider>
     </main>
   )
 }
