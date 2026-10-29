@@ -17,6 +17,7 @@ export const waitingList = pgTable('waiting_list', {
   roomSlug: text('room_slug'),
   heardFrom: text('heard_from'),
   newsletter: boolean('newsletter').notNull().default(false),
+  careyNewsletter: boolean('carey_newsletter').notNull().default(false),
   message: text('message'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 })

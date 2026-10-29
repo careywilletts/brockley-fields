@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { joinWaitingList, type WaitingListState } from '@/app/actions/waiting-list'
@@ -191,18 +192,30 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
           />
         </Field>
 
-        <div className="border-foreground/20 border-t pt-6">
-          <label htmlFor="newsletter" className="flex cursor-pointer items-start gap-3">
+        <div className="border-foreground/20 flex flex-col gap-4 border-t pt-6">
+          <label htmlFor="newsletter_opt_in" className="flex cursor-pointer items-start gap-3">
             <input
-              id="newsletter"
-              name="newsletter"
+              id="newsletter_opt_in"
+              name="newsletter_opt_in"
               type="checkbox"
-              defaultChecked
-              className="border-foreground/40 accent-primary mt-0.5 size-4 shrink-0 border"
+              value="true"
+              className="border-foreground/40 accent-primary mt-1.5 size-4 shrink-0 border"
             />
             <span className="text-[16px] leading-relaxed">
-              Send me the newsletter — occasional notes on what is happening in the building. No more
-              than once a month.
+                Keep me posted about Brockley Fields – new rooms, events and news from the building.
+            </span>
+          </label>
+          <label htmlFor="carey_newsletter_opt_in" className="flex cursor-pointer items-start gap-3">
+            <input
+              id="carey_newsletter_opt_in"
+              name="carey_newsletter_opt_in"
+              type="checkbox"
+              value="true"
+              className="border-foreground/40 accent-primary mt-1.5 size-4 shrink-0 border"
+            />
+            <span className="text-[16px] leading-relaxed">
+              Also send me Carey&apos;s newsletter – occasional notes on songwriting, producing and
+              the music industry.
             </span>
           </label>
         </div>
@@ -210,8 +223,13 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
         <div className="flex flex-col gap-4 pt-1">
           <SubmitButton />
           <p className="text-muted-foreground text-[14px] leading-relaxed">
-            We share the address privately with applicants. Your details stay with us and go nowhere
-            else.
+            We&apos;ll only use this to contact you about a room.{' '}
+            <Link
+              href="/privacy"
+              className="hover:text-primary underline decoration-current/40 underline-offset-4 transition-colors"
+            >
+              Privacy policy
+            </Link>
           </p>
         </div>
       </div>

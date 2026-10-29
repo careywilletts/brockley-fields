@@ -22,7 +22,7 @@ export default function StudiosPage() {
         this block carries the h1.
       */}
       <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
-        <p className="type-label">The building</p>
+        <p className="type-label type-eyebrow">The building</p>
         {/* text-wrap rather than text-balance, so the two lines break exactly
             where they are written rather than being re-balanced. */}
         <h1 className="type-display mt-3 text-[34px] text-wrap sm:text-[52px]">
@@ -149,9 +149,9 @@ export default function StudiosPage() {
         <Container>
           {/* Label sits directly above the heading, flush with the page's left
               edge, matching the way the page header itself is set. */}
-          <p className="type-label">We don&apos;t have rooms often.</p>
+          <p className="type-label type-eyebrow">We don&apos;t have rooms often.</p>
           <h2 id="contact" className="type-display mt-3 max-w-[30rem] text-[26px] sm:text-[32px]">
-            But when we do, we want the right people in them.
+            But when we do, we <span className="text-primary">love to welcome</span> someone new.
           </h2>
           <p className="mt-5 max-w-[42rem] text-[17px] leading-relaxed">
             When a room becomes available, we work through our waiting list and start a

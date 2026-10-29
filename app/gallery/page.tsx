@@ -7,96 +7,136 @@ import {
   Photo,
   Rule,
 } from '@/components/primitives'
-import { studiosGallery, yardGallery, type GalleryImage } from '@/lib/gallery'
-import { units, spaceCount } from '@/lib/rooms'
+import { buildTeaser } from '@/lib/build'
+import { getGallery, type GallerySection } from '@/lib/gallery'
+import { spaceCount } from '@/lib/rooms'
 import { waitingListHref } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Gallery',
   description:
-    'Photographs of both units at Brockley Fields — the Studios and the Yard, the kitchens, the corridors and the courtyard.',
+    'Photographs of Brockley Fields — the studios, the communal kitchens, the corridors and the courtyard.',
 }
 
 /**
- * Captionless mosaic. Wide images take two columns, tall images take two rows,
- * so the grid stays irregular the way a contact sheet does. Alt text carries
- * the description for screen readers instead.
+ * Captionless masonry. Each column flows independently and every photo keeps
+ * its own proportions, so portrait and landscape shots sit together without
+ * cropping and the wall reads like a contact sheet. Alt text carries the
+ * description for screen readers instead of on-page captions.
  */
-function Mosaic({ images, priority = false }: { images: GalleryImage[]; priority?: boolean }) {
+function Masonry({ section, priority = false }: { section: GallerySection; priority?: boolean }) {
   return (
-    <ul className="grid auto-rows-[11rem] grid-cols-2 gap-3 sm:auto-rows-[13rem] sm:grid-cols-3 lg:auto-rows-[15rem] lg:grid-cols-4">
-      {images.map((image, index) => (
-        <li
-          key={`${image.src}-${index}`}
-          className={
-            image.span === 'wide'
-              ? 'col-span-2 row-span-1'
-              : image.span === 'tall'
-                ? 'col-span-1 row-span-2'
-                : 'col-span-1 row-span-1'
-          }
-        >
-          <Photo
-            src={image.src}
-            alt={image.alt}
-            priority={priority && index < 2}
-            sizes="(min-width: 1024px) 30vw, (min-width: 640px) 40vw, 50vw"
-            className="border-foreground/20 h-full w-full border"
-          />
+    <ul className="columns-1 gap-3 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+      {section.images.map((image, index) => (
+        <li key={image.src} className="mb-3 break-inside-avoid">
+          <div
+            className="relative w-full"
+            style={{ aspectRatio: `${image.width} / ${image.height}` }}
+          >
+            <Photo
+              src={image.src}
+              alt={image.alt}
+              priority={priority && index < 2}
+              sizes="(min-width: 1024px) 31vw, (min-width: 640px) 46vw, 92vw"
+              className="border-foreground/20 h-full w-full border"
+            />
+          </div>
         </li>
       ))}
     </ul>
   )
 }
 
-export default function GalleryPage() {
-  const [studiosUnit, yardUnit] = units
+export default async function GalleryPage() {
+  const sections = await getGallery()
 
   return (
     <>
       <PageHeader
         label="Gallery"
-        title="The building, without anybody tidying up first."
+        title={
+          <>
+            The building, <span className="text-primary">The place.</span>
+          </>
+        }
         intro={
-          <p>
-            Two units, {spaceCount} spaces, two kitchens and a courtyard. No captions — if you want
-            to know what a room measures, the{' '}
-            <InlineLink href="/studios">plans are on the Studios page</InlineLink>.
-          </p>
+          <p>Two units, {spaceCount} spaces, zone 2, vibrant community.</p>
         }
       />
 
-      <section
-        className="border-foreground/20 border-t py-12 sm:py-16"
-        aria-labelledby="gallery-studios"
-      >
-        <Container>
-          <div className="mb-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <h2 id="gallery-studios" className="type-display text-[26px] sm:text-[32px]">
-              {studiosUnit.name}
-            </h2>
-            <p className="type-label text-muted-foreground">
-              {studiosUnit.unitNumber} · {studiosGallery.length} photographs
+      {sections.length === 0 ? (
+        <section className="border-foreground/20 border-t py-12 sm:py-16">
+          <Container>
+            <p className="max-w-[34rem] text-[17px] leading-relaxed">
+              The photographs are being shot. Check back shortly.
             </p>
-          </div>
-          <Mosaic images={studiosGallery} priority />
-        </Container>
-      </section>
+          </Container>
+        </section>
+      ) : (
+        sections.map((section, sectionIndex) => (
+          <section
+            key={section.slug}
+            className="border-foreground/20 border-t py-12 sm:py-16"
+            aria-labelledby={`gallery-${section.slug}`}
+          >
+            <Container>
+              <div className="mb-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                <h2
+                  id={`gallery-${section.slug}`}
+                  className="type-display text-[26px] sm:text-[32px]"
+                >
+                  {section.title}
+                </h2>
+                <p className="type-label text-muted-foreground">
+                  {section.images.length} photographs
+                </p>
+              </div>
+              <Masonry section={section} priority={sectionIndex === 0} />
+            </Container>
+          </section>
+        ))
+      )}
 
       <section
         className="border-foreground/20 border-t py-12 sm:py-16"
-        aria-labelledby="gallery-yard"
+        aria-labelledby="gallery-build"
       >
         <Container>
-          <div className="mb-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <h2 id="gallery-yard" className="type-display text-[26px] sm:text-[32px]">
-              {yardUnit.name}
-            </h2>
-            <p className="type-label text-muted-foreground">
-              {yardUnit.unitNumber} · {yardGallery.length} photographs
-            </p>
+          <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+            <div className="md:w-[20rem] md:shrink-0">
+              <p className="type-label type-eyebrow">Follow the build</p>
+              <h2 id="gallery-build" className="type-display mt-3 text-[26px] sm:text-[32px]">
+                See how these rooms were made
+              </h2>
+              <p className="mt-4 text-[17px] leading-relaxed text-pretty">
+                Every studio started as a tired office and was rebuilt from the shell up. Follow the
+                strip-out, the framing and the hand-wrapped fabric walls, unit by unit.
+              </p>
+              <div className="mt-6">
+                <ActionLink href="/follow-the-build">Follow the build</ActionLink>
+              </div>
+            </div>
+            <div className="grid flex-1 grid-cols-3 gap-3">
+              <Photo
+                src={buildTeaser.before.src}
+                alt={buildTeaser.before.alt}
+                className="aspect-3/2 border-foreground/20 border"
+                sizes="(min-width: 768px) 22vw, 30vw"
+              />
+              <Photo
+                src={buildTeaser.human.src}
+                alt={buildTeaser.human.alt}
+                className="aspect-3/2 border-foreground/20 border"
+                sizes="(min-width: 768px) 22vw, 30vw"
+              />
+              <Photo
+                src={buildTeaser.after.src}
+                alt={buildTeaser.after.alt}
+                className="aspect-3/2 border-foreground/20 border"
+                sizes="(min-width: 768px) 22vw, 30vw"
+              />
+            </div>
           </div>
-          <Mosaic images={yardGallery} />
         </Container>
       </section>
 

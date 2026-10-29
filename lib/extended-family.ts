@@ -62,7 +62,7 @@ export const extendedFamily: Ally[] = [
   {
     name: 'Daniel Moyler',
     blurb: [
-      'Daniel has worked on records for Dermot Kennedy, Nectar Woode and Still Blank, and engineered Olivia Dean’s Messy and George Ezra’s Gold Rush Kid. He has also built long-standing creative relationships with producers such as Cam Blackwood, Joel Pott and Matt Hales, helping shape a range of acclaimed records across genres.',
+      'Daniel has worked on records for Dermot Kennedy, Nectar Woode and Still Blank, and engineered Olivia Dean’s Messy and George Ezra’s Gold Rush Kid. He has built long-standing creative relationships with producers Cam Blackwood, Joel Pott and Matt Hales, helping shape a range of acclaimed records across genres.',
       'His work has earned him Engineer of the Year at the 2020 MPG Awards and a 2021 Grammy for his contributions to Dua Lipa’s Future Nostalgia.',
     ],
     handle: 'danielmoyler',
@@ -95,8 +95,7 @@ export const extendedFamily: Ally[] = [
     name: 'Tobie Tripp',
     blurb: [
       'Tobie is a songwriter, producer, multi-instrumentalist and string arranger. He has collaborated with artists including Wizkid, Tom Misch, Dave, HONNE, George Ezra, MJ Cole, Joy Crookes, Matilda Mann, J Hus, Tom Chaplin, Olivia Dean, Venbee and Stormzy.',
-      'Classically trained in violin at the Royal Welsh College of Music and Drama, Tobie developed his musical voice through bands, jazz ensembles and a wide range of genres, shaping a style that blends pop, R&B, indie, jazz and beyond.',
-      'He has toured internationally as a session musician with artists including Tom Misch and Tom Chaplin before moving into songwriting and production. Today he collaborates with artists to develop distinctive, authentic sounds through songwriting, production and string arranging.',
+      'Tobie has toured internationally as a session musician with artists including Tom Misch and Tom Chaplin before moving into songwriting and production. Today he collaborates with artists to develop distinctive, authentic sounds through songwriting, production and string arranging.',
     ],
     handle: 'tobietripp',
     management: { company: 'Jax Management', href: 'https://jaxmanagement.com/tobie-tripp' },
@@ -124,7 +123,7 @@ export const extendedFamily: Ally[] = [
     blurb: [
       'Jonny is a writer, producer, mixer and engineer, and a 2024 Grammy Award winner for his work on PinkPantheress’ Angel for the Barbie soundtrack.',
       'He has worked closely with PinkPantheress, mixing her debut album to hell with it, and has since recorded and mixed her latest singles including Boy’s a Liar Pt. 2 with Ice Spice, which peaked at number three on the Billboard Hot 100. He co-produced and mixed Bob Vylan’s album Humble As The Sun, and has mixed tracks for Goldlink, Rio Rainz, Llainwire and Lancey Foux.',
-      'Jonny has written with artists including Joey Maxwell, Deema and Sam Dotia, and in 2023 co-wrote and produced Eden Rain’s single Crumb. He is also an experienced engineer, working with the likes of Florence and The Machine, Lizzo and Dua Lipa.',
+      'Jonny has written with artists Joey Maxwell, Deema and Sam Dotia, and in 2023 co-wrote and produced Eden Rain’s single Crumb. He is also an experienced engineer, working with Florence and The Machine, Lizzo and Dua Lipa.',
     ],
     handle: 'jonnybreakwell',
     website: 'https://jonnybreakwell.com',

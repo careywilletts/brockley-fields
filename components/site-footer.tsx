@@ -61,9 +61,12 @@ export function SiteFooter() {
           <p className="type-label">
             &copy; {new Date().getFullYear()} {site.fullName}
           </p>
-          <p className="type-label">
-            Full address shared privately with applicants
-          </p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:gap-6">
+            <Link href="/privacy" className="type-label hover:text-primary transition-colors">
+              Privacy
+            </Link>
+            <p className="type-label">Full address shared privately with applicants</p>
+          </div>
         </div>
       </div>
     </footer>

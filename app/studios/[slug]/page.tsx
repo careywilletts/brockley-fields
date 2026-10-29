@@ -5,6 +5,7 @@ import { rooms, getRoom, getUnit, roomsForUnit, spaceCount } from '@/lib/rooms'
 import { peopleForRoom } from '@/lib/people'
 import { site, waitingListHref } from '@/lib/site'
 import { ActionLink, BackLink, Container, InlineLink, Photo, Rule } from '@/components/primitives'
+import { RoomVideoPlayer } from '@/components/room-video'
 import { FloorPlan } from '@/components/floor-plan'
 import { PersonPortrait } from '@/components/person-portrait'
 import { StatusBadge } from '@/components/status-badge'
@@ -116,43 +117,57 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
               </ul>
             )}
           </div>
-          <p className="type-label mt-3">
-            Room photography is indicative while the shoot is finished.
-          </p>
-        </Container>
-      </section>
-
-      {/* Specification */}
-      <section className="border-foreground/20 border-t py-12 sm:py-16">
-        <Container>
-          <div className="flex flex-col gap-8 md:flex-row md:gap-12">
-            <p className="type-label md:w-[13rem] md:shrink-0">Specification</p>
-            <dl className="border-foreground/85 max-w-[46rem] flex-1 border-t">
-              {specs.map((spec) => (
-                <div
-                  key={spec.term}
-                  className="border-foreground/20 flex flex-col gap-1 border-b py-4 sm:flex-row sm:items-baseline sm:gap-8"
-                >
-                  <dt className="type-label sm:w-44 sm:shrink-0">{spec.term}</dt>
-                  <dd className="text-[16px] leading-relaxed">{spec.detail}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          {/* Rooms shot for real are .jpg; the remaining placeholders are the
+              original .png renders, so they still carry the caveat. */}
+          {room.photos.some((photo) => photo.src.endsWith('.png')) && (
+            <p className="type-label mt-3">
+              Room photography is indicative while the shoot is finished.
+            </p>
+          )}
+          {/* The walkthrough sits after the stills: it is the fuller view of the
+              room but costs a download, so the photographs do the first work. */}
+          {room.video && (
+            <div className="mt-8">
+              <p className="type-label-ink mb-4">Walkthrough</p>
+              <RoomVideoPlayer video={room.video} />
+            </div>
+          )}
         </Container>
       </section>
 
       {/*
-        The scale drawing. This is the only place on the site a per-room plan
-        appears — useful, but not what you want first.
+        Specification and the scale drawing, read side by side — the numbers and
+        the shape they describe. Both carry their own heading rather than the
+        left-gutter label used elsewhere, since neither is subordinate.
+        They split from md, so the pairing holds on a tablet and up; the drawing
+        and the spec labels both narrow a step at that size so the values keep a
+        sensible measure, and widen again at lg. Below md the two stack.
+        This is the only place on the site a per-room plan appears.
       */}
       <section className="border-foreground/20 border-t py-12 sm:py-16">
         <Container>
-          <div className="flex flex-col gap-8 md:flex-row md:gap-12">
-            <p className="type-label md:w-[13rem] md:shrink-0">Scale plan</p>
+          <div className="flex flex-col gap-10 md:flex-row md:gap-10 lg:gap-12">
+            <div className="md:flex-1">
+              <p className="type-label-ink mb-6">Specification</p>
+              <dl className="border-foreground/85 border-t">
+                {specs.map((spec) => (
+                  <div
+                    key={spec.term}
+                    className="border-foreground/20 flex flex-col gap-1 border-b py-4 sm:flex-row sm:items-baseline sm:gap-8 md:gap-6 lg:gap-8"
+                  >
+                    <dt className="type-label sm:w-44 sm:shrink-0 md:w-32 lg:w-44">{spec.term}</dt>
+                    <dd className="text-[16px] leading-relaxed">{spec.detail}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
             {/* Capped so the drawing's internal dimension labels stay legible. */}
-            <div className="max-w-[26rem] flex-1">
-              <FloorPlan room={room} />
+            <div className="md:w-[20rem] md:shrink-0 lg:w-[26rem]">
+              <p className="type-label-ink mb-6">Scale plan</p>
+              <div className="max-w-[26rem]">
+                <FloorPlan room={room} />
+              </div>
             </div>
           </div>
         </Container>

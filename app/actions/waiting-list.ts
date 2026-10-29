@@ -1,6 +1,8 @@
 'use server'
 
+import { after } from 'next/server'
 import { db } from '@/lib/db'
+import { syncSignup } from '@/lib/signup-sync'
 import { waitingList } from '@/lib/db/schema'
 import { rooms } from '@/lib/rooms'
 
@@ -49,7 +51,8 @@ export async function joinWaitingList(
   const roomSlug = raw('roomSlug')
   const heardFrom = raw('heardFrom')
   const message = raw('message')
-  const newsletter = formData.get('newsletter') === 'on'
+  const newsletterOptIn = formData.get('newsletter_opt_in') === 'true'
+  const careyNewsletterOptIn = formData.get('carey_newsletter_opt_in') === 'true'
 
   // Echoed back on failure so the form repopulates.
   const values = { name, email, discipline, roomSlug, heardFrom, message }
@@ -88,7 +91,8 @@ export async function joinWaitingList(
       roomSlug: roomSlug || null,
       heardFrom: heardFrom || null,
       message: message || null,
-      newsletter,
+      newsletter: newsletterOptIn,
+      careyNewsletter: careyNewsletterOptIn,
     })
   } catch (error) {
     // 23505 is Postgres' unique violation — the email is already on the list.
@@ -105,6 +109,20 @@ export async function joinWaitingList(
       values,
     }
   }
+
+  // Runs after the response is sent, so a slow or failing service never blocks the signup.
+  after(() =>
+    syncSignup({
+      name,
+      email,
+      discipline,
+      room: rooms.find((room) => room.slug === roomSlug)?.name ?? (roomSlug || null),
+      heardFrom: heardFrom || null,
+      message: message || null,
+      newsletter: newsletterOptIn,
+      careyNewsletter: careyNewsletterOptIn,
+    }),
+  )
 
   return {
     status: 'success',

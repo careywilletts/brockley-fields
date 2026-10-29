@@ -111,7 +111,7 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                             <InlineLink href={`/studios/${r.slug}`}>{r.name}</InlineLink>
                           </span>
                         ))}
-                        {` · ${unit.shortName}`}
+                        {` · ${unit.residentLabel ?? unit.shortName}`}
                       </span>
                       <StatusBadge status={room.status} />
                     </>
@@ -169,7 +169,9 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
               </blockquote>
               <figcaption className="type-label mt-6">
                 {person.name}
-                {room && unit ? ` · ${room.name}, ${unit.shortName}` : ` · ${person.relationship}`}
+                {room && unit
+                  ? ` · ${room.name}, ${unit.residentLabel ?? unit.shortName}`
+                  : ` · ${person.relationship}`}
               </figcaption>
             </figure>
           </Container>

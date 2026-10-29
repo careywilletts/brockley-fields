@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
-import { Container, PageHeader, Rule } from '@/components/primitives'
+import { ActionLink, Container, PageHeader, Photo, Rule, Section } from '@/components/primitives'
 import { TerraceBand } from '@/components/brand'
+import { buildTeaser } from '@/lib/build'
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios and two creative spaces in Brockley, SE4, built on the belief that people matter.',
+    'Carey Willetts on founding Brockley Fields — from Athlete and the Ivor Novello to five soundproofed studios and two creative spaces in Brockley, SE4 — plus a look at how the units were rebuilt from a tired office into acoustically treated studios.',
 }
 
 export default function AboutPage() {
@@ -112,6 +113,45 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      <Section
+        label="Follow the build"
+        title={
+          <>
+            From a tired office to <span className="text-primary">five studios</span>
+          </>
+        }
+        intro={
+          <p>
+            Every room here was built from the shell up. The whole story &mdash; the strip-out, the
+            framing, the hand-wrapped fabric walls and the finish &mdash; is worth a look.
+          </p>
+        }
+      >
+        <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:gap-12">
+          <div className="grid flex-1 grid-cols-2 gap-3">
+            <figure className="flex flex-col gap-2">
+              <Photo
+                src={buildTeaser.before.src}
+                alt={buildTeaser.before.alt}
+                className="aspect-3/2"
+                sizes="(min-width: 768px) 24vw, 46vw"
+              />
+              <figcaption className="type-label text-muted-foreground">Before</figcaption>
+            </figure>
+            <figure className="flex flex-col gap-2">
+              <Photo
+                src={buildTeaser.after.src}
+                alt={buildTeaser.after.alt}
+                className="aspect-3/2"
+                sizes="(min-width: 768px) 24vw, 46vw"
+              />
+              <figcaption className="type-label text-muted-foreground">After</figcaption>
+            </figure>
+          </div>
+          <ActionLink href="/follow-the-build">Follow the build</ActionLink>
+        </div>
+      </Section>
 
       <Rule />
     </>

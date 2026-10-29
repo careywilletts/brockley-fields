@@ -23,13 +23,13 @@ export default function HomePage() {
         {/* Buttons moved to "Why we exist", so the columns align at the top now. */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
           <div className="lg:flex-1">
-            <p className="type-label">Brockley, SE4</p>
+            <p className="type-label type-eyebrow">London, SE4</p>
             <h1 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:max-w-[36rem] lg:text-[54px]">
               Brockley Fields was built on a simple belief:{' '}
               <span className="text-primary">people matter</span>
             </h1>
             <p className="mt-8 max-w-[34rem] text-[18px] leading-relaxed">
-              One of the hardest parts of being a creative person is finding a space to work. Then
+              One of the hardest parts of being a creative person is finding a space to work. Then,
               finding a place to create that is inspiring and affordable is even harder, so we did
               something about it.
             </p>
@@ -37,13 +37,16 @@ export default function HomePage() {
 
           <div className="lg:w-[42%] lg:shrink-0">
             <Photo
-              src="/images/hero-studio.png"
-              alt="An empty studio room with bare plaster walls and a tall window letting in daylight"
-              className="aspect-4/5"
+              src="/images/home-hero.jpg"
+              alt="A studio at Brockley Fields Studios: an upright piano with its lid open beneath gold discs and the Brockley Fields neon sign, guitars either side and a floor-to-ceiling window looking onto trees"
+              /* 3/4 matches the file's own 1500x2000, so nothing is cropped.
+                 Tall enough to sit close to the bottom of the copy without the
+                 flex-stretch trick the old landscape photograph needed. */
+              className="aspect-3/4"
               sizes="(min-width: 1024px) 42vw, 100vw"
               priority
             />
-            <p className="type-label mt-3">Studio 2 · Brockley Fields Studios · 26 m²</p>
+            <p className="type-label mt-3">Brockley Fields Studios · Unit 1</p>
           </div>
         </div>
       </Container>
@@ -56,8 +59,8 @@ export default function HomePage() {
         the text beside it.
       */}
       <Section label="Why we exist">
-        {/* Full measure, so the heading gets the same scale as the hero. */}
-        <h2 className="type-display max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
+        {/* mt-5 matches the hero's eyebrow-to-title gap (label sits in the Section header above). */}
+        <h2 className="type-display mt-5 max-w-[20rem] text-[30px] leading-[1.06] text-balance sm:max-w-[34rem] sm:text-[42px] lg:text-[48px]">
           To collaborate <span className="text-primary">and create</span>
         </h2>
         <div className="mt-6 flex max-w-[46rem] flex-col gap-4 text-[17px] leading-relaxed">
@@ -68,8 +71,10 @@ export default function HomePage() {
           </p>
           <p>
             What&apos;s happened since has been the best part &ndash; songwriters, producers, mixers,
-            arrangers and managers who work side by side. We collaborate, spark ideas and create.
-            That&apos;s not accidental, it&apos;s the whole point.
+            arrangers and managers who work side by side. We collaborate, spark ideas and create.{' '}
+            <strong className="text-primary font-semibold">
+              That&apos;s not accidental, it&apos;s the whole point.
+            </strong>
           </p>
         </div>
         <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -156,7 +161,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Latest news ───────────────────────────────────────────────────── */}
+      {/* ── Latest news ────────────���──────────────────────────────────────── */}
       {/*
         Events are on hold, so this is a single news column with the heading on
         the left rather than the old "next event + lately" two-column split.

@@ -49,7 +49,7 @@ export function Section({
                 unlabelled section runs flush to the left margin. */}
             {label && (
               <div className="md:w-[13rem] md:shrink-0">
-                <p className="type-label">{label}</p>
+                <p className="type-label type-eyebrow">{label}</p>
               </div>
             )}
             <div className="max-w-[46rem]">
@@ -83,7 +83,7 @@ export function PageHeader({
 }) {
   return (
     <Container className="pt-12 pb-12 sm:pt-16 sm:pb-16">
-      {label && <p className="type-label">{label}</p>}
+      {label && <p className="type-label type-eyebrow">{label}</p>}
       <h1
         className={cn(
           'type-display max-w-[34rem] text-[34px] text-balance sm:text-[52px]',

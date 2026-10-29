@@ -110,7 +110,6 @@ export default async function UnitPage({ params }: { params: Promise<{ unitId: s
               </ul>
             )}
           </div>
-          <p className="type-label mt-3">Photography is indicative while the shoot is finished.</p>
         </Container>
       </section>
 

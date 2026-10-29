@@ -27,9 +27,7 @@ export default async function WaitingListPage({
         intro={
           <>
             <p>
-              That is the honest position and it does not change often — people tend to stay. When a
-              room does come free, we go to this list first and it is usually taken before it reaches
-              the internet.
+              When a room does become available, we go to this list first.
             </p>
             <p>
               Tell us what you make and which room you have your eye on &mdash; {studioCount}{' '}

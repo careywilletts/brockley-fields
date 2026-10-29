@@ -132,6 +132,12 @@
     color: var(--foreground);
   }
 
+  /* Header eyebrow: the label that introduces a page or section title. Sized up
+     from the base .type-label to match the hero eyebrow ("London, SE4"). */
+  .type-eyebrow {
+    font-size: 0.9375rem;
+  }
+
   /* Thin municipal-print rule */
   .rule-hair {
     border-color: var(--foreground);

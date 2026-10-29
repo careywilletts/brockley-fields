@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { family, personRoomSlugs, bioParagraphs } from '@/lib/people'
 import { getRoom, getUnit } from '@/lib/rooms'
 import { site } from '@/lib/site'
-import { ActionLink, Container, InlineLink, PageHeader } from '@/components/primitives'
+import { Container, InlineLink, PageHeader } from '@/components/primitives'
 import { PersonPortrait } from '@/components/person-portrait'
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function PartOfTheFamilyPage() {
   return (
     <>
       <PageHeader
-        label="Everyone in the building"
+        label="In the building"
         title={
           <>
             Part of <span className="text-primary">the family</span>
@@ -74,7 +74,7 @@ export default function PartOfTheFamilyPage() {
                               </Link>
                             </span>
                           ))}
-                          {` · ${unit.shortName}`}
+                          {` · ${unit.residentLabel ?? unit.shortName}`}
                         </p>
                       )}
                       {person.relationship && roomList.length === 0 && (
@@ -143,26 +143,6 @@ export default function PartOfTheFamilyPage() {
               )
             })}
           </ul>
-        </Container>
-      </section>
-
-      <section className="border-foreground/20 border-t">
-        <Container className="py-16 sm:py-20">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-12">
-            <div>
-              <p className="type-label">Want a room in the building?</p>
-              <h2 className="type-display mt-3 max-w-[28rem] text-[26px] text-balance sm:text-[34px]">
-                Rooms come up two or three times a year.
-              </h2>
-              <p className="mt-5 max-w-[34rem] text-[17px] leading-relaxed">
-                Put your name down and we will come to you when one does. Or just email{' '}
-                <InlineLink href={`mailto:${site.email}`}>{site.email}</InlineLink>.
-              </p>
-            </div>
-            <ActionLink href="/studios" className="shrink-0">
-              See the studios
-            </ActionLink>
-          </div>
         </Container>
       </section>
     </>
