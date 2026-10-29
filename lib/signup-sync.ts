@@ -50,7 +50,7 @@ export async function sendToAirtable(signup: Signup) {
   if (!response.ok) throw new Error(`Airtable: ${await readError(response)}`)
 }
 
-export async function addToMailerLite(signup: Signup) {
+export async function addToMailerLite(signup: { email: string; name?: string | null }) {
   const apiKey = process.env.MAILERLITE_API_KEY
   if (!apiKey) throw new Error('MAILERLITE_API_KEY is not set')
 
@@ -63,7 +63,10 @@ export async function addToMailerLite(signup: Signup) {
     },
     body: JSON.stringify({
       email: signup.email,
-      fields: { name: signup.name, signup_source: MAILERLITE_SOURCE },
+      fields: {
+        ...(signup.name ? { name: signup.name } : {}),
+        signup_source: MAILERLITE_SOURCE,
+      },
       groups: [MAILERLITE_NEWSLETTER_GROUP_ID],
     }),
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),

@@ -39,9 +39,12 @@ export default function HoldingPage() {
                 waiting list.
               </p>
             </div>
-            <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:gap-6">
+            <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <ActionLink href={waitingListHref} className="px-7 py-4">
                 Join the waiting list
+              </ActionLink>
+              <ActionLink href="/newsletter" variant="outline" className="px-7 py-4">
+                Just get the newsletter
               </ActionLink>
               <a
                 href={`mailto:${site.email}`}
