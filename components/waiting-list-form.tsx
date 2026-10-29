@@ -202,8 +202,7 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
               className="border-foreground/40 accent-primary mt-1.5 size-4 shrink-0 border"
             />
             <span className="text-[16px] leading-relaxed">
-              Also send me Carey&apos;s newsletter: occasional notes on making records, and early
-              access to Talkett. Unsubscribe any time.
+                Keep me posted about Brockley Fields – new rooms, events and news from the building.
             </span>
           </label>
         </div>
