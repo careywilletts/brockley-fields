@@ -24,14 +24,14 @@ export default function HoldingPage() {
           <div className="flex flex-col gap-6 lg:w-1/2">
             <p className="type-label type-eyebrow">Website coming soon</p>
             <h1 className="type-display text-4xl text-balance sm:text-5xl lg:text-6xl">
-              Studios for people who make things.{' '}
+              Brockley Fields Studio website.{' '}
               <span className="text-primary">Almost ready.</span>
             </h1>
             <div className="flex max-w-[34rem] flex-col gap-4 text-[16px] leading-relaxed text-pretty">
               <p>
-                Brockley Fields is a building of soundproofed, acoustically treated studios and
-                private offices in the heart of southeast London &mdash; home to songwriters,
-                producers, mixers, arrangers and managers working side by side.
+                One of the hardest parts of being a creative person is finding a space to work.
+                Then, finding a place to create that is inspiring and affordable is even harder, so
+                we did something about it.
               </p>
               <p>
                 We&apos;re putting the finishing touches to our full website. Every room is currently
@@ -39,9 +39,12 @@ export default function HoldingPage() {
                 waiting list.
               </p>
             </div>
-            <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:gap-6">
+            <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
               <ActionLink href={waitingListHref} className="px-7 py-4">
                 Join the waiting list
+              </ActionLink>
+              <ActionLink href="/newsletter" variant="outline" className="px-7 py-4">
+                Get the newsletter
               </ActionLink>
               <a
                 href={`mailto:${site.email}`}

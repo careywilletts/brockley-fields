@@ -99,6 +99,25 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
       )}
 
       <div className="flex flex-col gap-6">
+        <label
+          htmlFor="carey_newsletter_opt_in"
+          className="border-primary bg-primary/5 has-[:checked]:bg-primary/10 flex cursor-pointer items-start gap-4 border-2 p-5 transition-colors"
+        >
+          <input
+            id="carey_newsletter_opt_in"
+            name="carey_newsletter_opt_in"
+            type="checkbox"
+            value="true"
+            className="accent-primary mt-1 size-5 shrink-0"
+          />
+          <span className="flex flex-col gap-1">
+            <span className="type-label text-primary">Newsletter</span>
+            <span className="text-[17px] leading-relaxed">
+              Send me Carey&apos;s newsletter, including all things Brockley Fields Studios.
+            </span>
+          </span>
+        </label>
+
         <Field label="Your name" htmlFor="name" error={state.errors?.name}>
           <input
             id="name"
@@ -193,21 +212,6 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
         </Field>
 
         <div className="border-foreground/20 flex flex-col gap-4 border-t pt-6">
-          <label htmlFor="carey_newsletter_opt_in" className="flex cursor-pointer items-start gap-3">
-            <input
-              id="carey_newsletter_opt_in"
-              name="carey_newsletter_opt_in"
-              type="checkbox"
-              value="true"
-              className="border-foreground/40 accent-primary mt-1.5 size-4 shrink-0 border"
-            />
-            <span className="text-[16px] leading-relaxed">
-Send me Carey&apos;s newsletter, including all things Brockley Fields Studios.
-            </span>
-          </label>
-        </div>
-
-        <div className="flex flex-col gap-4 pt-1">
           <SubmitButton />
           <p className="text-muted-foreground text-[14px] leading-relaxed">
             We&apos;ll only contact you about a room unless you tick the box above.{' '}

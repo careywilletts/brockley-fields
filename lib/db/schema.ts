@@ -23,3 +23,11 @@ export const waitingList = pgTable('waiting_list', {
 })
 
 export type WaitingListRow = typeof waitingList.$inferSelect
+
+/** People who only want Carey's newsletter, not a room. */
+export const newsletterSignups = pgTable('newsletter_signups', {
+  id: serial('id').primaryKey(),
+  email: text('email').notNull().unique(),
+  name: text('name'),
+  createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+})
