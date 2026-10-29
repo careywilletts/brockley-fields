@@ -1,5 +1,6 @@
 const SITE_URL = 'https://brockleyfields.com'
-const LOGO_URL = `${SITE_URL}/brand/brockley-fields-logo.png`
+// brockleyfields.com still points at the old host, so load the logo from the Vercel deployment.
+const LOGO_URL = 'https://brockley-fields.vercel.app/brand/brockley-fields-logo.png'
 const FROM = 'Brockley Fields Studios <carey@careywilletts.com>'
 const REPLY_TO = 'hello@brockleyfields.com'
 const SUBJECT = "You're on the Brockley Fields waiting list"
