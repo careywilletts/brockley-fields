@@ -193,18 +193,6 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
         </Field>
 
         <div className="border-foreground/20 flex flex-col gap-4 border-t pt-6">
-          <label htmlFor="newsletter_opt_in" className="flex cursor-pointer items-start gap-3">
-            <input
-              id="newsletter_opt_in"
-              name="newsletter_opt_in"
-              type="checkbox"
-              value="true"
-              className="border-foreground/40 accent-primary mt-1.5 size-4 shrink-0 border"
-            />
-            <span className="text-[16px] leading-relaxed">
-                Keep me posted about Brockley Fields – new rooms, events and news from the building.
-            </span>
-          </label>
           <label htmlFor="carey_newsletter_opt_in" className="flex cursor-pointer items-start gap-3">
             <input
               id="carey_newsletter_opt_in"
@@ -214,8 +202,8 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
               className="border-foreground/40 accent-primary mt-1.5 size-4 shrink-0 border"
             />
             <span className="text-[16px] leading-relaxed">
-              Also send me Carey&apos;s newsletter – occasional notes on songwriting, producing and
-              the music industry.
+              Send me Carey&apos;s newsletter – occasional notes on songwriting, producing and the
+              music industry, plus news from Brockley Fields.
             </span>
           </label>
         </div>
@@ -223,7 +211,7 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
         <div className="flex flex-col gap-4 pt-1">
           <SubmitButton />
           <p className="text-muted-foreground text-[14px] leading-relaxed">
-            We&apos;ll only use this to contact you about a room.{' '}
+            We&apos;ll only contact you about a room unless you tick the box above.{' '}
             <Link
               href="/privacy"
               className="hover:text-primary underline decoration-current/40 underline-offset-4 transition-colors"
