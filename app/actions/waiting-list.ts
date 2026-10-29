@@ -52,6 +52,7 @@ export async function joinWaitingList(
   const heardFrom = raw('heardFrom')
   const message = raw('message')
   const newsletterOptIn = formData.get('newsletter_opt_in') === 'true'
+  const careyNewsletterOptIn = formData.get('carey_newsletter_opt_in') === 'true'
 
   // Echoed back on failure so the form repopulates.
   const values = { name, email, discipline, roomSlug, heardFrom, message }
@@ -91,6 +92,7 @@ export async function joinWaitingList(
       heardFrom: heardFrom || null,
       message: message || null,
       newsletter: newsletterOptIn,
+      careyNewsletter: careyNewsletterOptIn,
     })
   } catch (error) {
     // 23505 is Postgres' unique violation — the email is already on the list.
@@ -118,6 +120,7 @@ export async function joinWaitingList(
       heardFrom: heardFrom || null,
       message: message || null,
       newsletter: newsletterOptIn,
+      careyNewsletter: careyNewsletterOptIn,
     }),
   )
 

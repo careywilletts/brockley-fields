@@ -3,7 +3,8 @@ import { sendConfirmationEmail } from '@/lib/confirmation-email'
 
 const AIRTABLE_BASE_ID = 'app9volcox6zYTFMZ'
 const AIRTABLE_TABLE_ID = 'tbl0wg4DfnkA2IMGx'
-const MAILERLITE_GROUP_ID = '202653487638512852'
+const MAILERLITE_BROCKLEY_GROUP_ID = '202653487638512852'
+const MAILERLITE_CAREY_GROUP_ID = '201490161441178693'
 const REQUEST_TIMEOUT_MS = 10_000
 
 export type Signup = {
@@ -14,6 +15,14 @@ export type Signup = {
   heardFrom: string | null
   message: string | null
   newsletter: boolean
+  careyNewsletter: boolean
+}
+
+function mailerLiteGroups(signup: Signup) {
+  const groups: string[] = []
+  if (signup.newsletter) groups.push(MAILERLITE_BROCKLEY_GROUP_ID)
+  if (signup.careyNewsletter) groups.push(MAILERLITE_CAREY_GROUP_ID)
+  return groups
 }
 
 async function readError(response: Response) {
@@ -30,6 +39,7 @@ export async function sendToAirtable(signup: Signup) {
     Email: signup.email,
     'What they make': signup.discipline,
     'Newsletter opt-in': signup.newsletter,
+    'Carey newsletter opt-in': signup.careyNewsletter,
     'Came from': 'Brockley Fields website',
     Status: 'Waiting',
   }
@@ -63,7 +73,7 @@ export async function addToMailerLite(signup: Signup) {
     body: JSON.stringify({
       email: signup.email,
       fields: { name: signup.name },
-      groups: [MAILERLITE_GROUP_ID],
+      groups: mailerLiteGroups(signup),
     }),
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   })
@@ -76,7 +86,7 @@ export async function syncSignup(signup: Signup) {
     ['Airtable', sendToAirtable(signup)],
     ['Confirmation email', sendConfirmationEmail(signup)],
   ]
-  if (signup.newsletter) tasks.push(['MailerLite', addToMailerLite(signup)])
+  if (mailerLiteGroups(signup).length > 0) tasks.push(['MailerLite', addToMailerLite(signup)])
 
   const results = await Promise.allSettled(tasks.map(([, task]) => task))
   results.forEach((result, index) => {

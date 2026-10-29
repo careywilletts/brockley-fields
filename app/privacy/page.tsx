@@ -67,7 +67,7 @@ export default function PrivacyPage() {
             <Bullets
               items={[
                 "Studio waiting list: your name, email, phone number if you give it, and what kind of room you're looking for. Used only to contact you when a room comes up.",
-                'Newsletter: your email address, and your name if you give it. Used only to send the newsletter and Talkett beta news. You only get it if you sign up or tick the box, and you can unsubscribe from any email.',
+                'Newsletters: your email address, and your name if you give it. There are two, and you choose each one separately: Brockley Fields news (new rooms, events and news from the building), and Carey\u2019s newsletter (notes on songwriting, producing and the music industry, plus Talkett beta news). You only get one if you sign up or tick its box, and you can unsubscribe from any email.',
                 "Free call form: your name, email, what your project is about, any link you share and your timing. Used only to reply to you and, if it's a fit, book a call.",
                 'Emails you send us: kept so we can reply and keep track of the conversation.',
                 'Bookings and payments (when added): handled by the payment provider. We never see or store your card details. Invoices are kept for six years because HMRC requires it.',
@@ -75,16 +75,16 @@ export default function PrivacyPage() {
             />
           </PolicySection>
 
-          <PolicySection title="Waiting list and newsletter are separate">
+          <PolicySection title="Waiting list and newsletters are separate">
             <p>
-              Joining the studio waiting list doesn&apos;t sign you up to the newsletter.
-              There&apos;s a separate box for that, and it&apos;s unticked unless you tick it.
+              Joining the studio waiting list doesn&apos;t sign you up to either newsletter.
+              Each one has its own box, and both are unticked unless you tick them.
             </p>
           </PolicySection>
 
           <PolicySection title="The legal bit, briefly">
             <p>
-              The newsletter is based on your consent, which you can withdraw at any time. The
+              The newsletters are based on your consent, which you can withdraw at any time. The
               waiting list, call form and emails are based on legitimate interests, or steps
               you&apos;ve asked us to take before working together. Invoices are kept because the
               law requires it.
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
             <Bullets
               items={[
                 'Studio waiting list: until you get a room or ask to come off the list. We check it at least once a year.',
-                'Newsletter: until you unsubscribe.',
+                'Newsletters: until you unsubscribe.',
                 'Call requests: 12 months, then deleted, unless we end up working together.',
                 "Emails: as long as they're useful for our work together.",
                 'Invoices: six years.',

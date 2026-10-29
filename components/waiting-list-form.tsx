@@ -192,7 +192,7 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
           />
         </Field>
 
-        <div className="border-foreground/20 border-t pt-6">
+        <div className="border-foreground/20 flex flex-col gap-4 border-t pt-6">
           <label htmlFor="newsletter_opt_in" className="flex cursor-pointer items-start gap-3">
             <input
               id="newsletter_opt_in"
@@ -203,6 +203,19 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
             />
             <span className="text-[16px] leading-relaxed">
                 Keep me posted about Brockley Fields – new rooms, events and news from the building.
+            </span>
+          </label>
+          <label htmlFor="carey_newsletter_opt_in" className="flex cursor-pointer items-start gap-3">
+            <input
+              id="carey_newsletter_opt_in"
+              name="carey_newsletter_opt_in"
+              type="checkbox"
+              value="true"
+              className="border-foreground/40 accent-primary mt-1.5 size-4 shrink-0 border"
+            />
+            <span className="text-[16px] leading-relaxed">
+              Also send me Carey&apos;s newsletter – occasional notes on songwriting, producing and
+              the music industry.
             </span>
           </label>
         </div>
