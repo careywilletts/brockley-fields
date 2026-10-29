@@ -51,7 +51,6 @@ export async function joinWaitingList(
   const roomSlug = raw('roomSlug')
   const heardFrom = raw('heardFrom')
   const message = raw('message')
-  const newsletterOptIn = formData.get('newsletter_opt_in') === 'true'
   const careyNewsletterOptIn = formData.get('carey_newsletter_opt_in') === 'true'
 
   // Echoed back on failure so the form repopulates.
@@ -91,7 +90,6 @@ export async function joinWaitingList(
       roomSlug: roomSlug || null,
       heardFrom: heardFrom || null,
       message: message || null,
-      newsletter: newsletterOptIn,
       careyNewsletter: careyNewsletterOptIn,
     })
   } catch (error) {
@@ -119,7 +117,6 @@ export async function joinWaitingList(
       room: rooms.find((room) => room.slug === roomSlug)?.name ?? (roomSlug || null),
       heardFrom: heardFrom || null,
       message: message || null,
-      newsletter: newsletterOptIn,
       careyNewsletter: careyNewsletterOptIn,
     }),
   )
