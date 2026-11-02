@@ -5,6 +5,7 @@ import { db } from '@/lib/db'
 import { syncSignup } from '@/lib/signup-sync'
 import { waitingList } from '@/lib/db/schema'
 import { rooms } from '@/lib/rooms'
+import { isProbablyBot } from '@/lib/bot-check'
 
 export type FieldErrors = {
   name?: string
@@ -43,6 +44,10 @@ export async function joinWaitingList(
   _prev: WaitingListState,
   formData: FormData,
 ): Promise<WaitingListState> {
+  // Bots get the normal success message, but nothing is saved or sent.
+  if (isProbablyBot(formData, ['name', 'discipline', 'heardFrom', 'message']))
+    return { status: 'success', message: 'You are on the list.' }
+
   const raw = (key: string) => (formData.get(key) as string | null)?.trim() ?? ''
 
   const name = raw('name')

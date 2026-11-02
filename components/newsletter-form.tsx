@@ -5,6 +5,7 @@ import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { subscribeToNewsletter, type NewsletterState } from '@/app/actions/newsletter'
 import { waitingListHref } from '@/lib/site'
+import { BotFields } from '@/components/bot-fields'
 
 const initialState: NewsletterState = { status: 'idle' }
 
@@ -48,6 +49,7 @@ export function NewsletterForm() {
 
   return (
     <form action={formAction} className="flex max-w-[34rem] flex-col gap-6" noValidate>
+      <BotFields />
       {state.status === 'error' && state.message && (
         <p
           role="alert"
