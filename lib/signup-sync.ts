@@ -74,13 +74,28 @@ export async function addToMailerLite(signup: { email: string; name?: string | n
   if (!response.ok) throw new Error(`MailerLite: ${await readError(response)}`)
 }
 
+/**
+ * Newsletter sign-ups go through careywilletts.com, which sends a branded "Confirm your
+ * subscription" email. Only people who click it join the MailerLite list (and they then
+ * get the welcome email and the latest issue). This keeps bots off the list.
+ */
+export async function subscribeViaCarey(email: string) {
+  const response = await fetch('https://careywilletts.com/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, talkett: false }),
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+  })
+  if (!response.ok) throw new Error(`careywilletts.com subscribe: ${await readError(response)}`)
+}
+
 /** Never throws: Neon is the source of truth, so these are best-effort copies. */
 export async function syncSignup(signup: Signup) {
   const tasks: Array<[string, Promise<void>]> = [
     ['Airtable', sendToAirtable(signup)],
     ['Confirmation email', sendConfirmationEmail(signup)],
   ]
-  if (signup.careyNewsletter) tasks.push(['MailerLite', addToMailerLite(signup)])
+  if (signup.careyNewsletter) tasks.push(['Newsletter confirm email', subscribeViaCarey(signup.email)])
 
   const results = await Promise.allSettled(tasks.map(([, task]) => task))
   results.forEach((result, index) => {

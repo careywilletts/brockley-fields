@@ -7,6 +7,7 @@ import { useWaitingList, WAITING_LIST_FORM_ID } from '@/components/waiting-list-
 import { rooms, roomLabel } from '@/lib/rooms'
 import { site } from '@/lib/site'
 import { cn } from '@/lib/utils'
+import { BotFields } from '@/components/bot-fields'
 
 /** Shared input styling — squared off, ruled underneath rather than boxed in. */
 const fieldClasses =
@@ -85,6 +86,7 @@ export function WaitingListForm({ defaultRoomSlug }: { defaultRoomSlug?: string 
 
   return (
     <form id={WAITING_LIST_FORM_ID} action={formAction} className="max-w-[34rem]" noValidate>
+      <BotFields />
       {/* Errors that aren't tied to one field (database trouble, oversized payload). */}
       {state.status === 'error' && state.message && (
         <p
