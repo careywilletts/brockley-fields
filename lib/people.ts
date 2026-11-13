@@ -85,6 +85,7 @@ export const people: Person[] = [
     // listed on its own in `allHandles` below, so the wall is unaffected.
     handle: '@carey.willetts',
     links: [
+      { label: 'careywilletts.com', href: 'https://careywilletts.com' },
       { label: 'Brickfield Records', href: 'https://brickfieldrecords.com/index.php' },
       { label: '@brickfield.records', href: 'https://instagram.com/brickfield.records' },
       { label: 'Jax Management', href: 'https://jaxmanagement.com/carey-willetts' },
@@ -101,7 +102,10 @@ export const people: Person[] = [
     bio: 'Matt Rist is a songwriter, music producer and audio engineer. Matt began his career as an in-house engineer for the UK independent label Good Soldier and has since collaborated with major labels including Island, Republic, Capitol and EMI, contributing to projects for artists such as Benjamin Francis Leftwich, Freya Ridings and Sekou.',
     portrait: '/images/people/matt-rist.webp',
     handle: '@mattrist__',
-    links: [{ label: 'Instagram', href: 'https://instagram.com/mattrist__' }],
+    links: [
+      { label: 'Instagram', href: 'https://instagram.com/mattrist__' },
+      { label: 'mattrist.co.uk', href: 'https://mattrist.co.uk' },
+    ],
     roomSlug: 'upstairs-studio-3',
   },
   {
