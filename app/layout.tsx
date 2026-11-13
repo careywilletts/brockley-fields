@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Archivo, Work_Sans } from 'next/font/google'
+import localFont from 'next/font/local'
 import Link from 'next/link'
 import { Logo } from '@/components/brand'
 import { SiteHeader } from '@/components/site-header'
@@ -8,14 +8,20 @@ import { SiteFooter } from '@/components/site-footer'
 import { site } from '@/lib/site'
 import './globals.css'
 
-const _archivo = Archivo({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+// Self-hosted variable fonts (latin subset), so builds never depend on
+// reaching Google Fonts. Exposed as CSS variables and read in globals.css.
+const archivo = localFont({
+  src: './fonts/archivo-latin-wght-normal.woff2',
+  weight: '100 900',
+  variable: '--font-archivo',
+  display: 'swap',
 })
 
-const _workSans = Work_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
+const workSans = localFont({
+  src: './fonts/work-sans-latin-wght-normal.woff2',
+  weight: '100 900',
+  variable: '--font-work-sans',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -50,7 +56,7 @@ export default function RootLayout({
   const holdingMode = process.env.HOLDING_PAGE === 'on'
 
   return (
-    <html lang="en-GB" className="bg-background">
+    <html lang="en-GB" className={`${archivo.variable} ${workSans.variable} bg-background`}>
       <body className="paper-grain bg-background text-foreground font-sans antialiased">
         <a
           href="#main"
